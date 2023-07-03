@@ -1,0 +1,120 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0;
+  border-bottom: 2px solid var(--black);
+}
+
+.header ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header ul li {
+  margin-left: 20px;
+}
+
+.header ul li a {
+  display: flex;
+  align-items: center;
+}
+
+/* .header ul li a:hover {
+  color: #777;
+} */
+
+.header ul li a svg {
+  margin-right: 5px;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.heading p {
+  color:  rgba(var(--theme-color));
+}
+
+.left-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+/* checkbox day-night */
+/* .day-night-container{
+  position: absolute;
+  left: -20px;
+} */
+.toggle-switch {
+  position: relative;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.label-switch {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: var(--black);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.input-switch {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  transition: 0.3s;
+  border: .7px solid var(--black);
+}
+
+.hover{
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.hover:hover{
+  transform: scale(1.14);
+}
+
+.input-switch:checked ~ .slider {
+  background-color: var(--white);
+
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: -27px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  box-shadow: inset 28px -4px 0px 0px var(--white);
+  background-color: var(--black);
+  transition: 0.3s;
+}
+
+.input-switch:checked ~ .slider::before {
+  transform: translateX(25px);
+  background-color: var(--black);
+  width: 25px;
+  height: 25px;
+  box-shadow: none;
+}
