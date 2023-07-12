@@ -1,0 +1,24 @@
+.bottom-nav-title{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: .9rem;
+    margin-bottom: 20px;
+}
+
+.bottom-nav-content{
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    margin-bottom: 10px;
+}
+
+.bottom-nav-number{
+
+}
+
+.bottom-nav-text{
+    white-space: nowrap;
+}

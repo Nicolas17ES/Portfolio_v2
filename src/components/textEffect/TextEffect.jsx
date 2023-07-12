@@ -1,14 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import GlobalContext from '../../context/GlobalContext'
 import './TextEffect.css';
 
-function TextEffect() {
+function TextEffect({displayCurtaint}) {
+
+  const [positionHeader, setPositionHeader] = useState(false);
+  const {dispatch, display_header, lateral_navbar} = useContext(GlobalContext);
 
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const navigate = useNavigate();
 
   const textRef = useRef(null);
-  const overlayRef = useRef(null);
+  // const overlayRef = useRef(null);
 
   const [displayName, setDisplayName] = useState(false);
   
@@ -53,25 +57,17 @@ function TextEffect() {
     };
   }, []);
 
-  // Navigate to home page
-  const navigateTo = () => {
-    const overlayElement = overlayRef.current;
-    overlayElement.classList.add('curtain-transition');
+// set h1 as header
 
-    setTimeout(() => {
-      navigate('/home');
-    }, 2000);
-  };
 
   return (
     <div>
-      <div ref={overlayRef} className="curtain-overlay"></div>
+      {/* <div ref={overlayRef} className="curtain-overlay"></div> */}
       <h1
         ref={textRef}
-        onMouseOver={applyTextEffect}
-        onClick={navigateTo}
-        className="landing-title"
+        onMouseOver={(positionHeader || display_header || lateral_navbar) ? null : applyTextEffect}
         data-value={displayName ? 'Nicolas Luque' : 'Web developer'}
+        className="landing-title"
       >
         {displayName ? 'Nicolas Luque' : 'Web developer'}
       </h1>

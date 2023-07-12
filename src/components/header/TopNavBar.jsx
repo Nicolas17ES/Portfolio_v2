@@ -5,53 +5,37 @@ import { useEffect, useState} from 'react'
 
 function TopNavBar() {
 
-  const [darkMode, setDarkMode] = useState(false);
+  // const [activeIndex, setActiveIndex] = useState(null);
+  // const location = useLocation();
+  // const pathaname = location.pathname;
+
+
+  // const navItems = ['Home', 'About', 'Projects', 'Music', 'Contact']; // Your nav items
+
+  // useEffect(() => {
+  //   for(let i = 0; i < navItems.length; i++){
+  //     if(pathaname.includes(navItems[i].toLowerCase())){
+  //       console.log(navItems[i].toLowerCase())
+  //     }
+  //   }
+    
+  // }, [location])
   
-
-
-  // update darkmode and theme color from local storage
-  useEffect(() => {
-    const mode = JSON.parse(localStorage.getItem('darkMode'))
-    setDarkMode(mode);
-     // eslint-disable-line react-hooks/exhaustive-deps
-  }, [])
-
-  // change dark mode
-  useEffect(() => {
-    if(darkMode){
-      document.documentElement.style.setProperty('--black', '#ffffff');
-      document.documentElement.style.setProperty('--white', '#28292c');
-      
-    } else {
-      document.documentElement.style.setProperty('--black', '#28292c');
-      document.documentElement.style.setProperty('--white', '#ffffff');
-      
-    }
-  }, [darkMode])
-
-  const changeDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem('darkMode', JSON.stringify(newMode))
-  }
-
+  
+  
 
 
 
 return (
-    <header className='header'>
-        <div className='left-nav'></div>
-        <ul>
-            <li className='day-night-container'>
-                <div className= 'toggle-switch'>
-                    <label className='label-switch'>
-                        <input className='input-switch' type='checkbox' checked={darkMode} onChange={changeDarkMode}/>
-                        <span className='slider'></span>
-                    </label>
-                </div>
+    <nav >
+        {/* <ul className="nav-links">
+          {navItems.map((item, index) => (
+            <li key={index} className='nav-link' onMouseOver={() => handleMouseOver(index)}>
+              <Link to={navItems[index].toLowerCase()} className='link'>{item}</Link>
             </li>
-        </ul>
-    </header>
+          ))}
+        </ul> */}
+    </nav>
     
     )
 }

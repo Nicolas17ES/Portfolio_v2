@@ -1,0 +1,152 @@
+.navbar {
+  height: 100vh;
+  display: flex;
+  text-transform: uppercase !important;
+}
+
+.central-navbar {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.lateral-navbar {
+  align-items: flex-end;
+  width: 25%;
+  border-left: 1px solid rgb(var(--black));
+  flex-direction: column;
+  margin-left: auto;
+  animation: move-navbar 1.3s forwards;
+}
+
+
+@keyframes move-navbar {
+  from {
+    border-left: 1px solid rgb(var(--black));
+    width: 100%;
+  }
+
+  to{
+     width: 25%;
+     border-left: 1px solid rgb(var(--black));
+    margin-left: auto;
+  }
+}
+
+
+.lateral-navbar .nav-links{
+  
+  height: 25%;
+  width: 100%;
+  animation: animate-navbar-block 1.3s forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+ @keyframes animate-navbar-block {
+  from{
+    /* width: 100%; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+  }
+
+  to{
+    height: 25%;
+     width: 100%;
+     display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  }
+} 
+
+.lateral-navbar .nav-links li .link{
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 3px 0 !important;
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: .6px;
+  animation: animate-navbar-links 1.3s forwards;
+}
+
+@keyframes animate-navbar-links {
+  0% {
+    font-size: 4rem;
+    padding: 10px 0;
+    display: block;
+ 
+    /* left: 50%; 
+    transform: translateX(-50%); */
+    
+  }
+
+ 
+
+  100%{
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 3px 0 !important;
+    margin-right: 10px;
+    /* left: 0; /* Add this line */
+    /* transform: translateX(0);  */
+  }
+}
+
+
+.bottom-nav-bar{
+  height: 70%;
+  width: 100%;
+}
+
+.nav-links:hover > li > .link {
+  opacity: 0.3;
+}
+
+.nav-links:hover > li > .link:hover {
+  opacity: 1;
+}
+
+
+.link{
+  color: rgb(var(--black)) !important;
+  cursor: pointer;
+  display: block;
+  font-size: 4rem;
+  padding: 10px 0;
+  text-decoration: none;
+  transition: opacity 400ms ease;
+  font-weight: 400;
+}
+
+.highlight-nav{
+  color: red !important;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to{
+    opacity: 1;
+  }
+}
+
+
+
+.nav-links:hover ~ .nav-background-pattern{
+  background-size: 11.5vmin 11.5vmin;
+  background-image: 
+    linear-gradient(to right, rgba(var(--black), 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--black), 0.08) 1px, transparent 1px);
+}
+
+

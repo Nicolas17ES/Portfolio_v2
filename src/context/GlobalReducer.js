@@ -1,14 +1,24 @@
-const GlobalReducer = (state, action) => {
+
+const globalReducer = (state, action) => {
     switch(action.type){
-        case 'GET_DATA':
+        case 'SET_HEADER':
             return {
                 ...state,
-                data: action.payload,
-                loading: false
+                display_header: action.payload,
+            }
+        case 'SET_LATERAL_NAV':
+            return {
+                ...state,
+                lateral_navbar: action.payload,
+            }
+        case 'SET_NAV_LOCATION':
+            return {
+                ...state,
+                navbar_location: action.payload,
             }
         default: 
             return state;
     }
 }
 
-export default dataReducer
+export default globalReducer

@@ -7,12 +7,16 @@ const GlobalContext = createContext();
 
 export const GlobalProvider = ({children}) => {
     const initialState = {
-        data: [],
+        display_header: false,
+        lateral_navbar: false,
+        navbar_location: '',
     }
-    const [state, dispatch] = useReducer(GlobalReducer, initialState)
+    const [state, dispatch] = useReducer(globalReducer, initialState)
 
     return <GlobalContext.Provider value={{
-        data: state.data,
+        display_header: state.display_header,
+        lateral_navbar: state.lateral_navbar,
+        navbar_location: state.navbar_location,
         dispatch,
     }}>
         {children}
