@@ -46,7 +46,6 @@ Link{
 @keyframes expandContent {
   from {
     width: 0%;
-    padding: 0;
   }
   to{
     width: 75%;
@@ -58,12 +57,53 @@ Link{
   margin-top: 100px;
   z-index: 99999;
   position: relative;
-  padding: 20px;
   background-color: rgb(var(--white));
   height: calc(100vh - 100px);
-  animation: expandContent 1.3s forwards;
+  animation: expandContent 5.3s forwards;
   width: 75%;
   overflow: hidden; 
+}
+
+.body-content-container-full {
+   margin-right: auto;
+  margin-top: 100px;
+  z-index: 99999;
+  position: relative;
+  background-color: rgb(var(--white));
+  height: calc(100vh - 100px);
+  overflow: hidden; 
+  width: 100%;
+   animation: expandBodyContentFull 5.3s forwards;
+}
+
+@keyframes expandBodyContentFull {
+  from {
+    width: 75%;
+  }
+  to{
+    width: 100%;
+  }
+}
+
+.body-content-container-shrink {
+   margin-right: auto;
+  margin-top: 100px;
+  z-index: 99999;
+  position: relative;
+  background-color: rgb(var(--white));
+  height: calc(100vh - 100px);
+  overflow: hidden; 
+  width: 75%;
+   animation: shrinkBodyContent 5.3s forwards;
+}
+
+@keyframes shrinkBodyContent {
+  from {
+    width: 100%;
+  }
+  to{
+    width: 75%;
+  }
 }
 
 

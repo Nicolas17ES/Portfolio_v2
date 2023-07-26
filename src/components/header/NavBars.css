@@ -76,17 +76,98 @@
   height: 100%;
   padding: 20px;
   transform-origin: bottom;
-  transform: scaleY(0); /* this is added to ensure the initial state matches the animation's start state */
+  transform: scaleY(0);
   animation: expandContentBottomToTop 1.3s forwards 1.2s;
+}
+
+.expand-element{
+  height: 100%;
+  padding: 20px;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  animation: expandContentBottomToTop 1.3s forwards;
+
 }
 
 @keyframes expandContentBottomToTop {
   from {
-    transform: scaleY(0);
-    border: none;
+    transform: translateY(110%);
+    border-top: 1px solid rgb(var(--black));
   }
   to {
-    transform: scaleY(1);
+    transform: translateY(0%);
     border-top: 1px solid rgb(var(--black));
+  }
+}
+
+
+.shrink-element {
+  height: 100%;
+  padding: 20px;
+  animation: shrinkContentTopToBottom 1.3s forwards;
+}
+
+@keyframes shrinkContentTopToBottom {
+  from {
+    transform: translateY(0);
+    border-top: 1px solid rgb(var(--black));
+  }
+  to {
+    transform: translateY(110%);
+    border-top: 1px solid rgb(var(--black));
+  }
+}
+
+
+
+.fade-out-element {
+  
+  animation: fadeOutContent .3s forwards;
+}
+
+
+
+@keyframes fadeOutContent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.display-bottom{
+  display: block;
+} 
+
+.hide-bottom{
+  display: none;
+}
+
+
+
+
+/* close nav button */
+
+.button-close-nav{
+  color: rgb(var(--black)) !important;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  animation: closeNavButton .3s forwards 1s;
+}
+
+@keyframes closeNavButton {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  to {
+    opacity: 1;
+    visibility: visible;
   }
 }

@@ -58,6 +58,12 @@ function TextEffect({displayCurtaint}) {
   }, []);
 
 // set h1 as header
+const dataValue = (e) => {
+   const data_value = e.target.getAttribute('data-value')
+   if(data_value === 'Web developer'){
+     applyTextEffect()
+   } 
+}
 
 
   return (
@@ -68,6 +74,7 @@ function TextEffect({displayCurtaint}) {
         onMouseOver={(positionHeader || display_header || lateral_navbar) ? null : applyTextEffect}
         data-value={displayName ? 'Nicolas Luque' : 'Web developer'}
         className="landing-title"
+        onClick={(positionHeader || display_header || lateral_navbar) ? null : dataValue}
       >
         {displayName ? 'Nicolas Luque' : 'Web developer'}
       </h1>

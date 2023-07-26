@@ -16,6 +16,16 @@ const globalReducer = (state, action) => {
                 ...state,
                 navbar_location: action.payload,
             }
+        case 'SET_HIDE_NAV':
+            return {
+                ...state,
+                hide_nav: action.payload,
+            }
+        case 'SET_BODY_SHRINK':
+            return {
+                ...state,
+                shrink_body: action.payload,
+            }
         default: 
             return state;
     }

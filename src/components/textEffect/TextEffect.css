@@ -1,17 +1,11 @@
 .landing-title {
   color: rgb(var(--black));
-  font-size: 3.5rem;
+  font-size: 3.3rem;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  /* position: fixed;
   font-weight: 400;
-  top: 50%;  
-  left: 50%; 
-
-  transform: translate(-50%, -50%);
-  width: 100%; */
 }
 
 

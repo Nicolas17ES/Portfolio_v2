@@ -11,12 +11,12 @@
     font-size: .8rem;
     display: flex;
     align-items: center;
-    gap: 10px; 
+    gap: 15px; 
     margin-bottom: 10px;
 }
 
 .bottom-nav-number{
-
+    opacity: .6;
 }
 
 .bottom-nav-text{

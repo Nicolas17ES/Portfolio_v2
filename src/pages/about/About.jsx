@@ -15,7 +15,7 @@ const data = {
 
 
   return (
-      <div className="about-container">
+      <div className="body-container">
          <ButtonsBody data={data}/>
       </div>
   );
