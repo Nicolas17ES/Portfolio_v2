@@ -1,23 +1,29 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GlobalContext from '../../context/GlobalContext'
+import GlobalContext from '../../context/GlobalContext';
 import './TextEffect.css';
 
-function TextEffect({displayCurtaint}) {
-
+function TextEffect({ displayCurtaint }) {
+  // Define and initialize local state variables using the useState hook
   const [positionHeader, setPositionHeader] = useState(false);
-  const {dispatch, display_header, lateral_navbar} = useContext(GlobalContext);
+  const [displayName, setDisplayName] = useState(false);
 
+  // Access global context using the useContext hook
+  const { dispatch, display_header, lateral_navbar } = useContext(GlobalContext);
+
+  // Define the alphabet for the text effect
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  // Create a navigation function for routing
   const navigate = useNavigate();
 
+  // Create a ref for the text element
   const textRef = useRef(null);
-  // const overlayRef = useRef(null);
 
-  const [displayName, setDisplayName] = useState(false);
-  
+  // Define an interval for the text effect animation
   let interval = null;
 
+  // Function to apply the text effect animation
   const applyTextEffect = () => {
     let iteration = 0;
     clearInterval(interval);
@@ -25,7 +31,7 @@ function TextEffect({displayCurtaint}) {
     interval = setInterval(() => {
       const textElement = textRef.current;
       if (!textElement) return;
-      
+
       const currentValue = textElement.innerText;
       const newValue = currentValue
         .split("")
@@ -45,42 +51,40 @@ function TextEffect({displayCurtaint}) {
 
       iteration += 1 / 3;
     }, 30);
-    setDisplayName(!displayName)
+    setDisplayName(!displayName);
   };
 
+  // useEffect to apply the text effect animation on component mount
   useEffect(() => {
     setTimeout(() => {
       applyTextEffect();
-    }, 1000)
+    }, 1000);
     return () => {
       clearInterval(interval);
     };
   }, []);
 
-// set h1 as header
-const dataValue = (e) => {
-   const data_value = e.target.getAttribute('data-value')
-   if(data_value === 'Web developer'){
-     applyTextEffect()
-   } 
-}
-
+  // Function to handle mouseover events and apply text effect when not in header mode
+  const dataValue = (e) => {
+    const data_value = e.target.getAttribute('data-value');
+    if (data_value === 'Web developer') {
+      applyTextEffect();
+    }
+  };
 
   return (
     <div>
-      {/* <div ref={overlayRef} className="curtain-overlay"></div> */}
       <h1
         ref={textRef}
         onMouseOver={(positionHeader || display_header || lateral_navbar) ? null : applyTextEffect}
-        data-value={displayName ? 'Nicolas Luque' : 'Web developer'}
+        data-value={display_header ? 'Que pasaaaaaa' : displayName ? 'Nicolas Luque' : 'Web developer'}
         className="landing-title"
         onClick={(positionHeader || display_header || lateral_navbar) ? null : dataValue}
       >
-        {displayName ? 'Nicolas Luque' : 'Web developer'}
+        {display_header ? 'Que pasaaaaa' : displayName ? 'Nicolas Luque' : 'Web developer'}
       </h1>
     </div>
   );
 }
 
 export default TextEffect;
-

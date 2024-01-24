@@ -3,9 +3,87 @@
 /* checkbox day-night */
 .day-night-container {
   position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 34px;
+  cursor: pointer;
+}
+
+.moon-icon{
+  width: 35px;
+  height: 35px;
+  position: absolute;
+}
+
+.opcaity-moon{
+  opacity: 0;
+}
+.toggle-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.label-switch {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.input-switch {
+  position: absolute;
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  transition: 0.3s;
+  border: .7px solid rgb(var(--black));
+}
+
+
+.input-switch:checked ~ .slider {
+  background-color: rgb(var(--white));
+
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: -27px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  box-shadow: inset 28px -4px 0px 0px rgb(var(--white));
+  background-color: rgb(var(--black));
+  transition: 0.3s;
+}
+
+.input-switch:checked ~ .slider::before {
+  transform: translateX(25px);
+  background-color: rgb(var(--black));
+  width: 25px;
+  height: 25px;
+  box-shadow: none;
+}
+
+/* checkkbox day night */
+
+
+/* checkbox day-night */
+/* .day-night-container {
+  position: fixed;
   top: 30px;
   left: 0;
-  z-index: 999; /* this makes sure the switch is always on top of other content */
+  z-index: 999;
 }
 .toggle-switch {
   position: relative;
@@ -40,7 +118,6 @@
 }
 
 
-
 .input-switch:checked ~ .slider {
   background-color: rgb(var(--white));
 
@@ -65,9 +142,9 @@
   width: 25px;
   height: 25px;
   box-shadow: none;
-}
+} */
 
-/* checkkbox day night */
+/* checkkbox day night end*/
 
 
 
@@ -158,6 +235,7 @@
   opacity: 0;
   visibility: hidden;
   animation: closeNavButton .3s forwards 1s;
+  z-index: 99999
 }
 
 @keyframes closeNavButton {

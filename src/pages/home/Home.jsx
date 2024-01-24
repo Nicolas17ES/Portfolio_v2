@@ -28,18 +28,7 @@ function Home() {
       setHoveredElement(null);
     };
 
-  // useEffect(() => {
-    
 
-  //   const aboutElement = aboutRef.current;
-  //   aboutElement.addEventListener('mouseover', handleMouseOver);
-  //   aboutElement.addEventListener('mouseout', handleMouseOut);
-
-  //   return () => {
-  //     aboutElement.removeEventListener('mouseover', handleMouseOver);
-  //     aboutElement.removeEventListener('mouseout', handleMouseOut);
-  //   };
-  // }, []);
 
   const fadeOut = (index) => {
     setFadeOutElement(!fadeOutElement)

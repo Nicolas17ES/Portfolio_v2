@@ -6,7 +6,7 @@ import './ButtonsBody.css'
 function ButtonsBody({data}) {
 
     const {dispatch, lateral_navbar} = useContext(GlobalContext);
-    const [activeIndex, setActiveIndex] = useState(null)
+    const [activeIndex, setActiveIndex] = useState(0)
 
     const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -23,6 +23,7 @@ function ButtonsBody({data}) {
             )
         })
     }
+
 
     const styles = {
         opacity: '0.5',

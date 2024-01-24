@@ -1,9 +1,24 @@
+/**
+ * @file context/GlobalContext.js
+ * @description Global context and provider for managing app-wide state.
+ */
+
 import {createContext, useReducer} from 'react'
 import globalReducer from './GlobalReducer'
 
 
 
 const GlobalContext = createContext();
+
+// display_header: This variable controls the display of the header in your app. When display_header is true, the header is displayed; otherwise, it is hidden.
+
+// lateral_navbar: This variable manages the visibility of the lateral (side) navigation bar. When lateral_navbar is true, the lateral navigation bar is displayed; otherwise, it is hidden.
+
+// navbar_location: This variable keeps track of the current location or route in your app. It is used to determine the active location for navigation highlighting.
+
+// hide_nav: This variable controls whether the navigation bar should be hidden or displayed. When hide_nav is true, the navigation bar is hidden; otherwise, it is displayed.
+
+// shrink_body: This variable is used to control the shrinking effect on the app's body. When shrink_body is true, the body of the app is shrunk; otherwise, it remains at its normal size.
 
 export const GlobalProvider = ({children}) => {
     const initialState = {

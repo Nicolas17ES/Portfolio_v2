@@ -1,13 +1,18 @@
 import './NavBars.css'
 import { useEffect, useState, useContext} from 'react'
 import GlobalContext from '../../context/GlobalContext'
+import { WiMoonWaningCrescent6, WiMoonWaningCrescent4, WiMoonWaningCrescent3, WiMoonWaningCrescent2, WiMoonWaningCrescent1, WiMoonThirdQuarter, WiMoonWaningGibbous2, WiMoonWaningGibbous1, WiMoonFull } from "react-icons/wi";
+
 
 
 
 function NightModeSwitch() {
 
-  const [darkMode, setDarkMode] = useState(false);
-  const {display_header, lateral_navbar} = useContext(GlobalContext)
+  const [darkMode, setDarkMode] = useState(true);
+  const [index, setIndex] = useState(0);
+  const {display_header} = useContext(GlobalContext)
+  const [intervalId, setIntervalId] = useState(null);
+
 
   
 
@@ -32,25 +37,54 @@ function NightModeSwitch() {
     }
   }, [darkMode])
 
-  const changeDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem('darkMode', JSON.stringify(newMode))
-  }
+ const changeIndex = () => {
+  const sum = darkMode ? 1 : -1;
+  setIndex((prevIndex) => prevIndex + sum);
+};
 
+const changeDarkMode = () => {
+  let count = 0;
 
+  const recursiveChange = () => {
+    changeIndex();
+    count++;
+
+    if (count < 8) {
+      setTimeout(recursiveChange, 40);
+    } else {
+      const newMode = !darkMode;
+      setDarkMode(newMode);
+      localStorage.setItem('darkMode', JSON.stringify(newMode))
+    }
+  };
+
+  recursiveChange(); // Start the recursive function
+};
 
 
 if(display_header){
   return (
-        <header className='day-night-container'>
-            <div className= 'toggle-switch'>
-                <label className='label-switch'>
-                    <input className='input-switch' type='checkbox' checked={darkMode} onChange={changeDarkMode}/>
-                    <span className='slider'></span>
-                </label>
-            </div>
+        <header className='day-night-container' onClick={changeDarkMode}>
+          <div className= 'toggle-switch' >
+            <WiMoonWaningCrescent6  className={`moon-icon ${index === 0 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonWaningCrescent4  className={`moon-icon ${index === 1 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonWaningCrescent3  className={`moon-icon ${index === 2 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonWaningCrescent2  className={`moon-icon ${index === 3 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonWaningCrescent1  className={`moon-icon ${index === 4 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonThirdQuarter  className={`moon-icon ${index === 5 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonWaningGibbous2  className={`moon-icon ${index === 6 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonWaningGibbous1  className={`moon-icon ${index === 7 ? '' : 'opcaity-moon'}`}/>
+            <WiMoonFull  className={`moon-icon ${index === 8 ? '' : 'opcaity-moon'}`}/>
+          </div>
         </header>
+        // <header className='day-night-container'>
+        //     <div className= 'toggle-switch'>
+        //         <label className='label-switch'>
+        //             <input className='input-switch' type='checkbox' checked={darkMode} onChange={changeDarkMode}/>
+        //             <span className='slider'></span>
+        //         </label>
+        //     </div>
+        // </header>
     
     )
 }

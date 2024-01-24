@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Jura:wght@300..700&display=swap');
+
 .navbar {
-  height: 100vh;
-  text-transform: uppercase !important;
+  height: 100%;
+  text-transform: uppercase;
   position: relative;
   
 }
@@ -43,13 +45,12 @@
   width: 100%;
   height: 100%;
   padding: 10px 0 10px 20px;
-  border: 1px solid yellow;
 }
 
 .lateral-navbar .nav-links-container {
-  height: 25%;
-  
-   animation: animate-links-container 5.3s forwards;
+  height: 33%;
+  overflow: hidden;
+  animation: animate-links-container 5.3s forwards;
 }
 
 
@@ -58,7 +59,7 @@
     height: 100%; 
   }
   to {
-    height: 25%;
+    height: 33%;
   }
 }
 
@@ -99,11 +100,13 @@
   color: rgb(var(--black)) !important;
   cursor: pointer;
   display: inline-block;
-  font-size: 3.3rem;
-  padding: 20px 0;
+  font-size: 1.8rem !important;
+  padding: 0 !important;
   text-decoration: none;
   transition: opacity 400ms ease;
-  font-weight: 400;
+  font-weight: 400 !important;
+    font-family: "Bebas Neue", sans-serif;
+letter-spacing: 1px;
   
 }
 
@@ -115,14 +118,14 @@
 
 @keyframes animate-navbar-links {
   from {
-    font-size: 3.3rem;
+    font-size: 2.5rem;
      padding: 20px 0;
   }
 
  
 
   to {
-    font-size: 1rem;
+    font-size: 1.7rem;
     font-weight: 400;
      padding: 10px 0;
     /* margin-right: 10px; */
@@ -147,7 +150,7 @@
 
 
 .highlight-nav{
-  color: red !important;
+  color: rgb(var(--red)) !important;
 }
 
 .lateral-navbar .nav-links li.nav-link {

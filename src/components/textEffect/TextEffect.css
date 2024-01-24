@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Jura:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=Jura:wght@300..700&family=Oswald:wght@200..700&display=swap');
+
 .landing-title {
   color: rgb(var(--black));
-  font-size: 3.3rem;
+  font-size: 2rem;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 400 !important;
+    font-family: "Bebas Neue", sans-serif;
+letter-spacing: 1px;
 }
 
 

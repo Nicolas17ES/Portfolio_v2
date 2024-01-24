@@ -1,13 +1,16 @@
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
   --black: 41, 41, 43;
   --white: 255, 255, 255;
-  --red: 229, 43, 80;
+  --red: 216, 51, 51;
   --orange: 251, 140, 0;
   --yellow: 253, 216, 53;
   --green: 67, 160, 71;
@@ -23,7 +26,9 @@
 
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+  font-style: normal;
   /* margin-bottom: 50px; */
   background-color: rgb(var(--white));
   color: rgb(var(--black));
@@ -54,11 +59,11 @@ Link{
 
 .body-content-container {
   margin-right: auto;
-  margin-top: 100px;
-  z-index: 99999;
+  margin-top: 10vh;
+  z-index: 888;
   position: relative;
   background-color: rgb(var(--white));
-  height: calc(100vh - 100px);
+  height: 90vh;
   animation: expandContent 5.3s forwards;
   width: 75%;
   overflow: hidden; 
@@ -66,11 +71,11 @@ Link{
 
 .body-content-container-full {
    margin-right: auto;
-  margin-top: 100px;
-  z-index: 99999;
+  z-index: 98;
   position: relative;
   background-color: rgb(var(--white));
-  height: calc(100vh - 100px);
+  margin-top: 10vh;
+  height: 90vh;
   overflow: hidden; 
   width: 100%;
    animation: expandBodyContentFull 5.3s forwards;
@@ -87,11 +92,11 @@ Link{
 
 .body-content-container-shrink {
    margin-right: auto;
-  margin-top: 100px;
-  z-index: 99999;
+  z-index: 98;
   position: relative;
   background-color: rgb(var(--white));
-  height: calc(100vh - 100px);
+  margin-top: 10vh;
+  height: 90vh;
   overflow: hidden; 
   width: 75%;
    animation: shrinkBodyContent 5.3s forwards;
