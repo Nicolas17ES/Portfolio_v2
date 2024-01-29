@@ -4,12 +4,12 @@
  * This component manages the main navigation, active link highlighting, and interactions with the global context.
  */
 import './Main.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext, useRef } from 'react';
 import BottomNavBar from '../../components/header/bottomNavBar/BottomNavBar';
 import GlobalContext from '../../context/GlobalContext';
 import { AiOutlineClose } from 'react-icons/ai';
-import { FaGripLines } from 'react-icons/fa';
+import MouseTracker from '../../components/mouse/MouseTracker'
 
 function Main({ handleMouseOver }) {
   // Define and initialize local state variables using the useState hook
@@ -19,7 +19,7 @@ function Main({ handleMouseOver }) {
   const [lateralNavBar, setLateralNavBar] = useState(false);
 
   // Access global context using the useContext hook
-  const { dispatch, lateral_navbar, hide_nav } = useContext(GlobalContext);
+  const { dispatch, lateral_navbar, hide_nav, navbar_location } = useContext(GlobalContext);
 
   // Create a ref for the navbar element
   const navbarRef = useRef(null);
@@ -27,6 +27,9 @@ function Main({ handleMouseOver }) {
   // Get the current location from React Router
   const location = useLocation();
   const pathname = location.pathname;
+
+  const navigate = useNavigate();
+
 
   // Define navigation items
   const navItems = ['Projects', 'Music', 'About', 'Contact'];
@@ -64,7 +67,6 @@ function Main({ handleMouseOver }) {
       payload: false,
     });
   };
-  
 
   useEffect(() => {
     // Update the navbar's CSS classes based on global state
@@ -77,6 +79,17 @@ function Main({ handleMouseOver }) {
     }
   }, [hide_nav]);
 
+  // to={navItems[index].toLowerCase()} onClick={() => setNavBarLocation(navItems[index].toLowerCase())}
+
+  const changeLocation = (index) => {
+    const destination = navItems[index].toLowerCase();
+    setNavBarLocation(destination);
+    if(!lateral_navbar){
+          navigate('/' + destination)
+    }
+    
+  }
+
   return (
     <>
       <nav ref={navbarRef} className={`navbar ${lateral_navbar ? 'lateral-navbar' : 'central-navbar'}`} data-active-index={activeIndex}>
@@ -87,15 +100,16 @@ function Main({ handleMouseOver }) {
           <ul className="nav-links">
             {navItems.map((item, index) => (
               <li key={index} className={`nav-link ${index === activeLinkIndex ? 'highlight-nav' : ''}`} onMouseOver={() => handleMouseOver(index)}>
-                <Link to={navItems[index].toLowerCase()} onClick={() => setNavBarLocation(navItems[index].toLowerCase())} className={`link ${index === activeLinkIndex ? 'highlight-nav' : ''}`}>
+                <span onClick={() => changeLocation(index)} className={`link ${index === activeLinkIndex ? 'highlight-nav' : ''}`}>
                   {'0' + (index + 1) + ' ' + item}
-                </Link>
+                </span>
               </li>
             ))}
           </ul>
         </div>
         {lateral_navbar && (
           <div className="bottom-nav-bar">
+             
             <BottomNavBar />
           </div>
         )}

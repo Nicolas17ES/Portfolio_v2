@@ -154,7 +154,7 @@
   padding: 20px;
   transform-origin: bottom;
   transform: scaleY(0);
-  animation: expandContentBottomToTop 1.3s forwards 1.2s;
+  animation: expandContentBottomToTop 1.3s forwards .7s;
 }
 
 .expand-element{
@@ -190,7 +190,7 @@
     border-top: 1px solid rgb(var(--black));
   }
   to {
-    transform: translateY(110%);
+    transform: translateY(130%);
     border-top: 1px solid rgb(var(--black));
   }
 }
@@ -234,7 +234,7 @@
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  animation: closeNavButton .3s forwards 1s;
+  animation: closeNavButton .3s forwards .5s;
   z-index: 99999
 }
 

@@ -27,6 +27,8 @@ export const GlobalProvider = ({children}) => {
         navbar_location: '',
         hide_nav: false,
         shrink_body: false,
+        button_index: null,
+        display_mouse_tracker: false,
         
     }
     const [state, dispatch] = useReducer(globalReducer, initialState)
@@ -37,6 +39,8 @@ export const GlobalProvider = ({children}) => {
         navbar_location: state.navbar_location,
         hide_nav: state.hide_nav,
         shrink_body: state.shrink_body,
+        button_index: state.button_index,
+        display_mouse_tracker: state.display_mouse_tracker,
         dispatch,
     }}>
         {children}

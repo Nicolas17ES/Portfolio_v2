@@ -4,9 +4,14 @@ import CloseNavBarButton from './components/shared/CloseNavBarButton';
 import NightMode from './components/header/NightModeSwitch';
 import Landing from './pages/landing/Landing';
 import About from './pages/about/About';
+import Contact from './pages/contact/Contact';
+import Music from './pages/music/Music'
 import Projects from './pages/projects/Projects';
 import { GlobalProvider } from './context/GlobalContext';
 import GlobalContext from './context/GlobalContext'
+
+import MouseTracker from './components/mouse/MouseTracker'
+
 function App() {
   // This is the main entry point of your React application.
   // It wraps the entire application with the GlobalProvider, which provides global state to child components.
@@ -26,7 +31,6 @@ function WrappedApp() {
 
   useEffect(() => {
     // This useEffect hook is used for handling routing and updating global state based on the current path.
-    console.log("pathname", pathname)
     if (pathname !== '/') {
       // If the path is not the root ("/"), update various global state properties accordingly.
       // we will set lateral navbar and the header and also in the nalocation state we will place the correct location via the pathname
@@ -45,13 +49,16 @@ function WrappedApp() {
     }
   }, [pathname, dispatch]);
 
+
+  
+
   // Landing is the first page we see on opening the project
   // landing imports the main component, which represents the NavBar of the project, that goes from center to right position
   // The lateral navbar has two parts: the top, which is in the main content, and the bottom, which is another component called BottomNavBar
 
   return (
     <>
-      {/* <NightMode /> */}
+      <MouseTracker />
       <Landing />
       {/* <div className="container"> */}
       <main className={`${
@@ -67,6 +74,8 @@ function WrappedApp() {
           {/* React Router Routes for different pages */}
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/music" element={<Music />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       {/* </div> */}

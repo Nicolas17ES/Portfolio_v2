@@ -9,10 +9,13 @@ import { useLocation } from 'react-router-dom';
 import '../NavBars.css';
 import AboutBottomNavBarContent from './AboutBottomNavBarContent';
 import ProjectstBottomNavBarContent from './ProjectstBottomNavBarContent';
+import ContactBottom from './ContactBottom';
+import MusicBottom from './MusicBottom';
+import MouseTracker from '../../mouse/MouseTracker'
 
 function BottomNavBar() {
   // Access global context using the useContext hook
-  const { navbar_location } = useContext(GlobalContext);
+  const { navbar_location, dispatch } = useContext(GlobalContext);
 
   // Define and initialize local state variables using the useState hook
   const [prevLocation, setPrevLocation] = useState(null);
@@ -50,15 +53,55 @@ function BottomNavBar() {
     }
   }, []);
 
+
+   const checkIfMouseOverElement = (event) => {
+    if (sectionRef.current) {
+      const rect = sectionRef.current.getBoundingClientRect();
+      const isMouseOver = event.clientX >= rect.left &&
+                          event.clientX <= rect.right &&
+                          event.clientY >= rect.top &&
+                          event.clientY <= rect.bottom;
+
+      if (isMouseOver) {
+        dispatch({
+          type: 'SET_DISPLAY_MOUSETRACKER',
+          payload: true,
+        });
+      } else {
+        dispatch({
+          type: 'SET_DISPLAY_MOUSETRACKER',
+          payload: false,
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousemove', checkIfMouseOverElement);
+
+    return () => {
+      window.removeEventListener('mousemove', checkIfMouseOverElement);
+    };
+  }, []);
+
   return (
+    <>
+    <MouseTracker />
     <section ref={sectionRef}>
-      <div className={finalLocation !== 'about' ? 'hide-bottom' : 'display-bottom'}>
-        <AboutBottomNavBarContent />
-      </div>
       <div className={finalLocation !== 'projects' ? 'hide-bottom' : 'display-bottom'}>
         <ProjectstBottomNavBarContent />
       </div>
+      <div className={finalLocation !== 'music' ? 'hide-bottom' : 'display-bottom'}>
+        <MusicBottom />
+      </div>
+      <div className={finalLocation !== 'about' ? 'hide-bottom' : 'display-bottom'}>
+        <AboutBottomNavBarContent />
+      </div>
+      <div className={finalLocation !== 'contact' ? 'hide-bottom' : 'display-bottom'}>
+        <ContactBottom />
+      </div>
     </section>
+    </>
   );
 }
 

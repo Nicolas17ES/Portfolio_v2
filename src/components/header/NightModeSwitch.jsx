@@ -37,11 +37,14 @@ function NightModeSwitch() {
     }
   }, [darkMode])
 
+
+// will ad 1 or rest 1 to index depending on the theme mode
  const changeIndex = () => {
   const sum = darkMode ? 1 : -1;
   setIndex((prevIndex) => prevIndex + sum);
 };
 
+// function will be executed 8 times so the index changes 8 times and its corresponding icon is shown
 const changeDarkMode = () => {
   let count = 0;
 

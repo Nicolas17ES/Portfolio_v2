@@ -1,50 +1,33 @@
-import React, { useRef, useEffect, useState } from 'react';
-import './MouseTracker.css';
+import React, { useEffect, useState, useContext } from 'react';
+import GlobalContext from '../../context/GlobalContext'
+import './MouseTracker.css'; // Ensure you have this CSS file
 
 function MouseTracker() {
-    const blobRef = useRef(null);
-    const [position, setPosition] = useState({ 
-      left: -1000, 
-      top: 0 
-    });
+  const {display_mouse_tracker} = useContext(GlobalContext)
+  const [position, setPosition] = useState({ left: 0, top: 0 });
 
   useEffect(() => {
-    // Access the DOM element using blobRef.current
-    const blob = blobRef.current;
-    
-  }, []);
+    const handleMouseMove = (event) => {
+      // Get the mouse position relative to the document
+      const x = event.clientX + document.documentElement.scrollLeft;
+      const y = event.clientY + document.documentElement.scrollTop;
 
-
-   useEffect(() => {
-    const handlePointerMove = (event) => {
-      const { clientX, clientY } = event;
-      setPosition({ left: clientX, top: clientY });
+      setPosition({ left: x, top: y });
     };
 
-    window.addEventListener('pointermove', handlePointerMove);
+    document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-      window.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
+  if(display_mouse_tracker){
+    return (
+      <div className="mouse-tracker" style={{ left: `${position.left}px`, top: `${position.top}px` }}></div>
+    );
+  }
 
-  const blobStyle = {
-    position: 'absolute',
-    left: `${position.left}px`,
-    top: `${position.top}px`,
-  };
-
-
-
-
-  return (
-      <>
-        <div ref={blobRef} className="blob" style={blobStyle}>
-        </div>
-     
-       </> 
-  );
 }
 
 export default MouseTracker;

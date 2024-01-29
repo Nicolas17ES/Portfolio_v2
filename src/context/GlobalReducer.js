@@ -39,6 +39,16 @@ const globalReducer = (state, action) => {
                 ...state,
                 shrink_body: action.payload,
             }
+        case 'SET_BUTTON_INDEX':
+            return {
+                ...state,
+                button_index: action.payload,
+            }
+        case 'SET_DISPLAY_MOUSETRACKER':
+            return {
+                ...state,
+                display_mouse_tracker: action.payload,
+            }
         default: 
             return state;
     }

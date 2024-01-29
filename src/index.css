@@ -19,8 +19,7 @@
   --black2: 40, 41, 44;
   --aquamarine:  #bffce8;
   --mediumpurple: #9370d8;
-
-
+ transition: background-color 3s ease, color 3s ease;
   --theme-color: var(--black2);
 }
 
@@ -46,7 +45,23 @@ a{
 Link{
     text-decoration: none;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
 
+
+.body-content-container {
+  margin-right: auto;
+  margin-top: 10vh;
+  z-index: 888;
+  position: relative;
+  background-color: rgb(var(--white));
+  height: 90vh;
+  animation: expandContent 2s forwards;
+  width: 75%;
+  overflow: hidden; 
+}
 
 @keyframes expandContent {
   from {
@@ -57,17 +72,6 @@ Link{
   }
 }
 
-.body-content-container {
-  margin-right: auto;
-  margin-top: 10vh;
-  z-index: 888;
-  position: relative;
-  background-color: rgb(var(--white));
-  height: 90vh;
-  animation: expandContent 5.3s forwards;
-  width: 75%;
-  overflow: hidden; 
-}
 
 .body-content-container-full {
    margin-right: auto;
@@ -78,7 +82,7 @@ Link{
   height: 90vh;
   overflow: hidden; 
   width: 100%;
-   animation: expandBodyContentFull 5.3s forwards;
+   animation: expandBodyContentFull 1s forwards;
 }
 
 @keyframes expandBodyContentFull {
@@ -99,7 +103,7 @@ Link{
   height: 90vh;
   overflow: hidden; 
   width: 75%;
-   animation: shrinkBodyContent 5.3s forwards;
+   animation: shrinkBodyContent 1s forwards;
 }
 
 @keyframes shrinkBodyContent {

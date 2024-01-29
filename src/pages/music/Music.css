@@ -1,0 +1,37 @@
+.hover-image-container{
+
+}
+
+
+.onhover-images{
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    opacity: 0;
+  filter: brightness(10); /* Initially set brightness to 0 (very white) */
+  animation: fadeInAndWhiten .5s ease forwards;
+  transition: opacity 0.5s ease; /* Add opacity transition */
+}
+
+@keyframes fadeInAndWhiten {
+  0% {
+    opacity: 0;
+    filter: brightness(2);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1); /* End with normal brightness (1) */
+  }
+}
+
+.onhover-images:not(:hover) {
+  opacity: 0; /* Set opacity to 0 when not hovered */
+  filter: brightness(2);
+}
+
+/* Apply opacity when not hovered */
+.buttons-body-container:not(:hover) .onhover-images {
+  opacity: 1; /* Set opacity to 0 when not hovered over the container */
+  filter: brightness(2);
+  border-radius: 60px;
+}

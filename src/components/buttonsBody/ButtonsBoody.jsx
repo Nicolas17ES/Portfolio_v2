@@ -2,11 +2,13 @@ import { useEffect, useState, useContext } from 'react'
 import BottomNavBar from '../header/bottomNavBar/BottomNavBar'
 import GlobalContext from '../../context/GlobalContext'
 import './ButtonsBody.css'
+import '../../pages/music/Music.css'
 
 function ButtonsBody({data}) {
 
     const {dispatch, lateral_navbar} = useContext(GlobalContext);
     const [activeIndex, setActiveIndex] = useState(0)
+    const [isCLicked, setIsCliked] = useState(false)
 
     const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -24,6 +26,31 @@ function ButtonsBody({data}) {
         })
     }
 
+    const setIndex = (index) => {
+        setIsCliked(true)
+        setActiveIndex(index)
+    }
+
+    const handleMouseEnter = (index) => {
+        dispatch({
+                    type: 'SET_BUTTON_INDEX',
+                    payload: index,
+                })
+    };
+
+    const handleMouseLeave = (index) => {
+        if(!isCLicked){
+             dispatch({
+                type: 'SET_BUTTON_INDEX',
+                payload: null,
+            })
+        } else {
+             dispatch({
+                type: 'SET_BUTTON_INDEX',
+                payload: activeIndex,
+            })
+        }
+    };
 
     const styles = {
         opacity: '0.5',
@@ -32,7 +59,7 @@ function ButtonsBody({data}) {
     return (
         <section className="buttons-body-container text">
             {data.buttons.map((button, index) => {
-                return <button key={index} onClick={() => setActiveIndex(index)}   className="button-body word fancy" style={(activeIndex !== null && index !== activeIndex) ? styles : null}>{enhance(button.name)}</button>
+                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className="button-body word fancy" style={(activeIndex !== null && index !== activeIndex) ? styles : null}>{enhance(button.name)}</button>
             })}
         </section>
     )
