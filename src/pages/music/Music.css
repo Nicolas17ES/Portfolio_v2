@@ -35,3 +35,39 @@
   filter: brightness(2);
   border-radius: 60px;
 }
+
+
+.music-body-container{
+  height: 100%;
+    animation: fade-in .7s forwards;
+}
+
+
+/* names animations */
+
+.animation-names-container{
+  margin: 0 100px;
+  position: relative;
+  height: 70%;
+}
+
+.artist-name{
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeInFadeOut 1s forwards;
+}
+
+
+@keyframes fadeInFadeOut {
+  0% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

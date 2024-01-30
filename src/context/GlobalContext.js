@@ -29,6 +29,7 @@ export const GlobalProvider = ({children}) => {
         shrink_body: false,
         button_index: null,
         display_mouse_tracker: false,
+        button_state: null,
         
     }
     const [state, dispatch] = useReducer(globalReducer, initialState)
@@ -41,6 +42,7 @@ export const GlobalProvider = ({children}) => {
         shrink_body: state.shrink_body,
         button_index: state.button_index,
         display_mouse_tracker: state.display_mouse_tracker,
+        button_state: state.button_state,
         dispatch,
     }}>
         {children}

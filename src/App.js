@@ -58,7 +58,7 @@ function WrappedApp() {
 
   return (
     <>
-      <MouseTracker />
+      {/* <MouseTracker /> */}
       <Landing />
       {/* <div className="container"> */}
       <main className={`${

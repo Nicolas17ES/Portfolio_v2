@@ -54,39 +54,39 @@ function BottomNavBar() {
   }, []);
 
 
-   const checkIfMouseOverElement = (event) => {
-    if (sectionRef.current) {
-      const rect = sectionRef.current.getBoundingClientRect();
-      const isMouseOver = event.clientX >= rect.left &&
-                          event.clientX <= rect.right &&
-                          event.clientY >= rect.top &&
-                          event.clientY <= rect.bottom;
+  //  const checkIfMouseOverElement = (event) => {
+  //   if (sectionRef.current) {
+  //     const rect = sectionRef.current.getBoundingClientRect();
+  //     const isMouseOver = event.clientX >= rect.left &&
+  //                         event.clientX <= rect.right &&
+  //                         event.clientY >= rect.top &&
+  //                         event.clientY <= rect.bottom;
 
-      if (isMouseOver) {
-        dispatch({
-          type: 'SET_DISPLAY_MOUSETRACKER',
-          payload: true,
-        });
-      } else {
-        dispatch({
-          type: 'SET_DISPLAY_MOUSETRACKER',
-          payload: false,
-        });
-      }
-    }
-  };
+  //     if (isMouseOver) {
+  //       dispatch({
+  //         type: 'SET_DISPLAY_MOUSETRACKER',
+  //         payload: true,
+  //       });
+  //     } else {
+  //       dispatch({
+  //         type: 'SET_DISPLAY_MOUSETRACKER',
+  //         payload: false,
+  //       });
+  //     }
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener('mousemove', checkIfMouseOverElement);
+  // useEffect(() => {
+  //   window.addEventListener('mousemove', checkIfMouseOverElement);
 
-    return () => {
-      window.removeEventListener('mousemove', checkIfMouseOverElement);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('mousemove', checkIfMouseOverElement);
+  //   };
+  // }, []);
 
   return (
     <>
-    <MouseTracker />
+    {/* <MouseTracker /> */}
     <section ref={sectionRef}>
       <div className={finalLocation !== 'projects' ? 'hide-bottom' : 'display-bottom'}>
         <ProjectstBottomNavBarContent />

@@ -139,6 +139,7 @@ letter-spacing: 1px;
   height: 70%;
   width: 100%;
   overflow: hidden;
+  cursor: crosshair;
 }
 
 .nav-links:hover > li > .link {
