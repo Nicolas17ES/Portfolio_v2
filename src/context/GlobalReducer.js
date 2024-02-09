@@ -54,6 +54,16 @@ const globalReducer = (state, action) => {
                 ...state,
                 display_mouse_tracker: action.payload,
             }
+        case 'SET_SLIDE_ACTIVE_INDEX':
+            return {
+                ...state,
+                slide_active_index: action.payload,
+            }
+        case 'SET_ACTIVE_SLIDER':
+            return {
+                ...state,
+                slider_activated: action.payload,
+            }
         default: 
             return state;
     }

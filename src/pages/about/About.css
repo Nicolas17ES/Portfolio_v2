@@ -10,10 +10,7 @@
   animation: expandBodyBottomToTop .6s forwards;
 }
 
-.body-container-top{
-   display: flex;
-   justify-content: space-between;
-}
+
 
 .body-container-transform {
   /* transform-origin: bottom;

@@ -13,7 +13,7 @@ function ButtonsBody({data}) {
     const {dispatch, lateral_navbar} = useContext(GlobalContext);
 
     // State to track the active (clicked or hovered) button index
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(-1);
 
     // State to track if any button has been clicked
     const [isCLicked, setIsCliked] = useState(false);
@@ -29,7 +29,7 @@ function ButtonsBody({data}) {
     const enhance = text => {
         return text.split("").map((value, index) => {
             return (
-                <span className="outer">
+                <span key={index} className="outer">
                     <span className="inner" style={{animationDelay: `${rand(-5000, 0)}ms`}}>
                         <span className="letter" style={{animationDelay: `${index * 1000 }ms`}}>
                             {value}
@@ -46,11 +46,15 @@ function ButtonsBody({data}) {
      * Sets the active button index, marks it as clicked, and dispatches the clicked state
      */
     const setIndex = (index) => {
+        dispatch({
+                type: 'SET_SLIDE_ACTIVE_INDEX',
+                payload: null,
+            });
         setIsCliked(true);
         setActiveIndex(index);
         dispatch({
                 type: 'SET_CLICKED_BUTTON',
-                payload: { clicked: true, value: index },
+                payload: { clicked: true, value: index},
             });
     };
 

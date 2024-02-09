@@ -65,6 +65,11 @@ const changeDarkMode = () => {
 };
 
 
+
+
+
+
+
 if(display_header){
   return (
         <header className='day-night-container' onClick={changeDarkMode}>

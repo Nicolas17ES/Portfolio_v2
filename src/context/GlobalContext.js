@@ -30,8 +30,10 @@ export const GlobalProvider = ({children}) => {
         button_index: null,
         display_mouse_tracker: false,
         button_state: null,
-        
+        slide_active_index: null,      
+        slider_activated: false,      
     }
+
     const [state, dispatch] = useReducer(globalReducer, initialState)
 
     return <GlobalContext.Provider value={{
@@ -43,6 +45,8 @@ export const GlobalProvider = ({children}) => {
         button_index: state.button_index,
         display_mouse_tracker: state.display_mouse_tracker,
         button_state: state.button_state,
+        slide_active_index: state.slide_active_index,
+        slider_activated: state.slider_activated,
         dispatch,
     }}>
         {children}
