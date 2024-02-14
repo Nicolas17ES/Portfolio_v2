@@ -120,3 +120,9 @@
 .fancy:hover > .outer:nth-child(12) {
   transform: translate(120%, -30%) rotate(-10deg);
 }
+
+
+.highlight-button{
+  color: rgb(var(--black)) !important;
+  opacity: 1 !important;
+}

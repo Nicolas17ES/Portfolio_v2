@@ -39,10 +39,10 @@ function Music() {
     // Effect to increment the change counter whenever the button index changes.
     useEffect(() => {
         setChangeCounter(prev => prev + 1);
-    }, [button_index]);
+    }, [button_state?.value]);
 
     // Key to manage animations based on button index and change count.
-    const animationKey = `animation-${button_index}-${changeCounter}`;
+    const animationKey = button_state && button_state.clicked ? `animation-${button_state.value}-${changeCounter}` : null;
 
     // Data for rendering button components.
     const data = {
@@ -65,38 +65,11 @@ function Music() {
     // const [typedText, setTypedText] = useState('');
     // const fullText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur accusamus ratione non laudantium, ut mollitia aspernatur eius expedita molestiae inventore molestias. Iste exercitationem eligendi amet assumenda odio at perferendis voluptatibus.`;
 
-    // useEffect(() => {
-    //     const words = fullText.split(" ");
-    //     let currentText = '';
-    //     let index = 0;
-
-    //     const typeWord = () => {
-    //         if (index < words.length) {
-    //             currentText += (index === 0 ? '' : ' ') + words[index];
-    //             setTypedText(currentText);
-    //             index++;
-    //             setTimeout(typeWord, 200); // Adjust typing speed (200ms per word)
-    //         }
-    //     };
-
-    //     typeWord();
-    // }, []);
-
-    // The following code will make sure that depending on the index that si being hovered, a section or another will be shown based on:buttonIndexReferences[button_index] === 'Sonido_Club' 
-    // The inside condition will look into the button_state { clicked: true, value: index } and depending on it it will render the animationNames or the corresponding slider
-
-    // <div key={animationKey} className="music-body-container">
-    //     {button_state && button_state.clicked && button_state.value === button_index ? (
-    //         <div>Content For Sonido</div>
-    //     ) : (
-    //         <NamesAnimations/>
-    //     )}
-    // </div>
-
+   
 
   return (
       <div ref={bodyRef} className="body-container">
-         <div className="body-container-top">
+        <div className="body-container-top">
              <ButtonsBody data={data}/>
              {/* {button_state && button_state.clicked && button_state.value === button_index && (
                 <section key={animationKey}  className="body-paragraph-effect-container">
@@ -107,39 +80,22 @@ function Music() {
                     
             )} */}
              
-         </div>
+        </div>
             {!button_state || !button_state.clicked ? (
-                 <div className="music-body-container">
+                <div className="music-body-container">
                     <NamesAnimations/>
                 </div>
+            ) : (
+                <div key={animationKey} className="music-body-container">
+                    {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <BodySlider/>}
+                    {buttonIndexReferences[button_state.value] === 'Unsilenced' && <BodySlider/>}
+                    {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <BodySlider/>}
+                </div>
+            )}
 
-            ) : buttonIndexReferences[button_index] === 'Sonido_Club' ? (
-                // Content for Sonido_Club
-                <div key={animationKey} className="music-body-container">
-                    {button_state && button_state.clicked && button_state.value === button_index ? (
-                        <BodySlider/>
-                    ) : null
-                    }
-                </div>
-            ) : buttonIndexReferences[button_index] === 'Unsilenced' ? (
-                // Content for Unsilenced
-                <div key={animationKey} className="music-body-container">
-                    {button_state && button_state.clicked && button_state.value === button_index ? (
-                        <BodySlider/>
-                    ) : null
-                    }
-                </div>
-            ) : buttonIndexReferences[button_index] === 'Aurea_by_WC' ? (
-                <div key={animationKey} className="music-body-container">
-                    {button_state && button_state.clicked && button_state.value === button_index ? (
-                        <BodySlider/>
-                    ) : null
-                    }
-                </div>
-            ) : null }
-  
-         </div>
-           );
+    
+        </div>
+    );
 }
 
 export default Music;

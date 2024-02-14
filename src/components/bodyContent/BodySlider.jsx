@@ -26,7 +26,9 @@ import ChocoXMerce from '../../images/ChocoXMerce.jpg'; // Import the image
 import ChocoXNye from '../../images/ChocoXNye.jpg'; // Import the image
 import ChocoXNye2 from '../../images/ChocoXNye2.jpg'; // Import the image
 import ChocoXReiss from '../../images/ChocoXReiss.jpg'; // Import the image
+import ChocoXReiss2 from '../../images/ChocoXReiss2.jpg'; // Import the image
 import ChocoXSugar from '../../images/ChocoXSugar.jpg'; // Import the image
+import ChocoxSugar2 from '../../images/ChocoxSugar2.jpg'; // Import the image
 
 // unsilenced images
 import Unsilenced31 from '../../images/Unsilenced31.jpg'; // Import the image
@@ -44,7 +46,7 @@ import Unsilencedxgenerator from '../../images/Unsilencedxgenerator.jpg'; // Imp
  */
 function BodySlider() {
     // Accessing global context values
-    const { button_index } = useContext(GlobalContext);
+    const { button_index, button_state } = useContext(GlobalContext);
 
     // Mapping of button indices to specific name groups
     const buttonIndexReferences = {
@@ -55,6 +57,64 @@ function BodySlider() {
 
     const cardsData = {
         0: [
+            {
+                image_one: SonidoxSamovar,
+                image_two: SonidoxMathew,
+                video: MathewVideo,
+                id: 6,
+                alt: 'Sonido x Samovar',
+                title: 'Sonido x Samovar',
+                paragraph: 'Samovar, Conor Brophy, Bruno&Marco',
+                location: 'Tunnel Barcelona',
+                date: '8.5.2022'
+                
+            },
+            {
+                image_one: Sonidoxgarage,
+                image_two: SonidoxIkaUshe,
+                video: MathewVideo,
+                id: 7,
+                alt: 'Sonido X Carrau',
+                title: 'Sonido X Carray',
+                paragraph: 'Raphael Carrau, Lyo, Sebastian, Remy, Bruno&Marco',
+                location: 'Garage Of The Bass Valley',
+                date: '15.2.2022'
+                
+            },
+            {
+                image_one: SonidoxDonnie,
+                image_two: SonidoxIkaUshe,
+                video: MathewVideo,
+                id: 8,
+                alt: 'Sonido X Donnie',
+                title: 'Sonido X Donnie',
+                paragraph: 'Donnie, Bruno&Marco',
+                location: 'Bus Terraza',
+                date: '19.11.2021'
+                
+            },
+            {
+                image_one: SonidoXWendy,
+                image_two: SonidoxIkaUshe,
+                video: MathewVideo,
+                id: 9,
+                alt: 'Sonido X Wendy',
+                title: 'Sonido X Wendy',
+                paragraph: 'Wendy',
+                location: 'Bus Terraza',
+                date: '10.10.2021'              
+            },
+            {
+                image_one: SonidoXTzena,
+                image_two: SonidoxIkaUshe,
+                video: MathewVideo,
+                id: 0,
+                alt: 'Sonido X Tzena',
+                title: 'Sonido X Tzena',
+                paragraph: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt impedit, commodi architecto recusandae maxime',
+                location: 'Les enfants brillants',
+                date: '13.1.2024'
+            },
             {
                 image_one: SonidoxIkaUshe,
                 image_two: SonidoxMathew,
@@ -109,61 +169,6 @@ function BodySlider() {
                 paragraph: 'Felix Dulac, Conor & Onoffon, Max TA',
                 location: 'Secre Warehouse',
                 date: '1.07.2022'
-            },
-            {
-                 image_one: SonidoxSamovar,
-                image_two: SonidoxMathew,
-                video: MathewVideo,
-                id: 6,
-                alt: 'Sonido x Samovar',
-                title: 'Sonido x Samovar',
-                paragraph: 'Samovar, Conor Brophy, Bruno&Marco',
-                location: 'Tunnel Barcelona',
-                date: '8.5.2022'
-            },
-            {
-                image_one: Sonidoxgarage,
-                image_two: SonidoxIkaUshe,
-                video: MathewVideo,
-                id: 7,
-                alt: 'Sonido X Carrau',
-                title: 'Sonido X Carray',
-                paragraph: 'Raphael Carrau, Lyo, Sebastian, Remy, Bruno&Marco',
-                location: 'Garage Of The Bass Valley',
-                date: '15.2.2022'
-            },
-            {
-                image_one: SonidoxDonnie,
-                image_two: SonidoxIkaUshe,
-                video: MathewVideo,
-                id: 8,
-                alt: 'Sonido X Donnie',
-                title: 'Sonido X Donnie',
-                paragraph: 'Donnie, Bruno&Marco',
-                location: 'Bus Terraza',
-                date: '19.11.2021'
-            },
-            {
-                image_one: SonidoXWendy,
-                image_two: SonidoxIkaUshe,
-                video: MathewVideo,
-                id: 9,
-                alt: 'Sonido X Wendy',
-                title: 'Sonido X Wendy',
-                paragraph: 'Wendy',
-                location: 'Bus Terraza',
-                date: '10.10.2021'
-            },
-            {
-                image_one: SonidoXTzena,
-                image_two: SonidoxIkaUshe,
-                video: MathewVideo,
-                id: 0,
-                alt: 'Sonido X Tzena',
-                title: 'Sonido X Tzena',
-                paragraph: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt impedit, commodi architecto recusandae maxime',
-                location: 'Les enfants brillants',
-                date: '13.1.2024'
             },
         ],
         1: [
@@ -238,23 +243,98 @@ function BodySlider() {
                 date: '1.4.2022'
             },
             {
-                image_one: Unsilencedxgenerator,
-                image_two: Unsilencedxgenerator,
-                id: 0,
-                alt: 'Unsilenced 001',
-                title: 'Unsilenced 001',
-                paragraph: 'Former, Tafu, Nicolás',
-                location: 'Generator',
-                date: '22.1.2019'
+                image_one: Unsilenced33,
+                image_two: Unsilenced33,
+                id: 8,
+                alt: 'Unsilenced Anniversary3',
+                title: 'Unsilenced Anniversary3',
+                paragraph: 'LegramVG, DJ Senc, Malom',
+                location: 'Oosterbar',
+                date: '1.4.2022'
+                
+            },
+            {
+                image_one: Unsilenced33,
+                image_two: Unsilenced33,
+                id: 9,
+                alt: 'Unsilenced Anniversary3',
+                title: 'Unsilenced Anniversary3',
+                paragraph: 'LegramVG, DJ Senc, Malom',
+                location: 'Oosterbar',
+                date: '1.4.2022'
+                
             },
         ],
         2: [
             {
+                image_one: ChocoXNye,
+                image_two: ChocoXSugar,
+                id: 6,
+                alt: 'Aurea X ',
+                title: 'Aurea X NYE',
+                paragraph: 'Clarens, Onut, John Heaven',
+                location: 'Secret Location',
+                date: '31.12.2019'     
+            },
+            {
+                image_one: ChocoXNye2,
+                image_two: ChocoXSugar,
+                id: 7,
+                alt: 'Aurea X NYE',
+                title: 'Aurea X NYE',
+                paragraph: 'Clarens, Onut, John Heaven',
+                location: 'La Torre dels Lleons',
+                date: '31.12.2019'                           
+            },
+            {
+                image_one: ChocoXBackyard,
+                image_two: ChocoXSugar,
+                id: 8,
+                alt: 'Aurea X Backyard',
+                title: 'Aurea X Backyard',
+                paragraph: 'Clarens, Gerard, Vonvon, Hoder Mofeti',
+                location: 'Parc del Eina',
+                date: '9.11.2019'
+                   
+            },
+            {
+                image_one: ChocoXMerce,
+                image_two: ChocoXSugar,
+                id: 9,
+                alt: 'Aurea X Merce',
+                title: 'Aurea X Merce',
+                paragraph: 'Dani2000, Jay Darvishan, Sensat',
+                location: 'Parc del Eina',
+                date: '20.9.2019'               
+            },
+            {
+                image_one: ChocoXSugar,
+                image_two: ChocoXSugar,
+                id: 0,
+                alt: 'Aurea X Pumarejo',
+                title: 'Aurea X Pumarejo',
+                paragraph: 'Sugar Free',
+                location: 'El Pumarejo',
+                date: '5.1.2021'
+
+            },
+            {
+                image_one: ChocoxSugar2,
+                image_two: ChocoxSugar2,
+                id: 1,
+                alt: 'Aurea X Pumarejo',
+                title: 'Aurea X Pumarejo',
+                paragraph: 'Sugar Free',
+                location: 'El Pumarejo',
+                date: '5.1.2021'
+
+            },
+            {
                 image_one: ChocoXBosc,
                 image_two: ChocoXSugar,
-                id: 1,
-                alt: 'Sonido X Melisa',
-                title: 'Sonido X Melisa',
+                id: 2,
+                alt: 'Aurea X Melisa',
+                title: 'Aurea X Melisa',
                 paragraph: 'Melisa, Bruno&Marco, Nicolás',
                 location: 'Buena Onda Social Club',
                 date: '25.7.2020'
@@ -262,9 +342,19 @@ function BodySlider() {
             {
                 image_one: ChocoXReiss,
                 image_two: ChocoXSugar,
-                id: 2,
-                alt: 'Sonido X Unsilenced',
-                title: 'Sonido X Unsilenced',
+                id: 3,
+                alt: 'Aurea X Unsilenced',
+                title: 'Aurea X Unsilenced',
+                paragraph: 'Reiss, Former',
+                location: 'Oosterbar',
+                date: '6.3.2020'
+            },
+            {
+                image_one: ChocoXReiss2,
+                image_two: ChocoXSugar,
+                id: 4,
+                alt: 'Aurea X Unsilenced',
+                title: 'Aurea X Unsilenced',
                 paragraph: 'Reiss, Former',
                 location: 'Oosterbar',
                 date: '6.3.2020'
@@ -272,69 +362,19 @@ function BodySlider() {
             {
                 image_one: ChocoXAfter,
                 image_two: ChocoXSugar,
-                id: 3,
-                alt: 'Sonido X Secret',
-                title: 'Sonido X Secret',
+                id: 5,
+                alt: 'Aurea X Secret',
+                title: 'Aurea X Secret',
                 paragraph: 'IdaYvuelta, Gerard, Nicolás',
                 location: 'Secret Location',
-                date: '1.1.2020'
-            },
-            {
-                image_one: ChocoXNye,
-                image_two: ChocoXSugar,
-                id: 4,
-                alt: 'Sonido X ',
-                title: 'Sonido X NYE',
-                paragraph: 'Clarens, Onut, John Heaven',
-                location: 'Secret Location',
-                date: '31.12.2019'
-            },
-            {
-                image_one: ChocoXNye2,
-                image_two: ChocoXSugar,
-                id: 5,
-                alt: 'Sonido X NYE',
-                title: 'Sonido X NYE',
-                paragraph: 'Clarens, Onut, John Heaven',
-                location: 'La Torre dels Lleons',
-                date: '31.12.2019'
-            },
-            {
-                image_one: ChocoXBackyard,
-                image_two: ChocoXSugar,
-                id: 6,
-                alt: 'Sonido X Backyard',
-                title: 'Sonido X Backyard',
-                paragraph: 'Clarens, Gerard, Vonvon, Hoder Mofeti',
-                location: 'Parc del Eina',
-                date: '9.11.2019'
-            },
-            {
-                image_one: ChocoXMerce,
-                image_two: ChocoXSugar,
-                id: 7,
-                alt: 'Sonido X Merce',
-                title: 'Sonido X Merce',
-                paragraph: 'Dani2000, Jay Darvishan, Sensat',
-                location: 'Parc del Eina',
-                date: '20.9.2019'
-            },
-            {
-                image_one: ChocoXSugar,
-                image_two: ChocoXSugar,
-                id: 0,
-                alt: 'Sonido X Pumarejo',
-                title: 'Sonido X Pumarejo',
-                paragraph: 'Sugar Free',
-                location: 'El Pumarejo',
-                date: '5.1.2021'
+                date: '1.1.2020'             
             },
         ]
     }
 
     return (
         
-            <SliderCard data={cardsData[button_index]}/>
+            <SliderCard data={cardsData[button_state.value]}/>
     );
 }
 

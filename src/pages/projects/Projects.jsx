@@ -26,8 +26,9 @@ function Projects() {
     const data = {
         location: 'about',
         buttons: [
-            {name: '<project 1>'},
-            {name: '<project 2>'}
+            {name: '<Aulart_Tools>'},
+            {name: '<Aulart_Shop>'},
+            {name: '<linkTree>'}
         ]
     }
 

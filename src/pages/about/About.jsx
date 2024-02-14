@@ -23,8 +23,8 @@ function About() {
    const data = {
       location: 'about',
       buttons: [
-         {name: '<carrer>'},
-         {name: '<hobbies>'}
+         {name: '<about>'},
+         {name: '<contact>'}
       ]
    }
 

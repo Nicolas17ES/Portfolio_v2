@@ -64,6 +64,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 slider_activated: action.payload,
             }
+        case 'SET_ANIMATION_VALUE':
+            return {
+                ...state,
+                animation_value: action.payload,
+            }
         default: 
             return state;
     }

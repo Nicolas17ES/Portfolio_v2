@@ -71,9 +71,9 @@
 .nav-links {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-items: space-between;
   position: absolute;
-  gap: 10px;
+  gap: 25px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); 

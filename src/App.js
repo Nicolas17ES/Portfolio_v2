@@ -9,6 +9,8 @@ import Music from './pages/music/Music'
 import Projects from './pages/projects/Projects';
 import { GlobalProvider } from './context/GlobalContext';
 import GlobalContext from './context/GlobalContext'
+import Interviews from './components/test/Interviews';
+
 
 import MouseTracker from './components/mouse/MouseTracker'
 
@@ -73,6 +75,7 @@ function WrappedApp() {
         <Routes>
           {/* React Router Routes for different pages */}
           <Route path="/about" element={<About />} />
+          <Route path="/interviews" element={<Interviews />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/music" element={<Music />} />
           <Route path="/contact" element={<Contact />} />

@@ -224,6 +224,16 @@
 .music-navbar-container{
     animation: fade-in .7s forwards;
 }
+.bottom-nav-paragraph{ 
+  margin-bottom: 15px;
+  letter-spacing: .2px;
+  line-height: 1.1rem;
+  text-transform: none;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+}
+.bottom-nav-paragraph span{ 
+  
+}
 .fade-out-music-navbar-container{
     animation: fade-out .7s forwards;
 }

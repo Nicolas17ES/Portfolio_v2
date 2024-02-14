@@ -7,59 +7,19 @@ import { useGSAP } from "@gsap/react";
 
 function NamesAnimations() {
   
-  const {button_index} = useContext(GlobalContext);
+  const {button_index, dispatch} = useContext(GlobalContext);
   const [namesArray, setNamesArray] = useState([]);
-
-  useGSAP(() => {
-    const titles = gsap.utils.toArray(".animation-names-container p");
-    const tlx = gsap.timeline({ repeat: -1, repeatDelay: 0 });
-
-    titles.forEach((title) => {
-      const titleText = title.textContent.trim().replace(/\u00A0/g, ' ').toUpperCase();
-      if (namesArray.length && namesArray.indexOf(titleText) !== -1) {
-        title.classList.remove('highlight-opacity');
-        title.classList.add('highlight-glow');
-      } else if (namesArray.length && namesArray.indexOf(titleText) === -1) {
-        title.classList.remove('highlight-glow');
-        title.classList.add('highlight-opacity');
-      }
-
-      const splitTitle = new SplitTextJS(title);
-
-      tlx.from(splitTitle.chars, {
-        opacity: 0,
-        y: 80,
-        rotateX: -90,
-        stagger: 0.02,
-        duration: 0.5,
-      }, "<");
-
-      tlx.to(splitTitle.chars, {
-        opacity: 0,
-        y: -80,
-        rotateX: 90,
-        stagger: 0.02,
-        duration: 0.5,
-      }, "<1");
-    });
-  }, { dependencies: [ namesArray] });
-
-
-  useEffect(() => {
-    if(button_index !== null){
-      const upperCaseArray = names[buttonIndexReferences[button_index]].map(element => element.toUpperCase());
-      setNamesArray(upperCaseArray)
-    }
-  }, [button_index])
-
+  const [currentName, setCurrentName] = useState("");
 
   // Names to be displayed for each group
-    const names = {
-        sonido: ['Tzena', 'Ika & Usherenko', 'Tommy Pickles', 'Mathew Neequaye', 'Wendy', 'Gwenan', 'Malika', 'Rapha Carrau', 'Lyo'],
-        unsilenced: ['Lilley', 'Cess', 'Tafu', 'Jesse', 'Reiss'],
-        aurea: ['Clarens', 'Onut', 'Vonvon', 'Sugar Free', 'John Heaven', 'Daniel2000'],
-        all: ['Ika & Usherenko', 'Tommy Pickles', 'Mathew Neequaye', 'Rapha Carrau', 'Sugar Free', 'John Heaven', 'Daniel2000', 'Gwenan', 'Malika', 'Lilley', 'Tzena', 'Onut',  'Wendy', 'Cess', 'Tafu', 'Lyo', 'Jesse', 'Reiss', 'Clarens', 'Vonvon']
-    };
+  const names =  {
+  sonido: ["TZENA", "IKA & USHERENKO", "TOMMY PICKLES", "MATHEW NEEQUAYE", "WENDY", "GWENAN", "MALIKA", "RAPHA CARRAU", "LYO"],
+  unsilenced: [ "LILLEY", "CESS", "TAFU", "JESSE", "REISS"],
+  aurea: [ "CLARENS", "ONUT", "VONVON", "SUGAR FREE", "JOHN HEAVEN", "DANIEL2000"],
+  all: [ "IKA & USHERENKO", "TOMMY PICKLES", "MATHEW NEEQUAYE", "RAPHA CARRAU", "SUGAR FREE", "JOHN HEAVEN", "DANIEL2000", "GWENAN", "MALIKA", "LILLEY",  "CESS", "TAFU",  "TZENA", "ONUT", "WENDY","LYO", "JESSE", "REISS", "CLARENS", "VONVON"]
+}
+
+
 
      // References for button indices to manage content rendering.
     const buttonIndexReferences = {
@@ -68,15 +28,78 @@ function NamesAnimations() {
         2: 'aurea'
     };
 
+
+  useGSAP(() => {
+    const titles = gsap.utils.toArray(".animation-names-container p");
+    const tlx = gsap.timeline({ repeat: -1, repeatDelay: 0 });
+
+    titles.forEach((title, index) => {
+      const titleText = title.textContent.trim().replace(/\u00A0/g, ' ').toUpperCase();
+      // if (namesArray.length && namesArray.indexOf(titleText) !== -1) {
+      //   title.classList.remove('highlight-opacity');
+      //   title.classList.add('highlight-glow');
+      // } else if (namesArray.length && namesArray.indexOf(titleText) === -1) {
+      //   title.classList.remove('highlight-glow');
+      //   title.classList.add('highlight-opacity');
+      // }
+
+      const splitTitle = new SplitTextJS(title);
+
+      tlx.from(splitTitle.chars, {
+        onStart: () => setCurrentName(titles[index].textContent),
+        opacity: 0,
+        y:110,
+        rotateX: -90,
+        stagger: 0.04,
+        duration: 3, 
+      }, "<");
+
+      tlx.to(splitTitle.chars, {
+        opacity: .7,
+        y: -110,
+        rotateX: 90,
+        stagger: 0.04,
+        duration: 3,
+      }, "<1");
+    });
+  }, );
+
+
+  useEffect(() => {
+    if(names.aurea.includes(currentName)){
+      dispatch({
+        type: 'SET_ANIMATION_VALUE',
+        payload: 2
+      })
+    } else if(names.unsilenced.includes(currentName)){
+      dispatch({
+        type: 'SET_ANIMATION_VALUE',
+        payload: 1
+      })
+    } else {
+      dispatch({
+        type: 'SET_ANIMATION_VALUE',
+        payload: 0
+      })
+    }
+  }, [currentName])
+
+  useEffect(() => {
+    if(button_index !== null){
+      const upperCaseArray = names[buttonIndexReferences[button_index]].map(element => element.toUpperCase());
+      setNamesArray(upperCaseArray)
+    }
+  }, [button_index])
     
 
     return (
         <div className="animation-names-container">
             {names.all.map((name, index) => (
-                
-                    <p key={index} className='single-artist-name'>
+              
+                <p key={index} className='single-artist-name'>
                         {name}
-                    </p>             
+                    </p>  
+              
             ))}
         </div>
     );

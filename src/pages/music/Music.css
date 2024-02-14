@@ -75,16 +75,9 @@
   color: rgb(var(--black));
   margin: 0;
   padding: 0;
-  border: 1px  red;
   line-height: 0;
 }
 
-.highlight-glow{
-  color: red;
-}
-.highlight-opacity{
-  opacity: .5;
-}
 
 
 /* names animations */
@@ -175,7 +168,7 @@
 }
 
 .swiper-slide {
-  max-width: 330px !important;
+  max-width: 270px !important;
   position: relative;
 }
 
@@ -210,13 +203,13 @@
 
 .flip-card {
   perspective: 1000px;
-  width: 330px;
+  width: 270px;
   height: 400px; 
   cursor: pointer;
 }
 
 .flip-card-image{
-  width: 330px;
+  width: 270px;
   height: auto;
   border-radius: 8px;
 } 

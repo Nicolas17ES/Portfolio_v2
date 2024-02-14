@@ -103,32 +103,29 @@ console.log("slide_active_index", slide_active_index)
 //     };
 // }, [swiperInstance, loaded, dispatch]); // Add `dispatch` to the dependency array if it's a prop or could change
 
-    
+
 
     // if (!loaded) {
     //     // return <div>Loading images...</div>; // or any other loading indicator
     // }
 
-    // class to know which one is active: swiper-slide-active
-    // index starting at 0
-
-
     return (
         <div className={`body-slider-container ${loaded ? 'visible-slider' : 'hidden'}`}>
             <Swiper
-                initialSlide={"0"}
+                initialSlide={"4"}
+                centeredSlidesBounds={true}
                 effect={'coverflow'}
                 onSwiper={handleSwiper}
                 grabCursor={true}
                 centeredSlides={true}
                 loop={data.length > 1}
                 slidesPerView={'auto'}
-                spaceBetween={10}
+                spaceBetween={0}
                 coverflowEffect={{
                     rotate: 0,
                     stretch: 0,
                     depth: 120,
-                    modifier: 2.85,
+                    modifier: 2.5,
                 }}
                 longSwipesRatio={0}
                 pagination={{ el: '.swiper-pagination', clickable: true }}

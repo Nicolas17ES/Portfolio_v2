@@ -32,7 +32,7 @@ function Main({ handleMouseOver }) {
 
 
   // Define navigation items
-  const navItems = ['Projects', 'Music', 'About', 'Contact'];
+  const navItems = ['Projects', 'Music', 'About'];
 
   useEffect(() => {
     // Determine the active link index based on the current pathname
@@ -54,6 +54,10 @@ function Main({ handleMouseOver }) {
       payload: true,
     });
     setLateralNavBar(true);
+    setTimeout(() => {
+      dispatch({type: 'SET_CLICKED_BUTTON', payload: null,});
+      dispatch({ type: 'SET_BUTTON_INDEX', payload: null });
+    }, 1000)
   };
 
   // Function to change the state of the navbar
