@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     position: relative;
-    z-index: 999;
+    
 }
 
 .text-effect-container {
@@ -12,12 +12,12 @@
     height: 10%;
     position: fixed;
     top: 50%; /* Initially position it at the center vertically */
-    left: 0;
-    right: 0;
+    right: 0%;
     transform: translateY(-50%); /* Adjust the transform to center it vertically */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999999999999;
 }
 
 @keyframes moveToTop {
@@ -26,22 +26,33 @@
         transform: translateY(-50%);
     }
     100% {
-        top: 0;
+        top: 0%;
         transform: translateY(0);
+    }
+}
+@keyframes moveToLeft {
+    0% {
+       top: 0%;
+        transform: translateY(0);
+        right: 0;
+    }
+    100% {
+        top: 0%;
+        transform: translateY(0);
+        right: calc(50% - 100px);
     }
 }
 
 .set-header {
-    /* Keep your existing animation properties */
+    /* Keep your existing animation properties for moveToTop */
     animation: moveToTop 1.2s forwards .2s;
 }
+.set-header-left {
+    /* Keep your existing animation properties for moveToTop */
+    animation: moveToLeft 1s forwards;
+}
 
-
-/* .set-header{
-  animation: header-animation 1.2s forwards .2s;
-
-} */
-
+/* 
 .set-header::after {
   content: '';
   position: absolute;
@@ -59,7 +70,7 @@
 
    bottom: 0px;
   }
-}
+} */
 
 
 
@@ -78,7 +89,7 @@
   transform: translateY(100%);
   animation: slideInFromBottom 1.2s .1s forwards;
   width: 100%;
-  position: fixed;
-  height: 90vh;
-  margin-top: 10vh;
+  /* position: fixed; */
+  height: 100vh;
+  /* margin-top: 10vh; */
 }

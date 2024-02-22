@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import CloseNavBarButton from './components/shared/CloseNavBarButton';
 import NightMode from './components/header/NightModeSwitch';
 import Landing from './pages/landing/Landing';
+import TextEffect from './components/textEffect/TextEffect';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import Music from './pages/music/Music'
@@ -10,10 +11,9 @@ import Projects from './pages/projects/Projects';
 import { GlobalProvider } from './context/GlobalContext';
 import GlobalContext from './context/GlobalContext'
 import Interviews from './components/test/Interviews';
-
-
+import useScrollPosition from './hooks/useScrollPosition';
 import MouseTracker from './components/mouse/MouseTracker'
-
+import IconReplica from './components/textEffect/IconReplica'
 function App() {
   // This is the main entry point of your React application.
   // It wraps the entire application with the GlobalProvider, which provides global state to child components.
@@ -30,6 +30,10 @@ function WrappedApp() {
   const location = useLocation();
   const pathname = location.pathname;
   const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body } = useContext(GlobalContext);
+
+  const containerRef = useRef(null);
+  const scrollPosition = useScrollPosition(containerRef);
+
 
   useEffect(() => {
     // This useEffect hook is used for handling routing and updating global state based on the current path.
@@ -48,11 +52,12 @@ function WrappedApp() {
         type: 'SET_NAV_LOCATION',
         payload: pathname.replace(/\//g, "")
       });
+       setTimeout(() => {
+        dispatch({ type: 'SET_BODY', payload: true});
+      }, 1300)
     }
   }, [pathname, dispatch]);
 
-
-  
 
   // Landing is the first page we see on opening the project
   // landing imports the main component, which represents the NavBar of the project, that goes from center to right position
@@ -61,10 +66,11 @@ function WrappedApp() {
   return (
     <>
       {/* <MouseTracker /> */}
+      <IconReplica/>
       <Landing />
       {/* <div className="container"> */}
-      <main className={`${
-        // This dynamic className conditionally applies CSS classes based on global state.
+      <main ref={containerRef} className={`${
+        // This dynamic className conditionally applies CSS classes based on global state. The classes will add animations to the main body. 
         (lateral_navbar && display_header && !hide_nav && !shrink_body) ? 'body-content-container' :
         (hide_nav && !shrink_body) ? 'body-content-container-full' :
         shrink_body ? 'body-content-container-shrink' : null
@@ -74,6 +80,7 @@ function WrappedApp() {
         )}
         <Routes>
           {/* React Router Routes for different pages */}
+          <Route path="/" element={<Landing />} />
           <Route path="/about" element={<About />} />
           <Route path="/interviews" element={<Interviews />} />
           <Route path="/projects" element={<Projects />} />

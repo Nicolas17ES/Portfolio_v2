@@ -15,7 +15,7 @@ function Projects() {
     const navigate = useNavigate();
     const pathname = location.pathname.substring(1); // Removes the leading slash
 
-    const {dispatch, button_index, navbar_location} = useContext(GlobalContext);
+    const {display_body, navbar_location} = useContext(GlobalContext);
 
     // add ref to the body
     const bodyRef = useRef(null);
@@ -32,11 +32,13 @@ function Projects() {
         ]
     }
 
-    return (
-        <div ref={bodyRef} className="body-container">
-            <ButtonsBody data={data}/>
-        </div>
-    )
+    if(display_body){
+        return (
+            <div ref={bodyRef} className="body-container">
+                <ButtonsBody data={data}/>
+            </div>
+        )
+    }
 }
 
 export default Projects

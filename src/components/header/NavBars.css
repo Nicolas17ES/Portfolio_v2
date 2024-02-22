@@ -151,15 +151,17 @@
 /* BOTTOM NAVBAR */
 .bottom-lateral-navbar {
   height: 100%;
-  padding: 20px;
   transform-origin: bottom;
   transform: scaleY(0);
   animation: expandContentBottomToTop 1.3s forwards .7s;
 }
+.bottom-lateral-navbar-padding {
+ padding: 20px;
+}
 
 .expand-element{
   height: 100%;
-  padding: 20px;
+  /* padding: 20px; */
   transform-origin: bottom;
   transform: scaleY(0);
   animation: expandContentBottomToTop 1.3s forwards;
@@ -169,29 +171,29 @@
 @keyframes expandContentBottomToTop {
   from {
     transform: translateY(110%);
-    border-top: 1px solid rgb(var(--black));
+    border-top: 1px solid rgba(var(--black), .3);
+    
   }
   to {
     transform: translateY(0%);
-    border-top: 1px solid rgb(var(--black));
+    border-top: 1px solid rgba(var(--black), .3);
   }
 }
 
 
 .shrink-element {
   height: 100%;
-  padding: 20px;
   animation: shrinkContentTopToBottom 1.3s forwards;
 }
 
 @keyframes shrinkContentTopToBottom {
   from {
     transform: translateY(0);
-    border-top: 1px solid rgb(var(--black));
+    border-top: 1px solid rgba(var(--black), .3);
   }
   to {
     transform: translateY(130%);
-    border-top: 1px solid rgb(var(--black));
+    border-top: 1px solid rgba(var(--black), .3);
   }
 }
 
@@ -215,6 +217,7 @@
 
 .display-bottom{
   display: block;
+  height: 100%;
 } 
 
 .hide-bottom{

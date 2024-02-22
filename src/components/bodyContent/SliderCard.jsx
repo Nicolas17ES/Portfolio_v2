@@ -20,10 +20,8 @@ function SliderCard({data}) {
 
     const [isSwiperVisible, setIsSwiperVisible] = useState(false); // New state for controlling visibility
 
-console.log("slide_active_index", slide_active_index)
     // detect the current active slide
     const handleSlideChange = (swiper) => {  
-      console.log('called to equal', swiper.realIndex)
       dispatch({
                 type: 'SET_SLIDE_ACTIVE_INDEX',
                 payload: swiper.realIndex,

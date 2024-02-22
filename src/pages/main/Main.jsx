@@ -45,14 +45,9 @@ function Main({ handleMouseOver }) {
 
   // Function to set the location of the navbar and expand it
   const setNavBarLocation = (item) => {
-    dispatch({
-      type: 'SET_NAV_LOCATION',
-      payload: item,
-    });
-    dispatch({
-      type: 'SET_LATERAL_NAV',
-      payload: true,
-    });
+    dispatch({type: 'SET_ANIMATION_VALUE', payload: null})
+    dispatch({type: 'SET_NAV_LOCATION', payload: item});
+    dispatch({ type: 'SET_LATERAL_NAV', payload: true});
     setLateralNavBar(true);
     setTimeout(() => {
       dispatch({type: 'SET_CLICKED_BUTTON', payload: null,});

@@ -10,14 +10,13 @@ import '../../pages/music/Music.css'
  */
 function ButtonsBody({data}) {
     // Access global context for dispatching actions
-    const {dispatch, animation_value} = useContext(GlobalContext);
+    const {dispatch, animation_value, navbar_location} = useContext(GlobalContext);
 
     // State to track the active (clicked or hovered) button index
     const [activeIndex, setActiveIndex] = useState(-1);
 
     // State to track if any button has been clicked
     const [isCLicked, setIsCliked] = useState(false);
-console.log("animation", typeof animation_value)
     // Function to generate a random number within a specified range
     const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -92,7 +91,7 @@ console.log("animation", typeof animation_value)
     return (
         <section className="buttons-body-container text">
             {data.buttons.map((button, index) => {
-                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className={`button-body word fancy ${animation_value === index ? 'highlight-button' : null}`} style={(activeIndex !== null && index !== activeIndex) ? styles : null}>{enhance(button.name)}</button>
+                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className={`button-body word fancy ${(animation_value === index && navbar_location === 'music') ? 'highlight-button' : null}`} style={(activeIndex !== null && index !== activeIndex) ? styles : null}>{enhance(button.name)}</button>
             })}
         </section>
     )

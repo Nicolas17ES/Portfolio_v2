@@ -2,7 +2,7 @@ import './BottomContent.css'
 
 function ProjectstBottomNavBarContent() {
     return (
-         <>
+         <div style={{padding: '20px'}}>
             <h3 className="bottom-nav-title">{'<projects>'}</h3>
             <div className="bottom-nav-content">
                 <p className="bottom-nav-number">1</p>
@@ -24,7 +24,7 @@ function ProjectstBottomNavBarContent() {
                 <p className="bottom-nav-number">5</p>
                 <p className="bottom-nav-text">{'<2022> LALA'}</p>
             </div>
-        </>
+        </div>
     )
 }
 

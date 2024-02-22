@@ -1,20 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@100..900&display=swap');
 .body-container{
-   height: 100%;
    font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-style: normal;
   opacity: 0;
-  /* transform-origin: bottom;
-  transform: scaleY(0); */
-  /* animation: expandBodyBottomToTop 1.3s forwards; */
-  animation: expandBodyBottomToTop .6s forwards;
+  position: relative;
+  margin-top: 70px;
+  z-index: 99;
+  background-color: rgb(var(--white));
+  animation: expandBodyBottomToTop 1s forwards;
 }
 
 
-
+/* 
 .body-container-transform {
-  /* transform-origin: bottom;
-  transform: scaleY(0); */
+  transform-origin: bottom;
+  transform: scaleY(0); 
   opacity: 0;
   animation: expandBodyBottomToTop .6s forwards .7s;
 }
@@ -26,38 +28,25 @@
   transform: scaleY(0);
   animation: expandBodyBottomToTop .6s forwards;
 
-}
+} */
 
 @keyframes expandBodyBottomToTop {
   0% {
     opacity: 0;
     
   }
+
   100% {
    opacity: 1;
   }
 }
-/* @keyframes expandBodyBottomToTop {
-  0% {
-    transform: translateY(130%);
-    border-top: 1px solid rgb(var(--black));
-    
-  }
-  99% {
-    transform: translateY(0%);
-    border-top: 1px solid rgb(var(--black));
-  }
-  100% {
-    transform: translateY(0%);
-    border-top: none;
-  }
-} */
 
 
 .shrink-body {
   height: 100%;
   animation: shrinkBodyTopToBottom .6s forwards;
 }
+
 
 @keyframes shrinkBodyTopToBottom {
   from {
@@ -77,3 +66,77 @@
     border-top: 1px solid rgb(var(--black));
   }
 } */
+
+
+/* about */
+
+.about-image-container{
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 600px;
+  margin-bottom: 100px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #000000); /* Adjust the last value (0.5) for transparency */
+    z-index: 1; /* Ensure the overlay is above the image */
+}
+.about-title{
+  position: relative;
+  font-family: "Playfair Display", serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 9rem;
+  z-index: 9;
+  text-transform: uppercase;
+   white-space: pre-wrap; /* Allow line breaks */
+  word-wrap: break-word; 
+  background-color: rgb(var(--white));
+}
+
+.about-content-container{
+   margin-top: 100px;
+  padding: 60px;
+  width: 100%;
+}
+
+.about-content-container .left{
+  width: 50%;
+}
+.about-content-container .right{
+  width: 50%;
+  padding: 0 20px;
+}
+
+.about-subtitle{
+  font-family: "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  opacity: .7;
+}
+
+.about-paragraph{
+  margin-top: 20px;
+  font-size: 4rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+  line-height: 1em;
+}
+
+/* in-view logic */
+.in-view{
+  visibility: visible;
+}
+
+.not-in-view{
+ visibility: hidden;
+}

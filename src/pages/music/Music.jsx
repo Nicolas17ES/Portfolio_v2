@@ -20,7 +20,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
  */
 function Music() {
     // Extract necessary values from the GlobalContext.
-    const { dispatch, button_index, navbar_location, button_state } = useContext(GlobalContext);
+    const { dispatch, display_body, navbar_location, button_state } = useContext(GlobalContext);
 
     // Get the current location from React Router and set up navigation.
     const location = useLocation();
@@ -67,35 +67,37 @@ function Music() {
 
    
 
-  return (
-      <div ref={bodyRef} className="body-container">
-        <div className="body-container-top">
-             <ButtonsBody data={data}/>
-             {/* {button_state && button_state.clicked && button_state.value === button_index && (
-                <section key={animationKey}  className="body-paragraph-effect-container">
-                    <p className="paragraph-effect">
-                        {typedText}
-                    </p>
-                </section>
-                    
-            )} */}
-             
-        </div>
-            {!button_state || !button_state.clicked ? (
-                <div className="music-body-container">
-                    <NamesAnimations/>
-                </div>
-            ) : (
-                <div key={animationKey} className="music-body-container">
-                    {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <BodySlider/>}
-                    {buttonIndexReferences[button_state.value] === 'Unsilenced' && <BodySlider/>}
-                    {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <BodySlider/>}
-                </div>
-            )}
+  if(display_body){
+      return (
+        <div ref={bodyRef} className="body-container">
+            <div className="body-container-top">
+                <ButtonsBody data={data}/>
+                {/* {button_state && button_state.clicked && button_state.value === button_index && (
+                    <section key={animationKey}  className="body-paragraph-effect-container">
+                        <p className="paragraph-effect">
+                            {typedText}
+                        </p>
+                    </section>
+                        
+                )} */}
+                
+            </div>
+                {!button_state || !button_state.clicked ? (
+                    <div className="music-body-container">
+                        <NamesAnimations/>
+                    </div>
+                ) : (
+                    <div key={animationKey} className="music-body-container">
+                        {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <BodySlider/>}
+                        {buttonIndexReferences[button_state.value] === 'Unsilenced' && <BodySlider/>}
+                        {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <BodySlider/>}
+                    </div>
+                )}
 
-    
-        </div>
-    );
+        
+            </div>
+        );
+    }
 }
 
 export default Music;

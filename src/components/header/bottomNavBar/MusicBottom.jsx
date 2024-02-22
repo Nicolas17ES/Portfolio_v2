@@ -78,7 +78,7 @@ function MusicBottom() {
 
     // if(button_state && button_state.clicked === true && button_state.value === button_index){
         return (
-            <div className="scrollable-container">
+            <div style={{padding: '20px'}} className="scrollable-container">
                 {!button_state || !button_state.clicked ? (
                     <div className="music-navbar-container">
                         <p className="bottom-nav-paragraph">

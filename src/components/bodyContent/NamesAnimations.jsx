@@ -35,31 +35,28 @@ function NamesAnimations() {
 
     titles.forEach((title, index) => {
       const titleText = title.textContent.trim().replace(/\u00A0/g, ' ').toUpperCase();
-      // if (namesArray.length && namesArray.indexOf(titleText) !== -1) {
-      //   title.classList.remove('highlight-opacity');
-      //   title.classList.add('highlight-glow');
-      // } else if (namesArray.length && namesArray.indexOf(titleText) === -1) {
-      //   title.classList.remove('highlight-glow');
-      //   title.classList.add('highlight-opacity');
-      // }
 
       const splitTitle = new SplitTextJS(title);
 
       tlx.from(splitTitle.chars, {
         onStart: () => setCurrentName(titles[index].textContent),
         opacity: 0,
-        y:110,
+        y:90,
         rotateX: -90,
         stagger: 0.04,
-        duration: 3, 
+        duration: 1, 
       }, "<");
+        tlx.to(splitTitle.chars, {
+          opacity: 1, // Fade in to full visibility
+          duration: .5, // Duration of staying fully visible
+      }, "<.5")
 
       tlx.to(splitTitle.chars, {
-        opacity: .7,
-        y: -110,
+        opacity: 0,
+        y: -90,
         rotateX: 90,
         stagger: 0.04,
-        duration: 3,
+        duration: 1,
       }, "<1");
     });
   }, );

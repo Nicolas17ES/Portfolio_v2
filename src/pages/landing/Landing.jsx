@@ -12,7 +12,7 @@ function Landing() {
   const [offset, setOffset] = useState(0); // Initialize offset to 0
 
   // Access global context using the useContext hook
-  const { dispatch, display_header, lateral_navbar } = useContext(GlobalContext);
+  const { dispatch, display_header, lateral_navbar, display_body } = useContext(GlobalContext);
 
   // Create a ref for the text element
   const textRef = useRef(null);
@@ -21,7 +21,6 @@ function Landing() {
   const handleMouseOver = (index) => {
     setActiveIndex(index);
   };
-
   // Calculate the number of horizontal and vertical lines based on screen dimensions
   const screenHeight = window.innerHeight;
   const screenWidth = window.innerWidth;
@@ -52,7 +51,7 @@ function Landing() {
     zIndex: 1,
   };
 
-  // Function to set the component as a header
+  // Function to set the component as a header and add a class with an animation that will place the text on top
   const setAsHeader = () => {
     dispatch({
       type: 'SET_HEADER',
@@ -61,6 +60,16 @@ function Landing() {
     setPositionHeader(true);
     textRef.current.classList.add('set-header');
   };
+
+  // use effect to detect when the lateral nav is set and place the text on the left side
+  useEffect(() => {
+    if(display_body){
+      setTimeout(() => {
+        textRef.current.classList.add('set-header-left');
+      }, 100)
+    }
+  }, [display_body])
+
 
   useEffect(() => {
     // Update the offset when the activeIndex changes
@@ -78,7 +87,7 @@ function Landing() {
         className={`text-effect-container ${(display_header || lateral_navbar) ? 'set-header' : null} `}
         onClick={setAsHeader}
       >
-         <NightMode />
+         {/* <NightMode /> */}
         <TextEffect />
       </nav>
 

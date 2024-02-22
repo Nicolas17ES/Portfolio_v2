@@ -6,12 +6,47 @@
   font-size: 2rem;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
   cursor: pointer;
   font-weight: 400 !important;
-    font-family: "Bebas Neue", sans-serif;
-letter-spacing: 1px;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+  z-index: 9999999;
 }
+
+.icon-replica-container{
+  position: fixed;
+  top: 6.8px;
+  left: 6px;
+  z-index: 99999;
+}
+
+.icon-replica{
+  color: rgb(var(--black));
+  transition: all .4s ease-in-out;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 400 !important;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 5px;
+  padding: 7.7px;
+  padding-left: 12.5px;
+  border-radius: 50%;
+  border: 1px solid rgb(var(--black));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-replica:hover{
+  transform: scale(.9);
+  color: rgb(var(--white)) !important;
+  background-color: rgb(var(--black)) !important;
+}
+
+
+
 
 
 

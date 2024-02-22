@@ -1,25 +1,26 @@
-.bottom-nav-title{
-    font-weight: 400;
-    font-size: .9rem;
-    margin-bottom: 20px;
-    
+.bottom-nav-title {
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
 }
 
 .scrollable-container {
   overflow-y: scroll !important;
-  height:380px;
+  height: 380px;
   padding-right: 10px;
 }
 /* Style the scrollbar track */
 .scrollable-container::-webkit-scrollbar {
   width: 5px; /* Adjust the scrollbar width */
-  border-radius: 6px !important; 
+  border-radius: 6px !important;
 }
 
 /* Style the scrollbar thumb (the draggable part) */
 .scrollable-container::-webkit-scrollbar-thumb {
-  background-color: rgb(var(--white)); /* Set the background color of the thumb */
-  border-radius: 6px !important;  /* Add rounded corners to the thumb */
+  background-color: rgb(
+    var(--white)
+  ); /* Set the background color of the thumb */
+  border-radius: 6px !important; /* Add rounded corners to the thumb */
   border: 1px solid rgb(var(--black));
 }
 
@@ -31,7 +32,7 @@
 /* Style the scrollbar track (the area behind the thumb) */
 .scrollable-container::-webkit-scrollbar-track {
   background-color: #ddd; /* Set the background color of the track */
-  border-radius: 6px !important; 
+  border-radius: 6px !important;
   padding: 2px;
 }
 
@@ -40,46 +41,41 @@
   background-color: transparent; /* Set the corner's background color */
 }
 
-
-.bottom-nav-content{
+.bottom-nav-content {
   padding: 5px 3px;
-    font-weight: 200;
-    font-size: .8rem;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 5px; 
-    margin-bottom: 17px;
-    position: relative; 
-     z-index: 1;   
+  font-weight: 200;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  margin-bottom: 17px;
+  position: relative;
+  z-index: 1;
 }
 
-.active-class-vertical{
-  
+.active-class-vertical {
 }
 
-.block{
+.block {
   display: none;
 }
 
-.active-class-vertical:before{
-  
+.active-class-vertical:before {
 }
-
-
 
 .active-class-vertical-animate-add:before {
   position: absolute;
   content: "";
   width: 100%;
   height: 0%;
-  background-color:  rgba(var(--black), .3);
+  background-color: rgba(var(--black), 0.3);
   border-radius: 4px;
   top: 0;
   left: 0;
   z-index: 0;
   border: 1px solid rgb(var(--black));
-  animation: addBackground .5s forwards ;
+  animation: addBackground 0.5s forwards;
 }
 
 @keyframes addBackground {
@@ -93,19 +89,18 @@
   }
 }
 
-
 .active-class-vertical-animate-remove:before {
   position: absolute;
   content: "";
   width: 100%;
   height: 100%;
-  background-color:  rgba(var(--black), .3);
+  background-color: rgba(var(--black), 0.3);
   border-radius: 4px;
   top: 0;
   left: 0;
   z-index: 0;
   border: 1px solid rgb(var(--black));
-  animation: removeBackground .5s forwards;
+  animation: removeBackground 0.5s forwards;
 }
 
 @keyframes removeBackground {
@@ -120,8 +115,6 @@
     opacity: 0;
   }
 }
-
-
 
 /* .block{
   display: none;
@@ -197,55 +190,54 @@
   }
 } */
 
-.bottom-nav--title{
+.bottom-nav--title {
   display: flex;
   gap: 10px;
-
 }
 
-.bottom-nav-number{
-    opacity: .6;
+.bottom-nav-number {
+  opacity: 0.6;
 }
 
-.bottom-nav-text{
-  line-height: 1.5; 
-    white-space: wrap;
-    text-transform: none;
-    font-size: .90rem;
-    z-index: 9;
+.bottom-nav-text {
+  line-height: 1.5;
+  white-space: wrap;
+  text-transform: none;
+  font-size: 0.9rem;
+  z-index: 9;
 }
-.bottom-nav-text span{
-  opacity: .6;
+.bottom-nav-text span {
+  opacity: 0.6;
 }
-
 
 /* MUSIC CONTENT */
 
-.music-navbar-container{
-    animation: fade-in .7s forwards;
+.music-navbar-container {
+  animation: fade-in 0.7s forwards;
 }
-.bottom-nav-paragraph{ 
+.bottom-nav-paragraph {
   margin-bottom: 15px;
-  letter-spacing: .2px;
+  letter-spacing: 0.2px;
   line-height: 1.1rem;
   text-transform: none;
-  text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
 }
-.bottom-nav-paragraph span{ 
-  
-}
-.fade-out-music-navbar-container{
-    animation: fade-out .7s forwards;
+.bottom-nav-paragraph span {
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid red;
 }
 
-
+.fade-out-music-navbar-container {
+  animation: fade-out 0.7s forwards;
+}
 
 @keyframes fade-in {
   from {
     opacity: 0;
   }
 
-  to{
+  to {
     opacity: 1;
   }
 }
@@ -255,7 +247,103 @@
     opacity: 1;
   }
 
-  to{
+  to {
     opacity: 0;
+  }
+}
+
+/* contact */
+
+.about-bottom-navbar-content {
+    height: 100%;
+}
+
+.contact-social-container {
+  position: relative;
+  width: 100%;
+  height: 14.1% !important;
+  cursor: pointer;
+}
+.inner-socials{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+   font-family: "Playfair Display", serif;
+  font-style: normal;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  font-size: 1.8rem;
+}
+
+/* .inner-socials::after{
+  position: absolute;
+  content: "";
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 1px;
+  background-color: rgb(var(--black));
+} */
+
+.contact-social-original {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  height: 100% !important;
+  z-index: 0;
+  
+}
+.contact-social-opposite { 
+  position: absolute;
+  left: 0;
+  top: 50%; /* Position at the center vertically */
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  background-color: rgb(var(--red));
+   color: rgb(var(--white));
+  width: 100%;
+  height: 0%;
+  z-index: 9;
+  overflow: hidden;
+}
+
+.expand-height { 
+  animation: expand-height .5s ease-in-out forwards;
+}
+
+.shrink-height { 
+  animation: shrink-height .5s ease-in-out forwards;
+}
+
+
+@keyframes expand-height {
+  from {
+    height: 0%;
+    transform: translateY(-50%); /* Start from the center */
+  }
+  to {
+    height: 100%;
+    transform: translateY(-50%); /* Maintain center position */
+  }
+}
+@keyframes shrink-height {
+  from {
+    height: 100%;
+    transform: translateY(-50%); /* Start from the center */
+  }
+  to {
+    height: 0%;
+    transform: translateY(-50%); /* Maintain center position */
   }
 }

@@ -8,9 +8,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-  --black: 41, 41, 43;
-  --white: 255, 255, 255;
-  --red: 216, 51, 51;
+  --white: 32, 32, 34;
+  --black: 207, 199, 187;
+  --red: 235, 89, 57;
   --orange: 251, 140, 0;
   --yellow: 253, 216, 53;
   --green: 67, 160, 71;
@@ -22,15 +22,17 @@
  transition: background-color 3s ease, color 3s ease;
   --theme-color: var(--black2);
 }
-
+html {
+    scroll-behavior: smooth;
+}
 
 body {
   font-family: "Anonymous Pro", monospace;
   font-weight: 400;
   font-style: normal;
-  /* margin-bottom: 50px; */
   background-color: rgb(var(--white));
   color: rgb(var(--black));
+  scroll-behavior: smooth;
 }
 
 
@@ -53,14 +55,14 @@ a{
 
 .body-content-container {
   margin-right: auto;
-  margin-top: 10vh;
-  z-index: 888;
+  /* margin-top: 10vh; */
+  /* z-index: 5; */
   position: relative;
   background-color: rgb(var(--white));
-  height: 90vh;
+  height: 100vh;
   animation: expandContent 2s forwards;
   width: 75%;
-  overflow: hidden; 
+  overflow-x: hidden; 
 }
 
 @keyframes expandContent {
@@ -75,12 +77,12 @@ a{
 
 .body-content-container-full {
    margin-right: auto;
-  z-index: 98;
+  /* z-index: 5; */
   position: relative;
   background-color: rgb(var(--white));
-  margin-top: 10vh;
-  height: 90vh;
-  overflow: hidden; 
+  /* margin-top: 10vh; */
+  height: 100vh;
+  overflow-x: hidden; 
   width: 100%;
    animation: expandBodyContentFull 1s forwards;
 }
@@ -96,12 +98,12 @@ a{
 
 .body-content-container-shrink {
    margin-right: auto;
-  z-index: 98;
+  /* z-index: 5; */
   position: relative;
   background-color: rgb(var(--white));
-  margin-top: 10vh;
-  height: 90vh;
-  overflow: hidden; 
+  /* margin-top: 10vh; */
+  height: 100vh;
+  overflow-x: hidden; 
   width: 75%;
    animation: shrinkBodyContent 1s forwards;
 }
@@ -119,38 +121,9 @@ a{
 
 /* INTERVIEWS */
 
-.traffic-light-container{
-  margin: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  background-color: black;
-  width: 110px;
-  height: 260px;
-  border: 5px solid white;
-}
 
-.single-light{
-  border-radius: 50%;
-  height: 60px;
-  width: 60px;
-  background-color: white;
-}
-.red-light{
-  background-color: red;
-}
-.yellow-light{
-  background-color: yellow;
-}
-.green-light{
-  background-color: green;
-}
-
-@keyframes changeColor {
-  to{
-    background-color: white;
-  }
+.red{
+  color: rgb(var(--red)) !important;
 }
 
 

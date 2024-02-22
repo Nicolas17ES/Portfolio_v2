@@ -264,7 +264,6 @@
   position: relative;
   display: inline-block;
   border-radius: 4px;
-  overflow: hidden;
   transition: all .3s;
   cursor: pointer;
   position: absolute;

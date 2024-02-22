@@ -19,7 +19,7 @@
   letter-spacing: .6px;
   cursor: pointer;
   color: rgb(var(--black));
-  transition: opacity 350ms ease;
+  transition: all 350ms ease;
 }
 
 
@@ -124,5 +124,7 @@
 
 .highlight-button{
   color: rgb(var(--black)) !important;
+   text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
   opacity: 1 !important;
+  transform: scale(1.1);
 }

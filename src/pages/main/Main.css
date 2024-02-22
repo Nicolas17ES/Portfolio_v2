@@ -15,7 +15,7 @@
 .lateral-navbar {
 
   width: 25%;
-  border-left: 1px solid rgb(var(--black));
+  border-left: 1px solid rgba(var(--black), .3);
   margin-left: auto;
   animation: move-navbar 2s forwards;
 }
@@ -23,13 +23,13 @@
 
 @keyframes move-navbar {
   from {
-    border-left: 1px solid rgb(var(--black));
+   border-left: 1px solid rgba(var(--black), .3);
     width: 100%;
   }
 
   to{
      width: 25%;
-     border-left: 1px solid rgb(var(--black));
+    border-left: 1px solid rgba(var(--black), .3);
     margin-left: auto;
   }
 }
@@ -49,7 +49,7 @@
 }
 
 .lateral-navbar .nav-links-container {
-  height: 33%;
+  height: 30%;
   overflow: hidden;
   animation: animate-links-container 2.4s forwards;
   
@@ -61,7 +61,7 @@
     height: 100%; 
   }
   to {
-    height: 33%;
+    height: 30%;
   }
 }
 
@@ -197,7 +197,7 @@ letter-spacing: 1px;
 }
 
 .display-navbar {
-  animation: display-navbar 1s forwards;
+  animation: display-navbar 1.1s forwards;
 }
 
 @keyframes display-navbar {

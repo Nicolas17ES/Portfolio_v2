@@ -69,6 +69,21 @@ const globalReducer = (state, action) => {
                 ...state,
                 animation_value: action.payload,
             }
+        case 'SET_BODY':
+            return {
+                ...state,
+                display_body: action.payload,
+            }
+        case 'SET_SCROLL_POSITION':
+            return {
+                ...state,
+                scroll_position: action.payload,
+            }
+        case 'SET_ANIMATION_FINISHED':
+            return {
+                ...state,
+                animation_finished: action.payload,
+            }
         default: 
             return state;
     }

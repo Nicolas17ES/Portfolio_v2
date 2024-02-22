@@ -33,6 +33,9 @@ export const GlobalProvider = ({children}) => {
         slide_active_index: null,      
         slider_activated: false,      
         animation_value: null,      
+        display_body: false,      
+        scroll_position: false,      
+        animation_finished: false,      
     }
 
     const [state, dispatch] = useReducer(globalReducer, initialState)
@@ -49,6 +52,9 @@ export const GlobalProvider = ({children}) => {
         slide_active_index: state.slide_active_index,
         slider_activated: state.slider_activated,
         animation_value: state.animation_value,
+        display_body: state.display_body,
+        scroll_position: state.scroll_position,
+        animation_finished: state.animation_finished,
         dispatch,
     }}>
         {children}
