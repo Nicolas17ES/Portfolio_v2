@@ -71,7 +71,7 @@
 /* about */
 
 .about-image-container{
-  padding: 20px;
+  padding: 0 20px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -89,18 +89,37 @@
     background: linear-gradient(180deg, transparent, #000000); /* Adjust the last value (0.5) for transparency */
     z-index: 1; /* Ensure the overlay is above the image */
 }
-.about-title{
+
+.about-title-container{
+  background-color: rgb(var(--white));
+  border-bottom: 1px solid rgb(var(--black));
   position: relative;
-  font-family: "Playfair Display", serif;
+  z-index: 9;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-transform: uppercase;
+  height: 30%;
+}
+.about-title{
   font-style: normal;
   font-weight: 100;
   font-size: 9rem;
-  z-index: 9;
-  text-transform: uppercase;
+  
    white-space: pre-wrap; /* Allow line breaks */
   word-wrap: break-word; 
+  line-height: normal;
   background-color: rgb(var(--white));
 }
+
+.about-title-word{
+  padding-top: 30px;
+  background-color: rgb(var(--white));
+  opacity: 0;
+  animation: fade-in 1s forwards .5s;
+}
+
+
 
 .about-content-container{
    margin-top: 100px;
@@ -140,3 +159,5 @@
 .not-in-view{
  visibility: hidden;
 }
+
+

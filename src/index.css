@@ -62,7 +62,7 @@ a{
   height: 100vh;
   animation: expandContent 2s forwards;
   width: 75%;
-  overflow-x: hidden; 
+  /* overflow-x: hidden;  */
 }
 
 @keyframes expandContent {
@@ -82,7 +82,7 @@ a{
   background-color: rgb(var(--white));
   /* margin-top: 10vh; */
   height: 100vh;
-  overflow-x: hidden; 
+  /* overflow-x: hidden;  */
   width: 100%;
    animation: expandBodyContentFull 1s forwards;
 }
@@ -103,7 +103,7 @@ a{
   background-color: rgb(var(--white));
   /* margin-top: 10vh; */
   height: 100vh;
-  overflow-x: hidden; 
+  /* overflow-x: hidden;  */
   width: 75%;
    animation: shrinkBodyContent 1s forwards;
 }

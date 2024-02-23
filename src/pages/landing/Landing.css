@@ -89,7 +89,7 @@
   transform: translateY(100%);
   animation: slideInFromBottom 1.2s .1s forwards;
   width: 100%;
-  /* position: fixed; */
+  position: fixed;
   height: 100vh;
   /* margin-top: 10vh; */
 }
