@@ -1,15 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import GlobalContext from '../context/GlobalContext';
 
-function useScrollPosition(containerRef) {
+
+function useScrollPosition() {
   const { dispatch } = useContext(GlobalContext);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
-    if (!containerRef.current) return;
-
     function handleScroll() {
-      const position = containerRef.current.scrollTop;
+      const position = window.scrollY;
       setScrollPosition(position);
       dispatch({
         type: 'SET_SCROLL_POSITION',
@@ -17,15 +16,16 @@ function useScrollPosition(containerRef) {
       });
     }
 
-    containerRef.current.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      containerRef.current.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [containerRef, dispatch]);
+  }, []);
 
   return scrollPosition;
 }
 
 export default useScrollPosition;
+
 

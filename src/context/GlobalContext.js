@@ -36,6 +36,7 @@ export const GlobalProvider = ({children}) => {
         display_body: false,      
         scroll_position: false,      
         animation_finished: false,      
+        display_overlay: false,      
     }
 
     const [state, dispatch] = useReducer(globalReducer, initialState)
@@ -55,6 +56,7 @@ export const GlobalProvider = ({children}) => {
         display_body: state.display_body,
         scroll_position: state.scroll_position,
         animation_finished: state.animation_finished,
+        display_overlay: state.display_overlay,
         dispatch,
     }}>
         {children}

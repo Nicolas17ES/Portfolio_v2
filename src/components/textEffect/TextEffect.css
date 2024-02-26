@@ -18,6 +18,7 @@
   top: 6.8px;
   left: 6px;
   z-index: 99999;
+  cursor: pointer;
 }
 
 .icon-replica{

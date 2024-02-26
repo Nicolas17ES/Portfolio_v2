@@ -6,14 +6,15 @@ import Landing from './pages/landing/Landing';
 import TextEffect from './components/textEffect/TextEffect';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
-import Music from './pages/music/Music'
+import Music from './pages/music/Music';
 import Projects from './pages/projects/Projects';
 import { GlobalProvider } from './context/GlobalContext';
-import GlobalContext from './context/GlobalContext'
+import GlobalContext from './context/GlobalContext';
 import Interviews from './components/test/Interviews';
 import useScrollPosition from './hooks/useScrollPosition';
-import MouseTracker from './components/mouse/MouseTracker'
-import IconReplica from './components/textEffect/IconReplica'
+import MouseTracker from './components/mouse/MouseTracker';
+import IconReplica from './components/textEffect/IconReplica';
+import ScreenOverlay from './components/shared/ScreenOverlay';
 function App() {
   // This is the main entry point of your React application.
   // It wraps the entire application with the GlobalProvider, which provides global state to child components.
@@ -32,7 +33,7 @@ function WrappedApp() {
   const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body } = useContext(GlobalContext);
 
   const containerRef = useRef(null);
-  const scrollPosition = useScrollPosition(containerRef);
+  const scrollPosition = useScrollPosition();
 
 
   useEffect(() => {

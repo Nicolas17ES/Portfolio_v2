@@ -22,9 +22,6 @@
  transition: background-color 3s ease, color 3s ease;
   --theme-color: var(--black2);
 }
-html {
-    scroll-behavior: smooth;
-}
 
 body {
   font-family: "Anonymous Pro", monospace;
@@ -32,7 +29,6 @@ body {
   font-style: normal;
   background-color: rgb(var(--white));
   color: rgb(var(--black));
-  scroll-behavior: smooth;
 }
 
 
@@ -125,6 +121,31 @@ a{
 .red{
   color: rgb(var(--red)) !important;
 }
+
+
+/* overlay */
+.screen-overlay-container{
+  display: flex;
+  flex-direction: column;
+}
+.screen-overlay{
+  width: 100vw;
+  height: 50vh;
+  background-color: rgba(var(--white), 0.9);
+  z-index: 888;
+  position: fixed;
+  overflow: hidden;
+  
+}
+.screen-overlay:nth-child(1){
+  left: 0;
+  top: 0;
+}
+.screen-overlay:nth-child(2){
+  left: 0;
+  bottom: 0;
+}
+
 
 
 

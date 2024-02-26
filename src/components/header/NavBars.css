@@ -231,7 +231,7 @@
 
 .button-close-nav{
   color: rgb(var(--black)) !important;
-  position: absolute;
+  position: fixed;
   right: 30px;
   top: 30px;
   cursor: pointer;

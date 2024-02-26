@@ -11,13 +11,13 @@ import SplitTextJS from "split-text-js";
 import {useInView} from 'react-intersection-observer'
 import useSubtitleAnimation from '../../hooks/useSubtitleAnimation'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import Skills from '../../components/bodyContent/Skills'
+import ScreenOverlay from '../../components/shared/ScreenOverlay';
+
 gsap.registerPlugin(ScrollTrigger);
 
 function About() {
 
-   useEffect(() => {
-      gsap.registerPlugin(ScrollTrigger);
-   }, []);
 
    // add ref to check if element is in view
    const {ref: refSubtitle1, inView: inView1} = useInView({ threshold: 0.5 });
@@ -49,28 +49,46 @@ function About() {
    useSubtitleAnimation(display_body, inView1, ".about-subtitle-1");
    useSubtitleAnimation(display_body, inView2, ".about-subtitle-2");
 
-   useGSAP(() => {
-      if (display_body) {
-         const titles = gsap.utils.toArray('.about-paragraph');
-         console.log("text", titles)
-         titles.forEach(title => {
-            const text = new SplitTextJS(title, { type: "words" });
-            gsap.from(text.chars, {
-               scrollTrigger: {
-                  trigger: title,
-                  start: 'top 80%',
-                  end: 'top 20%',
-                  scrub: true,
-                  markers: false
-               },
-               opacity: 0.2,
-               stagger: 0.1,
-               duration: 1,
-               ease: 'back.out',
-            })
-         });
-      }
-   }, [display_body]);
+   useEffect(() => {
+    if (display_body) {
+        const paragraphs = document.querySelectorAll('.about-paragraph');
+        paragraphs.forEach(paragraph => {
+            const textContent = paragraph.textContent;
+            const words = textContent.split(' '); // Split the text into words using white space as delimiter
+            paragraph.innerHTML = ''; // Clear the content of the paragraph
+            words.forEach((word, index) => {
+                let wordClass = ''; // Initialize class variable
+
+                // Check if the word matches any of the specified words
+                if (["ideas", "to", "life", "user", "interfaces"].includes(word)) {
+                    wordClass = 'red'; // Assign the class 'red' if the word matches
+                }
+
+                if (index !== words.length - 1) {
+                    paragraph.innerHTML += `<span class="${wordClass}">${word} </span>`; // Append each word as a separate span element with white space
+                } else {
+                    paragraph.innerHTML += `<span class="${wordClass}">${word}</span>`; // Append the last word without white space
+                }
+            });
+
+            gsap.from(paragraph.children, {
+                scrollTrigger: {
+                    trigger: paragraph.children,
+                    start: 'top 80%',
+                    end: 'top 20%',
+                    scrub: true,
+                    markers: false
+                },
+                opacity: 0.2,
+                stagger: 0.1,
+                duration: 1,
+                ease: 'back.out',
+            });
+        });
+    }
+}, [display_body]);
+
+
 
   
 
@@ -114,14 +132,15 @@ function About() {
   if(display_body){
      return (
         <div ref={bodyRef} className="body-container">
+            <ScreenOverlay/>
             <section className="about-image-container">
                
                <div className="about-title-container">
                   <h2 className="about-title">Nicolas</h2>
-                  <span className="about-title-word">Developer</span>
+                  <span className="about-title-word">Oye Papii</span>
                </div>
                <div className="about-title-container">
-                  <span className="about-title-word">Lover</span>
+                  <span className="about-title-word">Mua Mua</span>
                   <h2 className="about-title">Luque</h2>
                </div>
                <div className="about-title-container">
@@ -131,11 +150,12 @@ function About() {
             </section>
             <section className="about-content-container">   
                <h3 ref={refSubtitle1} className={`about-subtitle about-subtitle-1 ${inView1 ? 'in-view' : 'not-in-view'}`}>Behind the Keyboard</h3>
-               <p ref={refParagraph1} className="about-paragraph">I'm a <span className="red">frontend</span> and <span className="red">backend</span> developer dedicated to crafting digital experiences that resonate. With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code.</p>
+               <p ref={refParagraph1} className="about-paragraph">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code."</p>
             </section>
+        <Skills/>
             <section className="about-content-container">
                <h3 ref={refSubtitle2} className={`about-subtitle about-subtitle-2 ${inView2 ? 'in-view' : 'not-in-view'}`}>Embarking on Web Adventures</h3>
-               <p className="about-paragraph">I specialize in bridging the gap between frontend elegance and backend brilliance. From crafting seamless <span className="red">user interfaces</span> to architecting robust systems, I ensure that every <span className="red">digital creation</span> is as functional as it is beautiful.</p>
+               <p className="about-paragraph">"From crafting seamless <span className="red">user interfaces</span> to architecting robust systems, I ensure that every <span className="red">digital creation</span> is as functional as it is beautiful."</p>
             </section>
          </div> 
 

@@ -84,6 +84,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 animation_finished: action.payload,
             }
+        case 'SET_OVERLAY':
+            return {
+                ...state,
+                display_overlay: action.payload,
+            }
         default: 
             return state;
     }
