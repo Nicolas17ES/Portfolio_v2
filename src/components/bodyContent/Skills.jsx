@@ -8,6 +8,9 @@ import SplitTextJS from "split-text-js";
 import { DiYeoman } from "react-icons/di";
 import SkillsTable from './SkillsList'
 import SkillsSider from './SkillsSider'
+import SkillsSubtitles from './SkillsSubtitles'
+import ViewMoreSkills from './ViewMoreSkills'
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,7 +92,7 @@ function Skills() {
 
 }, [display_body]);
 
-
+// <div onMouseEnter={() => setOverlay(1)} onMouseLeave={() => setOverlay(-1)}  className="skills-box">
     
 
     
@@ -102,17 +105,10 @@ function Skills() {
           </div>
             <hr className="skills-animated-line"></hr>
             <div className="skills-container">
-                <div onMouseEnter={() => setOverlay(1)} onMouseLeave={() => setOverlay(-1)}  className="skills-box">
-                <p className="skill-title">Front Engineer</p>
-                </div>
-                <div className="skills-box">
-                    <p className="skill-title">Creative Development</p>
-                </div>
-                <div className="skills-box">
-                    <p className="skill-title">Backend Development</p>
-                </div>
+                <SkillsSubtitles/>
+                <ViewMoreSkills/>
             </div>
-            <SkillsSider/>
+            {/* <SkillsSider/> */}
         </section>
     );
 }

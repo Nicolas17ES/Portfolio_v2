@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import SplitTextJS from "split-text-js";
+import { GiBranchArrow } from "react-icons/gi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 function SkillsList() {
     // Accessing global context values
     const { display_body, dispatch } = useContext(GlobalContext);
-    const skillsNames = ['ReactJS', 'MongoDB', 'Mysql', 'GSAP', 'NodeJS', 'Javascript', 'Wordpress', 'PHP', 'ExpressJS', 'RestAPI'];
+    const skillsNames = ['Creative Development', 'Front Engineering', 'Backend Development', 'Mobile Development', 'UI/UX Design', 'Database Management', 'API Integration', 'API Development'];
 
     useGSAP(() => {
         const titles = gsap.utils.toArray(".single-skill");
@@ -43,14 +44,18 @@ function SkillsList() {
     
 
     return (
-      
             <div className="skills-list-container">
-                {skillsNames.map((name, index) => (
-                    <p key={index} className='single-skill'>
-                            ({name})
-                        </p>  
-                
-                ))}
+                <p className="skills-list-title">I can do this</p>
+                <GiBranchArrow size={34} className="skills-arrow" />
+                <div className="skills-list-animation">
+                    
+                    {skillsNames.map((name, index) => (
+                        <p key={index} className='single-skill'>
+                                ({name})
+                            </p>  
+                    
+                    ))}
+                </div>
             </div>
 
     );

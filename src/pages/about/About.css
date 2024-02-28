@@ -126,6 +126,7 @@
    margin-top: 100px;
   padding: 60px;
   width: 100%;
+  position: relative;
 }
 
 .about-content-container .left{
@@ -136,18 +137,26 @@
   padding: 0 20px;
 }
 
+.about-subtitle-container{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
 .about-subtitle{
   font-family: "Bebas Neue", sans-serif;
   text-transform: uppercase;
   font-size: 1.5rem;
   letter-spacing: 2px;
   opacity: .7;
+  display: inline-block;
 
 }
 
 .about-paragraph{
   margin-top: 40px;
-  font-size: 3.4rem;
+  font-size: 3rem;
   letter-spacing: .5px;
   font-weight: 400;
   line-height: 1.1em;
@@ -187,8 +196,63 @@
    height: 100%;
 }
 
-.skills-box{
-  z-index: 9999;
+/* subtitles and hand cursor */
+
+.skills-subtitles-container{
+width: 50%;
+}
+
+.skills-subtitle{
+  text-transform: uppercase;
+  font-size: 7rem;
+   font-family: 'Mauline';
+   line-height: .95em;
+   cursor: pointer;
+}
+
+.cursor, .hand {
+    position: fixed;
+    left: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform .1s;
+}
+/* 
+.cursor {
+    background: rgb(var(--white));
+    top: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 999;
+
+} */
+
+.hand {
+    /* background-color: rgb(var(--red)); */
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    z-index: 9999;
+    display: grid;
+    place-content: center;
+    transform: rotate(45deg);
+    opacity: 1;
+}
+
+.hand-arrow{
+  width: 120px;
+  height: 120px;
+  transform: rotate(-45deg);
+  color: rgb(var(--red)) !important;
+}
+
+
+
+.skills-subtitle:nth-child(2){
+  margin-left: 30px;
+}
+.skills-subtitle:nth-child(3){
+  margin-left: 60px;
 }
 
 .skill-title{
@@ -222,9 +286,22 @@
 /* skills list */
 
 .skills-list-container{
-  /* border: 1px solid rgb(var(--black)); */
-  padding: 10px 0;
-  /* border-radius: 50%; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.skills-list-title{
+  
+}
+.skills-arrow{
+  transform: rotate(-45deg);
+  margin-right: 5px;
+}
+
+.skills-list-animation{
+  padding: 15px 0;
   overflow: hidden;
 }
 
@@ -237,39 +314,11 @@
   padding: 0;
   line-height: 0;
   font-weight: 100;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: rgb(var(--red));
 }
 
 
-
-/* 
-.skills-slider-container {
-  overflow: hidden;
-  position: fixed;
-  top: 30%;
-  left: 0;
-  margin: 50px 0;
-  border-top: 1px solid var(--black);
-  border-bottom: 1px solid var(--black);
-  z-index: 99999999;
-}
-
-.skills-slider {
-  display: flex;
-  gap: 50px;
-  padding: 20px 0;
-}
-
-.slider-skill {
-  font-size: 3rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--red);
-  margin: 0;
-  padding: 0;
-} */
 
 
 @keyframes slide {
@@ -284,10 +333,12 @@
 .logos-container{
   border-top: 1px solid rgb(var(--red));
   border-bottom: 1px solid rgb(var(--red));
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 260px;
   left: 0;
+  width:calc(100vw - 25vw);
   z-index: 99999;
+  overflow: hidden;
 }
 
 .logos {
@@ -317,7 +368,39 @@
   text-transform: uppercase;
   font-size: 3rem;
   margin: 0 40px;
+  font-weight: 800;
   color: rgb(var(--red));
+   font-family: 'Mauline';
 }
 
+/* VIEW SKILLS */
+.view-more-skills-container{
+  width: 50%;
+  
+}
+
+.svg-parent-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 250px;
+}
+
+
+
+.curved-text-container{
+  position: relative;
+}
+
+.inner-circle-curved{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, 50%);
+  width: 60px;
+  height: 60px;
+  background-color: blue;
+  z-index: 999999;
+}
 

@@ -12,7 +12,14 @@ import {useInView} from 'react-intersection-observer'
 import useSubtitleAnimation from '../../hooks/useSubtitleAnimation'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import Skills from '../../components/bodyContent/Skills'
+import AnimatedIcon from '../../components/bodyContent/AnimatedIcon'
 import ScreenOverlay from '../../components/shared/ScreenOverlay';
+import { GiAngryEyes } from "react-icons/gi";
+import { GiBarbedSun } from "react-icons/gi";
+import { GiBarbedStar } from "react-icons/gi";
+import { GiAbstract013 } from "react-icons/gi";
+import { GiAbstract066 } from "react-icons/gi";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,19 +144,19 @@ function About() {
                
                <div className="about-title-container">
                   <h2 className="about-title">Nicolas</h2>
-                  <span className="about-title-word">Oye Papii</span>
+                  <span className="about-title-word">Software</span>
                </div>
                <div className="about-title-container">
-                  <span className="about-title-word">Mua Mua</span>
+                  <span className="about-title-word">Engineer</span>
                   <h2 className="about-title">Luque</h2>
                </div>
                <div className="about-title-container">
                   <h2 className="about-title">Rodriguez</h2>
-                  <span className="about-title-word">Sexy Bitch</span>
+                  <span className="about-title-word"><AnimatedIcon/></span>
                </div>
             </section>
             <section className="about-content-container">   
-               <h3 ref={refSubtitle1} className={`about-subtitle about-subtitle-1 ${inView1 ? 'in-view' : 'not-in-view'}`}>Behind the Keyboard</h3>
+               <h3 ref={refSubtitle1} className={`about-subtitle about-subtitle-1 ${inView1 ? 'in-view' : 'not-in-view'}`}>Behind the Keyboard </h3>
                <p ref={refParagraph1} className="about-paragraph">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code."</p>
             </section>
         <Skills/>
