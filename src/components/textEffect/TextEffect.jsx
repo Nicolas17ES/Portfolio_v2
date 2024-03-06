@@ -14,7 +14,7 @@ function TextEffect({ displayCurtaint }) {
   const [animationFinished, setAnimationFinished] = useState(false);
 
   // Access global context using the useContext hook
-  const { dispatch, animation_finished, display_body, display_header, lateral_navbar } = useContext(GlobalContext);
+  const { dispatch, animation_finished, display_body, animation_text_started, display_header, lateral_navbar } = useContext(GlobalContext);
 
   // Define the alphabet for the text effect
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -30,6 +30,7 @@ function TextEffect({ displayCurtaint }) {
 
   // Function to apply the text effect animation
   const applyTextEffect = () => {
+    console.log('yea')
     let iteration = 0;
     clearInterval(interval);
 
@@ -78,15 +79,12 @@ function TextEffect({ displayCurtaint }) {
   };
 
 
-  // 4
-  // 12
   // function to animate the text one the lateral navbar is set
   // function to animate the text once the lateral navbar is set
 useGSAP(() => {
   const tlx = gsap.timeline({ repeat: 0, repeatDelay: 0 });
   const titles = gsap.utils.toArray(".landing-title");
-  if (display_body) {
-    setTimeout(() => {
+  if (animation_text_started) {
       for (let i = 0; i < titles.length; i++) {
       const title = titles[i];
       const splitTitle = new SplitTextJS(title);
@@ -102,13 +100,13 @@ useGSAP(() => {
             opacity: 1,
             y: 0,
             stagger: 0.04,
-            duration: 1,
+            duration: .5,
           }, "<");
           tlx.to(char, {
             opacity: 0,
             y: -90,
             stagger: 0.04,
-            duration: 1,
+            duration: .5,
           }, "<0.1");
         }
       }
@@ -117,80 +115,48 @@ useGSAP(() => {
             const char = reversedChars[j];
             tlx.from(char, {
                 x: 0,
-                duration: 1,
+                duration: .5,
             }, "<");
             tlx.to(char, {
               x: -75,
-              duration: 1,
+              duration: .5,
             }, "<");
         }
       }
     }
-    }, 1000)
   }
-}, [display_body]);
+}, [animation_text_started]);
 
 
 
-useEffect(() => {
-  if (display_body) {
+  useEffect(() => {
+    if(animation_text_started){
+      // Dispatch your state once the animation has finished
       setTimeout(() => {
-        const text = textRef.current;
-    const circle = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    const svgCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-
-    circle.setAttribute("viewBox", "0 0 100 100");
-    circle.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    circle.classList.add("animated-circle");
-    circle.style.position = "absolute";
-    circle.style.width = "100%";
-    circle.style.height = "100%";
-    circle.style.top = "0";
-    circle.style.left = "0";
-
-    svgCircle.setAttribute("cx", "-45");
-    svgCircle.setAttribute("cy", "50");
-    svgCircle.setAttribute("r", "40");
-    svgCircle.setAttribute("fill", "transparent");
-    svgCircle.setAttribute("stroke", "#cfc7bb");
-    svgCircle.setAttribute("stroke-width", "1.3");
-    svgCircle.setAttribute("stroke-dasharray", "0, 251");
-
-    circle.appendChild(svgCircle);
-    text.appendChild(circle);
-
-    const tl = gsap.timeline({
-        onComplete: () => {
-          setAnimationFinished(true); // Set animation finished state to true
-          dispatchAnimationFinished(); // Dispatch the animation finished state
-        }
-      });
-    tl.to(svgCircle, { 'stroke-dasharray': '251, 251', duration: 2, ease: "power2.inOut" });
-
-    return () => {
-      text.removeChild(circle);
-      tl.kill();
-    };
-      }, 2500)
+        dispatch({ 
+          type: 'SET_LATERAL_NAV',
+          payload: true
+        });
+      }, 1200)
+      setTimeout(() => {
+        dispatch({ 
+          type: 'SET_BODY',
+          payload: true
+        });
+      }, 2600)
     }
-  }, [display_body]);
-
-  const dispatchAnimationFinished = () => {
-    // Dispatch your state once the animation has finished
-    setTimeout(() => {
-      dispatch({ 
-        type: 'SET_ANIMATION_FINISHED',
-        payload: true
-      });
-    }, 1000)
-  };
+  }, [animation_text_started]);
+    
 
   // Check if scroll_position is greater than 0 to decide whether to display the component
-  const display = !animation_finished ? 'block' : 'none';
+  const display = !display_body ? 'block' : 'none';
 
   const styles = {
     display: display,
   };
+
+
+  
 
 
   return (

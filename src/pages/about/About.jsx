@@ -81,8 +81,8 @@ function About() {
             gsap.from(paragraph.children, {
                 scrollTrigger: {
                     trigger: paragraph.children,
-                    start: 'top 80%',
-                    end: 'top 20%',
+                    start: 'top 90%',
+                    end: 'top 40%',
                     scrub: true,
                     markers: false
                 },
@@ -157,12 +157,14 @@ function About() {
             </section>
             <section className="about-content-container">   
                <h3 ref={refSubtitle1} className={`about-subtitle about-subtitle-1 ${inView1 ? 'in-view' : 'not-in-view'}`}>Behind the Keyboard </h3>
-               <p ref={refParagraph1} className="about-paragraph">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code."</p>
+               <p ref={refParagraph1} className="about-paragraph about-paragraph-1">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code."</p>
             </section>
-        <Skills/>
-            <section className="about-content-container">
+            <section style={{marginBottom: '100px'}} className="about-content-container">
+               <Skills/>
+            </section>
+            <section style={{marginBottom: '100px'}} className="about-content-container">
                <h3 ref={refSubtitle2} className={`about-subtitle about-subtitle-2 ${inView2 ? 'in-view' : 'not-in-view'}`}>Embarking on Web Adventures</h3>
-               <p className="about-paragraph">"From crafting seamless <span className="red">user interfaces</span> to architecting robust systems, I ensure that every <span className="red">digital creation</span> is as functional as it is beautiful."</p>
+               <p className="about-paragraph about-paragraph-2">"From crafting seamless <span className="red">user interfaces</span> to architecting robust systems, I ensure that every <span className="red">digital creation</span> is as functional as it is beautiful."</p>
             </section>
          </div> 
 

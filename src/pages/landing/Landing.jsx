@@ -33,13 +33,13 @@ function Landing() {
 
   // Define CSS styles for the landing section with dynamic background positions
   const styles_landing = {
-    height: '100vh',
+
     backgroundColor: 'rgb(var(--white)',
     color: 'rgb(var(--black))',
     backgroundImage: `linear-gradient(to right, rgba(var(--black), 0.05) .4px, transparent 1px), 
                       linear-gradient(to bottom, rgba(var(--black), 0.05) .4px, transparent 1px)`,
     backgroundSize: `${100 / numVerticalLines}% ${100 / numHorizontalLines}%`,
-    position: 'absolute',
+    position: 'fixed',
     top: '0px',
     left: '0px',
     width: '100vw',
@@ -61,24 +61,13 @@ function Landing() {
     textRef.current.classList.add('set-header');
   };
 
-  // use effect to detect when the lateral nav is set and place the text on the left side
-  useEffect(() => {
-    if(display_body){
-      setTimeout(() => {
-        textRef.current.classList.add('set-header-left');
-      }, 100)
-    }
-  }, [display_body])
+
 
 
   useEffect(() => {
     // Update the offset when the activeIndex changes
     setOffset(activeIndex);
   }, [activeIndex]);
-
-  // const styles_index = {
-  //   marginTop: '10%',
-  // };
 
   return (
     <div className="landing-container" style={!lateral_navbar ? styles_landing : styles_landing}>

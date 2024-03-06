@@ -25,9 +25,15 @@
         top: 50%;
         transform: translateY(-50%);
     }
-    100% {
+    /* 50% {
         top: 0%;
         transform: translateY(0);
+        right: 0;
+    } */
+    100% {
+      top: 0%;
+      transform: translateY(0);
+      right: calc(50% - 100px);
     }
 }
 @keyframes moveToLeft {
@@ -45,12 +51,9 @@
 
 .set-header {
     /* Keep your existing animation properties for moveToTop */
-    animation: moveToTop 1.2s forwards .2s;
+    animation: moveToTop 1.7s forwards;
 }
-.set-header-left {
-    /* Keep your existing animation properties for moveToTop */
-    animation: moveToLeft 1s forwards;
-}
+
 
 /* 
 .set-header::after {
@@ -87,7 +90,7 @@
 
 .index-container {
   transform: translateY(100%);
-  animation: slideInFromBottom 1.2s .1s forwards;
+  animation: slideInFromBottom 1.7s forwards;
   width: 100%;
   position: fixed;
   height: 100vh;

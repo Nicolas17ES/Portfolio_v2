@@ -15,6 +15,9 @@ import useScrollPosition from './hooks/useScrollPosition';
 import MouseTracker from './components/mouse/MouseTracker';
 import IconReplica from './components/textEffect/IconReplica';
 import ScreenOverlay from './components/shared/ScreenOverlay';
+import Footer from './components/header/Footer'
+import ViewProjectsCursor from './components/bodyContent/ViewProjectsCursor';
+
 function App() {
   // This is the main entry point of your React application.
   // It wraps the entire application with the GlobalProvider, which provides global state to child components.
@@ -30,7 +33,7 @@ function WrappedApp() {
   // It uses the React Router to handle routing and location-based rendering.
   const location = useLocation();
   const pathname = location.pathname;
-  const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body } = useContext(GlobalContext);
+  const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor } = useContext(GlobalContext);
 
   const containerRef = useRef(null);
   const scrollPosition = useScrollPosition();
@@ -41,10 +44,10 @@ function WrappedApp() {
     if (pathname !== '/') {
       // If the path is not the root ("/"), update various global state properties accordingly.
       // we will set lateral navbar and the header and also in the nalocation state we will place the correct location via the pathname
-      dispatch({
-        type: 'SET_LATERAL_NAV',
-        payload: true
-      });
+      // dispatch({
+      //   type: 'SET_ANIMATION_FINISHED',
+      //   payload: true
+      // });
       dispatch({
         type: 'SET_HEADER',
         payload: true
@@ -53,9 +56,9 @@ function WrappedApp() {
         type: 'SET_NAV_LOCATION',
         payload: pathname.replace(/\//g, "")
       });
-       setTimeout(() => {
-        dispatch({ type: 'SET_BODY', payload: true});
-      }, 1300)
+      //  setTimeout(() => {
+      //   dispatch({ type: 'SET_BODY', payload: true});
+      // }, 1300)
     }
   }, [pathname, dispatch]);
 
@@ -69,8 +72,10 @@ function WrappedApp() {
       {/* <MouseTracker /> */}
       <IconReplica/>
       <Landing />
+      {view_projects_cursor && <ViewProjectsCursor/>}
+      
       {/* <div className="container"> */}
-      <main ref={containerRef} className={`${
+      <main style={{ zIndex: animation_finished ? '5' : null, backgroundColor: display_body ? 'rgb(var(--white))' : null }} ref={containerRef} className={`${
         // This dynamic className conditionally applies CSS classes based on global state. The classes will add animations to the main body. 
         (lateral_navbar && display_header && !hide_nav && !shrink_body) ? 'body-content-container' :
         (hide_nav && !shrink_body) ? 'body-content-container-full' :
@@ -88,6 +93,7 @@ function WrappedApp() {
           <Route path="/music" element={<Music />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Footer/>
       </main>
       {/* </div> */}
     </>

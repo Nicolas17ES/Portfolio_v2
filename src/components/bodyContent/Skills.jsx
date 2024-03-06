@@ -25,8 +25,8 @@ function Skills() {
         const anim = gsap.from('.skills-animated-line', {
           scrollTrigger: {
             trigger: '.line-title',
-            start: 'top 80%', // Start the animation when the top of the trigger hits the bottom of the viewport
-            end: 'bottom top', // End the animation when the bottom of the trigger hits the top of the viewport
+            start: 'top 90%',
+            end: 'bottom top', 
             toggleActions: 'restart pause resume reset',
             onEnter: () => anim.play(),
             onLeave: () => anim.pause(0), // Reset the animation to its initial state when leaving
@@ -80,8 +80,8 @@ function Skills() {
       ease: 'power2.inOut',
       scrollTrigger: {
         trigger: '.line-title',
-        start: 'top 85%', // Start the animation when the top of the trigger hits the bottom of the viewport
-        end: 'bottom top', // End the animation when the bottom of the trigger hits the top of the viewport
+        start: 'top 90%',
+        end: 'bottom top',
         toggleActions: 'restart pause resume reset',
         onEnter: () => anim.play(),
         onLeave: () => anim.pause(0), // Reset the animation to its initial state when leaving
@@ -98,7 +98,7 @@ function Skills() {
     
 
     return (
-        <section className="about-content-container">
+        <>
           <div className="animated-line-titles">
             <h4 className="line-title animate-from-below">What can I do?</h4>
             <div className="line-arrows line-title"><SkillsTable/></div>
@@ -108,8 +108,8 @@ function Skills() {
                 <SkillsSubtitles/>
                 <ViewMoreSkills/>
             </div>
-            {/* <SkillsSider/> */}
-        </section>
+            <SkillsSider/>
+        </>
     );
 }
 

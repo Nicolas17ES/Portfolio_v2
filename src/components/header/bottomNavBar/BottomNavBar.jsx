@@ -54,35 +54,6 @@ function BottomNavBar() {
   }, []);
 
 
-  //  const checkIfMouseOverElement = (event) => {
-  //   if (sectionRef.current) {
-  //     const rect = sectionRef.current.getBoundingClientRect();
-  //     const isMouseOver = event.clientX >= rect.left &&
-  //                         event.clientX <= rect.right &&
-  //                         event.clientY >= rect.top &&
-  //                         event.clientY <= rect.bottom;
-
-  //     if (isMouseOver) {
-  //       dispatch({
-  //         type: 'SET_DISPLAY_MOUSETRACKER',
-  //         payload: true,
-  //       });
-  //     } else {
-  //       dispatch({
-  //         type: 'SET_DISPLAY_MOUSETRACKER',
-  //         payload: false,
-  //       });
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('mousemove', checkIfMouseOverElement);
-
-  //   return () => {
-  //     window.removeEventListener('mousemove', checkIfMouseOverElement);
-  //   };
-  // }, []);
 
   return (
     <>

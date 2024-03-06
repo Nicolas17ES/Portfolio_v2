@@ -11,29 +11,37 @@ function IconReplica() {
   
 
   // Access global context using the useContext hook
-  const {animation_finished, scroll_position} = useContext(GlobalContext);
-  
+  const {display_body, scroll_position, lateral_navbar, display_header, hide_nav, shrink_body} = useContext(GlobalContext);
   
   // Check if scroll_position is greater than 0 to decide whether to display the component
-  const display = animation_finished ? 'block' : 'none';
-  const color = (scroll_position > 10 && animation_finished) ? '#202022' : '#cfc7bb';
-  const backgroundColor = (scroll_position > 10 && animation_finished) ? 'rgba(207, 199, 187, .5)' : 'transparent';
-  const transform = (scroll_position > 10 && animation_finished) ? 'scale(.85)' : '';
+  const display = display_body ? 'block' : 'none';
+  const color = (scroll_position > 10 && display_body) ? '#202022' : '#cfc7bb';
+  const backgroundColorIcon = (scroll_position > 10 && display_body) ? 'rgba(207, 199, 187, .5)' : 'transparent';
+  const backgroundColor = (scroll_position > 31 && display_body) ?  'transparent' : 'rgb(32, 32, 34)';
+  const transform = (scroll_position > 10 && display_body) ? 'scale(.85)' : '';
 
   const styles = {
     display: display,
+    backgroundColor: backgroundColor,
   };
   const styles_icon = {
     color: color,
-    backgroundColor: backgroundColor,
+    backgroundColor: backgroundColorIcon,
     transform: transform,
   };  
 
+
   return (
-    <div style={styles} className="icon-replica-container">
-      <Link style={styles_icon} to="/" className="icon-replica">
-        NL
-      </Link>
+    <div style={styles} className={`${
+      (lateral_navbar && display_header && !hide_nav && !shrink_body) ? 'icon-replica-container' :
+      (hide_nav && !shrink_body) ? 'icon-replica-container-expand' :
+      shrink_body ? 'icon-replica-container-shrink' : null
+    }`}>
+      <div className="icon-replica-inner-container">
+        <Link style={styles_icon} to="/" className="icon-replica">
+          NL
+        </Link>
+      </div>
     </div>
   );
 }

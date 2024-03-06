@@ -61,13 +61,12 @@ a{
 .body-content-container {
   margin-right: auto;
   /* margin-top: 10vh; */
-  /* z-index: 5; */
+  z-index: 9999;
   position: relative;
-  background-color: rgb(var(--white));
-  height: 100vh;
+  min-height: 100vh;
   animation: expandContent 2s forwards;
   width: 75%;
-  /* overflow-x: hidden;  */
+  transition: all .3s ease-in;
 }
 
 @keyframes expandContent {
@@ -82,14 +81,14 @@ a{
 
 .body-content-container-full {
    margin-right: auto;
-  /* z-index: 5; */
   position: relative;
-  background-color: rgb(var(--white));
+  position: relative;
   /* margin-top: 10vh; */
-  height: 100vh;
+  min-height: 100vh;
   /* overflow-x: hidden;  */
   width: 100%;
-   animation: expandBodyContentFull 1s forwards;
+  z-index: 9999;
+   animation: expandBodyContentFull 1.5s forwards;
 }
 
 @keyframes expandBodyContentFull {
@@ -105,12 +104,14 @@ a{
    margin-right: auto;
   /* z-index: 5; */
   position: relative;
-  background-color: rgb(var(--white));
+  /* background-color: rgb(var(--white)); */
   /* margin-top: 10vh; */
-  height: 100vh;
+  min-height: 100vh;
   /* overflow-x: hidden;  */
+  z-index: 9999;
   width: 75%;
-   animation: shrinkBodyContent 1s forwards;
+   animation: shrinkBodyContent 1.5s forwards;
+   position: relative;
 }
 
 @keyframes shrinkBodyContent {

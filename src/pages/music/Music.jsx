@@ -1,6 +1,7 @@
 import './Music.css';
 import ButtonsBody from '../../components/buttonsBody/ButtonsBoody';
 import NamesAnimations from '../../components/bodyContent/NamesAnimations';
+import MusicCarousel from '../../components/bodyContent/MusicCarousel';
 import BodySlider from '../../components/bodyContent/BodySlider';
 import useBodyAnimation from '../../hooks/useBodyAnimation';
 import GlobalContext from '../../context/GlobalContext';
@@ -72,25 +73,16 @@ function Music() {
         <div ref={bodyRef} className="body-container">
             <div className="body-container-top">
                 <ButtonsBody data={data}/>
-                {/* {button_state && button_state.clicked && button_state.value === button_index && (
-                    <section key={animationKey}  className="body-paragraph-effect-container">
-                        <p className="paragraph-effect">
-                            {typedText}
-                        </p>
-                    </section>
-                        
-                )} */}
-                
             </div>
                 {!button_state || !button_state.clicked ? (
                     <div className="music-body-container">
-                        <NamesAnimations/>
+                        <MusicCarousel/>
                     </div>
                 ) : (
                     <div key={animationKey} className="music-body-container">
-                        {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <BodySlider/>}
-                        {buttonIndexReferences[button_state.value] === 'Unsilenced' && <BodySlider/>}
-                        {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <BodySlider/>}
+                        {buttonIndexReferences[button_state.value] === 'Sonido_Club' && 'Sonido'}
+                        {buttonIndexReferences[button_state.value] === 'Unsilenced' && 'Unsilenced'}
+                        {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && 'Aurea'}
                     </div>
                 )}
 

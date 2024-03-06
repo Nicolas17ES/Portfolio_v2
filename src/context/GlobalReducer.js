@@ -84,10 +84,35 @@ const globalReducer = (state, action) => {
                 ...state,
                 animation_finished: action.payload,
             }
+        case 'SET_TEXT_ANIMATION':
+            return {
+                ...state,
+                animation_text_started: action.payload,
+            }
         case 'SET_OVERLAY':
             return {
                 ...state,
                 display_overlay: action.payload,
+            }
+        case 'SET_IMAGE_OVERLAY':
+            return {
+                ...state,
+                display_image_overlay: action.payload,
+            }
+        case 'SET_CAROUSEL':
+            return {
+                ...state,
+                display_carousel: action.payload,
+            }
+        case 'SET_CAROUSEL_INDEX':
+            return {
+                ...state,
+                carousel_index: action.payload,
+            }
+        case 'SET_VIEW_PROJECTS_CURSOR':
+            return {
+                ...state,
+                view_projects_cursor: action.payload,
             }
         default: 
             return state;

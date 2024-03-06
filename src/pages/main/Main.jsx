@@ -47,7 +47,7 @@ function Main({ handleMouseOver }) {
   const setNavBarLocation = (item) => {
     dispatch({type: 'SET_ANIMATION_VALUE', payload: null})
     dispatch({type: 'SET_NAV_LOCATION', payload: item});
-    dispatch({ type: 'SET_LATERAL_NAV', payload: true});
+    dispatch({ type: 'SET_TEXT_ANIMATION', payload: true});
     setLateralNavBar(true);
     setTimeout(() => {
       dispatch({type: 'SET_CLICKED_BUTTON', payload: null,});

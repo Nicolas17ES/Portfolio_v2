@@ -10,7 +10,7 @@ import '../../pages/music/Music.css'
  */
 function ButtonsBody({data}) {
     // Access global context for dispatching actions
-    const {dispatch, animation_value, navbar_location} = useContext(GlobalContext);
+    const {dispatch, animation_value, navbar_location, carousel_index} = useContext(GlobalContext);
 
     // State to track the active (clicked or hovered) button index
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -91,7 +91,7 @@ function ButtonsBody({data}) {
     return (
         <section className="buttons-body-container text">
             {data.buttons.map((button, index) => {
-                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className={`button-body word fancy ${(animation_value === index && navbar_location === 'music') ? 'highlight-button' : null}`} style={(activeIndex !== null && index !== activeIndex) ? styles : null}>{enhance(button.name)}</button>
+                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className={`button-body word fancy ${(carousel_index === index && navbar_location === 'music') ? 'highlight-button' : null}`} style={(activeIndex !== null && index !== activeIndex) ? styles : null}>{enhance(button.name)}</button>
             })}
         </section>
     )
