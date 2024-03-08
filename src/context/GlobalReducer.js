@@ -114,6 +114,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 view_projects_cursor: action.payload,
             }
+        case 'SET_PROJECT_INDEX_HOVERED':
+            return {
+                ...state,
+                project_index_hovered: action.payload,
+            }
         default: 
             return state;
     }

@@ -30,7 +30,6 @@ function TextEffect({ displayCurtaint }) {
 
   // Function to apply the text effect animation
   const applyTextEffect = () => {
-    console.log('yea')
     let iteration = 0;
     clearInterval(interval);
 

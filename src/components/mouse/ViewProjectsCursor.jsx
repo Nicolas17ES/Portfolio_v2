@@ -43,15 +43,15 @@ function ViewProjectsCursor({ text }) {
           scale: 1,
           duration: .5, // Duration of the animation
           ease: 'linear', // Easing function for the animation
-          onComplete: () => {
-            // Heartbeat animation that starts once the initial animation is complete
-            const tl = gsap.timeline({ repeat: -1, yoyo: true });
-            tl.to(cursor, {
-              scale: 1.27, // Scale up
-              duration: .75,
-              ease: 'ease-in-out',
-            })
-          }
+          // onComplete: () => {
+          //   // Heartbeat animation that starts once the initial animation is complete
+          //   const tl = gsap.timeline({ repeat: -1, yoyo: true });
+          //   tl.to(cursor, {
+          //     scale: 1.27, // Scale up
+          //     duration: .75,
+          //     ease: 'ease-in-out',
+          //   })
+          // }
         }
       );
     }

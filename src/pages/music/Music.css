@@ -380,10 +380,10 @@
 
 .custom-cursor {
   position: fixed;
-  width: 55px;
-  height: 55px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  background-color: rgba(var(--red), .75);
+  background-color: rgba(var(--red), .85);
   pointer-events: none;
   z-index: 99999999999;
   color: rgb(var(--white));

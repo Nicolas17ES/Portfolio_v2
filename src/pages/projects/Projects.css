@@ -1,0 +1,74 @@
+.projects-list-container{
+    margin-top: 37px;
+    margin-bottom: 50px;
+    padding: 0 30px;
+}
+
+.single-project-container{
+    border-top: 1px solid rgb(var(--black));
+    cursor: none;
+    position: relative;
+    overflow: visible;
+}
+
+.single-project-container .project-number{
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin-right: 10px;
+}
+
+.single-project-container .porject-title-container{
+    overflow: hidden;
+    height: 100%;
+    padding: 65px 0;
+}
+.single-project-container .project-title{
+    display: flex;
+    align-items: flex-start;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 5rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: .8;
+    background-color: rgb(var(--white));
+    text-transform: uppercase;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.single-project-container .project-image{
+    width: 450px;
+    height: auto;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 9999999;
+    top: 0;
+    left: 0;
+    opacity: 0; 
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
+}
+
+.single-project-container .project-image-bio{
+    width: auto;
+    height: 450px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    opacity: 0;  
+    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
+}
+
+.project-resume{
+    color: rgb(var(--black)) !important;
+    text-transform: capitalize;
+    font-size: .9rem;
+    background-color: rgba(var(--red), .2);
+    padding: 2px 8px;
+    border-radius: 5px;
+}

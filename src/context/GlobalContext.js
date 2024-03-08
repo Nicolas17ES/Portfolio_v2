@@ -42,6 +42,7 @@ export const GlobalProvider = ({children}) => {
         carousel_index: null,      
         animation_text_started: null,      
         view_projects_cursor: false,      
+        project_index_hovered: false,      
     }
 
     const [state, dispatch] = useReducer(globalReducer, initialState)
@@ -67,6 +68,7 @@ export const GlobalProvider = ({children}) => {
         carousel_index: state.carousel_index,
         animation_text_started: state.animation_text_started,
         view_projects_cursor: state.view_projects_cursor,
+        project_index_hovered: state.project_index_hovered,
         dispatch,
     }}>
         {children}

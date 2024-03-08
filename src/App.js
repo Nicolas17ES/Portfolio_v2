@@ -16,7 +16,7 @@ import MouseTracker from './components/mouse/MouseTracker';
 import IconReplica from './components/textEffect/IconReplica';
 import ScreenOverlay from './components/shared/ScreenOverlay';
 import Footer from './components/header/Footer'
-import ViewProjectsCursor from './components/bodyContent/ViewProjectsCursor';
+import ViewProjectsCursor from './components/mouse/ViewProjectsCursor';
 
 function App() {
   // This is the main entry point of your React application.
