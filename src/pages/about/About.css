@@ -201,6 +201,11 @@
    height: 100%;
 }
 
+.skills-slider-container{
+  margin: 75px 0px 150px 0;
+  height: 160px;
+}
+
 /* subtitles and hand cursor */
 
 .skills-subtitles-container{

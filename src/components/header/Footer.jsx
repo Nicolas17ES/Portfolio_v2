@@ -10,7 +10,7 @@ import gsap from "gsap";
 
 function Footer() {
 
-  const {display_body} = useContext(GlobalContext);
+  const {display_body, lateral_navbar, display_header, hide_nav, shrink_body} = useContext(GlobalContext);
 
   useGSAP(() => {
     if(display_body){
@@ -26,7 +26,11 @@ function Footer() {
 
 if(display_body){
   return (
-        <footer className='footer-container'>
+        <footer className={`${
+              (lateral_navbar && display_header && !hide_nav && !shrink_body) ? 'footer-container' :
+              (hide_nav && !shrink_body) ? 'footer-container-expand' :
+              shrink_body ? 'footer-container-shrink' : null
+            }`}>
             <p className="footer-block"><GiCoffin className='footer-icon'/>Porftolio V.0.2</p>
             <p className="footer-block"><span className="footer-light"></span>AVAILABLE FOR FREELANCE WORKS</p>
             <p className="footer-block"><PiPlanet  className='footer-icon'/>BARCELONA, SP.</p>

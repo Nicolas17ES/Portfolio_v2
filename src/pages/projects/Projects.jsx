@@ -20,6 +20,7 @@ function Projects() {
     const location = useLocation();
     const navigate = useNavigate();
     const pathname = location.pathname.substring(1); // Removes the leading slash
+    const [entered, setEntered] = useState(false)
     
 
     const {view_projects_cursor, display_body, navbar_location, dispatch, project_index_hovered} = useContext(GlobalContext);
@@ -42,7 +43,6 @@ function Projects() {
 
     // display the custom cursor
     const setCursorVisible = (value, index) => {
-
         dispatch({
             type: 'SET_PROJECT_INDEX_HOVERED',
             payload: index,
@@ -51,6 +51,15 @@ function Projects() {
             type: 'SET_VIEW_PROJECTS_CURSOR',
             payload: value,
         })
+
+        const sections = ['container-shoop', 'container-bio', 'container-tools'];
+        sections.forEach((sectionClass, idx) => {
+            const element = document.querySelector(`.${sectionClass}`);
+            if (element) {
+                // Only adjust z-index for the current section; reset others
+                element.style.zIndex = (value && index === idx + 1) ? 1 : 'auto';
+            }
+        });
     }
 
 
@@ -80,71 +89,93 @@ function Projects() {
 
 
 
-    // THE NEXT 3 GSAPS ARE CORRESPONDING ANIMATIONS FOR EACH SECTION
-    //SECTION 1
-    const sectionRef = useRef(null); 
-    const imageRef = useRef(null);
-    console.log("project_index_hovered", project_index_hovered)
-console.log("view_projects_cursor", view_projects_cursor)
-console.log("sectionRef.current ", sectionRef.current)
-console.log("imageRef.current", imageRef.current)
+    // WE NEED TO CHECK IF ON MOUNT THE CURSOR IS ON TOP OF THE SECTION, SO WE CAN CALL THE ANIMATION OF HTE IMAGE AS ON MOUSE ENTER WONT BE TRIGGERED
+    const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 
     useEffect(() => {
-        if (sectionRef.current && imageRef.current) {
+      const updateMousePosition = ev => {
+        setMousePosition({ x: ev.clientX, y: ev.clientY });
+      };
 
-          const section = sectionRef.current;
-          const image = imageRef.current;
+      window.addEventListener('mousemove', updateMousePosition);
 
-          
+      return () => {
+        window.removeEventListener('mousemove', updateMousePosition);
+      };
+    }, []);
+
+
+
+
+    // THE NEXT 3 GSAPS ARE CORRESPONDING ANIMATIONS FOR EACH SECTION
+    //SECTION 1
+
+    useEffect(() => {
+      
+      const sectionElement = document.querySelector('.container-shoop');
+        if (sectionElement) {
+          const rect = sectionElement.getBoundingClientRect();
+          const mouseX = mousePosition.x; 
+          const mouseY = mousePosition.y;
+
+          if (!entered && mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
+            gsap.fromTo('.project-image', { scale: 0, xPercent: -100, opacity: 0}, { scale: 1, xPercent: 120, yPercent: -10, duration: 0.7, ease: 'power1.out', opacity: 1, delay: .75 });
+          }
     
           const onMouseEnter = () => {
+            setEntered(true)
             // Animation from scale 0 to 1 and from left to right
-            gsap.fromTo(image, { scale: 0, xPercent: -100, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: -10, duration: 0.7, ease: 'power1.out', opacity: 1 });
+            gsap.fromTo('.project-image', { scale: 0, xPercent: -100, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: -10, duration: 0.7, ease: 'power1.out', opacity: 1 });
           };
     
           const onMouseLeave = () => {
             // Optionally, add an animation for when the mouse leaves
-            gsap.fromTo(image, { scale: 1, xPercent: 120, yPercent: -20, ease: 'power1.out', opacity: 1 }, { scale: 0, duration: 0.7, xPercent: -100, opacity: 0, yPercent: 0 });
+            gsap.fromTo('.project-image', { scale: 1, xPercent: 120, yPercent: -20, ease: 'power1.out', opacity: 1 }, { scale: 0, duration: 0.7, xPercent: -100, opacity: 0, yPercent: 0 });
           };
     
-          section.addEventListener('mouseenter', onMouseEnter);
-          section.addEventListener('mouseleave', onMouseLeave);
+          sectionElement.addEventListener('mouseenter', onMouseEnter);
+          sectionElement.addEventListener('mouseleave', onMouseLeave);
     
           return () => {
-            section.removeEventListener('mouseenter', onMouseEnter);
-            section.removeEventListener('mouseleave', onMouseLeave);
+            sectionElement.removeEventListener('mouseenter', onMouseEnter);
+            sectionElement.removeEventListener('mouseleave', onMouseLeave);
           };
         }
       }, [view_projects_cursor]);
 
 
 
-    // SECTION 2
-    const sectionRefBio = useRef(null); 
-    const imageRefBio = useRef(null);
-
-
+    // // SECTION 2
     useEffect(() => {
-        if (sectionRefBio.current && imageRefBio.current) {
-          const section = sectionRefBio.current;
-          const image = imageRefBio.current;
+
+      const sectionElement = document.querySelector('.container-bio');
+        if (sectionElement) {
+
+          const rect = sectionElement.getBoundingClientRect();
+          const mouseX = mousePosition.x; 
+          const mouseY = mousePosition.y;
+
+          if (!entered && mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
+            gsap.fromTo('.project-image-bio', { scale: 0,  xPercent: 320, yPercent: -200, opacity: 0 }, { scale: 1, xPercent: 320, yPercent: -40, duration: 0.7, ease: 'power1.out', opacity: 1, delay: .75 });
+          }
     
           const onMouseEnter = () => {
+            setEntered(true)
             // Animation from scale 0 to 1 and from left to right
-            gsap.fromTo(image, { scale: 0,  xPercent: 320, yPercent: -200, opacity: 0 }, { scale: 1, xPercent: 320, yPercent: -40, duration: 0.7, ease: 'power1.out', opacity: 1 });
+            gsap.fromTo('.project-image-bio', { scale: 0,  xPercent: 320, yPercent: -200, opacity: 0 }, { scale: 1, xPercent: 320, yPercent: -40, duration: 0.7, ease: 'power1.out', opacity: 1 });
           };
     
           const onMouseLeave = () => {
             // Optionally, add an animation for when the mouse leaves
-            gsap.fromTo(image, { scale: 1, xPercent: 320, yPercent: -40, ease: 'power1.out', opacity: 1 }, { scale: 0,  xPercent: 320, yPercent: -200, duration: 0.7, opacity: 0 });
+            gsap.fromTo('.project-image-bio', { scale: 1, xPercent: 320, yPercent: -40, ease: 'power1.out', opacity: 1 }, { scale: 0,  xPercent: 320, yPercent: -200, duration: 0.7, opacity: 0 });
           };
     
-          section.addEventListener('mouseenter', onMouseEnter);
-          section.addEventListener('mouseleave', onMouseLeave);
+          sectionElement.addEventListener('mouseenter', onMouseEnter);
+          sectionElement.addEventListener('mouseleave', onMouseLeave);
     
           return () => {
-            section.removeEventListener('mouseenter', onMouseEnter);
-            section.removeEventListener('mouseleave', onMouseLeave);
+            sectionElement.removeEventListener('mouseenter', onMouseEnter);
+            sectionElement.removeEventListener('mouseleave', onMouseLeave);
           };
         }
       }, [view_projects_cursor]);
@@ -152,29 +183,35 @@ console.log("imageRef.current", imageRef.current)
 
 
     // SECTION 3
-    const sectionRefTools = useRef(null); 
-    const imageRefTools = useRef(null); 
     useEffect(() => {
-        if (sectionRefTools.current && imageRefTools.current) {
-          const section = sectionRefTools.current;
-          const image = imageRefTools.current;
+      const sectionElement = document.querySelector('.container-tools');
+        if (sectionElement) {
+
+          const rect = sectionElement.getBoundingClientRect();
+          const mouseX = mousePosition.x; 
+          const mouseY = mousePosition.y;
+
+          if (!entered && mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
+            gsap.fromTo('.project-image-tools', { scale: 0, xPercent: 300, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: 5, duration: 0.7, ease: 'power1.out', opacity: 1, delay: .75 });
+          }
     
           const onMouseEnter = () => {
+            setEntered(true)
             // Animation from scale 0 to 1 and from left to right
-            gsap.fromTo(image, { scale: 0, xPercent: 300, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: 5, duration: 0.7, ease: 'power1.out', opacity: 1 });
+            gsap.fromTo('.project-image-tools', { scale: 0, xPercent: 300, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: -15, duration: 0.7, ease: 'power1.out', opacity: 1 });
           };
     
           const onMouseLeave = () => {
             // Optionally, add an animation for when the mouse leaves
-            gsap.fromTo(image, { scale: 1, xPercent: 120, yPercent: 5, ease: 'power1.out', opacity: 1 }, { scale: 0, duration: 0.7, xPercent: -100, opacity: 0, yPercent: 0 });
+            gsap.fromTo('.project-image-tools', { scale: 1, xPercent: 120, yPercent: -15, ease: 'power1.out', opacity: 1 }, { scale: 0, duration: 0.7, xPercent: -100, opacity: 0, yPercent: 0 });
           };
     
-          section.addEventListener('mouseenter', onMouseEnter);
-          section.addEventListener('mouseleave', onMouseLeave);
+          sectionElement.addEventListener('mouseenter', onMouseEnter);
+          sectionElement.addEventListener('mouseleave', onMouseLeave);
     
           return () => {
-            section.removeEventListener('mouseenter', onMouseEnter);
-            section.removeEventListener('mouseleave', onMouseLeave);
+            sectionElement.removeEventListener('mouseenter', onMouseEnter);
+            sectionElement.removeEventListener('mouseleave', onMouseLeave);
           };
         }
       }, [view_projects_cursor]);
@@ -186,19 +223,19 @@ console.log("imageRef.current", imageRef.current)
                 {/* <ButtonsBody data={data}/> */}
                 <div className="projects-list-container">
                     <section
-                        ref={sectionRef}
-                        className="single-project-container"
+                        
+                        className="single-project-container container-shoop"
                         onMouseEnter={() => setCursorVisible(true, 1)} 
                         onMouseLeave={() => setCursorVisible(false, null)}
                     >
                         <div className="porject-title-container">
                         <h3 className="project-title"><span className="project-number">[01]</span>Shoop Aulart</h3>
                         </div>
-                        <img ref={imageRef} src={AulartHome} alt="" className="project-image" />
+                        <img src={AulartHome} alt="" className="project-image" />
                     </section>
                     <section
-                        ref={sectionRefBio} 
-                        className="single-project-container"
+                        
+                        className="single-project-container container-bio"
                         onMouseEnter={() => setCursorVisible(true, 2)} 
                         onMouseLeave={() => setCursorVisible(false, null)}
                     >
@@ -206,19 +243,18 @@ console.log("imageRef.current", imageRef.current)
                         <div className="porject-title-container">
                         < h3 className="project-title"><span className="project-number">[02]</span>Link_In_Bio</h3>
                         </div>
-                        <img ref={imageRefBio} src={LinkInBio} alt="" className="project-image-bio" />
+                        <img  src={LinkInBio} alt="" className="project-image-bio" />
                     </section>
                     <section 
-                        style={{borderBottom: '1px solid rgb(var(--black))'}}
-                        ref={sectionRefTools}
-                        className="single-project-container"
+                        style={{borderBottom: '1px solid rgb(var(--black))'}}                     
+                        className="single-project-container container-tools"
                         onMouseEnter={() => setCursorVisible(true, 3)} 
                         onMouseLeave={() => setCursorVisible(false, null)}
                     >
                         <div className="porject-title-container">
                         <h3 className="project-title"><span className="project-number">[03]</span>Tools Aulart</h3>
                         </div>
-                        <img ref={imageRefTools} src={AulartTools2} alt="" className="project-image" />
+                        <img src={AulartTools2} alt="" className="project-image-tools" />
                     </section>
                     
                 </div>

@@ -10,6 +10,7 @@ import BottomNavBar from '../../components/header/bottomNavBar/BottomNavBar';
 import GlobalContext from '../../context/GlobalContext';
 import { AiOutlineClose } from 'react-icons/ai';
 import MouseTracker from '../../components/mouse/MouseTracker'
+import MagneticEffect from '../../components/mouse/MagneticEffect'
 
 function Main({ handleMouseOver }) {
   // Define and initialize local state variables using the useState hook
@@ -17,6 +18,21 @@ function Main({ handleMouseOver }) {
   const [activeLinkIndex, setActiveLinkIndex] = useState(null);
   const [displayNavBar, setDisplayNavBar] = useState(true);
   const [lateralNavBar, setLateralNavBar] = useState(false);
+
+  useEffect(() => {
+    const updateCursorPosition = (event) => {
+      dispatch({
+        type: 'SET_MOUSE_POSITION',
+        payload: { x: event.clientX - 30, y: event.clientY - 30 }
+      });
+    };
+
+    window.addEventListener('mousemove', updateCursorPosition);
+
+    return () => {
+      window.removeEventListener('mousemove', updateCursorPosition);
+    };
+  }, []);
 
   // Access global context using the useContext hook
   const { dispatch, lateral_navbar, hide_nav, navbar_location } = useContext(GlobalContext);

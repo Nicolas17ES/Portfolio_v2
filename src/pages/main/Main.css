@@ -109,7 +109,7 @@
   transition: opacity 400ms ease;
   font-weight: 400 !important;
     font-family: "Bebas Neue", sans-serif;
-letter-spacing: 1px;
+  letter-spacing: 1px;
   
 }
 
@@ -136,6 +136,7 @@ letter-spacing: 1px;
 
 
 .bottom-nav-bar{
+
   height: 70%;
   width: 100%;
   overflow: hidden;

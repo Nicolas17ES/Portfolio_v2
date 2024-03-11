@@ -106,9 +106,12 @@ function Skills() {
             <hr className="skills-animated-line"></hr>
             <div className="skills-container">
                 <SkillsSubtitles/>
-                <ViewMoreSkills/>
+                {/* <ViewMoreSkills/> */}
             </div>
-            <SkillsSider/>
+            <div className="skills-slider-container">
+              <SkillsSider/>
+            </div>
+            
         </>
     );
 }

@@ -178,8 +178,6 @@
 
 .music-navbar-container {
   animation: fade-in 0.7s forwards;
-  padding: 20px;
-  padding-right: 10px;
 }
 .bottom-nav-paragraph {
   margin-bottom: 15px;
@@ -242,6 +240,25 @@
   font-weight: 100;
   letter-spacing: 1.5px;
   font-size: 1.8rem;
+}
+
+.scrolling-text .text-wrapper {
+  display: flex;
+  white-space: nowrap;
+  animation: animateContactLinks 10s linear infinite; /* Adjust time as needed */
+}
+
+.scrolling-text .text-wrapper span {
+  margin-right: 10px; /* Space between the end of one text and the start of its duplicate */
+}
+
+@keyframes animateContactLinks {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%); /* Moves only half the width */
+  }
 }
 
 /* .inner-socials::after{

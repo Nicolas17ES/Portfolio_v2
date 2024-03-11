@@ -150,13 +150,13 @@
 
 /* BOTTOM NAVBAR */
 .bottom-lateral-navbar {
+  padding: 20px;
   height: 100%;
   transform-origin: bottom;
   transform: scaleY(0);
   animation: expandContentBottomToTop 1.1s forwards .6s;
 }
 .scrollable-container{
-  padding-right: 20px;
 }
 
 .bottom-lateral-navbar-padding {
@@ -166,6 +166,7 @@
 .expand-element{
   height: 100%;
   /* padding: 20px; */
+  padding: 20px;
   transform-origin: bottom;
   transform: scaleY(0);
   animation: expandContentBottomToTop 1.3s forwards;
@@ -186,6 +187,7 @@
 
 
 .shrink-element {
+  padding: 20px;
   height: 100%;
   animation: shrinkContentTopToBottom 1.3s forwards;
 }
@@ -222,7 +224,8 @@
 .display-bottom{
   display: block;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: hidden; /* Only show vertical scrollbar when necessary */
+  overflow-x: hidden;
 } 
 
 /* Style the scrollbar track */
@@ -306,6 +309,60 @@
   background-color: rgb(var(--white));
   text-transform: uppercase;
   font-size: .9rem;
+}
+
+
+.footer-container-expand{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 65px;
+  padding: 0 30px;
+  z-index: 999999;
+  background-color: rgb(var(--white));
+  text-transform: uppercase;
+  font-size: .9rem;
+  animation: expandFooterContainer 1.5s forwards;
+}
+
+@keyframes expandFooterContainer {
+  from {
+    width: 75vw;
+  }
+  to{
+    width: 100vw;
+  }
+}
+
+
+.footer-container-shrink{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 75vw;
+  height: 65px;
+  padding: 0 30px;
+  z-index: 999999;
+  background-color: rgb(var(--white));
+  text-transform: uppercase;
+  font-size: .9rem;
+  animation: shrinkFooterContainer 1.5s forwards;
+}
+
+@keyframes shrinkFooterContainer {
+  from {
+    width: 100vw;
+  }
+  to{
+    width: 75vw;
+  }
 }
 
 .footer-block{

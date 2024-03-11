@@ -76,8 +76,8 @@ function MusicBottomContent() {
                             <div data-value="4" className="active-class-vertical">                            
                                 <div className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">1</p><span>{'<13.1.2024>'}</span> </div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Les Enfants Brillants'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Tzena, Jason, Bruno&Marco'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {'Les Enfants Brillants'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span> {' Tzena, Jason, Bruno&Marco'}</p>
                                 </div>
                             </div>
                         </div>
@@ -86,8 +86,8 @@ function MusicBottomContent() {
                             
                                 <div className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">2</p><span>{'<18.111.2023>'}</span> </div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Les Enfants Brillants'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Ika & Usherenko, Conor Brophy'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span>{' Les Enfants Brillants'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Ika & Usherenko, Conor Brophy'}</p>
                                 </div>
                             </div>
                         </div>
@@ -96,8 +96,8 @@ function MusicBottomContent() {
                             
                                 <div className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">3</p><span>{'<26.5.2023>'}</span> </div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Les Enfants Brillants'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Mathew Neequaye, Bruno&Marco'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span>{'Les Enfants Brillants'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Mathew Neequaye, Bruno&Marco'}</p>
                                 </div>
                             </div>
                         </div>
@@ -106,8 +106,8 @@ function MusicBottomContent() {
                         
                             <div  className="bottom-nav-text">
                                 <div className="bottom-nav--title"><p className="bottom-nav-number">4</p><span>{'<14.1.2023>'}</span></div>
-                                <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Les Enfants Brillants'}</p>
-                                <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Tommy Pickles, Christian, Conor Brophy'}</p>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Les Enfants Brillants'}</p>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Tommy Pickles, Christian, Conor Brophy'}</p>
                             </div>
                             </div>
                         </div>
@@ -116,8 +116,8 @@ function MusicBottomContent() {
                         
                             <div  className="bottom-nav-text">
                                 <div className="bottom-nav--title"><p className="bottom-nav-number">5</p><span>{'<21.10.2022>'}</span></div> 
-                                <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Les Enfants Brillants'}</p>
-                                <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Poggio, Silvio, Bruno&Marco'}</p>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Les Enfants Brillants'}</p>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Poggio, Silvio, Bruno&Marco'}</p>
                             </div>
                             </div>
                         </div>
@@ -126,8 +126,8 @@ function MusicBottomContent() {
                         
                             <div  className="bottom-nav-text">                          
                                 <div className="bottom-nav--title"><p className="bottom-nav-number">6</p><span>{'<1.07.2022>'}</span> </div> 
-                                <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Secret Warehouse'}</p>
-                                <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Felix Dulac, Conor & Onoffon, Max TA'}</p>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Secret Warehouse'}</p>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Felix Dulac, Conor & Onoffon, Max TA'}</p>
                             </div>
                             </div>
                         </div>
@@ -136,8 +136,8 @@ function MusicBottomContent() {
                         
                         <div  className="bottom-nav-text">                          
                             <div className="bottom-nav--title"><p className="bottom-nav-number">7</p><span>{'<8.4.2022>'}</span></div>  
-                            <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Tunnel Barcelona'}</p>
-                            <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Samovar, Conor Brophy, Bruno&Marco'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Tunnel Barcelona'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Samovar, Conor Brophy, Bruno&Marco'}</p>
                         </div>
                         </div>
                     </div>
@@ -146,8 +146,8 @@ function MusicBottomContent() {
                     
                         <div  className="bottom-nav-text">                         
                             <div className="bottom-nav--title"><p className="bottom-nav-number">8</p> <span>{'<5.2.2022>'}</span> </div> 
-                            <p style={{marginLeft: '15px', marginTop: '4px'}}>{'<loc> Garage of the Bass Valley'}</p>
-                            <p style={{marginLeft: '15px', marginTop: '4px'}}>{'<lineup> Raphael Carrau, Lyo, Sebastian, Remy, Bruno&Marco'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '4px'}}><span>{'<loc>'}</span> {' Garage of the Bass Valley'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '4px'}}><span>{'<lineup>'}</span>{' Raphael Carrau, Lyo, Sebastian, Remy, Bruno&Marco'}</p>
                         </div>
                         </div>
                     </div>
@@ -156,8 +156,8 @@ function MusicBottomContent() {
                     
                         <div  className="bottom-nav-text">
                             <div className="bottom-nav--title"><p className="bottom-nav-number">9</p><span>{'<19.11.2021>'}</span></div> 
-                            <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Bus Terraza'}</p>
-                            <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Donnie, Bruno&Marco'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Bus Terraza'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Donnie, Bruno&Marco'}</p>
                         </div>
                         </div>
                     </div>
@@ -166,8 +166,8 @@ function MusicBottomContent() {
                         
                         <div o className="bottom-nav-text">                           
                             <div className="bottom-nav--title"><p className="bottom-nav-number">10</p><span>{'<10.10.2021>'}</span></div> 
-                            <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Bus Terraza'}</p>
-                            <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Wendy, Bruno&Marco'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Bus Terraza'}</p>
+                            <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Wendy, Bruno&Marco'}</p>
                         </div>
                         </div>
                     </div>
@@ -180,8 +180,8 @@ function MusicBottomContent() {
                             <div data-value="7"  className="active-class-vertical">                      
                                 <div  className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">1</p><span>{'<22.1.2019>'}</span> </div> 
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Generator'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Former, Tafu, Nicolás'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Generator'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Former, Tafu, Nicolás'}</p>
                                 </div>
                             </div>
                         </div>
@@ -189,8 +189,8 @@ function MusicBottomContent() {
                             <div data-value="0"  className="active-class-vertical">                      
                                 <div  className="bottom-nav-text">                         
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">2</p> <span>{'<6.3.2020>'}</span></div> 
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Reiss, Former, Bruno&Marco'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Reiss, Former, Bruno&Marco'}</p>
                                 </div>
                             </div>
                         </div>
@@ -198,8 +198,8 @@ function MusicBottomContent() {
                             <div data-value="1"  className="active-class-vertical"> 
                                 <div  className="bottom-nav-text">                          
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">3</p><span>{'<6.3.2020>'}</span></div>  
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Reiss, Former, Bruno&Marco'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Reiss, Former, Bruno&Marco'}</p>
                                 </div>
                             </div>
                         </div>
@@ -207,8 +207,8 @@ function MusicBottomContent() {
                             <div data-value="2"  className="active-class-vertical">                     
                                 <div  className="bottom-nav-text">                          
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">4</p><span>{'<6.3.2020>'}</span></div>   
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Reiss, Former, Bruno&Marco'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Reiss, Former, Bruno&Marco'}</p>
                                 </div>
                             </div>
                         </div>
@@ -216,8 +216,8 @@ function MusicBottomContent() {
                             <div data-value="3"  className="active-class-vertical">                       
                                 <div  className="bottom-nav-text">                           
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">5</p><span>{'<3.2.2021>'}</span></div>  
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Amsterdam'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Paradise City Breakers, Daif, Sevenbeatz, Denalia'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Amsterdam'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Paradise City Breakers, Daif, Sevenbeatz, Denalia'}</p>
                                 </div>
                             </div>
                         </div>
@@ -225,8 +225,8 @@ function MusicBottomContent() {
                             <div data-value="4"  className="active-class-vertical">                      
                                 <div  className="bottom-nav-text">                          
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">6</p><span>{'<1.4.2022>'}</span></div>  
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> LegramVG, DJ Senc, Malom'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' LegramVG, DJ Senc, Malom'}</p>
                                 </div>
                             </div>
                         </div>
@@ -234,8 +234,8 @@ function MusicBottomContent() {
                             <div data-value="5"  className="active-class-vertical">                       
                                 <div  className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">7</p><span>{'<1.4.2022>'}</span></div>  
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> LegramVG, DJ Senc, Malom'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' LegramVG, DJ Senc, Malom'}</p>
                                 </div>
                             </div>
                         </div>
@@ -243,8 +243,8 @@ function MusicBottomContent() {
                             <div data-value="6"  className="active-class-vertical">                      
                                 <div  className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">8</p><span>{'<1.4.2022>'}</span></div>  
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> LegramVG, DJ Senc, Malom'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' LegramVG, DJ Senc, Malom'}</p>
                                 </div>
                             </div>
                         </div>
@@ -257,8 +257,8 @@ function MusicBottomContent() {
                             <div data-value="4"  className="active-class-vertical">                        
                                 <div  className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">1</p><span>{'<5.1.2021>'}</span></div> 
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> El Pumarejo'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Sugar Free'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' El Pumarejo'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Sugar Free'}</p>
                                 </div>
                             </div>
                         </div>
@@ -266,8 +266,8 @@ function MusicBottomContent() {
                             <div data-value="5"  className="active-class-vertical">                        
                                 <div  className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">2</p><span>{'<5.1.2021>'}</span></div> 
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> El Pumarejo'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Sugar Free'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' El Pumarejo'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Sugar Free'}</p>
                                 </div>
                             </div>
                         </div>
@@ -275,8 +275,8 @@ function MusicBottomContent() {
                             <div data-value="6"  className="active-class-vertical">                     
                                 <div  className="bottom-nav-text">                         
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">3</p><span>{'<25.7.2020>'}</span></div>  
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Buena Onda Social Club'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Melisa, Bruno&Marco, Nicolas'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Buena Onda Social Club'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Melisa, Bruno&Marco, Nicolas'}</p>
                                 </div>
                             </div>
 
@@ -285,8 +285,8 @@ function MusicBottomContent() {
                             <div data-value="7"  className="active-class-vertical">                        
                                 <div  className="bottom-nav-text">                          
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">4</p><span>{'<6.3.2020>'}</span></div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar Amsterdam'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Reiss, Former'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar Amsterdam'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Reiss, Former'}</p>
                                 </div>
                             </div>          
                         </div>
@@ -294,8 +294,8 @@ function MusicBottomContent() {
                             <div data-value="8"  className="active-class-vertical">                        
                                 <div  className="bottom-nav-text">                          
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">5</p><span>{'<6.3.2020>'}</span></div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Oosterbar Amsterdam'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Reiss, Former'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Oosterbar Amsterdam'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Reiss, Former'}</p>
                                 </div>
                             </div> 
                         </div>
@@ -303,8 +303,8 @@ function MusicBottomContent() {
                             <div data-value="9"  className="active-class-vertical">                       
                                 <div  className="bottom-nav-text">                     
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">6</p><span>{'<1.1.2020>'}</span></div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Secret Location'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Idayvuelta, Gerard, Darvu, Bruno&Marco, Nicolas'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Secret Location'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Idayvuelta, Gerard, Darvu, Bruno&Marco, Nicolas'}</p>
                                 </div>
                             </div>
                         </div>
@@ -312,8 +312,8 @@ function MusicBottomContent() {
                             <div data-value="0"  className="active-class-vertical">                      
                                 <div  className="bottom-nav-text">                      
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">7</p><span>{'<31.12.2019>'}</span></div> 
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> La Torre dels Lleons'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Clarens, Onut, John Heaven'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' La Torre dels Lleons'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Clarens, Onut, John Heaven'}</p>
                                 </div>
                             </div>
                         </div>
@@ -321,8 +321,8 @@ function MusicBottomContent() {
                             <div data-value="1" className="active-class-vertical">                      
                                 <div  className="bottom-nav-text">                          
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">8</p><span>{'<31.12.2019>'}</span></div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> La Torre dels Lleons'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Clarens, Onut, John Heaven'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' La Torre dels Lleons'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Clarens, Onut, John Heaven'}</p>
                                 </div>
                             </div>
                             
@@ -331,8 +331,8 @@ function MusicBottomContent() {
                             <div data-value="2"  className="active-class-vertical">                       
                                 <div  className="bottom-nav-text">                          
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">7</p><span>{'<9.11.2019>'}</span></div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Parc del Einna'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Clarens, Gerard, Vonvon, Hoder Mofeti'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Parc del Einna'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Clarens, Gerard, Vonvon, Hoder Mofeti'}</p>
                                 </div>
                             </div>
                         </div>
@@ -340,8 +340,8 @@ function MusicBottomContent() {
                             <div data-value="3"  className="active-class-vertical">                      
                                 <div  className="bottom-nav-text"> 
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">9</p><span>{'<20.9.2019>'}</span></div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<loc> Parc del Einna'}</p>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}>{'<lineup> Dani2000, Jay Darvishan, Sensat'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Parc del Einna'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Dani2000, Jay Darvishan, Sensat'}</p>
                                 </div>
                             </div>
                         </div>

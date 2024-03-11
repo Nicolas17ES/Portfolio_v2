@@ -19,7 +19,6 @@
   letter-spacing: .6px;
   cursor: pointer;
   color: rgb(var(--black));
-  transition: all 350ms ease;
 }
 
 

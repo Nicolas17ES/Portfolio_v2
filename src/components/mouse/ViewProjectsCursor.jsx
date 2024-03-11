@@ -9,9 +9,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // ViewProjectsCursor.js
 
 function ViewProjectsCursor({ text }) {
-  const { view_projects_cursor } = useContext(GlobalContext);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const { view_projects_cursor, mouse_position } = useContext(GlobalContext);
+  const [position, setPosition] = useState({ x: null, y: null });
+  const [cursorRendered, setCursorRendered] = useState(false);
   const cursorRef = useRef(null); // Use useRef to get a reference to the cursor element
+
+  useEffect(() => {
+    setPosition({x: mouse_position.x, y: mouse_position.y})
+  }, [])
 
   useEffect(() => {
     const updateCursorPosition = (event) => {
@@ -27,6 +32,7 @@ function ViewProjectsCursor({ text }) {
 
   useEffect(() => {
     if (cursorRef.current) {
+      setCursorRendered(true)
       cursorRef.current.style.left = `${position.x}px`;
       cursorRef.current.style.top = `${position.y}px`;
     }
@@ -41,28 +47,21 @@ function ViewProjectsCursor({ text }) {
         {
           opacity: 1,
           scale: 1,
-          duration: .5, // Duration of the animation
-          ease: 'linear', // Easing function for the animation
-          // onComplete: () => {
-          //   // Heartbeat animation that starts once the initial animation is complete
-          //   const tl = gsap.timeline({ repeat: -1, yoyo: true });
-          //   tl.to(cursor, {
-          //     scale: 1.27, // Scale up
-          //     duration: .75,
-          //     ease: 'ease-in-out',
-          //   })
-          // }
+          duration: .4, // Duration of the animation
+          ease: 'power1.out', // Easing function for the animation
         }
       );
     }
   }, [view_projects_cursor]);
   
 
-  return (
-    <div ref={cursorRef} className="custom-cursor">
-      <div className="cursor-inner">{text ? text : 'VIEW'}</div>
-    </div>
-  );
+  if(position.y === 0 || position.x === 0) return null;
+
+    return (
+      <div ref={cursorRef} className="custom-cursor">
+        <div className="cursor-inner">{text ? text : 'VIEW'}</div>
+      </div>
+    )
 }
 
 export default ViewProjectsCursor;

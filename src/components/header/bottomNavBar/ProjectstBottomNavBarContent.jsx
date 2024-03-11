@@ -48,7 +48,7 @@ function ProjectstBottomNavBarContent() {
     
 
     return (
-         <div style={{padding: '20px'}}>
+         <div>
             <div className='bottom-nav-content'>
                 <div data-value="4" className="active-class-vertical">                            
                     <div className="bottom-nav-text">

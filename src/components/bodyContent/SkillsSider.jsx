@@ -31,7 +31,7 @@ function SkillsSider() {
 
     
 
-    if(display_carousel){
+    // if(display_carousel){
         return (
             <div className="logos-container">
                  <div className="logos">
@@ -50,7 +50,7 @@ function SkillsSider() {
              </div>
             </div>
          );
-    }
+    // }
 }
 
 export default SkillsSider;

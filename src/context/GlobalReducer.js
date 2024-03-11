@@ -119,6 +119,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 project_index_hovered: action.payload,
             }
+        case 'SET_MOUSE_POSITION':
+            return {
+                ...state,
+                mouse_position: action.payload,
+            }
         default: 
             return state;
     }

@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from 'react'
 import GlobalContext from '../../context/GlobalContext'
 import './ButtonsBody.css'
 import '../../pages/music/Music.css'
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 /**
  * ButtonsBody Component
@@ -10,7 +12,7 @@ import '../../pages/music/Music.css'
  */
 function ButtonsBody({data}) {
     // Access global context for dispatching actions
-    const {dispatch, animation_value, navbar_location, carousel_index} = useContext(GlobalContext);
+    const {dispatch, display_body, navbar_location, carousel_index} = useContext(GlobalContext);
 
     // State to track the active (clicked or hovered) button index
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -53,6 +55,10 @@ function ButtonsBody({data}) {
             type: 'SET_ANIMATION_VALUE',
             payload: null
         })
+        dispatch({
+            type: 'SET_CAROUSEL_INDEX',
+            payload: index
+        })
         setIsCliked(true);
         setActiveIndex(index);
         dispatch({
@@ -86,12 +92,29 @@ function ButtonsBody({data}) {
     // Style for dimming inactive buttons
     const styles = { opacity: '0.5' };
 
-    // Render buttons with mapped data, event handlers, and dynamic styles
-   
+    // Render buttons with mapped data, event handlers, and dynamic styles one by one with gsap animation
+    useGSAP(() => {
+        if(display_body){
+            gsap.fromTo('.button-body', 
+                { yPercent: -350, opacity: 0}, // Starting properties
+                { yPercent: 0, 
+                    opacity: 1, 
+                    duration: .8,  
+                    ease: "power1.out", 
+                    delay: .5, 
+                    stagger: {
+                        each: 0.1, // Time between each animation start
+                        from: "end" // Start staggering from the end
+                  }, } // Ending properties
+            );
+        }
+      }, [display_body]);
+
+
     return (
         <section className="buttons-body-container text">
             {data.buttons.map((button, index) => {
-                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className={`button-body word fancy ${(carousel_index === index && navbar_location === 'music') ? 'highlight-button' : null}`} style={(activeIndex !== null && index !== activeIndex) ? styles : null}>{enhance(button.name)}</button>
+                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className={`button-body word fancy ${(carousel_index === index && navbar_location === 'music') ? 'highlight-button' : null}`} >{enhance(button.name)}</button>
             })}
         </section>
     )

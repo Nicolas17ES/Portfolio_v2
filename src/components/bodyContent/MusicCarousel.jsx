@@ -16,8 +16,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import CSSRulePlugin from "gsap/CSSRulePlugin";
+import MagneticEffect from '../mouse/MagneticEffect';
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(CSSRulePlugin);
 
 
 function MusicCarousel() {
@@ -41,9 +44,9 @@ function MusicCarousel() {
             const largeTextAfter = activeSlide.querySelectorAll('.large-text.after');
             const images = activeSlide.querySelectorAll('.image-wrap img');
             const commonAnimationOptions = {
-                x: 100,
+                x: 150,
                 opacity: 0,
-                duration: .85,
+                duration: 1.1,
                 ease: 'power2.inOut'
             };
     
@@ -52,7 +55,7 @@ function MusicCarousel() {
     
             images.forEach((image) => {
                 gsap.from(image, {
-                    scale: 1.15,
+                    scale: 1.30,
                     duration: 1.1,
                     ease: 'power2.inOut'
                 })
@@ -177,6 +180,46 @@ function MusicCarousel() {
     }
 
 
+
+
+    // ANIMATION TO LOAD THE IMAGE OVERLAY ON MOUNBT
+    useEffect(() => {        
+        const imageRevealReset = CSSRulePlugin.getRule(".image-wrap::before");
+        gsap.to(imageRevealReset, { duration: 0, cssRule: { width: "100%" } });
+        
+        // Your animation setup
+        const imageReveal = CSSRulePlugin.getRule(".image-wrap::before");
+        let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
+                    .to(imageReveal, { duration: 1.4, delay: .5, cssRule: { width: "0%" } });
+        
+        // Cleanup function to kill the animation when the component unmounts or conditions change
+        return () => {
+          tl.kill(); // This will kill the timeline, stopping all animations in it
+        };
+    }, []);
+
+
+
+    // ANIMATE THE CAROUSEL INFO ON MOUNT
+    useGSAP(() => {
+        if(display_body){
+            gsap.fromTo('.carousel-info-element', 
+                { yPercent: -350, opacity: 0}, // Starting properties
+                { yPercent: 0, 
+                    opacity: 1, 
+                    duration: .8,  
+                    ease: "power1.out", 
+                    delay: .5, 
+                    stagger: {
+                        each: 0.1, // Time between each animation start
+                        from: "end" // Start staggering from the end
+                  }, } // Ending properties
+            );
+        }
+      }, [display_body]);
+    
+
+
     return (
            <section className="carousel">
              <div className="wrapper">
@@ -248,23 +291,27 @@ function MusicCarousel() {
                         <div className="carousel-info">
                             {activeIndexState !== null ? (
                                 <>
-                                    <span className="designer">By: {carouselData[activeIndexState].designer}</span>
-                                    <span className="date">{carouselData[activeIndexState].date}</span>
+                                    <span className="designer carousel-info-element">By: {carouselData[activeIndexState].designer}</span>
+                                    <span className="date carousel-info-element">{carouselData[activeIndexState].date}</span>
                                 </>
                             ) : (
                                 <>
-                                    <span className="designer">By: Marina</span>
-                                    <span className="date">15 Feb 2023</span>
+                                    <span className="designer carousel-info-element">By: Marina</span>
+                                    <span className="date carousel-info-element">15 Feb 2023</span>
                                 </>
                             )}
-                            <div className="carousel-nav">
+                            <div className="carousel-nav carousel-info-element">
+                                <MagneticEffect>
                                 <button className="btn prev swiper-button-prev"> 
                                 <IoIosArrowDropleft className='carousel-icon'/>                          
                                 </button>
+                                </MagneticEffect>
                                 <span className="counter-indicator">{activeIndexState + 1}/3</span>
+                                <MagneticEffect>
                                 <button className="btn next swiper-button-next">
                                 <IoIosArrowDropright className='carousel-icon'/> 
                                 </button>
+                                </MagneticEffect>
                             </div>
                         </div>
                     {/* </div> */}

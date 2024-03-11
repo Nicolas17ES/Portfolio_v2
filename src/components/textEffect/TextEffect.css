@@ -63,10 +63,13 @@
   }
 }
 
+
+
 .icon-replica-inner-container{
   position: absolute;
   top: 11px;
   left: 7px;
+  padding: 10px;
 }
 
 .icon-replica{

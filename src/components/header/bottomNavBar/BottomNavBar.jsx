@@ -54,11 +54,27 @@ function BottomNavBar() {
   }, []);
 
 
+  // function that will hide or show the scrollbar depending on mouseneter
+  const displayScrollBar = (value) => {
+    const contentDivs = sectionRef.current.querySelectorAll('.display-bottom');
+
+    contentDivs.forEach(div => {
+      if (value) {
+        // Show scrollbar
+        div.style.overflowY = 'auto';
+      } else {
+        // Hide scrollbar
+        div.style.overflowY = 'hidden';
+      }
+    });
+  };
+
+
 
   return (
     <>
     {/* <MouseTracker /> */}
-    <section ref={sectionRef}>
+    <section style={{padding: finalLocation === 'about' && '0'}} onMouseEnter={() => displayScrollBar(true)} onMouseLeave={() => displayScrollBar(false)} ref={sectionRef}>
       <div className={finalLocation !== 'projects' ? 'hide-bottom' : 'display-bottom'}>
         <ProjectstBottomNavBarContent />
       </div>
