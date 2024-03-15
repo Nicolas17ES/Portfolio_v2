@@ -23,7 +23,7 @@ function CollectivesHeader() {
                 end: "bottom top",
                 scrub: 1, // Smooth out the animation on fast scrolls
                 toggleActions: "play none none reverse",
-                smoothChildTiming: true,
+                smoothChildTiming: true
             }
         });
     
@@ -40,18 +40,7 @@ function CollectivesHeader() {
         }, "-=1.5"); // Overlap the animations for smooth transition
     }, []);
 
-
-    // useGSAP(() => {
-    //     gsap.from(".collectives-header-title", {
-    //       duration: 1,
-    //       autoAlpha: 0,
-    //       y: -50,
-    //       ease: "power1.out",
-    //       stagger: 0.3,
-    //       delay: .5,
-    //     });
-    //   }, []);
-    useEffect(() => {
+   useEffect(() => {
         const gsapMatchMedia = gsap.matchMedia();
     
         gsapMatchMedia.add("(min-width: 1441px)", () => {
@@ -62,7 +51,6 @@ function CollectivesHeader() {
               start: "top+=230vh center",
               end: "bottom top",
               scrub: 1,
-              markers: true,
               toggleActions: "play none none reverse",
             },
           }).to(".collectives-header-title", {
@@ -107,14 +95,12 @@ function CollectivesHeader() {
           gsapMatchMedia.revert();
         };
       }, []);
+    
+    
 
 
 
-      
-      
 
-      
-      
 
     
 
