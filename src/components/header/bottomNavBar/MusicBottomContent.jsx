@@ -1,12 +1,13 @@
 import './BottomContent.css'
 import { useEffect, useState, useContext, useRef } from 'react';
 import GlobalContext from '../../../context/GlobalContext';
-import { FaArrowLeft } from "react-icons/fa";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 
 function MusicBottomContent() {
 
-    const { slide_active_index, button_state } = useContext(GlobalContext);
+    const { slide_active_index, button_state, project_index_hovered } = useContext(GlobalContext);
     const [changeCounter, setChangeCounter] = useState(0);
 
 
@@ -60,8 +61,54 @@ function MusicBottomContent() {
         2: 'Aurea_by_WC'       
     }
 
+    // dependibng on the player thats being hovered show one paragraph and hide the others
+    const paragraphRefTzena = useRef(null);
+    const paragraphRefIkaUshrenko = useRef(null);
+    const paragraphRefMathew = useRef(null);
+    const paragraphRefPickles = useRef(null);
 
-    // animation that will make all letters dissapear
+    useEffect(() => {
+        // Function to reset all paragraphs to their initial state
+        const resetParagraphs = () => {
+            gsap.to([paragraphRefTzena.current, paragraphRefIkaUshrenko.current, paragraphRefMathew.current, paragraphRefPickles.current], {
+                height: 0,
+                opacity: 0,
+                duration: 0.5,
+                ease: 'power1.in',
+            });
+        };
+    
+        // Function to expand the selected paragraph
+        const expandParagraph = (paragraph) => {
+            gsap.to(paragraph, {
+                height: 'auto', // Assuming you want it to expand to its natural height
+                opacity: 1,
+                duration: 0.5, // Adjust duration as needed
+                ease: 'power1.out',
+                onComplete: () => {
+                    // Scroll the paragraph into view after the expansion animation completes
+                    paragraph.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            });
+        };
+    
+        // Reset paragraphs first to ensure only one can expand at a time
+        resetParagraphs();
+    
+        // Determine which paragraph to expand based on the hovered index
+        let paragraphToExpand = project_index_hovered === 1 ? paragraphRefTzena.current : 
+                                project_index_hovered === 2 ? paragraphRefIkaUshrenko.current : 
+                                project_index_hovered === 3 ? paragraphRefMathew.current :
+                                project_index_hovered === 4 ? paragraphRefPickles.current : null;
+    
+        if (paragraphToExpand) {
+            expandParagraph(paragraphToExpand);
+        }
+    }, [project_index_hovered]);
+    
 
     
 
@@ -78,6 +125,9 @@ function MusicBottomContent() {
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">1</p><span>{'<13.1.2024>'}</span> </div>
                                     <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {'Les Enfants Brillants'}</p>
                                     <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span> {' Tzena, Jason, Bruno&Marco'}</p>
+                                    <p ref={paragraphRefTzena}  className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
+                                    <span>{'<resume>'}</span> {'Event we did at Les Enfants Brillants where we invited the talented Slovenian artist Tzena to healdine the party along local talent Jason. On warm up duties we had our residents Bruno&Marco.'}
+                                    </p> 
                                 </div>
                             </div>
                         </div>
@@ -88,6 +138,9 @@ function MusicBottomContent() {
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">2</p><span>{'<18.111.2023>'}</span> </div>
                                     <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span>{' Les Enfants Brillants'}</p>
                                     <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Ika & Usherenko, Conor Brophy'}</p>
+                                    <p ref={paragraphRefIkaUshrenko}  className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
+                                    <span>{'<resume>'}</span> {'For our November residency at Enfants we had the pleasure to host Georgian legends Ika & Usherenko, owners of Small Moves record shop and label and bookers of legendary club Mtkvarze. On warm up duties we had our resident Conor.'}
+                                    </p> 
                                 </div>
                             </div>
                         </div>
@@ -96,8 +149,11 @@ function MusicBottomContent() {
                             
                                 <div className="bottom-nav-text">
                                     <div className="bottom-nav--title"><p className="bottom-nav-number">3</p><span>{'<26.5.2023>'}</span> </div>
-                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span>{'Les Enfants Brillants'}</p>
+                                    <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span>{'Red 58'}</p>
                                     <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Mathew Neequaye, Bruno&Marco'}</p>
+                                    <p ref={paragraphRefMathew}  className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
+                                        <span>{'<resume>'}</span> {'For our first night at club Red58, we welcomed Butter Side Up resident Mathew Neequaye, who brought an exceptional selection of tracks.  Alongside him, our residents Bruno & Marco delivered equally compelling sets.'}
+                                    </p> 
                                 </div>
                             </div>
                         </div>
@@ -108,6 +164,9 @@ function MusicBottomContent() {
                                 <div className="bottom-nav--title"><p className="bottom-nav-number">4</p><span>{'<14.1.2023>'}</span></div>
                                 <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<loc>'}</span> {' Les Enfants Brillants'}</p>
                                 <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<lineup>'}</span>{' Tommy Pickles, Christian, Conor Brophy'}</p>
+                                <p ref={paragraphRefPickles}  className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
+                                    <span>{'<resume>'}</span> {'We had the privilege of featuring Tommy Pickles, a DJ hailing from the UK, as our headliner. Known for his profound understanding of the dance floor. The night started with an energizing warm-up set by our very own resident, Conor.'}
+                                </p> 
                             </div>
                             </div>
                         </div>

@@ -146,7 +146,7 @@
  
 /* MUSIC CAROUSEL */
 .carousel{
-  padding-top:45px;
+  padding-top: 20px;
   font-family: 'Poppins';
 }
 .wrapper{
@@ -419,3 +419,307 @@
   transform: translate(-50%, -50%);
   color: rgb(var(--white));
 }
+
+/* MUSIC COLLECTIVES TITLE */
+.collectives-header-container{
+  padding: 30px;
+  margin: 0 0 150px 0;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  position: relative;
+}
+
+.collectives-header-title{
+  font-size: 8rem;
+  text-transform: uppercase;
+  text-align: left;
+  z-index: 1;
+  line-height: 7rem;
+}
+.collectives-header-title:nth-child(2){
+  margin-bottom: 400px;
+}
+
+.collectives-header-image{
+  width: 700px;
+  height: auto;
+  position: absolute;
+  top: 145px;
+  right: 30px;
+  z-index: -1;
+}
+
+.collectives-header-paragraph-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.collectives-header-paragraph{
+  font-family: 'Poppins';
+  text-transform: uppercase;
+  font-size: 2.3rem;
+  width: 70%;
+
+}
+.collectives-header-paragraph .small{
+  font-size: 1.2rem;
+}
+.glass-icon{
+  margin: 0 8px;
+  width: 23px;
+  height: 23px;
+}
+.glass-icon2{
+ transform: rotate(270deg);
+}
+
+.collectives-scroll-bar-container{
+  transform: rotate(-90deg);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  right: -165px;
+  bottom: -70px;
+}
+.collectives-scroll-bar{
+  width: 200px;
+  height: 2px;
+  background-color: rgb(var(--black));
+}
+.scroll-text{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .9rem;
+}
+.scroll-boxes{
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgb(var(--red));
+}
+
+
+/* AUDIO PLAYERS AND PARTIES INTO */
+
+.audio-player{
+  border-bottom: .3px solid rgb(var(--black));
+  width: 100%;
+  background-color: rgb(var(--white));
+  height: 170px;
+  position: relative; 
+  overflow: hidden;
+  transition: color 0.25s ease;
+
+  display: flex;
+  align-items: center;
+  /* transition-delay: 0.5s;  */
+}
+
+
+.audio-player::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%; /* Start width at 0% */
+  height: 100%;
+  background-color: rgb(var(--black)); /* Set to desired hover background color */
+  transition: width 0.5s ease; /* Animate the width change */
+  z-index: 0; /* Ensure the content stays on top */
+  transition: all .2s ease-in-out;
+
+}
+
+.audio-player:hover::before {
+  width: 100%; 
+}
+.audio-player:hover {
+  color: rgb(var(--white));
+}
+
+
+.audio-player:hover .player-data-container-top{
+  left: 20px;
+}
+.player-data-container-top{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 100%;
+  width: 100%;
+  padding: 30px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  transition: left .2s ease-in-out;
+}
+
+.player-resume{
+  width: 80%;
+  font-size: 1.1rem;
+  letter-spacing: 1.4px;
+  line-height: 1.35rem;
+  text-transform: uppercase;
+  font-family: 'Poppins';
+  z-index: 99;
+}
+
+
+
+.player-data-bottom{
+
+}
+
+
+.player-data-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.player-data-left-playing{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5%;
+  color: rgb(var(--white)) !important;
+}
+
+.play-button{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  background-color: rgb(var(--white));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(var(--black));
+  cursor: pointer;
+  z-index: 99;
+  transition: transform .3s;
+}
+.play-button:hover{
+ transform: scale(.93);
+}
+.play-button .icon-player{
+  width: 15px !important;
+  height: 15px !important;
+  color: rgb(var(--black)) !important;
+}
+
+.player-artist{
+  margin-left: 20px;
+  text-transform: uppercase;
+  font-size: 3.6rem;
+  font-weight: 100;
+  z-index: 99;
+}
+
+.time-player-container{
+  font-family: 'Poppins';
+  align-self: flex-start;
+  padding-top: 8px;
+  margin-left: 20px;
+  z-index: 99;
+  font-size: 1.3rem;
+}
+.time-player-container-playing{
+  font-family: 'Poppins';
+  z-index: 99;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+ 
+}
+
+.player-title{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Poppins';
+  font-weight: 100;
+  z-index: 99;
+}
+
+.player-type{
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 20px;
+  right: 35px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.player-type .player-icon{
+  width: 20px;
+  height: 20px;
+}
+
+/* Base styles for the input[type="range"] */
+.player-progress-bar {
+  -webkit-appearance: none; /* Override default appearance */
+  appearance: none;
+  width: 50%; /* Full width - you can adjust this */
+  height: 1px; /* Height of the track */
+  background: rgb(var(--white)); /* Background color of the track */
+  outline: none; 
+  /* transition: opacity .2s;  */
+}
+
+/* Hover effect for the slider */
+.player-progress-bar:hover {
+  opacity: 1; /* Fully opaque on hover */
+}
+
+/* Webkit browsers like Chrome and Safari */
+.player-progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default appearance */
+  appearance: none;
+  width: 10px; /* Width of the thumb */
+  height: 10px; /* Height of the thumb */
+  background: rgb(var(--white)); /* Thumb background color */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%; /* Make the thumb round */
+  padding-bottom: 10px;
+  margin-top: -4px;
+  cursor: grab;
+}
+
+/* Firefox */
+.player-progress-bar::-moz-range-thumb {
+  -webkit-appearance: none; /* Override default appearance */
+  appearance: none;
+  width: 10px; /* Width of the thumb */
+  height: 10px; /* Height of the thumb */
+  background: rgb(var(--white)); /* Thumb background color */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%;
+  padding-bottom: 10px;
+  margin-top: -4px;
+  cursor: grab;
+}
+
+/* For the track (Webkit) */
+.player-progress-bar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1px;
+  background: rgb(var(--white)); /* Track color */
+}
+
+/* For the track (Firefox) */
+.player-progress-bar::-moz-range-track {
+  -webkit-appearance: none; /* Override default appearance */
+  appearance: none;
+  width: 50%; /* Full width - you can adjust this */
+  height: 1px; /* Height of the track */
+  background: rgb(var(--white)); /* Background color of the track */
+  outline: none; 
+}
+
+

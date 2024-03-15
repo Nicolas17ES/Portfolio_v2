@@ -94,7 +94,7 @@
 .icon-replica:hover{
   transform: scale(.9);
   color: rgb(var(--white)) !important;
-  background-color: rgb(var(--black)) !important;
+  background-color: rgb(var(--red)) !important;
 }
 
 

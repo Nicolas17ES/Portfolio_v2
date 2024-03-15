@@ -20,57 +20,57 @@ function MusicBottom() {
         setChangeCounter(prev => prev + 1);
     }, [button_state?.value]);
 
-
-    useGSAP(() => {
+    useEffect(() => {
         if (display_image_overlay || navbar_location !== 'music') {
-          const titles = gsap.utils.toArray('.bottom-nav-paragraph');
+          const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
           
-          titles.forEach(title => {
-            const splitTitle = new SplitTextJS(title);
+          paragraphs.forEach(paragraph => {
+            const originalText = paragraph.textContent;
+            paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
+            
+            originalText.split(' ').forEach((word, index, array) => {
+              const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
+              const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
+              paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
+            });
       
-            splitTitle.chars.forEach((char, index) => {
-              const tlx = gsap.timeline(); // Create a new timeline for each character
-        
-              tlx.from(char, {
-                opacity: 1,
-                duration: 0.2, // Adjust the duration as needed
-                delay: "random(0, 2)" // Add a delay based on the index to stagger the animations
-              }, '<');
-        
-              tlx.to(char, {
-                opacity: 0,
-                duration: 0.2, // Adjust the duration as needed
-              }, '<0.1');
+            // Now animate each span to fade in
+            gsap.to(paragraph.querySelectorAll('span'), {
+              opacity: 0,
+              duration: 0.2,
+              stagger: 0.05,
+              delay: index => Math.random() * 2, // Random delay between 0 and 2 seconds
+              ease: "power1.inOut"
             });
           });
         }
       }, [display_image_overlay, navbar_location]);
-
-    useGSAP(() => {
-        if (display_body && navbar_location === 'music') {
-          const titles = gsap.utils.toArray('.bottom-nav-paragraph');
-          
-          titles.forEach(title => {
-            const splitTitle = new SplitTextJS(title);
       
-            splitTitle.chars.forEach((char, index) => {
-              const tlx = gsap.timeline(); // Create a new timeline for each character
-        
-              tlx.from(char, {
-                opacity: 0,
-                duration: 0.2, // Adjust the duration as needed
-                delay: "random(0, 2)" // Add a delay based on the index to stagger the animations
-              }, '<');
-        
-              tlx.to(char, {
-                opacity: 1,
-                duration: 0.2, // Adjust the duration as needed
-              }, '<0.1');
+    useEffect(() => {
+      if (display_body && navbar_location === 'music') {
+          const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
+          
+          paragraphs.forEach(paragraph => {
+            const originalText = paragraph.textContent;
+            paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
+            
+            originalText.split(' ').forEach((word, index, array) => {
+              const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
+              const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
+              paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
+            });
+      
+            // Now animate each span to fade in
+            gsap.to(paragraph.querySelectorAll('span'), {
+              opacity: 1,
+              duration: 0.1,
+              stagger: 0.05,
+              delay: index => Math.random() * 2, // Random delay between 0 and 2 seconds
+              ease: "power1.inOut"
             });
           });
         }
       }, [display_body, navbar_location]);
-      
 
 
 
@@ -87,7 +87,7 @@ function MusicBottom() {
                                 My journey in the music industry spans across three distinct music collectives, each with a unique focus on promoting underground talent.
                             </p>
                             <p className="bottom-nav-paragraph">
-                                Currently, I'm engaged with <span className='red-highlight'>Sonido Club</span> in Barcelona, where I contribute to organizing music events that blend local and international artists.
+                                Currently, I'm engaged with <span className='red-highlight'>Sonido_Club</span> in Barcelona, where I contribute to organizing music events that blend local and international artists.
                             </p>
                             <p className="bottom-nav-paragraph">
                                 Previously, I collaborated with <span className='red-highlight'>Aurea</span> in Barcelona and <span className='red-highlight'>Unsilenced</span> in Amsterdam. This are some of the artists involved:

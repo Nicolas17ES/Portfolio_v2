@@ -10,7 +10,8 @@ import SplitTextJS from "split-text-js";
 gsap.registerPlugin(ScrollTrigger);
 
 function SkillsSider() {
-    const { display_carousel, dispatch } = useContext(GlobalContext);
+    const [expand, setExpand] = useState(null)
+    const { display_carousel, lateral_navbar, hide_nav, shrink_body, display_header } = useContext(GlobalContext);
 
 
     const [namesArray, setNamesArray] = useState([
@@ -33,7 +34,12 @@ function SkillsSider() {
 
     // if(display_carousel){
         return (
-            <div className="logos-container">
+            <>
+            <div onMouseEnter={() => setExpand(1)} onMouseLeave={() => setExpand(11)} className={`${
+                (lateral_navbar && display_header && !hide_nav && !shrink_body) ? 'logos-container' :
+                (hide_nav && !shrink_body) ? 'logos-container-expand' :
+                shrink_body ? 'logos-container-shrink' : null
+                }`}>
                  <div className="logos">
                  <div className="logos-slider">
                      <div className="logos-slide">
@@ -49,6 +55,23 @@ function SkillsSider() {
                  </div>
              </div>
             </div>
+            <div style={{display: (hide_nav && !shrink_body) ? 'none' : 'block'}} onMouseEnter={() => setExpand(1)} onMouseLeave={() => setExpand(11)} className={`logos-container-opposite ${expand === 1 ? 'expand-height-slider' : expand === 11 ? 'shrink-height-slider' : null}`}>
+                 <div className="logos">
+                 <div className="logos-slider">
+                     <div className="logos-slide">
+                         {namesArray.map((name, index) => (
+                             <p key={index} className="slider-skill">{name}</p>
+                         ))}
+                     </div>
+                     <div className="logos-slide">
+                         {namesArray.map((name, index) => (
+                             <p key={index} className="slider-skill">{name}</p>
+                         ))}
+                     </div>
+                 </div>
+             </div>
+            </div>
+            </>
          );
     // }
 }

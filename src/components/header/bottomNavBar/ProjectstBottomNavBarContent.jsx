@@ -30,6 +30,13 @@ function ProjectstBottomNavBarContent() {
                 opacity: 1,
                 duration: 0.5, // Adjust duration as needed
                 ease: 'power1.out',
+                onComplete: () => {
+                    // Scroll the paragraph into view after the expansion animation completes
+                    paragraph.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
             });
         };
     
@@ -69,7 +76,7 @@ function ProjectstBottomNavBarContent() {
                         <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<title>'}</span> {'Link In Bio'}</p>
                         <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<technologies>'}</span> {'React, MongoDB, Google Cloud'}</p>
                         <p ref={paragraphRefBio} className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
-                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
+                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
                         </p> 
                     </div>
                 </div>
@@ -82,7 +89,7 @@ function ProjectstBottomNavBarContent() {
                         <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<title>'}</span> {'Aulart Tools'}</p>
                         <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<technologies>'}</span> {'NodeJs, React, GSAP, Google Cloud, Mysql'}</p>
                         <p ref={paragraphRefTools} className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
-                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
+                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis. autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
                         </p> 
                     </div>
                 </div>

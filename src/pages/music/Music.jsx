@@ -7,7 +7,8 @@ import useBodyAnimation from '../../hooks/useBodyAnimation';
 import GlobalContext from '../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import Sonido from '../../components/musicCollectives/Sonido';
+import CollectivesHeader from '../../components/musicCollectives/CollectivesHeader';
 /**
  * The Music component is responsible for rendering the music section of the application.
  * It utilizes various hooks and context to manage its state and interactions.
@@ -80,7 +81,8 @@ function Music() {
                     </div>
                 ) : (
                     <div key={animationKey} className="music-body-container">
-                        {buttonIndexReferences[button_state.value] === 'Sonido_Club' && 'Sonido'}
+                        <CollectivesHeader/>
+                        {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <Sonido/>}
                         {buttonIndexReferences[button_state.value] === 'Unsilenced' && 'Unsilenced'}
                         {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && 'Aurea'}
                     </div>

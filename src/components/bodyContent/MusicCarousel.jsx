@@ -136,30 +136,30 @@ function MusicCarousel() {
       }, [display_image_overlay]);
      
 
-      useGSAP(() => {
-        if (display_body && navbar_location === 'music') {
-          const titles = gsap.utils.toArray('.bottom-nav-paragraph');
+    //   useGSAP(() => {
+    //     if (display_body && navbar_location === 'music') {
+    //       const titles = gsap.utils.toArray('.bottom-nav-paragraph');
           
-          titles.forEach(title => {
-            const splitTitle = new SplitTextJS(title);
+    //       titles.forEach(title => {
+    //         const splitTitle = new SplitTextJS(title);
       
-            splitTitle.chars.forEach((char, index) => {
-              const tlx = gsap.timeline(); // Create a new timeline for each character
+    //         splitTitle.chars.forEach((char, index) => {
+    //           const tlx = gsap.timeline(); // Create a new timeline for each character
         
-              tlx.from(char, {
-                opacity: 0,
-                duration: 0.2, // Adjust the duration as needed
-                delay: "random(0, 2)" // Add a delay based on the index to stagger the animations
-              }, '<');
+    //           tlx.from(char, {
+    //             opacity: 0,
+    //             duration: 0.2, // Adjust the duration as needed
+    //             delay: "random(0, 2)" // Add a delay based on the index to stagger the animations
+    //           }, '<');
         
-              tlx.to(char, {
-                opacity: 1,
-                duration: 0.2, // Adjust the duration as needed
-              }, '<0.1');
-            });
-          });
-        }
-      }, [display_body, navbar_location]);
+    //           tlx.to(char, {
+    //             opacity: 1,
+    //             duration: 0.2, // Adjust the duration as needed
+    //           }, '<0.1');
+    //         });
+    //       });
+    //     }
+    //   }, [display_body, navbar_location]);
       
 
     useGSAP(() => {
@@ -190,7 +190,7 @@ function MusicCarousel() {
         // Your animation setup
         const imageReveal = CSSRulePlugin.getRule(".image-wrap::before");
         let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
-                    .to(imageReveal, { duration: 1.4, delay: .5, cssRule: { width: "0%" } });
+                    .to(imageReveal, { duration: 1.6, delay: .7, cssRule: { width: "0%" } });
         
         // Cleanup function to kill the animation when the component unmounts or conditions change
         return () => {
