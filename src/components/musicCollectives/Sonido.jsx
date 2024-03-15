@@ -25,7 +25,7 @@ function Sonido() {
             type: <PiVinylRecordLight className="player-icon"/>,
             title: 'Allegro',
             artist: 'Nace Tzena',
-            image: SonidoXTzena,
+            image:  <img  src={SonidoXTzena} alt="" className="player-image" />,
         },
         {
             id: 2,
@@ -34,7 +34,7 @@ function Sonido() {
             type: <PiRadioLight  className="player-icon"/>,
             title: 'BadumTish',
             artist: 'Ika & Usherenko',
-            image: SonidoxIkaUshe,
+            image: <img  src={SonidoxIkaUshe} alt="" className="player-image" />,
         },
         {
             id: 3,
@@ -43,7 +43,7 @@ function Sonido() {
              type: <PiRadioLight className="player-icon"/>,
             title: 'Dimensions',
             artist: 'Mathew Neequaye',
-            image: SonidoxMathew,
+            image: <img  src={SonidoxMathew} alt="" className="player-image" />,
         },
         {
             id: 4,
@@ -52,7 +52,7 @@ function Sonido() {
             type: <PiRadioLight className="player-icon"/>,
             title: 'Cartulis',
             artist: 'Tommy Pickles',
-            image: SonidoxTommy,
+            image: <img  src={SonidoxTommy} alt="" className="player-image" />,
         },
      ]
 
@@ -77,12 +77,7 @@ function Sonido() {
 
 
     return (
-        // <div style={{marginTop: '30px'}}>
-        //     {audioData.map((audio, index) => (
-        //         <SoundCloudPlayer key={index} audio={audio}/>
-        //     ))}
-        // </div>
-         <div style={{marginTop: '30px'}} onMouseLeave={handleMouseLeave}>
+         <div style={{margin: '30px 0px 60px 0'}} onMouseLeave={handleMouseLeave}>
          {audioData.map((audio, index) => (
              <div onMouseEnter={() => handleMouseEnter(index)} key={audio.id}>
                  <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />

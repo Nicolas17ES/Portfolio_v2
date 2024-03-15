@@ -1,24 +1,122 @@
 import GlobalContext from "../../context/GlobalContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ReissUnsilenced from '../../images/ReissUnsilenced.jpeg';
 import WhiteChocoNye from '../../images/WhiteChocoNye.jpeg';
 import { GiMagnifyingGlass } from "react-icons/gi";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 function CollectivesHeader() {
-    //  Groove Legacy
-    // BPM Archives
-    // Club Chronicles
-    // Stories from the heart of the dance floor.
-    // sonic adventures
-    // rom dusk till dawn.
-    // Behind the doors 
-    //  Tales of the
+   
+      
+
+    useGSAP(() => {
+        gsap.registerPlugin(ScrollTrigger);
+    
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".collectives-header-image",
+                start: "top center+=100", // Adjust these values as needed
+                end: "bottom top",
+                scrub: 1, // Smooth out the animation on fast scrolls
+                toggleActions: "play none none reverse",
+                smoothChildTiming: true,
+            }
+        });
+    
+        tl.from(".collectives-header-image", {
+            scale: 0.7,
+            autoAlpha: .3,
+            ease: "power2.out", // A smoother easing function
+            duration: 1.5, // A longer duration for smoother transition
+        })
+        .to(".collectives-header-image", {
+            scale: 1.09,
+            ease: "none",
+            duration: 1.5, // Consistent with the duration for scaling up
+        }, "-=1.5"); // Overlap the animations for smooth transition
+    }, []);
 
 
-    // Unraveling the soundtrack that define our gatherings.
-    // Diving into the next few lines, you'll discover the soundtracks that unravel the essence of our gatherings.
+    // useGSAP(() => {
+    //     gsap.from(".collectives-header-title", {
+    //       duration: 1,
+    //       autoAlpha: 0,
+    //       y: -50,
+    //       ease: "power1.out",
+    //       stagger: 0.3,
+    //       delay: .5,
+    //     });
+    //   }, []);
+    useEffect(() => {
+        const gsapMatchMedia = gsap.matchMedia();
+    
+        gsapMatchMedia.add("(min-width: 1441px)", () => {
+          // Setup for larger screens
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: ".collectives-header-container",
+              start: "top+=230vh center",
+              end: "bottom top",
+              scrub: 1,
+              markers: true,
+              toggleActions: "play none none reverse",
+            },
+          }).to(".collectives-header-title", {
+            scale: 0.7,
+            x: -200,
+            y: -200,
+            ease: "none",
+            duration: 1.5,
+          });
+        });
+    
+        gsapMatchMedia.add("(max-width: 1440px)", () => {
+          // Setup for smaller screens
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: ".collectives-header-container",
+              start: "top+=168vh center",
+              end: "bottom top",
+              scrub: 1,
+              markers: true,
+              toggleActions: "play none none reverse",
+            },
+          })
+          .to(".collectives-header-title:nth-child(1)", {
+            scale: 0.7,
+            x:-200,
+            y: -200,
+            ease: "none",
+            duration: 1.5,
+          })
+          .to(".collectives-header-title:nth-child(2)", {
+            scale: 0.7,
+            x: 200,
+            y: -200,
+            ease: "none",
+            duration: 1.5,
+          }, "<");
+        });
+    
+        // Cleanup function to revert animations when the component unmounts
+        return () => {
+          gsapMatchMedia.revert();
+        };
+      }, []);
+
+
+
+      
+      
+
+      
+      
+
+    
 
 
     return (

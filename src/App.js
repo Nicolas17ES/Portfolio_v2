@@ -18,13 +18,16 @@ import ScreenOverlay from './components/shared/ScreenOverlay';
 import Footer from './components/header/Footer'
 import ViewProjectsCursor from './components/mouse/ViewProjectsCursor';
 import useResetScroll from './hooks/useResetScroll'
+import { AudioPlayerProvider } from './context/AudioPlayerContext';
 
 function App() {
   // This is the main entry point of your React application.
   // It wraps the entire application with the GlobalProvider, which provides global state to child components.
   return (
     <GlobalProvider>
+      <AudioPlayerProvider>
       <WrappedApp />
+      </AudioPlayerProvider>
     </GlobalProvider>
   );
 }
