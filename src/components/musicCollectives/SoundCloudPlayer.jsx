@@ -110,36 +110,36 @@ function SoundCloudPlayer({audio, isHovered}) {
         }
     }, [isPlaying, currentPlayingId, audio.id])
 
+    
     // useEffect(() => {
-      
-    //     const sectionElement = document.querySelector('.soundcloud-player-container');
-    //       if (sectionElement) {
-      
-    //         const onMouseEnter = () => {
-    //           setEntered(true)
-    //           // Animation from scale 0 to 1 and from left to right
-    //           gsap.fromTo('.player-image-one', { scale: 0, xPercent: -100, opacity: 0 }, { scale: 1, xPercent: 100, yPercent: -10, duration: 0.7, ease: 'power1.out', opacity: 1 });
-    //         };
-      
-    //         const onMouseLeave = () => {
-    //           // Optionally, add an animation for when the mouse leaves
-    //           gsap.fromTo('.player-image-one', { scale: 1, xPercent: 120, yPercent: -20, ease: 'power1.out', opacity: 1 }, { scale: 0, duration: 0.7, xPercent: -100, opacity: 0, yPercent: 0 });
-    //         };
-      
-    //         sectionElement.addEventListener('mouseenter', onMouseEnter);
-    //         sectionElement.addEventListener('mouseleave', onMouseLeave);
-      
-    //         return () => {
-    //           sectionElement.removeEventListener('mouseenter', onMouseEnter);
-    //           sectionElement.removeEventListener('mouseleave', onMouseLeave);
-    //         };
-    //       }
-    //     }, []);
+    //     gsap.registerPlugin(ScrollTrigger);
+        
+    //     const targets = gsap.utils.toArray('.soundcloud-player-container'); // Class "animatable" is a generic class you'd add to each element you want to animate
+        
+    //     // targets.forEach((target, index) => {
+    //         gsap.from('.soundcloud-player-container', {
+    //             // Choose either 'x' or 'y' for the direction of the animation
+    //             x: -100, // for left or -100 for bottom animation, use 'y: 100'
+    //             duration: 0.5,
+    //             ease: 'power1.out',
+    //             scrollTrigger: {
+    //                 markers: true,
+    //                 trigger: '.soundcloud-player-container',
+    //                 start: "top 85%", // Adjust as needed
+    //                 end: "top 70%",
+    //                 // once: true, // Ensures the animation only happens once
+    //             }
+    //         });
+    //     // });
+    // }, []);
+
+
+    
+
 
     if(!audio) return null
 
     return (
-        <>
         <section style={{borderTop: audio.id === 1 ? '.3px solid rgb(var(--black))' : null}} className="soundcloud-player-container">
             
             <div className="audio-player">
@@ -185,8 +185,7 @@ function SoundCloudPlayer({audio, isHovered}) {
                 )}              
             </div>
         </section>
-        
-        </>
+    
     );
 }
 

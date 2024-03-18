@@ -1,6 +1,6 @@
 .bottom-nav-title {
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-bottom: 20px;
 }
 
@@ -17,6 +17,11 @@
   position: relative;
   z-index: 1;
 }
+
+.bottom-nav-content-projects, .bottom-nav-content-music{
+  opacity: 0;
+}
+
 
 .active-class-vertical {
 }

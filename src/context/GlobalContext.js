@@ -43,6 +43,7 @@ export const GlobalProvider = ({children}) => {
         animation_text_started: null,      
         view_projects_cursor: false,      
         project_index_hovered: false,      
+        change_slide: {value: 0, origin: null},      
         mouse_position:  { x:0, y: 0 },      
     }
 
@@ -71,6 +72,7 @@ export const GlobalProvider = ({children}) => {
         view_projects_cursor: state.view_projects_cursor,
         project_index_hovered: state.project_index_hovered,
         mouse_position: state.mouse_position,
+        change_slide: state.change_slide,
         dispatch,
     }}>
         {children}

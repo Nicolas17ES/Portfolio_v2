@@ -1,10 +1,10 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
 import { useContext, useState } from "react";
-import Tommy from '../../audio/TommyPickles.mp3'
-import Mathew from '../../audio/Matthew.mp3'
-import IkaUsherenko from '../../audio/IkaUsherenko.mp3'
-import Tzena from '../../audio/Tzena.mp3'
+import JohnHeaven from '../../audio/JohnHeaven.mp3'
+import SugarFree from '../../audio/SugarFree.mp3'
+import former from '../../audio/former.mp3'
+import marcobruno from '../../audio/marcobruno.mp3'
 import SonidoXTzena from '../../images/SonidoXTzena.jpg';
 import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
 import SonidoxMathew from '../../images/SonidoxMathew.jpg';
@@ -16,7 +16,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Sonido() {
+function Aurea() {
      const {dispatch} = useContext(GlobalContext);
      const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -25,37 +25,37 @@ function Sonido() {
         {
             id: 1,
             resume: 'Event we did at Les Enfants Brillants where we invited the talented Slovenian artist Tzena to healdine the party along local talent Jason. On warm up duties we had our residents Bruno&Marco.',
-            src: Tzena,
+            src: SugarFree,
             type: <PiVinylRecordLight className="player-icon"/>,
-            title: 'Allegro',
-            artist: 'Nace Tzena',
+            title: 'Dimensions',
+            artist: 'Sugar Free',
             image:  <img  src={SonidoXTzena} alt="" className="player-image" />,
         },
         {
             id: 2,
             resume: 'For our November residency at Enfants we had the pleasure to host Georgian legends Ika & Usherenko, owners of Small Moves record shop and label and bookers of legendary club Mtkvarze. On warm up duties we had our resident Conor.',
-            src: IkaUsherenko,
+            src: marcobruno,
             type: <PiRadioLight  className="player-icon"/>,
-            title: 'BadumTish',
-            artist: 'Ika & Usherenko',
+            title: 'Podcast',
+            artist: 'Bruno&Marco',
             image: <img  src={SonidoxIkaUshe} alt="" className="player-image" />,
         },
         {
             id: 3,
             resume: 'For our first night at club Red58, we welcomed Butter Side Up resident Mathew Neequaye, who brought an exceptional selection of tracks.  Alongside him, our residents Bruno & Marco delivered equally compelling sets.',
-             src: Mathew,
+             src: former,
              type: <PiRadioLight className="player-icon"/>,
-            title: 'Dimensions',
-            artist: 'Mathew Neequaye',
+            title: 'Uns Podcats',
+            artist: 'Former',
             image: <img  src={SonidoxMathew} alt="" className="player-image" />,
         },
         {
             id: 4,
             resume: 'We had the privilege of featuring Tommy Pickles, a DJ hailing from the UK, as our headliner. Known for his profound understanding of the dance floor. The night started with an energizing warm-up set by our very own resident, Conor.',
-            src: Tommy,
+            src: JohnHeaven,
             type: <PiRadioLight className="player-icon"/>,
-            title: 'Cartulis',
-            artist: 'Tommy Pickles',
+            title: 'Aurea Podcast',
+            artist: 'John Heaven',
             image: <img  src={SonidoxTommy} alt="" className="player-image" />,
         },
      ]
@@ -108,4 +108,4 @@ function Sonido() {
     );
 }
 
-export default Sonido;
+export default Aurea;

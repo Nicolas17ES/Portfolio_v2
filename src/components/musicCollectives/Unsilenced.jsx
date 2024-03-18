@@ -1,10 +1,10 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
 import { useContext, useState } from "react";
-import Tommy from '../../audio/TommyPickles.mp3'
-import Mathew from '../../audio/Matthew.mp3'
-import IkaUsherenko from '../../audio/IkaUsherenko.mp3'
-import Tzena from '../../audio/Tzena.mp3'
+import former from '../../audio/former.mp3'
+import legramvg from '../../audio/legramvg.mp3'
+import marcobruno from '../../audio/IkaUsherenko.mp3'
+import paradise from '../../audio/Tzena.mp3'
 import SonidoXTzena from '../../images/SonidoXTzena.jpg';
 import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
 import SonidoxMathew from '../../images/SonidoxMathew.jpg';
@@ -16,7 +16,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Sonido() {
+function Unsilenced() {
      const {dispatch} = useContext(GlobalContext);
      const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -24,38 +24,38 @@ function Sonido() {
      const audioData = [
         {
             id: 1,
-            resume: 'Event we did at Les Enfants Brillants where we invited the talented Slovenian artist Tzena to healdine the party along local talent Jason. On warm up duties we had our residents Bruno&Marco.',
-            src: Tzena,
-            type: <PiVinylRecordLight className="player-icon"/>,
-            title: 'Allegro',
-            artist: 'Nace Tzena',
+            resume: 'Event we did at Generator Hostel as our first event where we launched Unsilenced music collective.',
+            src: former,
+            type: <PiRadioLight className="player-icon"/>,
+            title: 'Unsilenced Poddy',
+            artist: 'Former',
             image:  <img  src={SonidoXTzena} alt="" className="player-image" />,
         },
         {
             id: 2,
-            resume: 'For our November residency at Enfants we had the pleasure to host Georgian legends Ika & Usherenko, owners of Small Moves record shop and label and bookers of legendary club Mtkvarze. On warm up duties we had our resident Conor.',
-            src: IkaUsherenko,
+            resume: 'For our anniversary we joined forces with WhiteChoco Barcelona and hold an amazing party at Osterbar, local talend and VBX resident Reiss headlined the night. Bruno&Marco brought the magic straight from Barcelona and on warm up duties we had our residents Former.',
+            src: marcobruno,
             type: <PiRadioLight  className="player-icon"/>,
-            title: 'BadumTish',
-            artist: 'Ika & Usherenko',
+            title: 'Unsilenced Poddy',
+            artist: 'Marco&Bruno',
             image: <img  src={SonidoxIkaUshe} alt="" className="player-image" />,
         },
         {
             id: 3,
-            resume: 'For our first night at club Red58, we welcomed Butter Side Up resident Mathew Neequaye, who brought an exceptional selection of tracks.  Alongside him, our residents Bruno & Marco delivered equally compelling sets.',
-             src: Mathew,
-             type: <PiRadioLight className="player-icon"/>,
-            title: 'Dimensions',
-            artist: 'Mathew Neequaye',
+            resume: 'For our first music release, we welcomed italian producer Paradise City Breakers along Denalia, Outcast Torino resident. On the B side french producer DAIF and Sevenbeatz brought their A game.',
+             src: paradise,
+             type: <PiVinylRecordLight className="player-icon"/>,
+            title: 'Unsilenced',
+            artist: 'Paradise City Breakers',
             image: <img  src={SonidoxMathew} alt="" className="player-image" />,
         },
         {
             id: 4,
-            resume: 'We had the privilege of featuring Tommy Pickles, a DJ hailing from the UK, as our headliner. Known for his profound understanding of the dance floor. The night started with an energizing warm-up set by our very own resident, Conor.',
-            src: Tommy,
+            resume: 'We had the privilege of featuring LegramVG, a DJ duo switzerland, as our headliners. Known for his profound understanding of the dance floor.  The night started with an energizing warm-up set by our very own resident, Malom.',
+            src: legramvg,
             type: <PiRadioLight className="player-icon"/>,
-            title: 'Cartulis',
-            artist: 'Tommy Pickles',
+            title: 'ItemCast 033',
+            artist: 'LegramVG',
             image: <img  src={SonidoxTommy} alt="" className="player-image" />,
         },
      ]
@@ -108,4 +108,4 @@ function Sonido() {
     );
 }
 
-export default Sonido;
+export default Unsilenced;

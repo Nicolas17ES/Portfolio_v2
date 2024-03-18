@@ -25,10 +25,12 @@ gsap.registerPlugin(CSSRulePlugin);
 
 function MusicCarousel() {
     // Accessing global context values
-    const { display_image_overlay, dispatch, navbar_location, display_body } = useContext(GlobalContext);
+    const { display_image_overlay, dispatch, change_slide, display_body } = useContext(GlobalContext);
     const [activeIndexState, setActiveIndex] = useState(null);
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [imageIndex, setImageIndex] = useState(null);
+
+
 
     useEffect(() => {
         if(activeIndexState !== null){
@@ -84,15 +86,41 @@ function MusicCarousel() {
     }, [activeIndexState])
 
     const handleSlideChange = (swiper) => {
+        
         setActiveIndex(swiper.realIndex);
+    };
+
+    const changeSlide = (value) => {
+        let newIndex;
+        if (value === 1 && activeIndexState === 2) {
+            newIndex = 0;
+        } else if (value === -1 && activeIndexState === 0) {
+            newIndex = 2;
+        } else {
+            newIndex = activeIndexState + value;
+        }
+    
+        swiperInstance.slideTo(newIndex);
         dispatch({
-            type: 'SET_CAROUSEL_INDEX',
-            payload: swiper.realIndex,
-        })
-    };  
+            type: 'SET_CHANGE_SLIDE',
+            payload: { value: newIndex, origin: false },
+        });
+    };
+    
+
     const handleSwiper = (swiper) => {
         setSwiperInstance(swiper);
     };
+
+
+    // DETECT IF THERES A CLICK ON THE BUTTONS BODY AND THEN CHANGE SLIDE HERE:
+    useEffect(() => {
+        
+        if(change_slide.origin && (change_slide.value !== undefined && change_slide.value !== null) && swiperInstance){
+            swiperInstance.slideTo(change_slide.value);
+            console.log('change slide called', change_slide)
+        }
+    }, [change_slide])
 
     const carouselData = [
         {
@@ -124,8 +152,12 @@ function MusicCarousel() {
             duration: 1, // Duration of the animation
             ease: 'Power1.easeOut',
             opacity: 0,
-            delay: 1,
+            delay: 0,
             onComplete: () => {
+                dispatch({
+                    type: 'SET_CHANGE_SLIDE',
+                    payload: { value: null, origin: false },
+                });
                 dispatch({
                     type: 'SET_CLICKED_BUTTON',
                     payload: { clicked: true, value: imageIndex},
@@ -190,7 +222,7 @@ function MusicCarousel() {
         // Your animation setup
         const imageReveal = CSSRulePlugin.getRule(".image-wrap::before");
         let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
-                    .to(imageReveal, { duration: 1.6, delay: .7, cssRule: { width: "0%" } });
+                    .to(imageReveal, { duration: 1.3, delay: .7, cssRule: { width: "0%" } });
         
         // Cleanup function to kill the animation when the component unmounts or conditions change
         return () => {
@@ -228,14 +260,14 @@ function MusicCarousel() {
                         <Swiper
                             loop={true}
                             slidesPerView={'auto'}
-                            navigation={{
-                                nextEl: '.swiper-button-next',
-                                prevEl: '.swiper-button-prev',
-                                clickable: true,
-                            }}
+                            // navigation={{
+                            //     nextEl: '.swiper-button-next',
+                            //     prevEl: '.swiper-button-prev',
+                            //     clickable: true,
+                            // }}
                             speed={600} // Adjust the speed of the slide transition (in milliseconds)
                             effect="slide"
-                            modules={[Navigation]}
+                            // modules={[Navigation]}
                             onSwiper={handleSwiper}
                             onSlideChange={(swiper) => handleSlideChange(swiper)}
                         >
@@ -303,13 +335,13 @@ function MusicCarousel() {
                             <div className="carousel-nav carousel-info-element">
                                 <MagneticEffect>
                                 <button className="btn prev swiper-button-prev"> 
-                                <IoIosArrowDropleft className='carousel-icon'/>                          
+                                <IoIosArrowDropleft onClick={() => changeSlide(-1)} className='carousel-icon'/>                          
                                 </button>
                                 </MagneticEffect>
                                 <span className="counter-indicator">{activeIndexState + 1}/3</span>
                                 <MagneticEffect>
                                 <button className="btn next swiper-button-next">
-                                <IoIosArrowDropright className='carousel-icon'/> 
+                                <IoIosArrowDropright onClick={() => changeSlide(+1)} className='carousel-icon'/> 
                                 </button>
                                 </MagneticEffect>
                             </div>

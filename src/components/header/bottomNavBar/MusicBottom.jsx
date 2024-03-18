@@ -7,9 +7,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import SplitTextJS from "split-text-js";
+import usePreviousLocation from '../../../hooks/usePreviousLocation'
 
 
 function MusicBottom() {
+
+  const prevLocation = usePreviousLocation();
 
     const { button_state, display_image_overlay, display_body, navbar_location } = useContext(GlobalContext);
     const [changeCounter, setChangeCounter] = useState(0);
@@ -21,54 +24,65 @@ function MusicBottom() {
     }, [button_state?.value]);
 
     useEffect(() => {
-        if (display_image_overlay || navbar_location !== 'music') {
-          const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
+        if (display_image_overlay) {
+
+      gsap.fromTo('.bottom-nav-paragraph', 
+        { xPercent: 0, opacity: 1 }, // Assuming starting from visible and original position
+        { xPercent: 100, opacity: 0, duration: 1 } // Specified ending values
+      );
+     
+    
+          // const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
           
-          paragraphs.forEach(paragraph => {
-            const originalText = paragraph.textContent;
-            paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
+          // paragraphs.forEach(paragraph => {
+          //   const originalText = paragraph.textContent;
+          //   paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
             
-            originalText.split(' ').forEach((word, index, array) => {
-              const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
-              const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
-              paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
-            });
+          //   originalText.split(' ').forEach((word, index, array) => {
+          //     const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
+          //     const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
+          //     paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
+          //   });
       
-            // Now animate each span to fade in
-            gsap.to(paragraph.querySelectorAll('span'), {
-              opacity: 0,
-              duration: 0.2,
-              stagger: 0.05,
-              delay: index => Math.random() * 2, // Random delay between 0 and 2 seconds
-              ease: "power1.inOut"
-            });
-          });
+          //   // Now animate each span to fade in
+          //   gsap.to(paragraph.querySelectorAll('span'), {
+          //     opacity: 0,
+          //     duration: 0,
+          //     stagger: 0.0,
+          //     delay: index => Math.random() * 1.2, // Random delay between 0 and 2 seconds
+          //     ease: "power1.inOut"
+          //   });
+          // });
         }
       }, [display_image_overlay, navbar_location]);
       
     useEffect(() => {
       if (display_body && navbar_location === 'music') {
-          const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
+        gsap.fromTo('.bottom-nav-paragraph', 
+          { xPercent: 100, opacity: 0 }, // Starting values
+          { xPercent: 0, opacity: 1, duration: 1, delay: (prevLocation === '/about' || prevLocation === '/projects') ? 1.5 : 1 } // Ending values
+        );
+          // const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
           
-          paragraphs.forEach(paragraph => {
-            const originalText = paragraph.textContent;
-            paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
+          // paragraphs.forEach(paragraph => {
+          //   const originalText = paragraph.textContent;
+          //   paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
             
-            originalText.split(' ').forEach((word, index, array) => {
-              const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
-              const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
-              paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
-            });
+          //   originalText.split(' ').forEach((word, index, array) => {
+          //     const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
+          //     const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
+          //     paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
+          //   });
       
-            // Now animate each span to fade in
-            gsap.to(paragraph.querySelectorAll('span'), {
-              opacity: 1,
-              duration: 0.1,
-              stagger: 0.05,
-              delay: index => Math.random() * 2, // Random delay between 0 and 2 seconds
-              ease: "power1.inOut"
-            });
-          });
+          //   // Now animate each span to fade in
+          //   gsap.to(paragraph.querySelectorAll('span'), {
+          //     opacity: 1,
+          //     duration: 0,
+          //     stagger: 0,
+          //     delay: index => Math.random() * 1.2, // Random delay between 0 and 2 seconds
+          //     ease: "power1.inOut"
+          //   });
+          // });
         }
       }, [display_body, navbar_location]);
 

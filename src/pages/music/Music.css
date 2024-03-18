@@ -429,6 +429,10 @@
 
 }
 
+.collectives-titles-container{
+  /* opacity: 1; */
+}
+
 .collectives-header-title{
   font-size: 6rem;
   text-transform: uppercase;
@@ -440,13 +444,18 @@
   margin-bottom: 460px;
 }
 
+.collectives-header-image-container{
+  position: absolute;
+  top: 145px;
+  right: 64px;
+  z-index: -1;
+}
+
 .collectives-header-image{
   width: 700px;
   height: auto;
-  position: absolute;
-  top: 145px;
-  right: 50px;
-  z-index: -1;
+  scale: .75;
+  opacity: .4;
 }
 
 .collectives-header-paragraph-container{
@@ -477,20 +486,24 @@
 }
 
 .collectives-scroll-bar-container{
-  transform: rotate(-90deg);
+  /* transform: rotate(-90deg); */
   display: flex;
   align-items: center;
+  flex-direction: column-reverse;
+
   gap: 20px;
   position: absolute;
-  right: -130px;
-  bottom: 20px;
+  right: 0px;
+  top: 0px;
 }
 .collectives-scroll-bar{
-  width: 130px;
-  height: 2px;
+  height: 0px;
+  width: 2px;
   background-color: rgb(var(--black));
 }
 .scroll-text{
+  writing-mode: vertical-lr; /* This makes the text go from top to bottom */
+  transform: rotate(180deg);
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: .9rem;
@@ -499,6 +512,7 @@
   width: 10px;
   height: 10px;
   border: 1px solid rgb(var(--red));
+  background-color: none;
 }
 
 

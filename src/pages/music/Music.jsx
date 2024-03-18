@@ -8,6 +8,8 @@ import GlobalContext from '../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Sonido from '../../components/musicCollectives/Sonido';
+import Unsilenced from '../../components/musicCollectives/Unsilenced';
+import Aurea from '../../components/musicCollectives/Aurea';
 import CollectivesHeader from '../../components/musicCollectives/CollectivesHeader';
 /**
  * The Music component is responsible for rendering the music section of the application.
@@ -67,7 +69,21 @@ function Music() {
     // const [typedText, setTypedText] = useState('');
     // const fullText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur accusamus ratione non laudantium, ut mollitia aspernatur eius expedita molestiae inventore molestias. Iste exercitationem eligendi amet assumenda odio at perferendis voluptatibus.`;
 
-   
+    useEffect(() => {
+        // Component did mount logic can go here.
+    
+        return () => {
+          // This function will be called when the component unmounts.
+          dispatch({
+            type: 'SET_CLICKED_BUTTON',
+            payload: null,
+          });
+          dispatch({
+            type: 'SET_IMAGE_OVERLAY',
+            payload: false
+        })
+        };
+      }, []);
 
   if(display_body){
       return (
@@ -80,11 +96,11 @@ function Music() {
                         <MusicCarousel/>
                     </div>
                 ) : (
-                    <div key={animationKey} className="music-body-container">
+                    <div className="music-body-container">
                         <CollectivesHeader/>
                         {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <Sonido/>}
-                        {buttonIndexReferences[button_state.value] === 'Unsilenced' && 'Unsilenced'}
-                        {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && 'Aurea'}
+                        {buttonIndexReferences[button_state.value] === 'Unsilenced' && <Unsilenced/>}
+                        {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <Aurea/>}
                     </div>
                 )}
 

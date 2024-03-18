@@ -12,7 +12,7 @@ import gsap from "gsap";
  */
 function ButtonsBody({data}) {
     // Access global context for dispatching actions
-    const {dispatch, display_body, navbar_location, carousel_index} = useContext(GlobalContext);
+    const {dispatch, display_body, navbar_location, change_slide, button_state} = useContext(GlobalContext);
 
     // State to track the active (clicked or hovered) button index
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -47,24 +47,36 @@ function ButtonsBody({data}) {
      * Sets the active button index, marks it as clicked, and dispatches the clicked state
      */
     const setIndex = (index) => {
-        dispatch({
-            type: 'SET_SLIDE_ACTIVE_INDEX',
-            payload: null,
-        });
-        dispatch({
-            type: 'SET_ANIMATION_VALUE',
-            payload: null
-        })
-        dispatch({
-            type: 'SET_CAROUSEL_INDEX',
-            payload: index
-        })
-        setIsCliked(true);
-        setActiveIndex(index);
-        dispatch({
-            type: 'SET_CLICKED_BUTTON',
-            payload: { clicked: true, value: index},
-        });
+        if(!button_state){
+            dispatch({
+                type: 'SET_CHANGE_SLIDE',
+                payload: {value: index, origin: true},
+            })
+        } else {
+            // dispatch({
+            //     type: 'SET_IMAGE_OVERLAY',
+            //     payload: true
+            // })
+            setIsCliked(true);
+            setActiveIndex(index);
+            dispatch({
+                type: 'SET_CLICKED_BUTTON',
+                payload: { clicked: true, value: index},
+            });
+        }
+        // dispatch({
+        //     type: 'SET_SLIDE_ACTIVE_INDEX',
+        //     payload: null,
+        // });
+        // dispatch({
+        //     type: 'SET_ANIMATION_VALUE',
+        //     payload: null
+        // })
+        // dispatch({
+        //     type: 'SET_CAROUSEL_INDEX',
+        //     payload: index
+        // })
+       
     };
 
     /**
@@ -72,22 +84,22 @@ function ButtonsBody({data}) {
      * @param {number} index - The index of the button being hovered
      * Dispatches the current hover index to the global context
      */
-    const handleMouseEnter = (index) => {
-        dispatch({ type: 'SET_BUTTON_INDEX', payload: index });
-    };
+    // const handleMouseEnter = (index) => {
+    //     dispatch({ type: 'SET_BUTTON_INDEX', payload: index });
+    // };
 
-    /**
-     * handleMouseLeave function to handle mouse leave event on button
-     * @param {number} index - The index of the button being unhovered
-     * Resets the hover index in global context unless a button is clicked
-     */
-    const handleMouseLeave = (index) => {
-        if(!isCLicked) {
-            dispatch({ type: 'SET_BUTTON_INDEX', payload: null });
-        } else {
-            dispatch({ type: 'SET_BUTTON_INDEX', payload: activeIndex });
-        }
-    };
+    // /**
+    //  * handleMouseLeave function to handle mouse leave event on button
+    //  * @param {number} index - The index of the button being unhovered
+    //  * Resets the hover index in global context unless a button is clicked
+    //  */
+    // const handleMouseLeave = (index) => {
+    //     if(!isCLicked) {
+    //         dispatch({ type: 'SET_BUTTON_INDEX', payload: null });
+    //     } else {
+    //         dispatch({ type: 'SET_BUTTON_INDEX', payload: activeIndex });
+    //     }
+    // };
 
     // Style for dimming inactive buttons
     const styles = { opacity: '0.5' };
@@ -110,11 +122,11 @@ function ButtonsBody({data}) {
         }
       }, [display_body]);
 
-
+// onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   
     return (
         <section className="buttons-body-container text">
             {data.buttons.map((button, index) => {
-                return <button key={index} onClick={() => setIndex(index)} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   className={`button-body word fancy ${(carousel_index === index && navbar_location === 'music') ? 'highlight-button' : null}`} >{enhance(button.name)}</button>
+                return <button key={index} onClick={() => setIndex(index)}className={`button-body word fancy ${((change_slide.value === index || button_state?.value === index) && navbar_location === 'music') ? 'highlight-button' : null}`} >{enhance(button.name)}</button>
             })}
         </section>
     )

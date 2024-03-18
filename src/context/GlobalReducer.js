@@ -59,6 +59,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 slide_active_index: action.payload,
             }
+        case 'SET_CHANGE_SLIDE':
+            return {
+                ...state,
+                change_slide: action.payload,
+            }
         case 'SET_ACTIVE_SLIDER':
             return {
                 ...state,

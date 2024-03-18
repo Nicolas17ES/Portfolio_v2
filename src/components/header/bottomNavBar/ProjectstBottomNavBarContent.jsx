@@ -3,9 +3,15 @@ import { useEffect, useState, useContext, useRef } from 'react';
 import GlobalContext from '../../../context/GlobalContext';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import usePreviousLocation from '../../../hooks/usePreviousLocation'
+
+gsap.registerPlugin(ScrollTrigger);
 
 function ProjectstBottomNavBarContent() {
-    const { project_index_hovered} = useContext(GlobalContext);
+    const prevLocation = usePreviousLocation();
+    const { project_index_hovered, display_body, navbar_location } = useContext(GlobalContext);
+    const [awaitExpand, setAwaitExpand] = useState(true);
 
 
     const paragraphRefShop = useRef(null);
@@ -28,6 +34,8 @@ function ProjectstBottomNavBarContent() {
             gsap.to(paragraph, {
                 height: 'auto', // Assuming you want it to expand to its natural height
                 opacity: 1,
+                marginTop: 6,
+                padding: '3px 8px',
                 duration: 0.5, // Adjust duration as needed
                 ease: 'power1.out',
                 onComplete: () => {
@@ -48,15 +56,48 @@ function ProjectstBottomNavBarContent() {
                                 project_index_hovered === 2 ? paragraphRefBio.current : 
                                 project_index_hovered === 3 ? paragraphRefTools.current : null;
     
-        if (paragraphToExpand) {
+        if (paragraphToExpand && !awaitExpand) {
             expandParagraph(paragraphToExpand);
         }
-    }, [project_index_hovered]);
-    
+    }, [project_index_hovered ,awaitExpand]);
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+          if (display_body) {
+            gsap.fromTo('.bottom-nav-content-projects', 
+              { opacity: 0, y: -100 }, 
+              { opacity: 1, y: 0, duration: .5, stagger: 0.2, delay: (prevLocation === '/about' || prevLocation === '/music') ? 2 : .5 , 
+                onComplete: () => setAwaitExpand(false) }
+            );
+          }
+        });
+      
+        return () => ctx.revert();
+      }, [display_body, navbar_location]);
+
+
+    //   useEffect(() => {
+    //     console.log("useEffect() call");
+        
+    //     // create a context for all the GSAP animations and ScrollTriggers so we can revert() them in one fell swoop.
+    //     // A context also lets us scope all the selector text to the component (like feeding selector text through component.querySelectorAll(...)) 
+    //     let ctx = gsap.context(() => {
+    //       // create as many GSAP animations and/or ScrollTriggers here as you want...
+    //       gsap.from("h1", { // <- selector text, scoped to this component!
+    //         opacity: 0,
+    //         y: 100,
+    //         ease: "power3",
+    //         duration: 2
+    //       });
+    //     }, component); // <- scopes all selector text inside the context to this component (optional, default is document)
+        
+    //     return () => ctx.revert(); // cleanup! 
+    //   }, []);
+      
+    
     return (
          <div>
-            <div className='bottom-nav-content'>
+            <div className='bottom-nav-content bottom-nav-content-projects'>
                 <div data-value="4" className="active-class-vertical">                            
                     <div className="bottom-nav-text">
                         <div className="bottom-nav--title"><p className="bottom-nav-number">1</p><span>{'<1.2023>'}</span> </div>
@@ -68,7 +109,7 @@ function ProjectstBottomNavBarContent() {
                     </div>
                 </div>
             </div>
-            <div className='bottom-nav-content'>
+            <div className='bottom-nav-content bottom-nav-content-projects'>
                 <div data-value="5" className="active-class-vertical">
                 
                     <div className="bottom-nav-text">
@@ -81,7 +122,7 @@ function ProjectstBottomNavBarContent() {
                     </div>
                 </div>
             </div>
-            <div className='bottom-nav-content'>
+            <div className='bottom-nav-content bottom-nav-content-projects'>
                 <div data-value="6" className="active-class-vertical">
                 
                     <div className="bottom-nav-text">
