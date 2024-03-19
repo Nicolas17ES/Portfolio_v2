@@ -1,10 +1,6 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
 import { useContext, useState } from "react";
-import former from '../../audio/former.mp3'
-import legramvg from '../../audio/legramvg.mp3'
-import marcobruno from '../../audio/IkaUsherenko.mp3'
-import paradise from '../../audio/Tzena.mp3'
 import SonidoXTzena from '../../images/SonidoXTzena.jpg';
 import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
 import SonidoxMathew from '../../images/SonidoxMathew.jpg';

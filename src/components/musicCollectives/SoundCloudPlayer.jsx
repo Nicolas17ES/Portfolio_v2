@@ -5,7 +5,6 @@ import '../../pages/about/About.css'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Tommy from '../../audio/TommyPickles.mp3'
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
 import WhiteChocoNye from '../../images/WhiteChocoNye.jpeg';

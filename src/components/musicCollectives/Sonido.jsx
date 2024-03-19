@@ -1,10 +1,6 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
 import { useContext, useState } from "react";
-import Tommy from '../../audio/TommyPickles.mp3'
-import Mathew from '../../audio/Matthew.mp3'
-import IkaUsherenko from '../../audio/IkaUsherenko.mp3'
-import Tzena from '../../audio/Tzena.mp3'
 import SonidoXTzena from '../../images/SonidoXTzena.jpg';
 import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
 import SonidoxMathew from '../../images/SonidoxMathew.jpg';
