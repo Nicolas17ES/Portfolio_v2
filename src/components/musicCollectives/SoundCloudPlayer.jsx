@@ -135,12 +135,12 @@ function SoundCloudPlayer({audio, isHovered}) {
 
 
     
-
+    const borderAudioIds = [1, 5, 9];
 
     if(!audio) return null
 
     return (
-        <section style={{borderTop: audio.id === 1 ? '.3px solid rgb(var(--black))' : null}} className="soundcloud-player-container">
+        <section style={{borderTop: borderAudioIds.includes(audio.id) ? '.3px solid rgb(var(--black))' : null}} className="soundcloud-player-container">
             
             <div className="audio-player">
                 <audio ref={audioRef} src={audio.src} preload="auto" />

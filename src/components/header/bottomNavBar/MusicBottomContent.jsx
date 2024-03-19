@@ -11,10 +11,18 @@ function MusicBottomContent() {
     const prevLocation = usePreviousLocation();
 
     const { slide_active_index, button_state, project_index_hovered, display_body, navbar_location } = useContext(GlobalContext);
-    const [changeCounter, setChangeCounter] = useState(0);
     const [awaitExpand, setAwaitExpand] = useState(true);
+    const sectionBottomMusicRef = useRef(null);
 
-
+    // EVERYTIME BUTTONSTATE.VALUE CHANGES  SCROLL TO TOP
+    useEffect(() => {
+        if (sectionBottomMusicRef.current) {
+            sectionBottomMusicRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start', // Changed to 'start' for clarity
+            });
+        }
+    }, [button_state.value]);
 
 
     useEffect(() => {
@@ -71,41 +79,36 @@ function MusicBottomContent() {
     const paragraphRef2 = useRef(null);
     const paragraphRef3 = useRef(null);
     const paragraphRef4 = useRef(null);
-
     useEffect(() => {
         // Function to reset all paragraphs to their initial state
         const resetParagraphs = () => {
             gsap.to([paragraphRef1.current, paragraphRef2.current, paragraphRef3.current, paragraphRef4.current], {
                 height: 0,
                 opacity: 0,
-                duration: .7,
+                duration: 0.5,
                 ease: 'power1.in',
             });
         };
     
-        // Function to expand the selected paragraph after scrolling into view
+        // Function to expand the selected paragraph
         const expandParagraph = (paragraph) => {
-            // Scroll the paragraph into view first
-            paragraph.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
+            gsap.to(paragraph, {
+                height: 'auto', // Assuming you want it to expand to its natural height
+                opacity: 1,
+                duration: 0.5, // Adjust duration as needed
+                ease: 'power1.out',
+                onComplete: () => {
+                    // Scroll the paragraph into view after the expansion animation completes
+                    paragraph.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
             });
-
-            // Once the scrolling has completed, trigger the expansion animation
-            // paragraph.addEventListener('scroll', () => {
-                gsap.to(paragraph, {
-                    height: 'auto', // Assuming you want it to expand to its natural height
-                    opacity: 1,
-                    marginTop: 6,
-                    padding: '3px 8px',
-                    delay: .2,
-                    duration: 1, // Adjust duration as needed
-                    ease: 'power1.out'
-                });
         };
     
         // Reset paragraphs first to ensure only one can expand at a time
-        resetParagraphs();
+        resetParagraphs()
     
         // Determine which paragraph to expand based on the hovered index
         let paragraphToExpand = project_index_hovered === 1 ? paragraphRef1.current : 
@@ -113,10 +116,66 @@ function MusicBottomContent() {
                                 project_index_hovered === 3 ? paragraphRef3.current :
                                 project_index_hovered === 4 ? paragraphRef4.current : null;
     
-        if (paragraphToExpand && !awaitExpand) {
+        if (paragraphToExpand) {
             expandParagraph(paragraphToExpand);
         }
     }, [project_index_hovered]);
+    
+
+
+    // const resetParagraphs = () => {
+    //     gsap.to([paragraphRef1.current, paragraphRef2.current, paragraphRef3.current, paragraphRef4.current], {
+    //         height: 0,
+    //         opacity: 0,
+    //         duration: .7,
+    //         ease: 'power1.in',
+    //     });
+    // };
+
+  
+
+    // // Function to expand the selected paragraph after scrolling into view
+    // const expandParagraph = (paragraph) => {
+    //     // Scroll the paragraph into view first
+    //     paragraph.scrollIntoView({
+    //         behavior: 'smooth',
+    //         block: 'center'
+    //     });
+
+    //     // Once the scrolling has completed, trigger the expansion animation
+    //     // paragraph.addEventListener('scroll', () => {
+    //         gsap.to(paragraph, {
+    //             height: 'auto', // Assuming you want it to expand to its natural height
+    //             opacity: 1,
+    //             marginTop: 6,
+    //             padding: '3px 8px',
+    //             // delay: .2,
+    //             duration: 1, // Adjust duration as needed
+    //             ease: 'power1.out'
+    //         });
+    // };
+
+    // useEffect(() => {
+    //     // Function to reset all paragraphs to their initial stat
+    
+    //     // Reset paragraphs first to ensure only one can expand at a time
+    //     resetParagraphs();
+    //     // Determine which paragraph to expand based on the hovered index
+    //     let paragraphToExpand = project_index_hovered === 1 ? paragraphRef1.current : 
+    //                             project_index_hovered === 2 ? paragraphRef2.current : 
+    //                             project_index_hovered === 3 ? paragraphRef3.current :
+    //                             project_index_hovered === 4 ? paragraphRef4.current : null;
+    
+    //     if (paragraphToExpand && !awaitExpand) {
+    //         expandParagraph(paragraphToExpand);
+    //     }
+    // }, [project_index_hovered]);
+
+    // useEffect(() => {
+    //     if(!project_index_hovered){
+    //         resetParagraphs()
+    //     }
+    // }, [project_index_hovered])
 
 
 
@@ -141,7 +200,7 @@ function MusicBottomContent() {
     
 
         return (
-            <>            
+            <section ref={sectionBottomMusicRef}>            
                 {buttonIndexReferences[button_state.value] === 'Sonido_Club' && (
                     <>
                         <h3 className="bottom-nav-title">{'<Sonido Timeline>'}</h3>
@@ -392,7 +451,7 @@ function MusicBottomContent() {
                         </div>
                     </>
                 )}
-            </>  
+            </section>  
         )
     }
     

@@ -25,7 +25,7 @@ function Sonido() {
         {
             id: 1,
             resume: 'Event we did at Les Enfants Brillants where we invited the talented Slovenian artist Tzena to healdine the party along local talent Jason. On warm up duties we had our residents Bruno&Marco.',
-            src: Tzena,
+            src: 'https://storage.googleapis.com/audio_porftolio/Tzena.mp3',
             type: <PiVinylRecordLight className="player-icon"/>,
             title: 'Allegro',
             artist: 'Nace Tzena',
@@ -34,7 +34,7 @@ function Sonido() {
         {
             id: 2,
             resume: 'For our November residency at Enfants we had the pleasure to host Georgian legends Ika & Usherenko, owners of Small Moves record shop and label and bookers of legendary club Mtkvarze. On warm up duties we had our resident Conor.',
-            src: IkaUsherenko,
+            src: 'https://storage.googleapis.com/audio_porftolio/IkaUsherenko.mp3',
             type: <PiRadioLight  className="player-icon"/>,
             title: 'BadumTish',
             artist: 'Ika & Usherenko',
@@ -43,7 +43,7 @@ function Sonido() {
         {
             id: 3,
             resume: 'For our first night at club Red58, we welcomed Butter Side Up resident Mathew Neequaye, who brought an exceptional selection of tracks.  Alongside him, our residents Bruno & Marco delivered equally compelling sets.',
-             src: Mathew,
+             src: 'https://storage.googleapis.com/audio_porftolio/Matthew.mp3',
              type: <PiRadioLight className="player-icon"/>,
             title: 'Dimensions',
             artist: 'Mathew Neequaye',
@@ -52,7 +52,7 @@ function Sonido() {
         {
             id: 4,
             resume: 'We had the privilege of featuring Tommy Pickles, a DJ hailing from the UK, as our headliner. Known for his profound understanding of the dance floor. The night started with an energizing warm-up set by our very own resident, Conor.',
-            src: Tommy,
+            src: 'https://storage.googleapis.com/audio_porftolio/TommyPickles.mp3',
             type: <PiRadioLight className="player-icon"/>,
             title: 'Cartulis',
             artist: 'Tommy Pickles',
@@ -97,9 +97,9 @@ function Sonido() {
 
 
     return (
-         <div style={{margin: '30px 0px 60px 0'}} onMouseLeave={handleMouseLeave}>
+         <div style={{margin: '30px 0px 60px 0'}}>
          {audioData.map((audio, index) => (
-             <div className="soundcloud-outer-animation" onMouseEnter={() => handleMouseEnter(index)} key={audio.id}>
+             <div className="soundcloud-outer-animation" onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter(index)} key={audio.id}>
                  <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />
              </div>
          ))}

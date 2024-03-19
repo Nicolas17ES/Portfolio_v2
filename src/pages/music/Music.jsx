@@ -89,7 +89,7 @@ function Music() {
       return (
         <div ref={bodyRef} className="body-container">
             <div className="body-container-top">
-                <ButtonsBody data={data}/>
+                {(!button_state || !button_state.clicked) &&  <ButtonsBody data={data}/>}
             </div>
                 {!button_state || !button_state.clicked ? (
                     <div className="music-body-container">
@@ -98,6 +98,7 @@ function Music() {
                 ) : (
                     <div className="music-body-container">
                         <CollectivesHeader/>
+                        {(button_state && button_state.clicked) &&  <ButtonsBody data={data}/>}
                         {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <Sonido/>}
                         {buttonIndexReferences[button_state.value] === 'Unsilenced' && <Unsilenced/>}
                         {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <Aurea/>}

@@ -106,7 +106,7 @@ function ButtonsBody({data}) {
 
     // Render buttons with mapped data, event handlers, and dynamic styles one by one with gsap animation
     useGSAP(() => {
-        if(display_body){
+        if(display_body && (!button_state || !button_state.clicked)){
             gsap.fromTo('.button-body', 
                 { yPercent: -350, opacity: 0}, // Starting properties
                 { yPercent: 0, 
@@ -118,6 +118,26 @@ function ButtonsBody({data}) {
                         each: 0.1, // Time between each animation start
                         from: "end" // Start staggering from the end
                   }, } // Ending properties
+            );
+        } else if (display_body && button_state && button_state.clicked) {
+            gsap.fromTo('.button-body',
+                { yPercent: -350, opacity: 0 }, // Starting properties
+                {
+                    yPercent: 0,
+                    opacity: 1,
+                    duration: .8,
+                    ease: "power1.out",
+                    stagger: {
+                        each: 0.1, // Time between each animation start
+                        from: "end" // Start staggering from the end
+                    },
+                    scrollTrigger: {
+                        trigger: '.button-body',
+                        start: "top 80%", // Trigger animation when the top of the button is 80% in view
+                        toggleActions: "play none none none", // Animation plays when in view, but does not reverse when out of view
+                        // You can adjust the start and end position as needed
+                    },
+                }
             );
         }
       }, [display_body]);
