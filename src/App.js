@@ -19,6 +19,8 @@ import Footer from './components/header/Footer'
 import ViewProjectsCursor from './components/mouse/ViewProjectsCursor';
 import useResetScroll from './hooks/useResetScroll'
 import { AudioPlayerProvider } from './context/AudioPlayerContext';
+import useMousePositionTracker from './hooks/useMousePositionTracker'; // Adjust the import path as needed
+
 
 function App() {
   // This is the main entry point of your React application.
@@ -41,6 +43,7 @@ function WrappedApp() {
 
   const containerRef = useRef(null);
   const scrollPosition = useScrollPosition();
+ 
   useResetScroll();
 
 

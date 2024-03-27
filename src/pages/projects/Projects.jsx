@@ -4,7 +4,7 @@ import useBodyAnimation from '../../hooks/useBodyAnimation'; // Import your cust
 import AulartHome from '../../images/AulartHome.png'
 import AulartTools from '../../images/AulartTools.png'
 import AulartTools2 from '../../images/AulartTools2.png'
-import LinkInBio from '../../images/LinkInBio.jpg'
+import LinkInBio from '../../images/LinkBio.png'
 
 import GlobalContext from '../../context/GlobalContext'
 import { useEffect, useState, useContext, useRef } from 'react'
@@ -14,207 +14,170 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+// The Projects component displays project sections and handles animations based on mouse movements.
 function Projects() {
-
-     // Get the current location from React Router
+    // Hooks for navigating and determining the current path.
     const location = useLocation();
     const navigate = useNavigate();
-    const pathname = location.pathname.substring(1); // Removes the leading slash
-    const [entered, setEntered] = useState(false)
-    
+    const pathname = location.pathname.substring(1);
 
-    const {view_projects_cursor, display_body, navbar_location, dispatch, project_index_hovered} = useContext(GlobalContext);
+    // State and context for managing cursor visibility, animations, and global app state.
+    const { view_projects_cursor, display_body, navbar_location, dispatch, project_index_hovered, mouse_position } = useContext(GlobalContext);
 
-    // add ref to the body
+    // useRef hooks for DOM references to enable direct manipulation.
     const bodyRef = useRef(null);
+    const listItemRefs = [useRef(null), useRef(null), useRef(null)];
 
+    // useState hooks for local component state management.
+    const [entered, setEntered] = useState(false); // Tracks if the mouse has entered a project section.
+    const [mousePositionSection, setMousePositionSection] = useState({ x: 0, y: 0 }); // Local state for mouse position within a project section.
+    const [imageAnimation, setImageAnimation] = useState({ state: false, index: null }); // Manages the state of image animations.
+
+    // Custom hook to apply animations to the body element based on navigation state.
     useBodyAnimation(bodyRef, navbar_location, pathname, navigate);
 
-
-    const data = {
-        location: 'about',
-        buttons: [
-            {name: '<Aulart_Tools>'},
-            {name: '<Aulart_Shop>'},
-            {name: '<linkTree>'}
-        ]
-    }
-
-
-    // display the custom cursor
+    // Function to toggle the visibility of the custom cursor and dispatch relevant actions to the global context.
     const setCursorVisible = (value, index) => {
-        dispatch({
-            type: 'SET_PROJECT_INDEX_HOVERED',
-            payload: index,
-        })
-        dispatch({
-            type: 'SET_VIEW_PROJECTS_CURSOR',
-            payload: value,
-        })
+        dispatch({ type: 'SET_PROJECT_INDEX_HOVERED', payload: index });
+        dispatch({ type: 'SET_VIEW_PROJECTS_CURSOR', payload: value });
 
+        // Adjusts z-index of project sections based on cursor interaction.
         const sections = ['container-shoop', 'container-bio', 'container-tools'];
         sections.forEach((sectionClass, idx) => {
             const element = document.querySelector(`.${sectionClass}`);
             if (element) {
-                // Only adjust z-index for the current section; reset others
                 element.style.zIndex = (value && index === idx + 1) ? 1 : 'auto';
             }
         });
-    }
+    };
 
-
-    // ANIMATE CONTAINER ON MOUNT
-
+    // GSAP animations applied on component mount.
     useGSAP(() => {
-      if(display_body){
-        gsap.from('.single-project-container', {
-          xPercent: -150,
-          duration: 1.4,
-          ease: 'Power3.easeOut',
-          stagger: 0.3,
-          delay: .3,
-          // onComplete: () => {
-            
-          // }
-        })
-        gsap.from('.project-title', {
-          y: 200,
-          duration: 1.5,
-          ease: 'Power3.easeOut',
-          stagger: 0.3,
-          delay: .7,
-        })
-      }
-    }, [display_body])
-
-
-
-    // WE NEED TO CHECK IF ON MOUNT THE CURSOR IS ON TOP OF THE SECTION, SO WE CAN CALL THE ANIMATION OF HTE IMAGE AS ON MOUSE ENTER WONT BE TRIGGERED
-    const [mousePosition, setMousePosition] = useState({ x: null, y: null });
-
-    useEffect(() => {
-      const updateMousePosition = ev => {
-        setMousePosition({ x: ev.clientX, y: ev.clientY });
-      };
-
-      window.addEventListener('mousemove', updateMousePosition);
-
-      return () => {
-        window.removeEventListener('mousemove', updateMousePosition);
-      };
-    }, []);
-
-
-
-
-    // THE NEXT 3 GSAPS ARE CORRESPONDING ANIMATIONS FOR EACH SECTION
-    //SECTION 1
-
-    useEffect(() => {
-      
-      const sectionElement = document.querySelector('.container-shoop');
-        if (sectionElement) {
-          const rect = sectionElement.getBoundingClientRect();
-          const mouseX = mousePosition.x; 
-          const mouseY = mousePosition.y;
-
-          if (!entered && mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
-            gsap.fromTo('.project-image', { scale: 0, xPercent: -100, opacity: 0}, { scale: 1, xPercent: 120, yPercent: -10, duration: 0.7, ease: 'power1.out', opacity: 1, delay: .75 });
-          }
-    
-          const onMouseEnter = () => {
-            setEntered(true)
-            // Animation from scale 0 to 1 and from left to right
-            gsap.fromTo('.project-image', { scale: 0, xPercent: -100, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: -10, duration: 0.7, ease: 'power1.out', opacity: 1 });
-          };
-    
-          const onMouseLeave = () => {
-            // Optionally, add an animation for when the mouse leaves
-            gsap.fromTo('.project-image', { scale: 1, xPercent: 120, yPercent: -20, ease: 'power1.out', opacity: 1 }, { scale: 0, duration: 0.7, xPercent: -100, opacity: 0, yPercent: 0 });
-          };
-    
-          sectionElement.addEventListener('mouseenter', onMouseEnter);
-          sectionElement.addEventListener('mouseleave', onMouseLeave);
-    
-          return () => {
-            sectionElement.removeEventListener('mouseenter', onMouseEnter);
-            sectionElement.removeEventListener('mouseleave', onMouseLeave);
-          };
+        if (display_body) {
+            gsap.from('.single-project-container', {
+                xPercent: -150,
+                duration: 1.4,
+                ease: 'Power3.easeOut',
+                stagger: 0.3,
+                delay: .3,
+            });
+            gsap.from('.project-title', {
+                y: 200,
+                duration: 1.5,
+                ease: 'Power3.easeOut',
+                stagger: 0.3,
+                delay: .7,
+            });
         }
-      }, [view_projects_cursor]);
+    }, [display_body]);
 
+    // Function to handle mouse move within a project section, updating local state for mouse position.
+    const handleMouseMove = (e, ref) => {
+        const boundingRect = ref.current.getBoundingClientRect();
+        const x = e.clientX - boundingRect.left;
+        const y = e.clientY - boundingRect.top;
+        setMousePositionSection({ x, y });
+    };
 
-
-    // // SECTION 2
+    // Adds mouse move event listener to project sections dynamically based on mouse position at render time.
     useEffect(() => {
+        const timer = setTimeout(() => {
+            listItemRefs.forEach((ref, index) => {
+                if (!entered && ref.current && mouse_position.x !== null && mouse_position.y !== null) {
+                    const rect = ref.current.getBoundingClientRect();
+                    const mouseX = mouse_position.x;
+                    const mouseY = mouse_position.y;
+                    if (mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
+                        addMouseMoveListener(index);
+                        setEntered(true); // Indicates the mouse has entered a section.
+                    }
+                }
+            });
+        }, 0);
+        return () => clearTimeout(timer);
+    }, [view_projects_cursor]);
 
-      const sectionElement = document.querySelector('.container-bio');
-        if (sectionElement) {
+    // Function to add a mouse move listener to a project section and manually invoke the handler for initial mouse position.
+    const addMouseMoveListener = (index) => {
+        const element = listItemRefs[index].current;
+        if (element) {
+            setImageAnimation({
+                state: true,
+                index: index,
+            });
 
-          const rect = sectionElement.getBoundingClientRect();
-          const mouseX = mousePosition.x; 
-          const mouseY = mousePosition.y;
+            // Define the mouse move handler specific to this element.
+            const mouseMoveHandler = (e) => handleMouseMove(e, listItemRefs[index]);
 
-          if (!entered && mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
-            gsap.fromTo('.project-image-bio', { scale: 0,  xPercent: 320, yPercent: -200, opacity: 0 }, { scale: 1, xPercent: 320, yPercent: -40, duration: 0.7, ease: 'power1.out', opacity: 1, delay: .75 });
-          }
-    
-          const onMouseEnter = () => {
-            setEntered(true)
-            // Animation from scale 0 to 1 and from left to right
-            gsap.fromTo('.project-image-bio', { scale: 0,  xPercent: 320, yPercent: -200, opacity: 0 }, { scale: 1, xPercent: 320, yPercent: -40, duration: 0.7, ease: 'power1.out', opacity: 1 });
-          };
-    
-          const onMouseLeave = () => {
-            // Optionally, add an animation for when the mouse leaves
-            gsap.fromTo('.project-image-bio', { scale: 1, xPercent: 320, yPercent: -40, ease: 'power1.out', opacity: 1 }, { scale: 0,  xPercent: 320, yPercent: -200, duration: 0.7, opacity: 0 });
-          };
-    
-          sectionElement.addEventListener('mouseenter', onMouseEnter);
-          sectionElement.addEventListener('mouseleave', onMouseLeave);
-    
-          return () => {
-            sectionElement.removeEventListener('mouseenter', onMouseEnter);
-            sectionElement.removeEventListener('mouseleave', onMouseLeave);
-          };
+            // Attach the event listener for mouse movement.
+            element.addEventListener('mousemove', mouseMoveHandler);
+
+            // Immediately invoke the handler if the mouse is already within the section's bounds.
+            // This ensures the animation state is correct even if the mouse doesn't move.
+            const rect = element.getBoundingClientRect();
+            if (mouse_position.x >= rect.left && mouse_position.x <= rect.right &&
+                mouse_position.y >= rect.top && mouse_position.y <= rect.bottom) {
+                mouseMoveHandler({ clientX: mouse_position.x, clientY: mouse_position.y });
+            }
         }
-      }, [view_projects_cursor]);
+    };
 
+    // Function to remove the mouse move listener from a project section.
+    // This helps prevent unnecessary event listeners when the mouse is not over the section.
+    const removeMouseMoveListener = (index) => {
+        gsap.to(`.project-image${imageAnimation.index}`, {
+            opacity: 0,
+            duration: .5,
+            ease: "power2.out"
+        });
+        setMousePositionSection({ x: 0, y: 0 }); // Reset the mouse position state.
+        const element = listItemRefs[index].current;
+        if (element) {
+            setImageAnimation({
+                state: false,
+                index: null,
+            });
+            // Remove the event listener for mouse movement.
+            element.removeEventListener('mousemove', handleMouseMove);
+        }
+    };
 
+    // Inside your functional component
+const prevMousePositionRef = useRef({ x: 0, y: 0 });
 
-    // SECTION 3
+    // useEffect hook to update the position of the animated image based on the current mouse position.
     useEffect(() => {
-      const sectionElement = document.querySelector('.container-tools');
-        if (sectionElement) {
+        if (imageAnimation.state && imageAnimation.index !== null) {
+            // Access the current mouse position from state.
+            const { x: mouseX, y: mouseY } = mousePositionSection;
 
-          const rect = sectionElement.getBoundingClientRect();
-          const mouseX = mousePosition.x; 
-          const mouseY = mousePosition.y;
+            // Only proceed if the mouse position is non-zero to avoid unnecessary animations.
+            if (mouseX !== 0 && mouseY !== 0) {
+                const imageElement = document.querySelector(`.project-image${imageAnimation.index}`);
+                if (imageElement) {
+                    // Apply GSAP animations to move the image to the mouse position and adjust opacity.
+                    gsap.to(imageElement, {
+                        y: mouseY,
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: "power2.out"
+                    });
 
-          if (!entered && mouseX >= rect.left && mouseX <= rect.right && mouseY >= rect.top && mouseY <= rect.bottom) {
-            gsap.fromTo('.project-image-tools', { scale: 0, xPercent: 300, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: 5, duration: 0.7, ease: 'power1.out', opacity: 1, delay: .75 });
-          }
-    
-          const onMouseEnter = () => {
-            setEntered(true)
-            // Animation from scale 0 to 1 and from left to right
-            gsap.fromTo('.project-image-tools', { scale: 0, xPercent: 300, opacity: 0 }, { scale: 1, xPercent: 120, yPercent: -15, duration: 0.7, ease: 'power1.out', opacity: 1 });
-          };
-    
-          const onMouseLeave = () => {
-            // Optionally, add an animation for when the mouse leaves
-            gsap.fromTo('.project-image-tools', { scale: 1, xPercent: 120, yPercent: -15, ease: 'power1.out', opacity: 1 }, { scale: 0, duration: 0.7, xPercent: -100, opacity: 0, yPercent: 0 });
-          };
-    
-          sectionElement.addEventListener('mouseenter', onMouseEnter);
-          sectionElement.addEventListener('mouseleave', onMouseLeave);
-    
-          return () => {
-            sectionElement.removeEventListener('mouseenter', onMouseEnter);
-            sectionElement.removeEventListener('mouseleave', onMouseLeave);
-          };
+                    gsap.to(imageElement, {
+                        opacity: 1,
+                        duration: 0.5,
+                        ease: "power1.in"
+                    });
+                }
+            }
+
+            // Store the current mouse position for comparison in future renders.
+            prevMousePositionRef.current = { x: mouseX, y: mouseY };
         }
-      }, [view_projects_cursor]);
+    }, [imageAnimation, mousePositionSection]);
+
+    // Render the component, dynamically adjusting classes and styles based on state.
+
 
 
     if(display_body){
@@ -223,38 +186,58 @@ function Projects() {
                 {/* <ButtonsBody data={data}/> */}
                 <div className="projects-list-container">
                     <section
-                        
+                         ref={listItemRefs[0]} 
                         className="single-project-container container-shoop"
-                        onMouseEnter={() => setCursorVisible(true, 1)} 
-                        onMouseLeave={() => setCursorVisible(false, null)}
+                        onMouseOver={() => { 
+                          setCursorVisible(true, 1)
+                          addMouseMoveListener(0)
+                        }} 
+                        onMouseLeave={() => {
+                          setCursorVisible(false, null)
+                          removeMouseMoveListener(0)
+                          }} 
+                       
                     >
                         <div className="porject-title-container">
                         <h3 className="project-title"><span className="project-number">[01]</span>Shoop Aulart</h3>
                         </div>
-                        <img src={AulartHome} alt="" className="project-image" />
+                        <img src={AulartHome} alt="" className={`project-image project-image${0}`} />
                     </section>
                     <section
-                        
+                         ref={listItemRefs[1]} 
                         className="single-project-container container-bio"
-                        onMouseEnter={() => setCursorVisible(true, 2)} 
-                        onMouseLeave={() => setCursorVisible(false, null)}
+                        onMouseOver={() => { 
+                          setCursorVisible(true, 2)
+                          addMouseMoveListener(1)
+                        }} 
+                        onMouseLeave={() => {
+                          setCursorVisible(false, null)
+                          removeMouseMoveListener(1)
+                        }} 
                     >
                         
                         <div className="porject-title-container">
                         < h3 className="project-title"><span className="project-number">[02]</span>Link_In_Bio</h3>
                         </div>
-                        <img  src={LinkInBio} alt="" className="project-image-bio" />
+                        <img  src={LinkInBio} alt="" className={`project-image project-image${1}`}/>
                     </section>
                     <section 
+                         ref={listItemRefs[2]} 
                         style={{borderBottom: '1px solid rgb(var(--black))'}}                     
                         className="single-project-container container-tools"
-                        onMouseEnter={() => setCursorVisible(true, 3)} 
-                        onMouseLeave={() => setCursorVisible(false, null)}
+                        onMouseOver={() => { 
+                          setCursorVisible(true, 3)
+                          addMouseMoveListener(2)
+                        }} 
+                        onMouseLeave={() => {
+                          setCursorVisible(false, null)
+                          removeMouseMoveListener(2)
+                          }} 
                     >
                         <div className="porject-title-container">
                         <h3 className="project-title"><span className="project-number">[03]</span>Tools Aulart</h3>
                         </div>
-                        <img src={AulartTools2} alt="" className="project-image-tools" />
+                        <img src={AulartTools2} alt="" className={`project-image project-image${2}`} />
                     </section>
                     
                 </div>

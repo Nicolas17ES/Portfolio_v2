@@ -22,7 +22,7 @@
 .single-project-container .porject-title-container{
     overflow: hidden;
     height: 100%;
-    padding: 65px 0;
+    padding: 55px 0;
 }
 .single-project-container .project-title{
     display: flex;
@@ -30,7 +30,7 @@
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 100;
-    font-size: 5rem;
+    font-size: 6rem;
     white-space: pre-wrap;
     word-wrap: break-word;
     line-height: .8;
@@ -38,33 +38,21 @@
     text-align: left;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
-.single-project-container .project-image, .project-image-tools{
-    width: 450px;
+.single-project-container .project-image{
+    width: 400px;
     height: auto;
-    border-radius: 15px;
-    position: absolute;
-    z-index: 9999999;
-    top: 0;
-    left: 0;
-    opacity: 0; 
-    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
-}
-
-.single-project-container .project-image-bio{
-    width: auto;
-    height: 450px;
     border-radius: 10px;
     position: absolute;
-    z-index: 999999;
-    position: absolute;
-    top:0;
-    left: 0;
+    z-index: 9999999;
+    top: -100px;
+    right: 0;
     opacity: 0; 
     box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
+    pointer-events: none;
 }
+
 
 .project-resume{
     /* margin-top: 5px !important; */

@@ -25,8 +25,8 @@ function CollectivesHeader() {
                 scrollTrigger: {
                   trigger: ".collectives-header-image-container",
                   scrub: .5,
-                  start: "top center+=270",
-                  end: "bottom top+=300",
+                  start: "top center+=170",
+                  end: "bottom top+=270",
                   ease: "power1.out",
                   toggleActions: "play none none reverse",
                 

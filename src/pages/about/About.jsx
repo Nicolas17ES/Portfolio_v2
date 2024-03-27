@@ -19,6 +19,7 @@ import { GiBarbedSun } from "react-icons/gi";
 import { GiBarbedStar } from "react-icons/gi";
 import { GiAbstract013 } from "react-icons/gi";
 import { GiAbstract066 } from "react-icons/gi";
+import FotoGafas from '../../images/FotoGafas.png'
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -101,35 +102,20 @@ function About() {
 
    useGSAP(() => {
       if(display_body){
-         const titles = gsap.utils.toArray(".about-title");
-         titles.forEach(title => {
-            const splitTitle = new SplitTextJS(title);
-            const tlx = gsap.timeline({ repeat: 0, repeatDelay: 0 });
-
-            tlx.from(splitTitle.chars, {
-                  opacity: 0,
-                  y: 400,
-                  stagger: 0.07,
-                  duration: 1,
-               }, "<0");
-
-               tlx.to(splitTitle.chars, {
-                  y: -30,
-                  stagger: 0.07,
-                  duration: 1,
-                  ease: 'power2',
-               }, "<");
-
-               // Add a bounce effect after the letters move up
-               tlx.to(splitTitle.chars, {
-                  opacity: 1,
-                  y: 0, // Move letters up a bit more
-                  duration: .5,
-                  stagger: 0.06,
-                  ease: 'power2',               
-                  // Apply bounce easing
-               }, "<1"); // Add to the end of the previous animation
-         });
+          gsap.from('.about-title-container', {
+          xPercent: -150,
+          duration: 1.4,
+          ease: 'Power3.easeOut',
+          stagger: 0.3,
+          delay: .3,
+        })
+         gsap.from('.about-title', {
+            y: 200,
+            duration: 1.5,
+            ease: 'Power3.easeOut',
+            stagger: 0.3,
+            delay: .7,
+          })
       }       
    }, [display_body]);
 
@@ -142,13 +128,13 @@ function About() {
             <ScreenOverlay/>
             <section className="about-image-container">
                
-               <div className="about-title-container">
+               <div className="about-title-container" style={{borderTop: '1px solid rgb(var(--black))'}}>
                   <h2 className="about-title">Nicolas</h2>
                   <span className="about-title-word">Software</span>
                </div>
                <div className="about-title-container">
-                  <span className="about-title-word">Engineer</span>
-                  <h2 className="about-title">Luque</h2>
+               <img src={FotoGafas} alt="" className="foto-about"/>
+                  <h2 className="about-title">Luque </h2>
                </div>
                <div className="about-title-container">
                   <h2 className="about-title">Rodriguez</h2>

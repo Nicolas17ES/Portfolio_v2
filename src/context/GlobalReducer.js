@@ -129,6 +129,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 mouse_position: action.payload,
             }
+        case 'SET_EXIT_COMPONENT':
+            return {
+                ...state,
+                exit_component: action.payload,
+            }
         default: 
             return state;
     }

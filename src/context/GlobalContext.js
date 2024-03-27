@@ -44,7 +44,8 @@ export const GlobalProvider = ({children}) => {
         view_projects_cursor: false,      
         project_index_hovered: false,      
         change_slide: {value: 0, origin: null},      
-        mouse_position:  { x:0, y: 0 },      
+        mouse_position:  { x:0, y: 0 },
+        exit_component: null,      
     }
 
     const [state, dispatch] = useReducer(globalReducer, initialState)
@@ -73,6 +74,7 @@ export const GlobalProvider = ({children}) => {
         project_index_hovered: state.project_index_hovered,
         mouse_position: state.mouse_position,
         change_slide: state.change_slide,
+        exit_component: state.exit_component,
         dispatch,
     }}>
         {children}

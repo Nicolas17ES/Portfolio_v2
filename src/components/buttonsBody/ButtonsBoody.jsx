@@ -4,15 +4,17 @@ import './ButtonsBody.css'
 import '../../pages/music/Music.css'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 /**
  * ButtonsBody Component
  * This component is responsible for rendering and managing a set of interactive buttons.
  * Each button, when clicked or hovered over, updates the global context and triggers visual changes.
  */
+
+gsap.registerPlugin(ScrollTrigger); 
 function ButtonsBody({data}) {
     // Access global context for dispatching actions
-    const {dispatch, display_body, navbar_location, change_slide, button_state} = useContext(GlobalContext);
+    const {dispatch, display_body, navbar_location, change_slide, button_state, display_image_overlay} = useContext(GlobalContext);
 
     // State to track the active (clicked or hovered) button index
     const [activeIndex, setActiveIndex] = useState(-1);
@@ -53,16 +55,23 @@ function ButtonsBody({data}) {
                 payload: {value: index, origin: true},
             })
         } else {
-            // dispatch({
-            //     type: 'SET_IMAGE_OVERLAY',
-            //     payload: true
-            // })
-            setIsCliked(true);
-            setActiveIndex(index);
             dispatch({
-                type: 'SET_CLICKED_BUTTON',
-                payload: { clicked: true, value: index},
-            });
+                type: 'SET_EXIT_COMPONENT',
+                payload: true,
+            })
+            setTimeout(() => {
+                dispatch({
+                    type: 'SET_EXIT_COMPONENT',
+                    payload: false,
+                })
+                setIsCliked(true);
+                setActiveIndex(index);
+                dispatch({
+                    type: 'SET_CLICKED_BUTTON',
+                    payload: { clicked: true, value: index},
+                });
+            }, 1000)
+            
         }
         // dispatch({
         //     type: 'SET_SLIDE_ACTIVE_INDEX',
@@ -108,11 +117,11 @@ function ButtonsBody({data}) {
     useGSAP(() => {
         if(display_body && (!button_state || !button_state.clicked)){
             gsap.fromTo('.button-body', 
-                { yPercent: -350, opacity: 0}, // Starting properties
-                { yPercent: 0, 
+                { xPercent: -150, opacity: 0}, // Starting properties
+                { xPercent: 0, 
                     opacity: 1, 
-                    duration: .8,  
-                    ease: "power1.out", 
+                    duration: 1,  
+                    ease: "linear", 
                     delay: .5, 
                     stagger: {
                         each: 0.1, // Time between each animation start
@@ -120,33 +129,48 @@ function ButtonsBody({data}) {
                   }, } // Ending properties
             );
         } else if (display_body && button_state && button_state.clicked) {
-            gsap.fromTo('.button-body',
-                { yPercent: -350, opacity: 0 }, // Starting properties
-                {
-                    yPercent: 0,
-                    opacity: 1,
-                    duration: .8,
-                    ease: "power1.out",
-                    stagger: {
-                        each: 0.1, // Time between each animation start
-                        from: "end" // Start staggering from the end
-                    },
-                    scrollTrigger: {
+            const tl = gsap.timeline({
+                scrollTrigger: {
                         trigger: '.button-body',
-                        start: "top 80%", // Trigger animation when the top of the button is 80% in view
-                        toggleActions: "play none none none", // Animation plays when in view, but does not reverse when out of view
-                        // You can adjust the start and end position as needed
-                    },
-                }
-            );
+                        start: "top 99%", // Trigger animation when the top of the button is 80% in view
+                        toggleActions: "play none none none", 
+                    }
+                })
+                .fromTo(['.button-body', '.highlight-button'],
+                    { xPercent: -300, opacity: 0 }, // Starting properties
+                    {
+                        xPercent: 0,
+                        opacity: 1,
+                        duration: 1,
+                        ease: "linear",
+                        scrub: 1,
+                        stagger: {
+                            each: 0.1, // Time between each animation start
+                            from: "start" // Start staggering from the end
+                        }
+                    }
+                );
         }
       }, [display_body]);
+
+      useGSAP(() => {
+        if (display_image_overlay && (!button_state || !button_state.clicked)) {
+            gsap.to('.buttons-body-container', {
+            opacity: 0, // Set opacity to 0
+            duration: 1, // Duration of the animation
+            ease: 'linear', // Use linear easing for the animation
+            });
+        }
+        }, [display_image_overlay, button_state]);
+
+
+
 
 // onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={() => handleMouseLeave(index)}   
     return (
         <section className="buttons-body-container text">
             {data.buttons.map((button, index) => {
-                return <button key={index} onClick={() => setIndex(index)}className={`button-body word fancy ${((change_slide.value === index || button_state?.value === index) && navbar_location === 'music') ? 'highlight-button' : null}`} >{enhance(button.name)}</button>
+                return <button key={index} style={{textShadow: ((change_slide.value === index || button_state?.value === index) && navbar_location === 'music') ? '0 0 8px rgba(255, 255, 255, 0.8)' : null, transform: ((change_slide.value === index || button_state?.value === index) && navbar_location === 'music') ? 'scale(1.1)' : null}} onClick={() => setIndex(index)} className='button-body word fancy'>{enhance(button.name)}</button>
             })}
         </section>
     )

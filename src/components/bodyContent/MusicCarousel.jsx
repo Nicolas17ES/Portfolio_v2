@@ -90,17 +90,30 @@ function MusicCarousel() {
         setActiveIndex(swiper.realIndex);
     };
 
-    const changeSlide = (value) => {
+    const changeSlide = (direction) => {
+
+        if (swiperInstance) {
+            if (direction === 'next') {
+                swiperInstance.slideNext();
+            } else if (direction === 'prev') {
+                swiperInstance.slidePrev();
+            }
+        }
+        let value;
+        if(direction === 'next'){
+            value = +1
+        } else if(direction === 'prev'){
+            value = -1
+        }
+
         let newIndex;
-        if (value === 1 && activeIndexState === 2) {
+        if (direction === 'next' && activeIndexState === 2) {
             newIndex = 0;
-        } else if (value === -1 && activeIndexState === 0) {
+        } else if (direction === 'prev' && activeIndexState === 0) {
             newIndex = 2;
         } else {
             newIndex = activeIndexState + value;
         }
-    
-        swiperInstance.slideTo(newIndex);
         dispatch({
             type: 'SET_CHANGE_SLIDE',
             payload: { value: newIndex, origin: false },
@@ -236,15 +249,15 @@ function MusicCarousel() {
     useGSAP(() => {
         if(display_body){
             gsap.fromTo('.carousel-info-element', 
-                { yPercent: -350, opacity: 0}, // Starting properties
-                { yPercent: 0, 
+                { xPercent: +150, opacity: 0}, // Starting properties
+                { xPercent: 0, 
                     opacity: 1, 
-                    duration: .8,  
+                    duration: 1,  
                     ease: "power1.out", 
                     delay: .5, 
                     stagger: {
                         each: 0.1, // Time between each animation start
-                        from: "end" // Start staggering from the end
+                        from: "start" // Start staggering from the end
                   }, } // Ending properties
             );
         }
@@ -321,7 +334,7 @@ function MusicCarousel() {
                         </Swiper>
                     </div>
                         <div className="carousel-info">
-                            {activeIndexState !== null ? (
+                            {/* {activeIndexState !== null ? (
                                 <>
                                     <span className="designer carousel-info-element">By: {carouselData[activeIndexState].designer}</span>
                                     <span className="date carousel-info-element">{carouselData[activeIndexState].date}</span>
@@ -331,17 +344,17 @@ function MusicCarousel() {
                                     <span className="designer carousel-info-element">By: Marina</span>
                                     <span className="date carousel-info-element">15 Feb 2023</span>
                                 </>
-                            )}
+                            )} */}
                             <div className="carousel-nav carousel-info-element">
                                 <MagneticEffect>
                                 <button className="btn prev swiper-button-prev"> 
-                                <IoIosArrowDropleft onClick={() => changeSlide(-1)} className='carousel-icon'/>                          
+                                <IoIosArrowDropleft onClick={() => changeSlide('prev')} className='carousel-icon'/>                          
                                 </button>
                                 </MagneticEffect>
                                 <span className="counter-indicator">{activeIndexState + 1}/3</span>
                                 <MagneticEffect>
                                 <button className="btn next swiper-button-next">
-                                <IoIosArrowDropright onClick={() => changeSlide(+1)} className='carousel-icon'/> 
+                                <IoIosArrowDropright onClick={() => changeSlide('next')} className='carousel-icon'/> 
                                 </button>
                                 </MagneticEffect>
                             </div>

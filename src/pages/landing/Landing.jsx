@@ -4,6 +4,9 @@ import './Landing.css';
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
 import NightMode from '../../components/header/NightModeSwitch';
+import CounterLoader from '../../components/shared/CounterLoader';
+import useMousePositionTracker from '../../hooks/useMousePositionTracker';
+
 
 function Landing() {
   // Define and initialize local state variables using the useState hook
@@ -12,10 +15,14 @@ function Landing() {
   const [offset, setOffset] = useState(0); // Initialize offset to 0
 
   // Access global context using the useContext hook
-  const { dispatch, display_header, lateral_navbar, display_body } = useContext(GlobalContext);
+  const { dispatch, display_header, lateral_navbar, display_body, mouse_position } = useContext(GlobalContext);
 
   // Create a ref for the text element
   const textRef = useRef(null);
+
+  useMousePositionTracker();
+
+  console.log(mouse_position)
 
   // Function to handle mouse over events on elements
   const handleMouseOver = (index) => {
@@ -44,7 +51,7 @@ function Landing() {
     left: '0px',
     width: '100vw',
     height: '100vh',
-    transition: 'opacity 800ms ease, background-size 800ms ease, background-position 800ms ease, background-image 800ms ease',
+    transition: 'opacity 800ms ease, background-size 800ms ease, background-position-x 800ms ease, background-position-y 800ms ease, background-image 800ms ease',
     opacity: '0',
     animation: 'fade-in .5s forwards',
     backgroundPosition: `${backgroundPositionX}, ${backgroundPositionY}`, // Apply dynamic background positions

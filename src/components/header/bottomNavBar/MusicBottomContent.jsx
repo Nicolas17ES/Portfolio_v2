@@ -95,6 +95,8 @@ function MusicBottomContent() {
             gsap.to(paragraph, {
                 height: 'auto', // Assuming you want it to expand to its natural height
                 opacity: 1,
+                marginTop: 6,
+                padding: '3px, 7px',
                 duration: 0.5, // Adjust duration as needed
                 ease: 'power1.out',
                 onComplete: () => {

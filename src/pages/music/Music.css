@@ -430,7 +430,7 @@
 }
 
 .collectives-titles-container{
-  /* opacity: 1; */
+  padding: 0 10px;
 }
 
 .collectives-header-title{
@@ -638,15 +638,15 @@
 }
 
 .time-player-container{
-  font-family: 'Poppins';
+  font-family: "Anonymous Pro", monospace;
   align-self: flex-start;
   padding-top: 8px;
   margin-left: 20px;
   z-index: 99;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .time-player-container-playing{
-  font-family: 'Poppins';
+  font-family: "Anonymous Pro", monospace;
   z-index: 99;
   font-size: 1.3rem;
   letter-spacing: 1px;
@@ -656,7 +656,8 @@
 .player-title{
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: 'Poppins';
+  /* font-family: 'Poppins'; */
+  font-family: "Anonymous Pro", monospace;
   font-weight: 100;
   z-index: 99;
 }

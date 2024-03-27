@@ -1,6 +1,6 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import SonidoXTzena from '../../images/SonidoXTzena.jpg';
 import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
 import SonidoxMathew from '../../images/SonidoxMathew.jpg';
@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger);
 
 function Sonido() {
-     const {dispatch} = useContext(GlobalContext);
+     const {dispatch, exit_component, button_state} = useContext(GlobalContext);
      const [hoveredIndex, setHoveredIndex] = useState(null);
 
 
@@ -82,11 +82,28 @@ function Sonido() {
             scrub: false,
           },
 
-          xPercent: -200,
-          duration: 1,
-          stagger: 0.4,
+          xPercent: -100,
+          duration: 1.4,
+          stagger: 0.2,
         });
       }, []);
+
+      useEffect(() => {
+        console.log("value", button_state.value)
+        console.log("exit_component", exit_component)
+        if(button_state.value === 0 && exit_component){
+            gsap.to(".soundcloud-outer-animation", {
+                yPercent: 440,
+                duration: 2,
+                stagger: {
+                    amount: 0.26,
+                    from: "end", // Change the direction to start from the end
+                },
+                opacity: 0
+            });
+        }
+
+      }, [exit_component]);
     
 
 
