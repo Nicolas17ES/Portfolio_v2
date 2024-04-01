@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function SkillsSider() {
     const [expand, setExpand] = useState(null)
-    const { display_carousel, lateral_navbar, hide_nav, shrink_body, display_header } = useContext(GlobalContext);
+    const { display_carousel, lateral_navbar, hide_nav, shrink_body, display_header, display_body } = useContext(GlobalContext);
 
 
     const [namesArray, setNamesArray] = useState([
@@ -19,15 +19,15 @@ function SkillsSider() {
         'Javascript', 'Wordpress', 'PHP', 'ExpressJS', 'RestAPI'
     ]);
 
-    useEffect(() => {
-        if (display_carousel) {
-            gsap.from('.logos-container', {
-                scale: 0,
-                duration: 1.5, // Adjust duration as needed
-                ease: 'power3.out', // Adjust easing as needed
-            });
-        }
-    }, [display_carousel]); // Dependency array ensures effect runs only when display_carousel changes
+    // useEffect(() => {
+    //     if (display_carousel) {
+    //         gsap.from('.logos-container', {
+    //             scale: 0,
+    //             duration: 1.5, // Adjust duration as needed
+    //             ease: 'power3.out', // Adjust easing as needed
+    //         });
+    //     }
+    // }, [display_carousel]); // Dependency array ensures effect runs only when display_carousel changes
 
 
     

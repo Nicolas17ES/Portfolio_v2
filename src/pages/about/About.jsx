@@ -14,14 +14,18 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import Skills from '../../components/bodyContent/Skills'
 import AnimatedIcon from '../../components/bodyContent/AnimatedIcon'
 import ScreenOverlay from '../../components/shared/ScreenOverlay';
+import SkillsSider from '../../components/bodyContent/SkillsSider';
 import { GiAngryEyes } from "react-icons/gi";
 import { GiBarbedSun } from "react-icons/gi";
 import { GiBarbedStar } from "react-icons/gi";
 import { GiAbstract013 } from "react-icons/gi";
 import { GiAbstract066 } from "react-icons/gi";
 import FotoGafas from '../../images/FotoGafas.png'
+import SkillsList from '../../components/bodyContent/SkillsList';
 
+import CSSRulePlugin from "gsap/CSSRulePlugin";
 
+gsap.registerPlugin(CSSRulePlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 function About() {
@@ -37,7 +41,7 @@ function About() {
    const navigate = useNavigate();
    const pathname = location.pathname.substring(1); // Removes the leading slash
 
-   const {display_body, navbar_location} = useContext(GlobalContext);
+   const {display_body, navbar_location, prevLocation} = useContext(GlobalContext);
 
    // add ref to the body
    const bodyRef = useRef(null);
@@ -54,8 +58,8 @@ function About() {
   
 
 
-   useSubtitleAnimation(display_body, inView1, ".about-subtitle-1");
-   useSubtitleAnimation(display_body, inView2, ".about-subtitle-2");
+   // useSubtitleAnimation(display_body, inView1, ".about-subtitle-1");
+   // useSubtitleAnimation(display_body, inView2, ".about-subtitle-2");
 
    useEffect(() => {
     if (display_body) {
@@ -87,7 +91,7 @@ function About() {
                     scrub: true,
                     markers: false
                 },
-                opacity: 0.2,
+                opacity: 0,
                 stagger: 0.1,
                 duration: 1,
                 ease: 'back.out',
@@ -95,6 +99,38 @@ function About() {
         });
     }
 }, [display_body]);
+
+
+useGSAP(() => {
+   if(display_body){
+      gsap.from(".about-subtitle-1", {
+         scrollTrigger: {
+           trigger: ".about-subtitle-1",
+           start: "bottom bottom",
+           end: "bottom center+=150",
+           scrub: 1,
+         },
+         x: -300,
+         duration: 1,
+       });
+   }
+ }, []);
+
+useGSAP(() => {
+   if(display_body){
+      gsap.from(".about-subtitle-2", {
+         scrollTrigger: {
+           trigger: ".about-subtitle-2",
+           start: "bottom bottom",
+           end: "bottom center+=150",
+           scrub: 1,
+         },
+         x: -300,
+         duration: 1,
+       });
+   }
+ }, []);
+
 
 
 
@@ -106,10 +142,15 @@ function About() {
           xPercent: -150,
           duration: 1.4,
           ease: 'Power3.easeOut',
-          stagger: 0.3,
           delay: .3,
         })
          gsap.from('.about-title', {
+            y: 200,
+            duration: 1.5,
+            ease: 'Power3.easeOut',
+            delay: .7,
+          })
+         gsap.from('.about-title-word', {
             y: 200,
             duration: 1.5,
             ease: 'Power3.easeOut',
@@ -118,6 +159,22 @@ function About() {
           })
       }       
    }, [display_body]);
+
+//     // ANIMATION TO LOAD THE IMAGE OVERLAY ON MOUNBT
+    useEffect(() => {        
+      const imageRevealReset = CSSRulePlugin.getRule(".image-about-wrap::before");
+      gsap.to(imageRevealReset, { duration: 0, cssRule: { width: "100%" } });
+      
+      // Your animation setup
+      const imageReveal = CSSRulePlugin.getRule(".image-about-wrap::before");
+      let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
+                  .to(imageReveal, { duration: (prevLocation === '/music' || prevLocation === '/projects') ? 5.3 : 1.1, delay: (prevLocation === '/music' || prevLocation === '/projects') ? 5.6 : 1, cssRule: { width: "0%" } });
+      
+      // Cleanup function to kill the animation when the component unmounts or conditions change
+      return () => {
+        tl.kill(); // This will kill the timeline, stopping all animations in it
+      };
+  }, []);
 
 
 // style={{backgroundImage: `url(${Test})`}}
@@ -130,10 +187,12 @@ function About() {
                
                <div className="about-title-container" style={{borderTop: '1px solid rgb(var(--black))'}}>
                   <h2 className="about-title">Nicolas</h2>
-                  <span className="about-title-word">Software</span>
+                <span className="about-title-word"><SkillsList/></span> 
                </div>
                <div className="about-title-container">
-               <img src={FotoGafas} alt="" className="foto-about"/>
+                  <div className="image-about-wrap">
+                  <img src={FotoGafas} alt="" className="foto-about"/>
+                  </div>
                   <h2 className="about-title">Luque </h2>
                </div>
                <div className="about-title-container">
@@ -146,7 +205,9 @@ function About() {
                <p ref={refParagraph1} className="about-paragraph about-paragraph-1">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code."</p>
             </section>
             <section style={{marginBottom: '100px'}} className="about-content-container">
-               <Skills/>
+            <div className="skills-slider-container">
+              <SkillsSider/>
+            </div>
             </section>
             <section style={{marginBottom: '100px'}} className="about-content-container">
                <h3 ref={refSubtitle2} className={`about-subtitle about-subtitle-2 ${inView2 ? 'in-view' : 'not-in-view'}`}>Embarking on Web Adventures</h3>

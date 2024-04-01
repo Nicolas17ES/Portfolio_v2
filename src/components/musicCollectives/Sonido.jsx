@@ -89,8 +89,6 @@ function Sonido() {
       }, []);
 
       useEffect(() => {
-        console.log("value", button_state.value)
-        console.log("exit_component", exit_component)
         if(button_state.value === 0 && exit_component){
             gsap.to(".soundcloud-outer-animation", {
                 yPercent: 440,

@@ -67,23 +67,23 @@ function MusicCarousel() {
 
 
 
-    useEffect(() => {
-        if(activeIndexState !== null){
-            gsap.from('.date', {
-                opacity: 0,
-                y: 10,
-                duration: 1.1,
-                ease: 'power2.inOut'
-              });
+    // useEffect(() => {
+    //     if(activeIndexState !== null){
+    //         gsap.from('.date', {
+    //             opacity: 0,
+    //             y: 10,
+    //             duration: 1.1,
+    //             ease: 'power2.inOut'
+    //           });
               
-              gsap.from('.designer', {
-                opacity: 0,
-                y: 10,
-                duration: 1.1,
-                ease: 'power2.inOut',
-              });
-        }
-    }, [activeIndexState])
+    //           gsap.from('.designer', {
+    //             opacity: 0,
+    //             y: 10,
+    //             duration: 1.1,
+    //             ease: 'power2.inOut',
+    //           });
+    //     }
+    // }, [activeIndexState])
 
     const handleSlideChange = (swiper) => {
         
@@ -131,7 +131,6 @@ function MusicCarousel() {
         
         if(change_slide.origin && (change_slide.value !== undefined && change_slide.value !== null) && swiperInstance){
             swiperInstance.slideTo(change_slide.value);
-            console.log('change slide called', change_slide)
         }
     }, [change_slide])
 
@@ -249,12 +248,12 @@ function MusicCarousel() {
     useGSAP(() => {
         if(display_body){
             gsap.fromTo('.carousel-info-element', 
-                { xPercent: +150, opacity: 0}, // Starting properties
+                { xPercent: -150, opacity: 0}, // Starting properties
                 { xPercent: 0, 
                     opacity: 1, 
-                    duration: 1,  
+                    duration: 1.2,  
                     ease: "power1.out", 
-                    delay: .5, 
+                    delay: .8, 
                     stagger: {
                         each: 0.1, // Time between each animation start
                         from: "start" // Start staggering from the end
@@ -269,6 +268,7 @@ function MusicCarousel() {
            <section className="carousel">
              <div className="wrapper">
                 <div className="row">
+                <span className="counter-indicator">{activeIndexState + 1}/3</span>
                     <div className="swiper one"> 
                         <Swiper
                             loop={true}
@@ -345,23 +345,24 @@ function MusicCarousel() {
                                     <span className="date carousel-info-element">15 Feb 2023</span>
                                 </>
                             )} */}
-                            <div className="carousel-nav carousel-info-element">
-                                <MagneticEffect>
-                                <button className="btn prev swiper-button-prev"> 
-                                <IoIosArrowDropleft onClick={() => changeSlide('prev')} className='carousel-icon'/>                          
-                                </button>
-                                </MagneticEffect>
-                                <span className="counter-indicator">{activeIndexState + 1}/3</span>
-                                <MagneticEffect>
-                                <button className="btn next swiper-button-next">
-                                <IoIosArrowDropright onClick={() => changeSlide('next')} className='carousel-icon'/> 
-                                </button>
-                                </MagneticEffect>
-                            </div>
+                           
                         </div>
                     {/* </div> */}
                 </div>
              </div>
+             {/* <div className="carousel-nav carousel-info-element">
+                <MagneticEffect>
+                <button className="btn prev swiper-button-prev"> 
+                <IoIosArrowDropleft onClick={() => changeSlide('prev')} className='carousel-icon'/>                          
+                </button>
+                </MagneticEffect>
+                <span className="counter-indicator">{activeIndexState + 1}/3</span>
+                <MagneticEffect>
+                <button className="btn next swiper-button-next">
+                <IoIosArrowDropright onClick={() => changeSlide('next')} className='carousel-icon'/> 
+                </button>
+                </MagneticEffect>
+                </div> */}
            </section>
 
     );

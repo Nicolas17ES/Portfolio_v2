@@ -19,8 +19,8 @@ import Footer from './components/header/Footer'
 import ViewProjectsCursor from './components/mouse/ViewProjectsCursor';
 import useResetScroll from './hooks/useResetScroll'
 import { AudioPlayerProvider } from './context/AudioPlayerContext';
-import useMousePositionTracker from './hooks/useMousePositionTracker'; // Adjust the import path as needed
-
+import Background from './pages/landing/Background';
+import MainLateral from './pages/main/MainLateral';
 
 function App() {
   // This is the main entry point of your React application.
@@ -39,7 +39,7 @@ function WrappedApp() {
   // It uses the React Router to handle routing and location-based rendering.
   const location = useLocation();
   const pathname = location.pathname;
-  const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor } = useContext(GlobalContext);
+  const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation } = useContext(GlobalContext);
 
   const containerRef = useRef(null);
   const scrollPosition = useScrollPosition();
@@ -79,7 +79,9 @@ function WrappedApp() {
     <>
       {/* <MouseTracker /> */}
       <IconReplica/>
-      <Landing />
+      <Background/>
+      {((lateral_navbar || start_lateral_nav_animation) && display_header) &&  <MainLateral />}
+     
       {view_projects_cursor && <ViewProjectsCursor/>}
       
       {/* <div className="container"> */}

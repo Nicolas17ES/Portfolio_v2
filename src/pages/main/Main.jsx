@@ -9,21 +9,17 @@ import { useEffect, useState, useContext, useRef } from 'react';
 import BottomNavBar from '../../components/header/bottomNavBar/BottomNavBar';
 import GlobalContext from '../../context/GlobalContext';
 import { AiOutlineClose } from 'react-icons/ai';
-import MouseTracker from '../../components/mouse/MouseTracker'
-import MagneticEffect from '../../components/mouse/MagneticEffect'
-import { PiArrowElbowLeftDownFill, PiArrowElbowRightFill } from "react-icons/pi";
-import { ImArrowRight } from "react-icons/im";
+import { PiArrowElbowLeftFill, PiArrowElbowRightFill } from "react-icons/pi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MusicFoto from '../../images/ReissUnsilenced.jpeg'
 import ProjectsFoto from '../../images/AulartHome.png'
 
-function Main({ handleMouseOver }) {
+function Main() {
   // Define and initialize local state variables using the useState hook
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeLinkIndex, setActiveLinkIndex] = useState(null);
-  const [blockAnimations, setBlockAnimations] = useState(true);
+  const [blockAnimations, setBlockAnimations] = useState(false);
   const [lateralNavBar, setLateralNavBar] = useState(false);
   const [entered, setEntered] = useState(false); // Tracks if the mouse has entered a project section.
 
@@ -38,6 +34,14 @@ function Main({ handleMouseOver }) {
   const pathname = location.pathname;
 
   const navigate = useNavigate();
+
+  // set active index tomove background
+  const handleMouseOver = (index) => {
+    dispatch({
+      type: 'SET_NAVBAR_INDEX',
+      payload: index,
+    })
+  }
 
 
   // Define navigation items
@@ -67,6 +71,7 @@ function Main({ handleMouseOver }) {
 
   // Function to set the location of the navbar and expand it
   const setNavBarLocation = (item) => {
+    dispatch({ type: 'SET_LATERAL_NAV', payload: true});
     dispatch({type: 'SET_ANIMATION_VALUE', payload: null})
     dispatch({type: 'SET_NAV_LOCATION', payload: item});
     dispatch({ type: 'SET_TEXT_ANIMATION', payload: true});
@@ -89,98 +94,132 @@ function Main({ handleMouseOver }) {
     });
   };
 
-  useEffect(() => {
-    // Update the navbar's CSS classes based on global state
-    if ((lateralNavBar || lateral_navbar) && hide_nav) {
-      navbarRef.current.classList.add('hide-navbar');
-      navbarRef.current.classList.remove('display-navbar');
-    } else if ((lateralNavBar || lateral_navbar) && !hide_nav) {
-      navbarRef.current.classList.add('display-navbar');
-      navbarRef.current.classList.remove('hide-navbar');
-    }
-  }, [hide_nav]);
 
-  // to={navItems[index].toLowerCase()} onClick={() => setNavBarLocation(navItems[index].toLowerCase())}
+  const changeLocation = (currentIndex) => {
+    setBlockAnimations(true)
+    const indexes = [0,1,2]
+    let tl = gsap.timeline(); // Create a new GSAP timeline
 
-  const changeLocation = (index) => {
-    if(navbar_location === ''){
-      setBlockAnimations(true)
-      gsap.to(`.link-icon${index}`, {
+    indexes.forEach((index) => {
+      tl.to(`.nav-link-image${index}`, {
         opacity: 0,
-        xPercent: -15,
-        duration: 0.2,
-        rotate: 110,
-        yPercent: 0,
-      });
-      // Reverse animation for link
-      gsap.to(`.link`, {
-        xPercent: 0,
-        duration: 0.2,
-        onComplete: () => {
-          gsap.to(`.nav-link-image`, {
-            opacity: 0,
-            duration: .5,
-            ease: "power2.out" // Adjust easing function as needed
-          });
-          const destination = navItems[index].name.toLowerCase();
-          setNavBarLocation(destination);
-          gsap.to(".link", {
-            duration: 2,
-            fontSize: "2rem",
-            ease: "power2.out",
-            delay: 1,
-          });
-          if(!lateral_navbar){
-                navigate('/' + destination)
-          }
+        duration: 0.3,
+        ease: "power2.out",
+      }, "<");
+      tl.to(`.link-icon${index}`, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.out",
+        }, "<");
+        if (index !== currentIndex) {
+            // Assuming you want to animate all other links before the current one
+            tl.to(`.nav-link${index}`, {
+                opacity: 0,
+                duration: 0.3,
+                ease: "power2.out",
+            }, "<");
         }
-      });
-    } else {
-      const destination = navItems[index].name.toLowerCase();
-      setNavBarLocation(destination);
-      if(!lateral_navbar){
-            navigate('/' + destination)
-      }
-  }
+    });
+    removeMouseMoveListener(currentIndex)
+    tl.to(`.link-${currentIndex}`, {
+        y: currentIndex === 0 ? 200 : currentIndex === 1 ? 65 : currentIndex === 2 ? - 75 : null,
+        scale:25,
+        duration: 1.5,
+        delay: .4,
+        transformOrigin: "50% 50%",
+        ease: "power2.InOut",
+        onComplete: () => {
+          dispatch({ type: 'SET_START_LATERAL_NAV_ANIMATION', payload: true});
+        }
+    });
+    tl.to(`.link-${currentIndex}`, {
+        xPercent: -3000,
+        duration: 1.3,
+        ease: "power2.out",
+        onComplete: () => {
+                const destination = navItems[currentIndex].name.toLowerCase();
+                setNavBarLocation(destination);
+                if(!lateral_navbar){
+                      navigate('/' + destination)
+                }
+        }
+    });
 }
 
 
 const animateNavLink = (index) => {
+  console.log('animateNav')
   // Animation for nav-link-icon
-  gsap.to(`.link-icon${index}`, {
-    opacity: 1,
-    xPercent: 50,
-    duration: .4,
-    rotate: 45,
-    yPercent: 0,
-  });
-
-  // Animation for link
-  gsap.fromTo(`.link-${index}`, {
-    x: 0,
-  }, {
-    xPercent: 15,
-    duration: 0.4,
-  });
+  if(index === 1){
+    gsap.to(`.link-icon${index}`, {
+      opacity: 1,
+      xPercent: -50,
+      duration: .4,
+      rotate: -45,
+      yPercent: 0,
+    });
+  
+    // Animation for link
+    gsap.fromTo(`.link-${index}`, {
+      x: 0,
+    }, {
+      xPercent: -15,
+      duration: 0.4,
+    });
+    
+  } else {
+    gsap.to(`.link-icon${index}`, {
+      opacity: 1,
+      xPercent: 50,
+      duration: .4,
+      rotate: 45,
+      yPercent: 0,
+    });
+  
+    // Animation for link
+    gsap.fromTo(`.link-${index}`, {
+      x: 0,
+    }, {
+      xPercent: 15,
+      duration: 0.4,
+    });
+  }
 
 };
 
 
 const reverseAnimateNavLink = (index) => {
+  console.log('reverse')
   // Reverse animation for nav-link-icon
-  gsap.to(`.link-icon${index}`, {
-    opacity: 0,
-    xPercent: -15,
-    duration: 0.4,
-    rotate: 110,
-    yPercent: 0,
-  });
-
-  // Reverse animation for link
-  gsap.to(`.link`, {
-    xPercent: 0,
-    duration: 0.4,
-  });
+  if(index === 1){
+    gsap.to(`.link-icon${index}`, {
+      opacity: 0,
+      xPercent: 15,
+      duration: 0.4,
+      rotate: -110,
+      yPercent: 0,
+    });
+  
+    // Reverse animation for link
+    gsap.to(`.link`, {
+      xPercent: 0,
+      duration: 0.4,
+    });
+  } else {
+    gsap.to(`.link-icon${index}`, {
+      opacity: 0,
+      xPercent: -15,
+      duration: 0.4,
+      rotate: 110,
+      yPercent: 0,
+    });
+  
+    // Reverse animation for link
+    gsap.to(`.link`, {
+      xPercent: 0,
+      duration: 0.4,
+    });
+  }
 
 };
 
@@ -207,6 +246,7 @@ const handleMouseMove = (e) => {
 const listItemRefs = useRef([]);
 
 const addMouseMoveListener = (index) => {
+  console.log('addMouse')
   const element = listItemRefs.current[index];
   if (element) {
       setImageAnimation({
@@ -241,6 +281,7 @@ const addMouseMoveListener = (index) => {
 
 // Adjusted function to remove mouse move listener from an element
 const removeMouseMoveListener = (index) => {
+  console.log('removeMouse')
   gsap.to(`.nav-link-image${imageAnimation.index}`, {
     opacity: 0,
     duration: .5,
@@ -293,15 +334,33 @@ useEffect(() => {
 }, [imageAnimation, mousePosition]);
 
 
+
+// FADE IN COMPONENT ONMOUNT
+useGSAP(() => {
+
+  // rotate to letters
+  gsap.from(".nav-link", {
+      opacity: 0,
+      delay: .3,
+      duration: 1.3,
+      stagger: .24,
+      ease: "power2.inOut",
+      onComplete: () => {
+        dispatch({
+            type: 'SET_HIDE_LOADER',
+            payload: true,
+          });
+    }
+  });
+}, [])
+
+
   return (
     <>
-      <nav ref={navbarRef} className={`navbar ${lateral_navbar ? 'lateral-navbar' : 'central-navbar'}`} data-active-index={activeIndex}>
-        {lateral_navbar && !hide_nav && (
-          <AiOutlineClose onClick={() => changeNavBarState(true)} size={20} className="button-close-nav" />
-        )}
+      <nav ref={navbarRef} className='navbar central-navbar' data-active-index={activeIndex}>
         <div className="nav-links-container">
           {navItems.map((element, index) => (
-            <img src={element.img} alt="" className={`nav-link-image nav-link-image${index}`} />
+            <img src={element.img} alt="" key={index} className={`nav-link-image nav-link-image${index}`} />
           ))}
           <ul className="nav-links">
             {navItems.map((item, index) => (
@@ -310,27 +369,56 @@ useEffect(() => {
                   ref={el => listItemRefs.current[index] = el} 
                   key={index} 
                   className={`nav-link nav-link${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`} 
-                  onMouseOver={() => { 
-                    handleMouseOver(index);
-                    if (!blockAnimations || navbar_location === '') {
-                      animateNavLink(index); 
-                      addMouseMoveListener(index); 
-                    }}}
-                  onMouseLeave={() => {
-                    if (!blockAnimations || navbar_location === '') {
-                      reverseAnimateNavLink(index);
-                      removeMouseMoveListener(index);
-                    }}} 
+                  
                   >
-                    {!blockAnimations || navbar_location === '' && (
+                   {index === 1 ? (
+                     <>
+                      <span onClick={() => changeLocation(index)}  className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`} onMouseOver={() => { 
+                        handleMouseOver(index);
+                          if (!blockAnimations) {
+                            animateNavLink(index); 
+                            addMouseMoveListener(index); 
+                          }}}
+                        onMouseLeave={() => {
+                          if (!blockAnimations) {
+                            reverseAnimateNavLink(index);
+                            removeMouseMoveListener(index);
+                          }}} 
+                        >
+                        {item.name}
+                        {/* {'0' + (index + 1) + ' ' + item.name} */}
+                      </span>
+                      {(!blockAnimations || navbar_location === '') && (
+                        <div className={`nav-icon-container nav-icon-container-${index}`}>
+                          <PiArrowElbowLeftFill className={`nav-link-icon link-icon${index}`}/>
+                        </div>
+                      )}
+                     </>
+                   ) : (
+                    <>
+                     {(!blockAnimations || navbar_location === '') && (
                       <div className={`nav-icon-container nav-icon-container-${index}`}>
                         <PiArrowElbowRightFill className={`nav-link-icon link-icon${index}`}/>
                       </div>
                     )}
-                    <span onClick={() => changeLocation(index)} className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`}>
+                    <span onClick={() => changeLocation(index)} className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`}
+                      onMouseOver={() => { 
+                        handleMouseOver(index);
+                        if (!blockAnimations) {
+                          animateNavLink(index); 
+                          addMouseMoveListener(index); 
+                        }}}
+                      onMouseLeave={() => {
+                        if (!blockAnimations) {
+                          reverseAnimateNavLink(index);
+                          removeMouseMoveListener(index);
+                        }}} 
+                      >
                       {item.name}
                       {/* {'0' + (index + 1) + ' ' + item.name} */}
                     </span>
+                    </>
+                   )}
                 </li>
          
             ))}

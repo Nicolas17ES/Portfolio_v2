@@ -393,18 +393,20 @@
   height: 100%;
   color: rgb(var(--black));
   pointer-events: none;
-  border: 1px solid red;
 }
 
 .counter{
+  padding-top: 8px;
+  padding-left: 5px;
   position: fixed;
   left: 50px;
-  bottom: 50px;
+  bottom: 75px;
   display: flex;
-  height: 100px;
-  font-size: 100px;
+  height: 76px;
+  font-size: 90px;
   clip-path: polygon(0 0, 100% 0, 100% 100px, 0 100px);
   font-weight: 400;
+  overflow: hidden;
 }
 
 .counter-1, .counter-2, .counter-3{
@@ -414,7 +416,7 @@
 
 .num1offset1{
   position: relative;
-  right: -25px;
+  right: -5px;
 }
 
 .num1offset2{
@@ -422,28 +424,94 @@ position: relative;
 right: -10px;
 }
 
-.loader{
+.loaders-containers{
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300px;
-  height: 50px;
   transform: translate(-50%, -50%);
   display: flex;
-  background: rgb(80, 80, 80);
+  gap: 0px;
 }
 
-.loader-1{
+.loader{
+ 
+  width: 450px;
+  height: 20px;
+  
+  display: flex;
+  background: rgb(80, 80, 80); 
+}
+.loader-lastname{
+  width: 250px;
+  height: 20px;
+  display: flex;
+  background: rgb(80, 80, 80); 
+}
+
+.loader-1, .loader-2, .loader-3, .loader-4{
   position: relative;
-  background: #fff;
-  width: 200px;
+  background: rgb(var(--black));
+  width: 150px;
 }
-.loader-2{
-position: relative;
-width: 100px;
-background: #fff;
+.loader-5{
+  position: relative;
+  background: rgb(var(--black));
+  width: 100px;
 }
+/* .loader-2{
+  position: relative;
+  width: 100px;
+  background: rgb(var(--black));
+} */
 
 .bar{
-  height: 50px;
+  height: 20px;
 }
+
+.website-content{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-counter{
+  position: relative;
+  width: max-content;
+  height: max-content;
+}
+
+.h1{
+  display: flex;
+  font-size: 80px;
+}
+
+.header-counter .h1 h1{
+  text-align: center;
+  position: relative;
+  top: 80px;
+  margin: 0 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.header-revealer{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.header-revealer::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 105%;
+  height: 110%;
+  background: rgb(var(--black));
+}
+

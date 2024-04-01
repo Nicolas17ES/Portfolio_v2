@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ProjectstBottomNavBarContent() {
     const prevLocation = usePreviousLocation();
-    const { project_index_hovered, display_body, navbar_location } = useContext(GlobalContext);
+    const { project_index_hovered, display_body, navbar_location, lateral_navbar } = useContext(GlobalContext);
     const [awaitExpand, setAwaitExpand] = useState(true);
 
 
@@ -63,17 +63,22 @@ function ProjectstBottomNavBarContent() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-          if (display_body) {
+        //   if (lateral_navbar) {
             gsap.fromTo('.bottom-nav-content-projects', 
               { opacity: 0, y: -100 }, 
               { opacity: 1, y: 0, duration: .5, stagger: 0.2, delay: (prevLocation === '/about' || prevLocation === '/music') ? 2 : .5 , 
-                onComplete: () => setAwaitExpand(false) }
+                onComplete: () => 
+                {
+                    setAwaitExpand(false) 
+                console.log('completed')
+                }
+            }
             );
-          }
+        //   }
         });
       
         return () => ctx.revert();
-      }, [display_body, navbar_location]);
+      }, [lateral_navbar, navbar_location]);
 
 
     //   useEffect(() => {

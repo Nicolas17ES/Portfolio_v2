@@ -12,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
  */
 
 gsap.registerPlugin(ScrollTrigger); 
+
 function ButtonsBody({data}) {
     // Access global context for dispatching actions
     const {dispatch, display_body, navbar_location, change_slide, button_state, display_image_overlay} = useContext(GlobalContext);
@@ -143,10 +144,9 @@ function ButtonsBody({data}) {
                         opacity: 1,
                         duration: 1,
                         ease: "linear",
-                        scrub: 1,
                         stagger: {
                             each: 0.1, // Time between each animation start
-                            from: "start" // Start staggering from the end
+                            from: "start", // Start staggering from the end
                         }
                     }
                 );

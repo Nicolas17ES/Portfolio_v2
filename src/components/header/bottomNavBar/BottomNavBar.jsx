@@ -15,7 +15,7 @@ import MouseTracker from '../../mouse/MouseTracker'
 
 function BottomNavBar() {
   // Access global context using the useContext hook
-  const { navbar_location, dispatch } = useContext(GlobalContext);
+  const { navbar_location, lateral_navbar } = useContext(GlobalContext);
 
   // Define and initialize local state variables using the useState hook
   const [prevLocation, setPrevLocation] = useState(null);
@@ -30,10 +30,14 @@ function BottomNavBar() {
 
   useEffect(() => {
     // Manage the display and animation of the BottomNavBar based on navigation location
-    if (prevLocation === null) {
-      sectionRef.current.classList.add('bottom-lateral-navbar');
+    
+    if (prevLocation === null && lateral_navbar) {
+      // console.log("prevLocation:", prevLocation)
+      // console.log("lateral_navbar:", lateral_navbar)
+      // sectionRef.current.classList.add('bottom-lateral-navbar');
       setPrevLocation(navbar_location);
-    } else if (navbar_location !== prevLocation) {
+      setFinalLocation(navbar_location);
+    } else if ((navbar_location !== prevLocation) && lateral_navbar) {
       sectionRef.current.classList.remove('bottom-lateral-navbar');
       sectionRef.current.classList.add('shrink-element');
       setPrevLocation(navbar_location);
@@ -53,7 +57,7 @@ function BottomNavBar() {
     }
   }, []);
 
-
+console.log(navbar_location)
   // function that will hide or show the scrollbar depending on mouseneter
   const displayScrollBar = (value) => {
     const contentDivs = sectionRef.current.querySelectorAll('.display-bottom');
@@ -74,7 +78,7 @@ function BottomNavBar() {
   return (
     <>
     {/* <MouseTracker /> */}
-    <section style={{padding: finalLocation === 'about' && '0'}} onMouseEnter={() => displayScrollBar(true)} onMouseLeave={() => displayScrollBar(false)} ref={sectionRef}>
+    <section className='bottom-lateral-navbar' style={{padding: finalLocation === 'about' && '0'}} onMouseEnter={() => displayScrollBar(true)} onMouseLeave={() => displayScrollBar(false)} ref={sectionRef}>
       <div className={finalLocation !== 'projects' ? 'hide-bottom' : 'display-bottom'}>
         <ProjectstBottomNavBarContent />
       </div>

@@ -25,64 +25,19 @@ function MusicBottom() {
 
     useEffect(() => {
         if (display_image_overlay) {
-
-      gsap.fromTo('.bottom-nav-paragraph', 
-        { xPercent: 0, opacity: 1 }, // Assuming starting from visible and original position
-        { xPercent: 100, opacity: 0, duration: 1 } // Specified ending values
-      );
-     
-    
-          // const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
-          
-          // paragraphs.forEach(paragraph => {
-          //   const originalText = paragraph.textContent;
-          //   paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
-            
-          //   originalText.split(' ').forEach((word, index, array) => {
-          //     const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
-          //     const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
-          //     paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
-          //   });
-      
-          //   // Now animate each span to fade in
-          //   gsap.to(paragraph.querySelectorAll('span'), {
-          //     opacity: 0,
-          //     duration: 0,
-          //     stagger: 0.0,
-          //     delay: index => Math.random() * 1.2, // Random delay between 0 and 2 seconds
-          //     ease: "power1.inOut"
-          //   });
-          // });
+          gsap.fromTo('.bottom-nav-paragraph', 
+            { opacity: 1 }, // Assuming starting from visible and original position
+            { opacity: 0, duration: 1 } // Specified ending values
+          );
         }
       }, [display_image_overlay, navbar_location]);
       
     useEffect(() => {
       if (display_body && navbar_location === 'music') {
         gsap.fromTo('.bottom-nav-paragraph', 
-          { xPercent: 100, opacity: 0 }, // Starting values
-          { xPercent: 0, opacity: 1, duration: 1, delay: (prevLocation === '/about' || prevLocation === '/projects') ? 1.5 : 1 } // Ending values
+          { yPercent: -500, opacity: 0 }, // Starting values
+          { yPercent: 0, opacity: 1, duration: 1, delay: (prevLocation === '/about' || prevLocation === '/projects') ? 1.5 : 1 } // Ending values
         );
-          // const paragraphs = document.querySelectorAll('.bottom-nav-paragraph');
-          
-          // paragraphs.forEach(paragraph => {
-          //   const originalText = paragraph.textContent;
-          //   paragraph.innerHTML = ''; // Clear the paragraph for rebuilt content
-            
-          //   originalText.split(' ').forEach((word, index, array) => {
-          //     const space = index < array.length - 1 ? ' ' : ''; // Add space after each word except the last
-          //     const wordClass = ["Sonido_Club", "Unsilenced", "Aurea"].includes(word) ? 'red-highlight' : '';
-          //     paragraph.innerHTML += `<span class="${wordClass}" style="display: inline-block; opacity: 0;">${word}</span>${space}`;
-          //   });
-      
-          //   // Now animate each span to fade in
-          //   gsap.to(paragraph.querySelectorAll('span'), {
-          //     opacity: 1,
-          //     duration: 0,
-          //     stagger: 0,
-          //     delay: index => Math.random() * 1.2, // Random delay between 0 and 2 seconds
-          //     ease: "power1.inOut"
-          //   });
-          // });
         }
       }, [display_body, navbar_location]);
 

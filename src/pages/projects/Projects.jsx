@@ -127,7 +127,7 @@ function Projects() {
     const removeMouseMoveListener = (index) => {
         gsap.to(`.project-image${imageAnimation.index}`, {
             opacity: 0,
-            duration: .5,
+            duration: .4,
             ease: "power2.out"
         });
         setMousePositionSection({ x: 0, y: 0 }); // Reset the mouse position state.
@@ -159,13 +159,13 @@ const prevMousePositionRef = useRef({ x: 0, y: 0 });
                     gsap.to(imageElement, {
                         y: mouseY,
                         opacity: 1,
-                        duration: 0.5,
+                        duration: 0.4,
                         ease: "power2.out"
                     });
 
                     gsap.to(imageElement, {
                         opacity: 1,
-                        duration: 0.5,
+                        duration: 0.4,
                         ease: "power1.in"
                     });
                 }

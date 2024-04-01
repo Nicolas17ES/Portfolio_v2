@@ -134,6 +134,21 @@ const globalReducer = (state, action) => {
                 ...state,
                 exit_component: action.payload,
             }
+        case 'SET_HIDE_LOADER':
+            return {
+                ...state,
+                hide_loader: action.payload,
+            }
+        case 'SET_NAVBAR_INDEX':
+            return {
+                ...state,
+                navbar_active_index: action.payload,
+            }
+        case 'SET_START_LATERAL_NAV_ANIMATION':
+            return {
+                ...state,
+                start_lateral_nav_animation: action.payload,
+            }
         default: 
             return state;
     }

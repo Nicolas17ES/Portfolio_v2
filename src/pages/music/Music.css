@@ -148,6 +148,9 @@
 .carousel{
   padding-top: 20px;
   font-family: 'Poppins';
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 .wrapper{
   max-width: 1440px;
@@ -174,8 +177,8 @@
 
 }
 .large-text {
-  text-transform: capitalize;
-  font-size: 185px;
+  text-transform: uppercase;
+  font-size: 145px;
   font-weight: 700;
   text-align: center;
 }
@@ -285,9 +288,9 @@
   padding-left: 3px;
 }
 .carousel-info{
-  position: absolute;
+  /* position: absolute;
   top: 40px;
-  right: 30px;
+  right: 30px; */
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
@@ -304,15 +307,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   gap: 12px;
+  margin-top: 30px;
+  width: 700px;
 }
 
 .counter-indicator{
 
 }
 .btn{
-  width: 40px;
-  height: 40px;
   background: none;
   cursor: pointer;
   transform: all 250ms ease-in-out;
@@ -339,8 +343,8 @@
 }
 
 .swiper-button-prev svg, .swiper-button-next svg {
-  width: 21px !important;
-  height: 21px !important;
+  width: 100px !important;
+  height: 100px !important;
 }
 .swiper-button-prev::after{
   display: none;
@@ -648,8 +652,8 @@
 .time-player-container-playing{
   font-family: "Anonymous Pro", monospace;
   z-index: 99;
-  font-size: 1.3rem;
-  letter-spacing: 1px;
+  font-size: 1rem;
+  letter-spacing: .7px;
  
 }
 

@@ -46,6 +46,9 @@ export const GlobalProvider = ({children}) => {
         change_slide: {value: 0, origin: null},      
         mouse_position:  { x:0, y: 0 },
         exit_component: null,      
+        hide_loader: false,      
+        navbar_active_index: null,      
+        start_lateral_nav_animation: false,      
     }
 
     const [state, dispatch] = useReducer(globalReducer, initialState)
@@ -75,6 +78,9 @@ export const GlobalProvider = ({children}) => {
         mouse_position: state.mouse_position,
         change_slide: state.change_slide,
         exit_component: state.exit_component,
+        hide_loader: state.hide_loader,
+        navbar_active_index: state.navbar_active_index,
+        start_lateral_nav_animation: state.start_lateral_nav_animation,
         dispatch,
     }}>
         {children}
