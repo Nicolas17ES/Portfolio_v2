@@ -6,12 +6,11 @@
   font-style: normal;
   opacity: 0;
   position: relative;
-  margin-top: 70px;
+  margin-top: 90px;
   /* z-index: 99;
   background-color: rgb(var(--white)); */
   /* min-height: 100vh; */
   animation: expandBodyBottomToTop 1s forwards;
-  padding-top: 20px;
   padding-bottom: 100px;
 }
 

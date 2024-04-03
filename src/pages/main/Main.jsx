@@ -43,7 +43,6 @@ function Main() {
     })
   }
 
-
   // Define navigation items
   const navItems = [
     {
@@ -148,7 +147,6 @@ function Main() {
 
 
 const animateNavLink = (index) => {
-  console.log('animateNav')
   // Animation for nav-link-icon
   if(index === 1){
     gsap.to(`.link-icon${index}`, {
@@ -189,7 +187,6 @@ const animateNavLink = (index) => {
 
 
 const reverseAnimateNavLink = (index) => {
-  console.log('reverse')
   // Reverse animation for nav-link-icon
   if(index === 1){
     gsap.to(`.link-icon${index}`, {
@@ -246,7 +243,6 @@ const handleMouseMove = (e) => {
 const listItemRefs = useRef([]);
 
 const addMouseMoveListener = (index) => {
-  console.log('addMouse')
   const element = listItemRefs.current[index];
   if (element) {
       setImageAnimation({
@@ -281,7 +277,6 @@ const addMouseMoveListener = (index) => {
 
 // Adjusted function to remove mouse move listener from an element
 const removeMouseMoveListener = (index) => {
-  console.log('removeMouse')
   gsap.to(`.nav-link-image${imageAnimation.index}`, {
     opacity: 0,
     duration: .5,

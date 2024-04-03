@@ -259,6 +259,14 @@
   opacity: 1;
 }
 
+.nav-links-lateral:hover > li > .link-lateral {
+  opacity: 0.3;
+}
+
+.nav-links-lateral:hover > li > .link-lateral:hover {
+  opacity: 1;
+}
+
 
 .highlight-nav{
   color: rgb(var(--red)) !important;

@@ -3,11 +3,15 @@ import { useNavigate, Link } from 'react-router-dom';
 import GlobalContext from '../../context/GlobalContext';
 import './TextEffect.css';
 import MagneticEffect from '../mouse/MagneticEffect';
+import { initialState } from '../../context/GlobalContext';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 
 function IconReplica() {
+  const navigate = useNavigate();
   // Access global context using the useContext hook
-  const {display_body, scroll_position, lateral_navbar, display_header, hide_nav, shrink_body} = useContext(GlobalContext);
+  const {display_body, scroll_position, lateral_navbar, display_header, hide_nav, shrink_body, dispatch} = useContext(GlobalContext);
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
@@ -34,8 +38,29 @@ function IconReplica() {
     color: color,
     backgroundColor: backgroundColorIcon,
     transform: transform,
-  };  
+  };
+  
+  const resetToHome = () => {
+    gsap.to("#root", {
+      opacity:0,
+      duration: .5,
+      ease: 'Power3.easeInOut',
+      onComplete: () => {
+        dispatch({
+          type: 'RESET_STATE',
+          payload: initialState,
+        });
+        navigate("");
+        gsap.to("#root", {
+          opacity:1,
+          duration: .5,
+          ease: "power1.inOut",
+      });
+      }
+  });
 
+  }
+  
 
   return (
     <div style={styles} className={`${
@@ -45,9 +70,9 @@ function IconReplica() {
     }`}>
       <MagneticEffect>
       <div className="icon-replica-inner-container">
-        <Link style={styles_icon} to="/" className="icon-replica">
+        <div onClick={resetToHome} style={styles_icon} to="/" className="icon-replica">
           NL
-        </Link>
+        </div>
       </div>
       </MagneticEffect>
     </div>

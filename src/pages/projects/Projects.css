@@ -69,3 +69,283 @@
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
 }
 
+
+/* FULLPROJECTS DISPLAY */
+.project-container{
+    padding: 30px;
+    position: relative;
+}
+.project-body{
+    padding: 30px;
+    position: relative;
+}
+
+/* PROJECTS MAIN TITLE */
+.projects-main-title-container{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.project-main-title{
+    display: flex;
+    align-items: flex-start;
+    padding: 5px 0;
+    gap: 20px;
+    text-transform: uppercase;
+     white-space: nowrap;
+     font-family: "Bebas Neue", sans-serif;
+     overflow: hidden;
+     background-color: rgb(var(--white));
+}
+.project-title-h3{
+    font-size: 126px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    line-height: 7rem;
+}
+.underline-title{
+    /* text-decoration: underline;
+    text-decoration-color: rgb(var(--red));
+    text-decoration-thickness: 3px;
+    text-underline-offset: 8px; */
+    border: 1px solid rgb(var(--red));
+    border-radius: 80%;
+}
+
+.project-main-title .mini-title{
+    padding-top: 5px;
+    max-width: 170px;
+    font-size: 1rem;
+    font-weight: 100;
+    letter-spacing:1px;
+}
+.projects-main-title-one{
+    padding-top: 22px;
+}
+.projects-main-title-two{
+    margin-left: auto;
+}
+.projects-main-title-three{
+
+}
+.projects-main-title-four{
+
+}
+
+.project-main-title-image{
+    width: 95px;
+    height: 95px;
+    margin: auto 0;
+}
+
+/* PROJECTS IMAGE DISPLAY */
+.project-image-display-container{
+    margin: 100px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    /* border: 1px solid red; */
+}
+
+.project-images{
+    width: 100%;
+}
+.project-image{
+    /* transform: scale(1); */
+    width: 480px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
+    opacity: 0;
+}
+
+.project-image-left{
+}
+
+.project-image-center{
+    width: 530px;
+    z-index: 7; /* Ensures this image is on top of the others */
+}
+
+.project-image-right{
+
+}
+
+
+.projects-images-title{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(var(--red));
+    font-family: "Voyage";
+    font-size: 200px;
+    z-index: 8;
+    opacity: 0;
+}
+
+
+/* .menu{
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.menu-itme{
+    flex: 1;
+}
+
+.menu-left{
+    text-align: left;
+    margin-left: 4em;
+}
+.menu-center{
+    text-align: center;
+}
+.menu-right{
+    text-align: right;
+    margin-right: 4em;
+}
+
+.menu-link{
+    padding: 0 30px;
+}
+.hero-image{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper-img{
+    position: absolute;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 50%;
+    height: 100vh;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.box{
+    background: rgb(var(--white));
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.image{
+    width: 400px;
+    height: auto;
+}
+
+.images{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background: black;
+}
+
+.left{
+    background: url('../../images/AulartConnect.png') no-repeat 50% 50%;
+    background-size: cover;
+    z-index: 999999;
+    background-color: red;
+}
+.right{
+    background: url('../../images/AulartHome.png') no-repeat 50% 50%;
+    background-size: cover;
+    z-index: 999999;
+} */
+
+.title{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(var(--red));
+    font-family: "Voyage";
+    font-size: 200px;  
+}
+
+/* .title, .letter{
+    display: inline-block;
+    line-height: 1em;
+}
+
+.sidebar-text{
+    font-family: "Monument Extended";
+    position: absolute;
+    top: 20%;
+    right: .4em;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(117, 113, 113);
+
+}
+
+.projects{
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-family: "Monument Extended";
+}
+
+.img-nav{
+    position: absolute;
+    right: 10%;
+    bottom: 12%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-family: "Monument Extended";
+    color: black;
+}
+
+.next{
+    position: relative;
+    top: 40%;
+    left: 80%;
+    font-family: "Monument Extended";
+
+}
+
+ */

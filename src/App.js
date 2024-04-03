@@ -21,8 +21,11 @@ import useResetScroll from './hooks/useResetScroll'
 import { AudioPlayerProvider } from './context/AudioPlayerContext';
 import Background from './pages/landing/Background';
 import MainLateral from './pages/main/MainLateral';
+import ViewProjects from './pages/projects/ViewProjects';
+import useResetStates from './hooks/useResetStates';
 
 function App() {
+ 
   // This is the main entry point of your React application.
   // It wraps the entire application with the GlobalProvider, which provides global state to child components.
   return (
@@ -35,9 +38,11 @@ function App() {
 }
 
 function WrappedApp() {
+
   // This is a functional component responsible for rendering the main content of your app.
   // It uses the React Router to handle routing and location-based rendering.
   const location = useLocation();
+  useResetStates(); 
   const pathname = location.pathname;
   const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation } = useContext(GlobalContext);
 
@@ -49,7 +54,7 @@ function WrappedApp() {
 
   useEffect(() => {
     // This useEffect hook is used for handling routing and updating global state based on the current path.
-    if (pathname !== '/') {
+    if (pathname !== '/' && (pathname !== '/projects/view/aulart-shop' && pathname !== '/projects/view/aulart-tools' && pathname !== '/projects/view/linkinbio')) {
       // If the path is not the root ("/"), update various global state properties accordingly.
       // we will set lateral navbar and the header and also in the nalocation state we will place the correct location via the pathname
       // dispatch({
@@ -67,6 +72,12 @@ function WrappedApp() {
       //  setTimeout(() => {
       //   dispatch({ type: 'SET_BODY', payload: true});
       // }, 1300)
+    } else if (pathname !== '/' && (pathname === '/projects/view/aulart-shop' || pathname === '/projects/view/aulart-tools' || pathname === '/projects/view/linkinbio')) {
+      const lastSegment = pathname.split("/").pop();
+      dispatch({
+        type: 'SET_NAV_LOCATION',
+        payload: lastSegment
+      });
     }
   }, [pathname, dispatch]);
 
@@ -100,6 +111,7 @@ function WrappedApp() {
           <Route path="/about" element={<About />} />
           <Route path="/interviews" element={<Interviews />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/view/:id" element={<ViewProjects />} />
           <Route path="/music" element={<Music />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>

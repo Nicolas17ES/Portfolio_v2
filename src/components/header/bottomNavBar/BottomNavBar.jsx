@@ -10,6 +10,9 @@ import '../NavBars.css';
 import AboutBottomNavBarContent from './AboutBottomNavBarContent';
 import ProjectstBottomNavBarContent from './ProjectstBottomNavBarContent';
 import ContactBottom from './ContactBottom';
+import BottomNavAulartShop from './bottomProjects/BottomNavAulartShop';
+import BottomNavAulartTools from './bottomProjects/BottomNavAulartTools';
+import BottomNavLink from './bottomProjects/BottomNavLink';
 import MusicBottom from './MusicBottom';
 import MouseTracker from '../../mouse/MouseTracker'
 
@@ -32,9 +35,6 @@ function BottomNavBar() {
     // Manage the display and animation of the BottomNavBar based on navigation location
     
     if (prevLocation === null && lateral_navbar) {
-      // console.log("prevLocation:", prevLocation)
-      // console.log("lateral_navbar:", lateral_navbar)
-      // sectionRef.current.classList.add('bottom-lateral-navbar');
       setPrevLocation(navbar_location);
       setFinalLocation(navbar_location);
     } else if ((navbar_location !== prevLocation) && lateral_navbar) {
@@ -57,7 +57,6 @@ function BottomNavBar() {
     }
   }, []);
 
-console.log(navbar_location)
   // function that will hide or show the scrollbar depending on mouseneter
   const displayScrollBar = (value) => {
     const contentDivs = sectionRef.current.querySelectorAll('.display-bottom');
@@ -90,6 +89,15 @@ console.log(navbar_location)
       </div>
       <div className={finalLocation !== 'contact' ? 'hide-bottom' : 'display-bottom'}>
         <ContactBottom />
+      </div>
+      <div className={finalLocation !== 'aulart-shop' ? 'hide-bottom' : 'display-bottom'}>
+        <BottomNavAulartShop />
+      </div>
+      <div className={finalLocation !== 'aulart-tools' ? 'hide-bottom' : 'display-bottom'}>
+        <BottomNavAulartTools />
+      </div>
+      <div className={finalLocation !== 'linkinbio' ? 'hide-bottom' : 'display-bottom'}>
+        <BottomNavLink />
       </div>
     </section>
     </>

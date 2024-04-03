@@ -70,7 +70,6 @@ function ProjectstBottomNavBarContent() {
                 onComplete: () => 
                 {
                     setAwaitExpand(false) 
-                console.log('completed')
                 }
             }
             );
@@ -80,24 +79,6 @@ function ProjectstBottomNavBarContent() {
         return () => ctx.revert();
       }, [lateral_navbar, navbar_location]);
 
-
-    //   useEffect(() => {
-    //     console.log("useEffect() call");
-        
-    //     // create a context for all the GSAP animations and ScrollTriggers so we can revert() them in one fell swoop.
-    //     // A context also lets us scope all the selector text to the component (like feeding selector text through component.querySelectorAll(...)) 
-    //     let ctx = gsap.context(() => {
-    //       // create as many GSAP animations and/or ScrollTriggers here as you want...
-    //       gsap.from("h1", { // <- selector text, scoped to this component!
-    //         opacity: 0,
-    //         y: 100,
-    //         ease: "power3",
-    //         duration: 2
-    //       });
-    //     }, component); // <- scopes all selector text inside the context to this component (optional, default is document)
-        
-    //     return () => ctx.revert(); // cleanup! 
-    //   }, []);
       
     
     return (

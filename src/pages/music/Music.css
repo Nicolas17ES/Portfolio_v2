@@ -146,7 +146,7 @@
  
 /* MUSIC CAROUSEL */
 .carousel{
-  padding-top: 20px;
+  padding-top: 40px;
   font-family: 'Poppins';
   display: flex;
   align-items: center;
@@ -178,7 +178,7 @@
 }
 .large-text {
   text-transform: uppercase;
-  font-size: 145px;
+  font-size: 115px;
   font-weight: 700;
   text-align: center;
 }
@@ -200,8 +200,8 @@
 
 .image-wrap{
   overflow: hidden;
-  width: 700px;
-  height: 460px;
+  width: 565px;
+  height: 385px;
   margin: auto;
   position: relative;
   z-index: 7;
@@ -222,7 +222,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.32);
   z-index: 1;
   border-radius: 10px;
   transition: all .5s;
@@ -314,7 +314,15 @@
 }
 
 .counter-indicator{
-
+  padding: 3.5px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 9999999;
+  font-size: .9rem;
+  background-color: rgba(var(--black),.8);
+  color: rgb(var(--white));
+  border-radius: 3px;
 }
 .btn{
   background: none;
@@ -430,13 +438,20 @@
   font-family: "Roboto", sans-serif;
   width: 100%;
   position: relative;
-
 }
 
 .collectives-titles-container{
   padding: 0 10px;
+  position: relative;
 }
-
+.collective-title-name{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 1.5rem;
+}
 .collectives-header-title{
   font-size: 6rem;
   text-transform: uppercase;
@@ -444,22 +459,35 @@
   z-index: 1;
   line-height: 7rem;
 }
-.collectives-header-title:nth-child(2){
-  margin-bottom: 460px;
+.collectives-header-title:nth-child(3){
+  margin-bottom: 560px;
 }
 
 .collectives-header-image-container{
   position: absolute;
-  top: 145px;
-  right: 64px;
+  top: 235px;
+  right: 100px;
   z-index: -1;
+  display: table;
+  margin: auto;
+}
+
+.figcaption-collectives-header {
+  font-size: 1rem;
+  display: table-caption;
+  caption-side: bottom; /* Asegurar que la leyenda esté en la parte inferior */
+  text-align: center;
+opacity: .8; /* Color del texto de la leyenda */
+  font-style: italic;
+  margin-top: 0;
+  z-index: 9999999;
 }
 
 .collectives-header-image{
   width: 700px;
   height: auto;
-  scale: .75;
-  opacity: .4;
+  scale: .85;
+  opacity: .6;
 }
 
 .collectives-header-paragraph-container{
@@ -500,21 +528,21 @@
   right: 0px;
   top: 0px;
 }
-.collectives-scroll-bar{
+.collectives-scroll-bar, .collectives-scroll-bar-2, .collectives-scroll-bar-3{
   height: 0px;
   width: 2px;
   background-color: rgb(var(--black));
 }
 .scroll-text{
   writing-mode: vertical-lr; /* This makes the text go from top to bottom */
-  transform: rotate(180deg);
+  transform: rotate(0deg);
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: .9rem;
+  font-size: 1rem;
 }
-.scroll-boxes{
-  width: 10px;
-  height: 10px;
+.scroll-boxes, .scroll-boxes-2, .scroll-boxes-3{
+  width: 14px;
+  height: 14px;
   border: 1px solid rgb(var(--red));
   background-color: none;
 }

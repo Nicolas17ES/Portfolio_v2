@@ -8,11 +8,11 @@ import LinkInBio from '../../images/LinkBio.png'
 
 import GlobalContext from '../../context/GlobalContext'
 import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate } from 'react-router-dom';
+import { useLocation,   useNavigate, Link } from 'react-router-dom';
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 
 // The Projects component displays project sections and handles animations based on mouse movements.
 function Projects() {
@@ -22,7 +22,7 @@ function Projects() {
     const pathname = location.pathname.substring(1);
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { view_projects_cursor, display_body, navbar_location, dispatch, project_index_hovered, mouse_position } = useContext(GlobalContext);
+    const { view_projects_cursor, display_body, navbar_location, dispatch, mouse_position } = useContext(GlobalContext);
 
     // useRef hooks for DOM references to enable direct manipulation.
     const bodyRef = useRef(null);
@@ -32,6 +32,8 @@ function Projects() {
     const [entered, setEntered] = useState(false); // Tracks if the mouse has entered a project section.
     const [mousePositionSection, setMousePositionSection] = useState({ x: 0, y: 0 }); // Local state for mouse position within a project section.
     const [imageAnimation, setImageAnimation] = useState({ state: false, index: null }); // Manages the state of image animations.
+    const [blockAnimations, setBlockAnimations] = useState(false); // Manages the state of image animations.
+    const [initialAnimationFinished, setInitialAnimationFinished] = useState(false); // Manages the state of image animations.
 
     // Custom hook to apply animations to the body element based on navigation state.
     useBodyAnimation(bodyRef, navbar_location, pathname, navigate);
@@ -60,6 +62,9 @@ function Projects() {
                 ease: 'Power3.easeOut',
                 stagger: 0.3,
                 delay: .3,
+                onComplete: () => {
+                    setInitialAnimationFinished(true)
+                }
             });
             gsap.from('.project-title', {
                 y: 200,
@@ -147,7 +152,7 @@ const prevMousePositionRef = useRef({ x: 0, y: 0 });
 
     // useEffect hook to update the position of the animated image based on the current mouse position.
     useEffect(() => {
-        if (imageAnimation.state && imageAnimation.index !== null) {
+        if (imageAnimation.state && imageAnimation.index !== null && initialAnimationFinished) {
             // Access the current mouse position from state.
             const { x: mouseX, y: mouseY } = mousePositionSection;
 
@@ -174,10 +179,32 @@ const prevMousePositionRef = useRef({ x: 0, y: 0 });
             // Store the current mouse position for comparison in future renders.
             prevMousePositionRef.current = { x: mouseX, y: mouseY };
         }
-    }, [imageAnimation, mousePositionSection]);
+    }, [imageAnimation, mousePositionSection, initialAnimationFinished]);
 
     // Render the component, dynamically adjusting classes and styles based on state.
 
+    // select a project to view
+const viewProject = (index) => {
+    setBlockAnimations(true);
+    setCursorVisible(false, null);
+    removeMouseMoveListener(0);
+    const tl = gsap.timeline({
+        onComplete: () => {
+            navigate(`/projects/view/${index}`);
+        }
+    });
+    tl.to('.project-image', {
+        opacity: 0,
+        duration: 0.3,
+        ease: 'Power3.easeOut',
+    });
+    tl.to('.single-project-container', {
+        xPercent: -115,
+        duration: 1,
+        ease: 'Power3.easeOut',
+        stagger: 0.2,
+    });
+};
 
 
     if(display_body){
@@ -185,25 +212,34 @@ const prevMousePositionRef = useRef({ x: 0, y: 0 });
             <div ref={bodyRef} className="body-container">
                 {/* <ButtonsBody data={data}/> */}
                 <div className="projects-list-container">
+                    
+                        <section
+                            onClick={() => viewProject('aulart-shop')}
+                            ref={listItemRefs[0]} 
+                            className="single-project-container container-shoop"
+                            onMouseOver={() => { 
+                            if(!blockAnimations){
+                                setCursorVisible(true, 1)
+                                addMouseMoveListener(0)
+                            }
+                            }} 
+                            onMouseLeave={() => {
+                            if(!blockAnimations){
+                                setCursorVisible(false, null)
+                                removeMouseMoveListener(0)
+                            }
+                            }} 
+                        
+                        >
+                            <div className="porject-title-container">
+                            <h3 className="project-title"><span className="project-number">[01]</span>Shoop Aulart</h3>
+                            </div>
+                            <img src={AulartHome} alt="" className={`project-image project-image${0}`} />
+                        </section>
+                    
+                    
                     <section
-                         ref={listItemRefs[0]} 
-                        className="single-project-container container-shoop"
-                        onMouseOver={() => { 
-                          setCursorVisible(true, 1)
-                          addMouseMoveListener(0)
-                        }} 
-                        onMouseLeave={() => {
-                          setCursorVisible(false, null)
-                          removeMouseMoveListener(0)
-                          }} 
-                       
-                    >
-                        <div className="porject-title-container">
-                        <h3 className="project-title"><span className="project-number">[01]</span>Shoop Aulart</h3>
-                        </div>
-                        <img src={AulartHome} alt="" className={`project-image project-image${0}`} />
-                    </section>
-                    <section
+                        onClick={() => viewProject('aulart-tools')}
                          ref={listItemRefs[1]} 
                         className="single-project-container container-bio"
                         onMouseOver={() => { 
@@ -217,11 +253,13 @@ const prevMousePositionRef = useRef({ x: 0, y: 0 });
                     >
                         
                         <div className="porject-title-container">
-                        < h3 className="project-title"><span className="project-number">[02]</span>Link_In_Bio</h3>
+                        < h3 className="project-title"><span className="project-number">[02]</span>Tools Aulart</h3>
                         </div>
-                        <img  src={LinkInBio} alt="" className={`project-image project-image${1}`}/>
+                        <img  src={AulartTools2} alt="" className={`project-image project-image${1}`}/>
                     </section>
+                    
                     <section 
+                        onClick={() => viewProject('linkinbio')}
                          ref={listItemRefs[2]} 
                         style={{borderBottom: '1px solid rgb(var(--black))'}}                     
                         className="single-project-container container-tools"
@@ -235,9 +273,9 @@ const prevMousePositionRef = useRef({ x: 0, y: 0 });
                           }} 
                     >
                         <div className="porject-title-container">
-                        <h3 className="project-title"><span className="project-number">[03]</span>Tools Aulart</h3>
+                        <h3 className="project-title"><span className="project-number">[03]</span>Link_In_Bio</h3>
                         </div>
-                        <img src={AulartTools2} alt="" className={`project-image project-image${2}`} />
+                        <img src={LinkInBio} alt="" className={`project-image project-image${2}`} />
                     </section>
                     
                 </div>

@@ -259,6 +259,11 @@ function MusicCarousel() {
                         from: "start" // Start staggering from the end
                   }, } // Ending properties
             );
+            gsap.from('.counter-indicator', {
+                opacity:0,
+                delay: 1.75,
+                duration: .5,
+            })
         }
       }, [display_body]);
     
@@ -268,7 +273,6 @@ function MusicCarousel() {
            <section className="carousel">
              <div className="wrapper">
                 <div className="row">
-                <span className="counter-indicator">{activeIndexState + 1}/3</span>
                     <div className="swiper one"> 
                         <Swiper
                             loop={true}
@@ -278,6 +282,7 @@ function MusicCarousel() {
                             //     prevEl: '.swiper-button-prev',
                             //     clickable: true,
                             // }}
+                            allowTouchMove={false}
                             speed={600} // Adjust the speed of the slide transition (in milliseconds)
                             effect="slide"
                             // modules={[Navigation]}
@@ -295,7 +300,7 @@ function MusicCarousel() {
                                         className="image-wrap"
                                         style={{ pointerEvents: display_image_overlay && 'none' }}
                                     >
-                                     
+                                        <span className="counter-indicator">{activeIndexState + 1}/3</span>
                                         <img src={Image} alt="" className="carousel-image" />
                                         {imageIndex === 0 && <ImageOverlay />}
                                     </figure>
@@ -309,6 +314,7 @@ function MusicCarousel() {
                                         onMouseLeave={() => setCursorVisible(false)} 
                                         className="image-wrap" 
                                         style={{pointerEvents: display_image_overlay && 'none'}}>
+                                        <span className="counter-indicator">{activeIndexState + 1}/3</span>
                                         <img src={Image3} alt="" className="carousel-image" />
                                         {imageIndex === 1 && <ImageOverlay/>}
                                     </figure>
@@ -325,6 +331,7 @@ function MusicCarousel() {
                                         className="image-wrap" 
                                         style={{pointerEvents: display_image_overlay && 'none'}}
                                     >
+                                        <span className="counter-indicator">{activeIndexState + 1}/3</span>
                                         <img src={Image2} alt="" className="carousel-image" />
                                         {imageIndex === 2 && <ImageOverlay/>}
                                     </figure>

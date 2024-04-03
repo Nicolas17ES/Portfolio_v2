@@ -11,6 +11,7 @@
  * @param {Object} action - An action object with a type and payload.
  * @returns {Object} - The new global state.
  */
+import { initialState } from "./GlobalContext"
 
 const globalReducer = (state, action) => {
     switch(action.type){
@@ -149,6 +150,18 @@ const globalReducer = (state, action) => {
                 ...state,
                 start_lateral_nav_animation: action.payload,
             }
+        case 'SET_TITLE_ANIMATION_FINISHED':
+            return {
+                ...state,
+                title_animation_finshed: action.payload,
+            }
+            case 'RESET_STATE':
+                return {
+                  ...initialState,
+                  // Preserva el valor actual de display_header (u otros que necesites mantener)
+                  display_header: state.display_header,
+                };
+
         default: 
             return state;
     }

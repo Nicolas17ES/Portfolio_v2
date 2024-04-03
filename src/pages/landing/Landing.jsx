@@ -1,9 +1,8 @@
 import Main from '../main/Main';
 import './Landing.css';
-import React, { useRef, useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
 import CounterLoader from '../../components/shared/CounterLoader';
-import MainLateral from '../main/MainLateral';
 
 function Landing() {
 
@@ -13,7 +12,7 @@ function Landing() {
 
   return (
     <div className="landing-container">
-      <CounterLoader/>
+      {!display_header && <CounterLoader/>}
       <div className="index-container">
         {(display_header && !lateral_navbar) && <Main />}
       </div>

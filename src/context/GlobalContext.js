@@ -20,36 +20,38 @@ const GlobalContext = createContext();
 
 // shrink_body: This variable is used to control the shrinking effect on the app's body. When shrink_body is true, the body of the app is shrunk; otherwise, it remains at its normal size.
 
+export const initialState = {
+    display_header: false,
+    lateral_navbar: false,
+    navbar_location: '',
+    hide_nav: false,
+    shrink_body: false,
+    button_index: null,
+    display_mouse_tracker: false,
+    button_state: null,
+    slide_active_index: null,      
+    slider_activated: false,      
+    animation_value: null,      
+    display_body: false,      
+    scroll_position: false,      
+    animation_finished: false,      
+    display_overlay: false,      
+    display_image_overlay: false,      
+    display_carousel: false,      
+    carousel_index: null,      
+    animation_text_started: null,      
+    view_projects_cursor: false,      
+    project_index_hovered: false,      
+    change_slide: {value: 0, origin: null},      
+    mouse_position:  { x:0, y: 0 },
+    exit_component: null,      
+    hide_loader: false,      
+    navbar_active_index: null,      
+    start_lateral_nav_animation: false,      
+    title_animation_finshed: false,      
+}
 export const GlobalProvider = ({children}) => {
-    const initialState = {
-        display_header: false,
-        lateral_navbar: false,
-        navbar_location: '',
-        hide_nav: false,
-        shrink_body: false,
-        button_index: null,
-        display_mouse_tracker: false,
-        button_state: null,
-        slide_active_index: null,      
-        slider_activated: false,      
-        animation_value: null,      
-        display_body: false,      
-        scroll_position: false,      
-        animation_finished: false,      
-        display_overlay: false,      
-        display_image_overlay: false,      
-        display_carousel: false,      
-        carousel_index: null,      
-        animation_text_started: null,      
-        view_projects_cursor: false,      
-        project_index_hovered: false,      
-        change_slide: {value: 0, origin: null},      
-        mouse_position:  { x:0, y: 0 },
-        exit_component: null,      
-        hide_loader: false,      
-        navbar_active_index: null,      
-        start_lateral_nav_animation: false,      
-    }
+    
 
     const [state, dispatch] = useReducer(globalReducer, initialState)
 
@@ -81,6 +83,7 @@ export const GlobalProvider = ({children}) => {
         hide_loader: state.hide_loader,
         navbar_active_index: state.navbar_active_index,
         start_lateral_nav_animation: state.start_lateral_nav_animation,
+        title_animation_finshed: state.title_animation_finshed,
         dispatch,
     }}>
         {children}

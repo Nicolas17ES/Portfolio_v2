@@ -27,16 +27,6 @@ function SliderCard({data}) {
                 payload: swiper.realIndex,
             });
           setSlideActiveIndex(swiper.realIndex);  
-        // console.log("slideActiveIndex", slideActiveIndex)
-        // console.log("swiper", swiper.realIndex)
-        // if(swiper.realIndex !== slideActiveIndex){
-        //   console.log('called to equal')
-        //   dispatch({
-        //         type: 'SET_SLIDE_ACTIVE_INDEX',
-        //         payload: swiper.realIndex,
-        //     });
-        //   setSlideActiveIndex(swiper.realIndex);
-        // } 
     };
 
     const handleSwiper = (swiper) => {
