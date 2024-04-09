@@ -78,7 +78,6 @@ function MainLateral( ) {
       dispatch({ type: 'SET_BUTTON_INDEX', payload: null });
     }, 1000)
   };
-console.log("navbar_location", navbar_location)
   // Function to change the state of the navbar
   const changeNavBarState = (state) => {
     dispatch({

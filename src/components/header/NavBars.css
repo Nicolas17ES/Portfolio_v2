@@ -440,12 +440,16 @@ right: -10px;
   
   display: flex;
   background: rgb(80, 80, 80); 
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 .loader-lastname{
   width: 250px;
   height: 20px;
   display: flex;
   background: rgb(80, 80, 80); 
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .loader-1, .loader-2, .loader-3, .loader-4{
@@ -458,11 +462,13 @@ right: -10px;
   background: rgb(var(--black));
   width: 100px;
 }
-/* .loader-2{
-  position: relative;
-  width: 100px;
-  background: rgb(var(--black));
-} */
+.loader-1{
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.loader-5{
+
+}
 
 .bar{
   height: 20px;

@@ -76,7 +76,7 @@ function ScreenOverlay() {
     }
   }, [display_overlay]);
     
-    
+    console.log("display_overlay", display_overlay)
 
     if(display_overlay === 1 || display_overlay === 0){
         return (

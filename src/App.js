@@ -91,9 +91,10 @@ function WrappedApp() {
       {/* <MouseTracker /> */}
       <IconReplica/>
       <Background/>
+      {/* <ScreenOverlay/> */}
       {((lateral_navbar || start_lateral_nav_animation) && display_header) &&  <MainLateral />}
      
-      {view_projects_cursor && <ViewProjectsCursor/>}
+      {view_projects_cursor.value && <ViewProjectsCursor/>}
       
       {/* <div className="container"> */}
       <main style={{ zIndex: animation_finished ? '5' : null, backgroundColor: display_body ? 'rgb(var(--white))' : null }} ref={containerRef} className={`${

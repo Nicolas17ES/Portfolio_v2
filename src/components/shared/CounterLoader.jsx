@@ -51,9 +51,9 @@ function CounterLoader() {
                     };
         
                     // Running animations for each counter with a slight delay
-                    animate(counter3Ref, 4.3, 0.1); // You could adjust this delay as needed
-                    if (counter2Ref.current) animate(counter2Ref, 5.3, 0.1);
-                    if (counter1Ref.current) animate(counter1Ref, 1.3, 4.1); // Keeping the original delay for counter-1 and adding a little extra
+                    animate(counter3Ref, 2.1, 0.1); // You could adjust this delay as needed
+                    if (counter2Ref.current) animate(counter2Ref, 2.1, 0.1);
+                    if (counter1Ref.current) animate(counter1Ref, 1, 1.5); // Keeping the original delay for counter-1 and adding a little extra
                 }
             }, delayBeforeStartingAnimations); // This is where the initial delay before starting animations is applied
         
@@ -65,51 +65,60 @@ function CounterLoader() {
         // rotate to letters
         gsap.from(".loader-1", {
             width: 0,
-            duration: 2,
+            duration: 1,
             ease: "power2.inOut",
         });
         gsap.from(".loader-2", {
             width:0,
             delay: 0,
-            duration: 2,
+            duration: 1,
             ease: "power2.inOut",
         });
         gsap.from(".loader-3", {
             width: 0,
-            duration: 1.5,
-            delay: 1,
+            duration: 1,
+            delay: .2,
             ease: "power2.inOut",
         });
 
         gsap.from(".loader-4", {
             width: 0,
-            duration: 1.7,
-            delay: 2.2,
+            duration: 1.5,
+            delay: 1,
             ease: "power2.inOut",
         });
         gsap.from(".loader-5", {
             width:0,
-            delay: 2.8,
-            duration: 2,
+            delay: 1,
+            duration: 1.5,
+            ease: "power2.inOut",
+        });
+        gsap.to(".loader-5", {
+            borderTopRightRadius: '30px',
+            borderBottomRightRadius: '30px',
+            delay: 1.8,
+            duration: .3,
             ease: "power2.inOut",
         });
  
         gsap.to(".loader", {
             background: "none",
-            delay: 5,
+            delay: 2.5,
             duration: 0.1,
         }) 
         gsap.to(".loader-lastname", {
             background: "none",
-            delay: 5,
+            delay: 2.5,
             duration: 0.1,
         }) 
 
         gsap.to(".loader-1", {
+            borderTopLeftRadius: '0px',
+            borderBottomLeftRadius: '0px',
             rotate:90,
             y: -50,
             x:100,
-            delay:5,
+            delay:2.7,
             duration: 0.5,
         });  
         gsap.to(".loader-2", {
@@ -129,7 +138,7 @@ function CounterLoader() {
             rotate:90,
             y: -50,
             x:-100,
-            delay:5,
+            delay:2.7,
             duration: 0.5,
         });
     
@@ -139,53 +148,77 @@ function CounterLoader() {
             rotate: 180,
             duration: 0.5,
         }, "<");
-
+        gsap.to(".counter", {
+            opacity: 0,
+            duration: .9,
+            ease: "power2.out",
+            delay: 3.2,
+        });
          gsap.to(".loader", {
-            scale:35,
-            duration: 1,
-            delay: 6.2,
-            ease: "power2.inOut",
+            scale:5,
+            duration: 1.4,
+            x: 0,
+            yPercent:1200,
+            delay: 3.5,
+            transformOrigin: "50% 50%",
+            ease: "power2.InOut",
         });
          gsap.to(".loader-lastname", {
-            scale:35,
-            duration: 1,
-            delay: 6.2,
-            ease: "power2.inOut",
-        });
-
-        gsap.to(".loader", {
-            rotate:33,
-            y: 1000,
-            x: 200,
-            duration: 1,
-            delay: 6.2,
-            ease: "power2.inOut",
-        });
-        gsap.to(".loader-lastname", {
-            rotate:33,
-            y: 1000,
-            x: 2300,
-            duration: 1,
-            delay: 6.2,
-            ease: "power2.inOut",
-        });
-        gsap.to(".counter", {
-            opacity:0,
-            duration: 0.5,
-            delay: 6.2,
+            scale:5,
+            xPercent: 250,
+            yPercent:1200,
+            duration: 1.5,
+            delay: 3.5,
+            transformOrigin: "50% 50%",
+            ease: "power2.InOut",
             onComplete: () => {
-                dispatch({
-                    type: 'SET_HEADER',
-                    payload: true,
-                  });
+                setTimeout(() => {
+                    dispatch({
+                        type: 'SET_HEADER',
+                        payload: true,
+                      });
+                },250)
             }
         });
-        gsap.to(".loading-screen", {
-            opacity:0,
-            duration: 0.5,
-            delay: 6.6,
-            ease: "power1.inOut",
+        gsap.to(".loader", {
+            xPercent: -400,
+            duration: .7,
+            ease: "power2.out",
+            delay: 5.1,
         });
+        gsap.to(".loader-lastname", {
+            xPercent: -400,
+            duration: .7,
+            ease: "power2.out",
+            delay: 5.1,
+        });
+        // gsap.to(".loader", {
+        //     rotate:33,
+        //     y: 1000,
+        //     x: 200,
+        //     duration: 1,
+        //     delay: 6.2,
+        //     ease: "power2.inOut",
+        // });
+        // gsap.to(".loader-lastname", {
+        //     rotate:33,
+        //     y: 1000,
+        //     x: 2300,
+        //     duration: 1,
+        //     delay: 6.2,
+        //     ease: "power2.inOut",
+        // });
+        // gsap.to(".counter", {
+        //     opacity:0,
+        //     duration: 0.5,
+        //     delay: 6.4,
+        //     onComplete: () => {
+        //         dispatch({
+        //             type: 'SET_HEADER',
+        //             payload: true,
+        //           });
+        //     }
+        // });
     }, [])
     
 

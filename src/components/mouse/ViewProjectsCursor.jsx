@@ -33,8 +33,8 @@ function ViewProjectsCursor({ text }) {
   useEffect(() => {
     if (cursorRef.current) {
       setCursorRendered(true)
-      cursorRef.current.style.left = `${position.x}px`;
-      cursorRef.current.style.top = `${position.y}px`;
+      cursorRef.current.style.left = `${position.x - 10}px`;
+      cursorRef.current.style.top = `${position.y - 10}px`;
     }
   }, [position]);
 
@@ -58,8 +58,8 @@ function ViewProjectsCursor({ text }) {
   if(position.y === 0 || position.x === 0) return null;
 
     return (
-      <div ref={cursorRef} className="custom-cursor">
-        <div className="cursor-inner">{text ? text : 'VIEW'}</div>
+      <div ref={cursorRef} className="custom-cursor" style={{backgroundColor: view_projects_cursor.color ? view_projects_cursor.color : 'rgba(var(--red), .85)'}}>
+        <div className="cursor-inner">{view_projects_cursor.text ? view_projects_cursor.text : 'VIEW'}</div>
       </div>
     )
 }

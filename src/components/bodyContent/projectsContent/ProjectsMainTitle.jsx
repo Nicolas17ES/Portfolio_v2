@@ -24,7 +24,7 @@ function ProjectsMainTitle() {
             setValue(2)
         }
     },[navbar_location])
-console.log(value)
+
     const data = [
         {
             project: 'AULART SHOP',
@@ -103,7 +103,7 @@ console.log(value)
     
     return (
         <div className="projects-main-title-container">
-            <div className="project-main-title projects-main-title-one"><h3 className="project-title-h3">© <span className='underline-title'>{data[value].project}</span> - {data[value].year}</h3></div>
+            <div className="project-main-title projects-main-title-one"><h3 className="project-title-h3"><span className='underline-title'>{data[value].project}</span> - {data[value].year}</h3></div>
             <div className="project-main-title projects-main-title-two"><h3 className="project-title-h3">Made with {data[value].software}</h3> <span className='mini-title mini-title-right'>+ more stuff</span></div>
             <div className="project-main-title projects-main-title-three"><h3 className="project-title-h3">created 4 aulart</h3><img src={AulartLogo} alt="" className="project-main-title-image" /></div>
             <div className="project-main-title projects-main-title-four"><span className='mini-title mini-title-left'>{data[value].miniTitle2}</span><h3 className="project-title-h3"><span style={{fontStyle: 'italic'}}>{data[value].purpose1} </span><span style={{color: 'rgb(var(--red))', fontWeight: 100}}>{data[value].purpose2} </span></h3></div>

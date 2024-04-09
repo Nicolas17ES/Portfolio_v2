@@ -98,10 +98,10 @@ function Music() {
                 ) : (
                     <div className="music-body-container">
                         <CollectivesHeader/>
-                        {/* {(button_state && button_state.clicked) &&  <ButtonsBody data={data}/>}
+                        {(button_state && button_state.clicked) &&  <ButtonsBody data={data}/>}
                         {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <Sonido/>}
                         {buttonIndexReferences[button_state.value] === 'Unsilenced' && <Unsilenced/>}
-                        {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <Aurea/>} */}
+                        {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <Aurea/>}
                     </div>
                 )}
 

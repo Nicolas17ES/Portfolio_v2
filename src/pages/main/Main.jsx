@@ -24,7 +24,7 @@ function Main() {
   const [entered, setEntered] = useState(false); // Tracks if the mouse has entered a project section.
 
   // Access global context using the useContext hook
-  const { dispatch, lateral_navbar, hide_nav, navbar_location, mouse_position } = useContext(GlobalContext);
+  const { dispatch, lateral_navbar, navbar_location, mouse_position } = useContext(GlobalContext);
 
   // Create a ref for the navbar element
   const navbarRef = useRef(null);
@@ -121,10 +121,10 @@ function Main() {
     });
     removeMouseMoveListener(currentIndex)
     tl.to(`.link-${currentIndex}`, {
-        y: currentIndex === 0 ? 200 : currentIndex === 1 ? 65 : currentIndex === 2 ? - 75 : null,
-        scale:25,
+        y: currentIndex === 0 ? 150 : currentIndex === 1 ? 55 : currentIndex === 2 ? - 25 : null,
+        scale:21,
         duration: 1.5,
-        delay: .4,
+        delay: .3,
         transformOrigin: "50% 50%",
         ease: "power2.InOut",
         onComplete: () => {
@@ -332,13 +332,11 @@ useEffect(() => {
 
 // FADE IN COMPONENT ONMOUNT
 useGSAP(() => {
-
   // rotate to letters
   gsap.from(".nav-link", {
       opacity: 0,
-      delay: .3,
-      duration: 1.3,
-      stagger: .24,
+      duration: .8,
+      stagger: .2,
       ease: "power2.inOut",
       onComplete: () => {
         dispatch({
@@ -349,8 +347,8 @@ useGSAP(() => {
   });
 }, [])
 
-
-  return (
+  
+return (
     <>
       <nav ref={navbarRef} className='navbar central-navbar' data-active-index={activeIndex}>
         <div className="nav-links-container">
@@ -358,13 +356,11 @@ useGSAP(() => {
             <img src={element.img} alt="" key={index} className={`nav-link-image nav-link-image${index}`} />
           ))}
           <ul className="nav-links">
-            {navItems.map((item, index) => (
-            
+            {navItems.map((item, index) => (            
                 <li 
                   ref={el => listItemRefs.current[index] = el} 
                   key={index} 
-                  className={`nav-link nav-link${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`} 
-                  
+                  className={`nav-link nav-link${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`}          
                   >
                    {index === 1 ? (
                      <>

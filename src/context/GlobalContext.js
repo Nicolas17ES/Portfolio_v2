@@ -49,6 +49,9 @@ export const initialState = {
     navbar_active_index: null,      
     start_lateral_nav_animation: false,      
     title_animation_finshed: false,      
+    display_resumes: false,      
+    projects_resumes_animation_finished: false,      
+    display_vide_popup: {index: null, value: null},      
 }
 export const GlobalProvider = ({children}) => {
     
@@ -84,6 +87,9 @@ export const GlobalProvider = ({children}) => {
         navbar_active_index: state.navbar_active_index,
         start_lateral_nav_animation: state.start_lateral_nav_animation,
         title_animation_finshed: state.title_animation_finshed,
+        display_resumes: state.display_resumes,
+        projects_resumes_animation_finished: state.projects_resumes_animation_finished,
+        display_vide_popup: state.display_vide_popup,
         dispatch,
     }}>
         {children}

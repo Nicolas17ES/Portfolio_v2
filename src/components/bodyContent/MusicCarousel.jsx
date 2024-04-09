@@ -219,7 +219,10 @@ function MusicCarousel() {
     const setCursorVisible = (value) => {
         dispatch({
             type: 'SET_VIEW_PROJECTS_CURSOR',
-            payload: value,
+            payload: {
+                text: 'VIEW',
+                value: value,
+            },
         })
     }
 

@@ -15,19 +15,17 @@
 
 .icon-replica-container{
   position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99999;
-    width: 75%;
-    height: 10%;
-    background-color: rgb(var(--white));
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  height: 10%;
+  background-color: rgb(var(--white));
 }
 .icon-replica-container-expand{
   position: fixed;
   top: 0;
   left: 0;
   z-index: 99;
-  width: 100%;
   height: 10%;
   background-color: rgb(var(--white));
   animation: expandIconReplicaContainer 1.5s forwards;

@@ -42,8 +42,8 @@ function CollectivesHeader() {
                 scrollTrigger: {
                   trigger: ".collectives-header-image-container",
                   scrub: .5,
-                  start: "top center+=170",
-                  end: "bottom top+=270",
+                  start: "top center+=300",
+                  end: "bottom top+=78 0",
                   ease: "power1.out",
                   toggleActions: "play none none reverse",
                 
@@ -192,6 +192,7 @@ function CollectivesHeader() {
       // Cleanup if component unmounts
       return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     }, []);
+    
     useEffect(() => {
       gsap.to(".scroll-boxes-2", {
         scrollTrigger: {

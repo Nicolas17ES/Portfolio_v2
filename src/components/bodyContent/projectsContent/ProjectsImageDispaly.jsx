@@ -10,45 +10,149 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
+
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSRulePlugin);
+gsap.registerPlugin(ScrollToPlugin);
 
 // The Projects component displays project sections and handles animations based on mouse movements.
 function ProjectsImageDispaly() {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { title_animation_finshed } = useContext(GlobalContext);
-    const {ref: containerRef, inView: inView1} = useInView({ threshold: 0.5 });
+    const { title_animation_finshed, dispatch, display_resumes } = useContext(GlobalContext);
+    const[animationFinsihed, setAnimationFinsihed] = useState(false);
+    const {ref: containerRef, inView: inView1} = useInView({ threshold: .7 });
     const titleRef = useRef(null);
 
 
       useGSAP(() => {
-        if(inView1 && title_animation_finshed){
-            gsap.to(".project-image-center",{ opacity: 1, y: 0, ease: "expo.inOut", duration: 2 })
-            gsap.from(".project-image", { scale: 1.7, ease: "expo.inOut", duration: 1.5, delay: 1.3, })
-            gsap.to([".project-image-right", ".project-image-left"], { opacity: 1, duration: .3, delay: 2, ease: "expo.inOut"})
-            gsap.to(".project-image-left", { x: "-200", y: 32, rotation: -10, ease: "expo.inOut", delay: 2, duration: 1.5 })
-            gsap.to(".project-image-right", { x: "200", y: 32, rotation: 10, ease: "expo.inOut", delay: 2, duration: 1.5 })
-            gsap.fromTo(".projects-images-title", { y: 130, opacity: 0, ease: "expo.inOut"}, { y: 0, opacity: 1, ease: "expo.inOut", delay: 2.2, duration: 2 })
+        if(inView1 && title_animation_finshed && !animationFinsihed){
+            const imageOverlayReset = CSSRulePlugin.getRule(".project-image-wrapper::after");
+            gsap.to(imageOverlayReset, { duration: 0, cssRule: { height: "100%" } });
+            
+            // Your animation setup
+            const imageOverlay = CSSRulePlugin.getRule(".project-image-wrapper::after");
+            let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
+                        .to(imageOverlay, { duration: 1, delay: .1, cssRule: { height: "0%" } });
+                        gsap.to([".project-image-right", ".project-image-left"], { opacity: 1, duration: .4, delay: .7, ease: "expo.inOut"})
+                        gsap.to(".project-image-left", {opacity: 1, x: "-200", y: 32, rotation: -10, ease: "expo.inOut", delay: .5, duration: 1.7 })
+                        gsap.to(".project-image-right", {opacity: 1,  x: "200", y: 32, rotation: 10, ease: "expo.inOut", delay: .5, duration: 1.7})
+                        gsap.to(".project-image-center",{ boxShadow: '0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4)', delay: .5, ease: "ease.inOut", duration: 1.2,
+                        onComplete: () => {
+                            setAnimationFinsihed(true)
+                        } 
+                    })
+
+        return () => {
+            tl.kill(); // This will kill the timeline, stopping all animations in it
+          };
         }
     
-    }, [inView1, title_animation_finshed]);
+    }, [inView1, title_animation_finshed, !animationFinsihed]);
+
+    const setCursorVisible = (value) => {
+       if(!display_resumes){
+            dispatch({
+                type: 'SET_VIEW_PROJECTS_CURSOR',
+                payload: {
+                    text: 'learn more',
+                    value: value,
+                    color: 'rgba(var(--black), .85)'
+                },
+            })
+       }
+    }
+
+    const learnMore = () => {
+        gsap.to(".project-image-left", {opacity: 0, x: "0", y: 0, rotation: 0, ease: "expo.inOut", duration: 1 })
+        gsap.to(".project-image-right", {opacity: 0,  x: "0", y: 0, rotation: 0, ease: "expo.inOut", duration: 1, 
+        onComplete: () => {
+            dispatch({
+                type: 'SET_DISPLAY_RESUMES',
+                payload: true,
+            })
+            dispatch({
+                type: 'SET_VIEW_PROJECTS_CURSOR',
+                payload: {
+                    text: 'learn more',
+                    value: false,
+                    color: 'rgba(var(--black), .85)'
+                },
+            })
+        } 
+     })
+    }
+
+    useGSAP(() => {
+        if(display_resumes){
+            gsap.to(window, {
+                duration: 3,
+                scrollTo: {
+                  y: ".projects-paragraphs-container",
+                  offsetY: 150 // Scrolls to 100 pixels above the ".projects-paragraphs-container"
+                }
+              });
+              const boxes = document.querySelectorAll('.scroll-boxes-6');
+
+              // Create a GSAP timeline for the animation
+              const timeline = gsap.timeline({repeat: 0, yoyo: true});
+              
+              // Animate each box
+              boxes.forEach((box, index) => {
+                // Fade in the current box
+                timeline.to(box, {opacity: 1, duration: 0.2}, `+=${index * 0.2}`);
+                
+                // If not the first box, fade out the previous box
+                if (index > 0) {
+                  timeline.to(boxes[index - 1], {opacity: 0, duration: 0.2}, `-=${0.2}`);
+                }
+              });
+              
+              // Ensure the last box fades out at the end
+              timeline.to(boxes[boxes.length - 1], {opacity: 0, duration: 0.2});
+        }
+    }, [display_resumes])
+
+    // useEffect (() => {
+    //     return () => {
+    //         dispatch({
+    //             type: 'SET_DISPLAY_RESUMES',
+    //             payload: false,
+    //         })
+    //         setAnimationFinsihed(false)
+    //     }
+    // })
+
+   
+  
 
 
-    
 
     if(!title_animation_finshed) return null;
 
     return (
-        <div ref={containerRef} className="project-image-display-container">
-           <div className="project-images">
-                <img src={ProductImage} alt="" className="project-image project-image-left"/>
-                <img src={LearningPaths} alt="" className="project-image project-image-center"/>
-                <img src={Friday2} alt="" className="project-image project-image-right"/>      
-           </div>
-           
-           <div className="header"><p ref={titleRef}  className="projects-images-title">resume</p></div>
-        </div>
+        <>
+            <div ref={containerRef} className="project-image-display-container">
+                <div className="project-images" >
+                        <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={ProductImage} onClick={learnMore} alt="" className="project-image project-image-left" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>
+                        <div className="project-image-wrapper">
+                            <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={LearningPaths} onClick={learnMore} alt="" className="project-image project-image-center" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>
+                        </div>
+                        <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={Friday2} onClick={learnMore} alt="" className="project-image project-image-right" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>      
+                </div>   
+                {/* <div className="header"><p ref={titleRef}  className="projects-images-title">resumes</p></div> */}
+            </div>
+                <div className="display-resumes-bar-container">
+                    {display_resumes && (
+                        <>
+                        <span className="scroll-boxes-6"></span>
+                        <span className="scroll-boxes-6"></span>
+                        <span className="scroll-boxes-6"></span>
+                        </>
+                    )}
+                </div>
+        </>
     )
 }
 

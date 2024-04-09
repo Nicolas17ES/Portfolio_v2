@@ -155,6 +155,21 @@ const globalReducer = (state, action) => {
                 ...state,
                 title_animation_finshed: action.payload,
             }
+        case 'SET_DISPLAY_RESUMES':
+            return {
+                ...state,
+                display_resumes: action.payload,
+            }
+        case 'SET_PROJECTS_RESUMES_ANIMATION_FINISHED':
+            return {
+                ...state,
+                projects_resumes_animation_finished: action.payload,
+            }
+        case 'SET_DISPLAY_VIDEO_POPUP':
+            return {
+                ...state,
+                display_vide_popup: action.payload,
+            }
             case 'RESET_STATE':
                 return {
                   ...initialState,
