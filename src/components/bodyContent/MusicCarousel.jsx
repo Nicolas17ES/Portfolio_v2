@@ -222,6 +222,7 @@ function MusicCarousel() {
             payload: {
                 text: 'VIEW',
                 value: value,
+                background: true,
             },
         })
     }

@@ -12,7 +12,28 @@ gsap.registerPlugin(ScrollTrigger);
 function KeepScrolling({version, margin}) {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { dispatch } = useContext(GlobalContext);
+    const { dispatch, display_resumes, projects_resumes_animation_finished} = useContext(GlobalContext);
+
+    useEffect(() => {
+      // Animate scroll boxes with a stagger effect
+      gsap.fromTo(`.render-scrollbox-2`, 
+          { opacity: 0 }, 
+          { opacity: 1, duration: .7,}
+      );
+      gsap.fromTo(`.render-scrollbox-1`, 
+          { opacity: 0 }, 
+          { opacity: 1, duration: .7, delay: .4}
+      );
+  
+      // Animate the "SCROLL" text after the scroll boxes
+      gsap.fromTo(".scroll-text", 
+          { opacity: 0 },
+          { opacity: 1, duration: .7, delay: 0.8 } // Delay should account for stagger duration
+      );
+  
+      // The rest of your useEffect code for ScrollTrigger setup remains unchanged
+  }, [version]);
+  
 
     useEffect(() => {
         gsap.to(`.scroll-boxes-3-${version}`, {
@@ -47,15 +68,15 @@ function KeepScrolling({version, margin}) {
           rotation: 360,
         });
       }, []);
+      
 
-    console.log(margin)
     return (
         <div style={{marginTop: margin ? margin : null}} className="project-body">
             <div style={{top: '-25px'}} className="collectives-scroll-bar-container">
                 <span className={`collectives-scroll-bar-3 collectives-scroll-bar-${version}`}></span>
                 <span className="scroll-text">SCROLL</span>
-                <span className={`scroll-boxes-3 scroll-boxes-3-${version}`}></span>
-                <span className={`scroll-boxes-3 scroll-boxes-3-${version}`}></span>
+                <span className={`scroll-boxes-3 render-scrollbox-1 scroll-boxes-3-${version}`}></span>
+                <span className={`scroll-boxes-3 render-scrollbox-2 scroll-boxes-3-${version}`}></span>
             </div>
         </div>
     )

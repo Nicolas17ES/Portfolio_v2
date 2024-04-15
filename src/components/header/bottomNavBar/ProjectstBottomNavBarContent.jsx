@@ -53,8 +53,8 @@ function ProjectstBottomNavBarContent() {
     
         // Determine which paragraph to expand based on the hovered index
         let paragraphToExpand = project_index_hovered === 1 ? paragraphRefShop.current : 
-                                project_index_hovered === 2 ? paragraphRefBio.current : 
-                                project_index_hovered === 3 ? paragraphRefTools.current : null;
+                                project_index_hovered === 3 ? paragraphRefBio.current : 
+                                project_index_hovered === 2 ? paragraphRefTools.current : null;
     
         if (paragraphToExpand && !awaitExpand) {
             expandParagraph(paragraphToExpand);
@@ -96,27 +96,27 @@ function ProjectstBottomNavBarContent() {
                 </div>
             </div>
             <div className='bottom-nav-content bottom-nav-content-projects'>
-                <div data-value="5" className="active-class-vertical">
+                <div data-value="6" className="active-class-vertical">
                 
                     <div className="bottom-nav-text">
-                        <div className="bottom-nav--title"><p className="bottom-nav-number">2</p><span>{'<6.2023>'}</span> </div>
-                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<title>'}</span> {'Link In Bio'}</p>
-                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<technologies>'}</span> {'React, MongoDB, Google Cloud'}</p>
-                        <p ref={paragraphRefBio} className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
-                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
+                        <div className="bottom-nav--title"><p className="bottom-nav-number">2</p><span>{'<12.2023>'}</span> </div>
+                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<title>'}</span> {'Aulart Tools'}</p>
+                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<technologies>'}</span> {'NodeJs, React, GSAP, Google Cloud, Mysql'}</p>
+                        <p ref={paragraphRefTools} className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
+                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis. autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
                         </p> 
                     </div>
                 </div>
             </div>
             <div className='bottom-nav-content bottom-nav-content-projects'>
-                <div data-value="6" className="active-class-vertical">
+                <div data-value="5" className="active-class-vertical">
                 
                     <div className="bottom-nav-text">
-                        <div className="bottom-nav--title"><p className="bottom-nav-number">3</p><span>{'<12.2023>'}</span> </div>
-                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<title>'}</span> {'Aulart Tools'}</p>
-                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<technologies>'}</span> {'NodeJs, React, GSAP, Google Cloud, Mysql'}</p>
-                        <p ref={paragraphRefTools} className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
-                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis. autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
+                        <div className="bottom-nav--title"><p className="bottom-nav-number">3</p><span>{'<6.2023>'}</span> </div>
+                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<title>'}</span> {'Link In Bio'}</p>
+                        <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<technologies>'}</span> {'React, MongoDB, Google Cloud'}</p>
+                        <p ref={paragraphRefBio} className="project-resume" style={{ marginLeft: '15px', marginTop: '2px', overflow: 'hidden', height: 0 }}>
+                        <span>{'<resume>'}</span> {'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam natus consectetur aliquam dolorum quis labore nostrum, autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.autem ex dolorem magni aspernatur expedita voluptatibus possimus minima corporis.'}
                         </p> 
                     </div>
                 </div>

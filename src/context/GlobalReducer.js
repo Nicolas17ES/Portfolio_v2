@@ -170,6 +170,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 display_vide_popup: action.payload,
             }
+        case 'SET_BOXES_ANIMATION_FINSIHED':
+            return {
+                ...state,
+               boxes_animations_finsished: action.payload,
+            }
             case 'RESET_STATE':
                 return {
                   ...initialState,

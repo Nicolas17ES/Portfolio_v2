@@ -34,34 +34,7 @@ function VideoPlayer() {
         };
     }, [display_vide_popup]); 
 
-
-    const handleClickOutside = (event) => {
-        if (overlayRef.current && !overlayRef.current.contains(event.target)) {
-            gsap.fromTo(
-                ".video-player-container",
-                {xPercent: -50, opacity: 1, scale: 1},
-                {ease: "power1.inOut", xPercent: -220, opacity: 1, duration: .6,
-                onComplete: () => {
-                    dispatch({
-                        type: 'SET_DISPLAY_VIDEO_POPUP',
-                        payload: { index: null, value: null },
-                    });
-                    setVideoSrc(null)
-                }
-            },
-            )
-        }
-    };
-console.log("videoLoaded", videoLoaded)
-    useEffect(() => {
-        // Add when the component mounts
-        document.addEventListener('mousedown', handleClickOutside);
-        // Return a function to be called when it unmounts
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [dispatch]);
-
+console.log('shown')
 
     useEffect(() => {
         if (display_vide_popup.image) {
@@ -70,73 +43,96 @@ console.log("videoLoaded", videoLoaded)
     }, [display_vide_popup]);
 
     useEffect(() => {
-        const videoElement = document.querySelector('.video-player');
-        const handleVideoLoad = () => setVideoLoaded(true);
-    
-        if (videoElement) {
-            videoElement.addEventListener('loadeddata', handleVideoLoad);
-        }
-    
-        // Cleanup
-        return () => {
-            if (videoElement) {
-                videoElement.removeEventListener('loadeddata', handleVideoLoad);
-            }
-        };
-    }, [videoSrc]); // Re-run this effect if the video source changes
-    
-    
-
-    useEffect(() => {
-
-
-        gsap.fromTo(
-            ".video-player-container",
-            {xPercent: -200, opacity: 1},
-            {delay: .4, ease: "power1.inOut", xPercent: -50, duration: .55,
+        const handleParentClick = () => {
+          // Start the first animation
+          gsap.to('.video-player', {
+            xPercent: -150,
+            opacity: 0,
+            duration: 0.7,
+            ease: "none",
             onComplete: () => {
-                // Set video source here to start loading the video
-                setVideoSrc(display_vide_popup.index);
+              // Once the first animation completes, start the second
+              gsap.to('.video-player-container', {
+                opacity: 0,
+                duration: 0.1,
+                ease: "none",
+                onComplete: () => {
+                  // Dispatch and cleanup after the second animation
+                  dispatch({
+                    type: 'SET_DISPLAY_VIDEO_POPUP',
+                    payload: { index: null, value: null, image: null },
+                  });
+                  setVideoSrc(null);
+                }
+              });
             }
-        },
-        )
-    }, [display_vide_popup]);
-
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-    
-        const videoPausePlayHandler = (e) => {
-          if (e.type === 'playing') {
-            setControlsVisible(true);
-          } else if (e.type === 'pause') {
-            setControlsVisible(false);
-          }
+          });
         };
-    
-        video.addEventListener('playing', videoPausePlayHandler);
-        video.addEventListener('pause', videoPausePlayHandler);
-    
-        // Autoplay logic
-        video.play().catch(error => console.error('Video play failed', error));
-    
+      
+        const handleChildClick = (event) => {
+          event.stopPropagation(); // Prevents click from bubbling up to the parent
+        };
+      
+        // Attach event listeners
+        const parent = overlayRef.current;
+        parent.addEventListener('click', handleParentClick);
+      
+        const child = videoRef.current;
+        child.addEventListener('click', handleChildClick);
+      
+        // Cleanup function
         return () => {
-          video.removeEventListener('playing', videoPausePlayHandler);
-          video.removeEventListener('pause', videoPausePlayHandler);
+          parent.removeEventListener('click', handleParentClick);
+          child.removeEventListener('click', handleChildClick);
         };
-      }, []);
+      }, []); // Ensure this effect is only run on mount and unmount
+      
+
+
+      useEffect(() => {
+        // Create a GSAP timeline
+        const tl = gsap.timeline({
+            onComplete: () => {
+                // Set video source here to start loading the video after animations
+                setTimeout(() => {
+                    setVideoSrc(display_vide_popup.index);
+                }, 400);
+            }
+        });
+    
+        // Assuming `videoPlayerRef` and `videoContainerRef` are created with useRef() and assigned to the respective elements
+        tl.fromTo(videoRef.current, 
+                  {xPercent: -150, opacity: 0}, 
+                  {ease: "power2.out", xPercent: 0, duration: 0.7, opacity: 1})
+          .fromTo(overlayRef.current, 
+                  {opacity: 0}, 
+                  {ease: "power2.out", duration: 0.7, opacity: 1}, 
+                  "<"); // Start this animation at the same time as the previous
+    
+    }, [display_vide_popup]);
     
 
 
 
     return (
         <div ref={overlayRef} className="video-player-container">
-            {!videoLoaded && (
+            {/* {!videoLoaded && (
                 <div className="loader-video-js">
                     Loading...
                 </div>
             )}
-            <video onClick={() => videoRef.current.play()}  ref={videoRef} poster={coverImage} className='video-player' id="myVideo" width="100%" height="100%" controls={controlsVisible}>
+             */}
+            <video
+                // onClick={(event) => {
+                //     event.stopPropagation();
+                //     videoRef.current.play();
+                // }}
+                ref={videoRef}
+                poster={coverImage}
+                className='video-player'
+                id="myVideo"
+                controls
+            >
                 {videoSrc && <source src={videoSrc} type="video/mp4" />}
                 Your browser does not support the video tag.
             </video>

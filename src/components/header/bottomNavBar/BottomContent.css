@@ -16,9 +16,14 @@
   margin-bottom: 17px;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 
 .bottom-nav-content-projects, .bottom-nav-content-music{
+  opacity: 0;
+}
+
+.bottom-nav-projects{
   opacity: 0;
 }
 
@@ -174,6 +179,8 @@
   text-transform: none;
   font-size: 0.9rem;
   z-index: 9;
+  z-index: 1;
+  overflow: hidden;
 }
 .bottom-nav-text span {
   opacity: 0.6;

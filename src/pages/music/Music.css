@@ -410,7 +410,7 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: rgba(var(--red), .85);
+  background-color: rgba(var(--red), 1);
   pointer-events: none;
   z-index: 99999999999;
   color: rgb(var(--white));
@@ -420,7 +420,6 @@
   text-align: center;
   /* border: .7px solid rgb(var(--white)); */
   white-space: nowrap;
-  
   
 }
 
@@ -541,14 +540,25 @@ opacity: .8; /* Color del texto de la leyenda */
   letter-spacing: 1px;
   font-size: 1rem;
 }
-.scroll-boxes, .scroll-boxes-2, .scroll-boxes-3, .scroll-boxes-6{
+.scroll-boxes, .scroll-boxes-2, .scroll-boxes-3, .scroll-boxes-6, .scroll-boxes-7{
   width: 14px;
   height: 14px;
   border: 1px solid rgb(var(--red));
   background-color: none;
 }
-.scroll-boxes-6{
+.scroll-boxes-6, .scroll-boxes-7{
+  background-color: rgb(var(--red));
   opacity: 0;
+  animation: rotateBox 3s infinite linear;
+}
+
+@keyframes rotateBox {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 

@@ -28,28 +28,26 @@ function ProjectsImageDispaly() {
 
       useGSAP(() => {
         if(inView1 && title_animation_finshed && !animationFinsihed){
-            const imageOverlayReset = CSSRulePlugin.getRule(".project-image-wrapper::after");
+                const imageOverlayReset = CSSRulePlugin.getRule(".project-image-wrapper::after");
             gsap.to(imageOverlayReset, { duration: 0, cssRule: { height: "100%" } });
             
             // Your animation setup
             const imageOverlay = CSSRulePlugin.getRule(".project-image-wrapper::after");
-            let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
-                        .to(imageOverlay, { duration: 1, delay: .1, cssRule: { height: "0%" } });
-                        gsap.to([".project-image-right", ".project-image-left"], { opacity: 1, duration: .4, delay: .7, ease: "expo.inOut"})
-                        gsap.to(".project-image-left", {opacity: 1, x: "-200", y: 32, rotation: -10, ease: "expo.inOut", delay: .5, duration: 1.7 })
-                        gsap.to(".project-image-right", {opacity: 1,  x: "200", y: 32, rotation: 10, ease: "expo.inOut", delay: .5, duration: 1.7})
-                        gsap.to(".project-image-center",{ boxShadow: '0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4)', delay: .5, ease: "ease.inOut", duration: 1.2,
-                        onComplete: () => {
-                            setAnimationFinsihed(true)
-                        } 
-                    })
-
-        return () => {
-            tl.kill(); // This will kill the timeline, stopping all animations in it
-          };
+            let tl = gsap.timeline({ defaults: { ease: 'linear' } })
+            .to(imageOverlayReset, { duration: 0, cssRule: { height: "100%" } }, 0) // Reset overlay
+            .to(imageOverlay, { duration: .7, delay: .1, cssRule: { height: "0%" } }) // Overlay animation
+            .to([".project-image-right", ".project-image-left"], { opacity: 1, duration: .1, ease: "expo.inOut" }, ">") // Next animations
+            .to(".project-image-left", { opacity: 1, x: "-200", y: 32, rotation: -10, ease: "expo.inOut", duration: 1.4 }, ">")
+            .to(".project-image-right", { opacity: 1, x: "200", y: 32, rotation: 10, ease: "expo.inOut", duration: 1.4 }, "<")
+            .to(".project-image-center", { boxShadow: '0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4)', ease: "ease.inOut", duration: 1.2 }, "<")
+            .add(() => setAnimationFinsihed(true), ">");
+                    return () => {
+                        tl.kill(); // This will kill the timeline, stopping all animations in it
+                      };
+        
         }
     
-    }, [inView1, title_animation_finshed, !animationFinsihed]);
+    }, [inView1, title_animation_finshed, animationFinsihed]);
 
     const setCursorVisible = (value) => {
        if(!display_resumes){
@@ -101,16 +99,16 @@ function ProjectsImageDispaly() {
               // Animate each box
               boxes.forEach((box, index) => {
                 // Fade in the current box
-                timeline.to(box, {opacity: 1, duration: 0.2}, `+=${index * 0.2}`);
+                timeline.to(box, {opacity: 1, duration: 0.23}, `+=${index * 0.2}`);
                 
                 // If not the first box, fade out the previous box
                 if (index > 0) {
-                  timeline.to(boxes[index - 1], {opacity: 0, duration: 0.2}, `-=${0.2}`);
+                  timeline.to(boxes[index - 1], {opacity: 0, duration: 0.23}, `-=${0.2}`);
                 }
               });
               
               // Ensure the last box fades out at the end
-              timeline.to(boxes[boxes.length - 1], {opacity: 0, duration: 0.2});
+              timeline.to(boxes[boxes.length - 1], {opacity: 0, duration: 0.24});
         }
     }, [display_resumes])
 
@@ -129,7 +127,7 @@ function ProjectsImageDispaly() {
 
 
 
-    if(!title_animation_finshed) return null;
+    // if(!title_animation_finshed) return null;
 
     return (
         <>

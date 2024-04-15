@@ -51,6 +51,7 @@ export const initialState = {
     title_animation_finshed: false,      
     display_resumes: false,      
     projects_resumes_animation_finished: false,      
+    boxes_animations_finsished: false,      
     display_vide_popup: {index: null, value: null},      
 }
 export const GlobalProvider = ({children}) => {
@@ -89,6 +90,7 @@ export const GlobalProvider = ({children}) => {
         title_animation_finshed: state.title_animation_finshed,
         display_resumes: state.display_resumes,
         projects_resumes_animation_finished: state.projects_resumes_animation_finished,
+        boxes_animations_finsished: state.boxes_animations_finsished,
         display_vide_popup: state.display_vide_popup,
         dispatch,
     }}>

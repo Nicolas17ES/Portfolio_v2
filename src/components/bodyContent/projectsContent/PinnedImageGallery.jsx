@@ -38,6 +38,7 @@ function PinnedImageGallery() {
         });
 
         ScrollTrigger.create({
+            id: "PinnedImageGallery",
             trigger: workRef.current,
             start: 'top top',
             end: 'bottom bottom',
@@ -47,7 +48,11 @@ function PinnedImageGallery() {
 
         // Cleanup function to kill animations on component unmount
         return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+            ScrollTrigger.getAll().forEach(trigger => {
+                if(trigger.vars.id === "PinnedImageGallery") { // Check the identifier
+                  trigger.kill();
+                }
+              });
         };
     }, []);
 
@@ -59,7 +64,7 @@ function PinnedImageGallery() {
                 stroke: 'Rik Simpson',
                 resume: 'I developed a dynamic React template, capable of fetching and displaying any masterclass from our database on demand. This solution ensured that users experienced lightning-fast load times and a smooth journey across all our featured masterclasses.',
                 image: ProductImage,
-                video: 'https://storage.googleapis.com/audio_porftolio/ProductRik.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/ProductRik.mp4'
             },
             {
                 number: '02',
@@ -67,7 +72,7 @@ function PinnedImageGallery() {
                 stroke: 'The Alchemist',
                 resume: 'To launch a React version of any producg, we implemented a simple redirect mechanism. Upon activation, it sends the masterclass id, prompting our server to retrieve all relevant data, seamlessly populating the React template.',
                 image: AlchemistProduct,
-                video: 'https://storage.googleapis.com/audio_porftolio/ProductRik.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/ProductRik.mp4'
             },
             {
                 number: '03',
@@ -75,7 +80,7 @@ function PinnedImageGallery() {
                 stroke: 'Filter classes',
                 resume: 'This React template showcased our full masterclass catalog with dynamic discounts, drawing data from WooCommerce to ensure real-time accuracy. Filters for genre and popularity enhanced user navigation, providing a seamless shopping experience.',
                 image: Friday2,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mp4'
             },
             {
                 number: '04',
@@ -83,7 +88,7 @@ function PinnedImageGallery() {
                 stroke: 'Checkout',
                 resume: 'To streamline the Black Friday rush, we implemented a session-based cart system within the React environment, allowing users to seamlessly transfer their selections to the main site for checkout, ensuring no deal was missed.',
                 image: ArtistCheckout,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mp4'
             },
             {
                 number: '05',
@@ -91,7 +96,7 @@ function PinnedImageGallery() {
                 stroke: 'Slider section',
                 resume: 'Revitalized the membership landing with React to showcase our extensive catalog, live sessions, and included plugins through intuitive sliders. Users exploring membership options experienced enhanced navigation and filtering capabilities.',
                 image: LearningPaths,
-                video: 'https://storage.googleapis.com/audio_porftolio/Membership.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/Membership.mp4'
             },
             {
                 number: '06',
@@ -99,7 +104,7 @@ function PinnedImageGallery() {
                 stroke: 'Filter section',
                 resume: 'Upon purchase, users were smoothly redirected from the optimized React landing to the main sites checkout, ensuring a seamless transaction process. This setup not only improved user experience but also streamlined the path to membership enrollment.',
                 image: AulartBenefits,
-                video: 'https://storage.googleapis.com/audio_porftolio/Membership.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/Membership.mp4'
             },
             {
                 number: '07',
@@ -107,7 +112,7 @@ function PinnedImageGallery() {
                 stroke: 'Filter section',
                 resume: 'Throughout peak times, our Masterclass landing, built in React, offers a comprehensive view of our masterclass catalog. Enhanced with user-friendly filters, it facilitates the exploration of genres and popular picks, ensuring an engaging browsing experience.',
                 image: Masterclasses,
-                video: 'https://storage.googleapis.com/audio_porftolio/Masterclass.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/Masterclass.mp4'
             }
         ],
         tools: [
@@ -214,11 +219,20 @@ function PinnedImageGallery() {
     }
 
     const displayPopUp = (index, image) => {
+        console.log('pressed')
         dispatch({
             type: 'SET_DISPLAY_VIDEO_POPUP',
             payload: {index: index, value: true, image: image},
         })
     }
+
+    useGSAP(() => {
+        gsap.fromTo('.pinned-gallery-container', {
+            opacity: 0,
+        }, {opacity: 1,
+            ease: "power1.inOut",
+            duration: 1.5})
+    }, [])
 
     return (
         <div className="pinned-gallery-container">

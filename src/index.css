@@ -136,10 +136,15 @@ a{
 
 
 /* overlay */
-.screen-overlay-container{
-  display: flex;
-  flex-direction: column;
-}
+/* .screen-overlay-container{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(var(--white), 0.7);
+  z-index: 999999;
+  position: fixed;
+  overflow: hidden;
+  opacity: 0;
+} */
 .screen-overlay{
   width: 100vw;
   height: 50vh;

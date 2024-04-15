@@ -1,5 +1,5 @@
 import './NavBars.css'
-import { useEffect, useState, useContext} from 'react'
+import {  useContext} from 'react'
 import GlobalContext from '../../context/GlobalContext'
 import { PiPlanet } from "react-icons/pi";
 import { GiCoffin } from "react-icons/gi";
@@ -10,7 +10,7 @@ import gsap from "gsap";
 
 function Footer() {
 
-  const {display_body, lateral_navbar, display_header, hide_nav, shrink_body} = useContext(GlobalContext);
+  const {display_body, lateral_navbar, display_header, hide_nav, shrink_body, navbar_location, boxes_animations_finsished} = useContext(GlobalContext);
 
   useGSAP(() => {
     if(display_body){
@@ -22,7 +22,7 @@ function Footer() {
     }
   }, [display_body])
 
-
+if(['aulart-shop', 'aulart-tools', 'linkinbio'].includes(navbar_location) && !boxes_animations_finsished) return null;
 
 if(display_body){
   return (

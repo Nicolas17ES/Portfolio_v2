@@ -12,12 +12,12 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import KeepScrolling from '../../components/bodyContent/projectsContent/KeepScrolling';
 import PinnedImageGallery from '../../components/bodyContent/projectsContent/PinnedImageGallery';
-
+import Objectives from '../../components/bodyContent/projectsContent/Objectives';
 // The Projects component displays project sections and handles animations based on mouse movements.
 function ViewProjects() {
 
     const { id } = useParams();
-    const { title_animation_finshed, projects_resumes_animation_finished } = useContext(GlobalContext);
+    const { title_animation_finshed, boxes_animations_finsished } = useContext(GlobalContext);
 
     // Mapeo de IDs de proyecto a componentes
     const projectComponents = {
@@ -40,12 +40,8 @@ function ViewProjects() {
             {title_animation_finshed && <KeepScrolling version={3}/>}
             <ProjectsImageDispaly/>
             <ProjectsParagraphs/>
-            {projects_resumes_animation_finished && (
-                <>
-                    <KeepScrolling version={4} margin={'120px'} />
-                    <PinnedImageGallery/>
-                </>
-            )}
+            {boxes_animations_finsished && <PinnedImageGallery/>}
+            {boxes_animations_finsished && <Objectives/>}
         </div>
     );
 }

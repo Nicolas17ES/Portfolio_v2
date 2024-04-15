@@ -46,6 +46,7 @@ function Projects() {
             payload: {
                 text: 'VIEW',
                 value: value,
+                background: true,
             }, 
         });
 

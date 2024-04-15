@@ -44,7 +44,7 @@ function WrappedApp() {
   const location = useLocation();
   useResetStates(); 
   const pathname = location.pathname;
-  const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation } = useContext(GlobalContext);
+  const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation, display_vide_popup } = useContext(GlobalContext);
 
   const containerRef = useRef(null);
   const scrollPosition = useScrollPosition();
@@ -91,7 +91,6 @@ function WrappedApp() {
       {/* <MouseTracker /> */}
       <IconReplica/>
       <Background/>
-      {/* <ScreenOverlay/> */}
       {((lateral_navbar || start_lateral_nav_animation) && display_header) &&  <MainLateral />}
      
       {view_projects_cursor.value && <ViewProjectsCursor/>}

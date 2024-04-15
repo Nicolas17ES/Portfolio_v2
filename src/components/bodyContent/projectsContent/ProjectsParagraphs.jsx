@@ -12,7 +12,7 @@ function ProjectsParagraphs() {
 
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { display_resumes, navbar_location, dispatch} = useContext(GlobalContext);
+    const { display_resumes, navbar_location, dispatch, projects_resumes_animation_finished,} = useContext(GlobalContext);
     const [value, setValue] = useState(null);
     const introTag = useRef(null);
     const introTag2 = useRef(null);
@@ -64,9 +64,9 @@ function ProjectsParagraphs() {
 
     const animateWithGSAP = () => {
         gsap.fromTo(".gsap-char", { opacity: 0 }, {
-            delay: 2.2,
+            delay: 2,
             opacity: 1,
-            stagger: 0.06, // Adjust time between each letter appearing
+            stagger: 0.048, // Adjust time between each letter appearing
             ease: "linear",
             onComplete: () => {
                 dispatch({
@@ -80,23 +80,64 @@ function ProjectsParagraphs() {
     useGSAP(() => {
         if(value !== null && display_resumes){
             gsap.fromTo(".projects-paragraphs-title", { opacity: 0 }, {
-                delay: 1.8,
+                delay: 1.7,
                 opacity: 1,
                 duration: .6,
                 ease: "linear"
             });
         }
-    }, [value, display_resumes])
-    
+    }, [value, display_resumes]);
+
+    useGSAP(() => {
+        if(projects_resumes_animation_finished){
+              const boxes = document.querySelectorAll('.scroll-boxes-7');
+
+              // Create a GSAP timeline for the animation
+              const timeline = gsap.timeline({repeat: 0, yoyo: true, 
+                onComplete: () => {
+                    dispatch({
+                        type: 'SET_BOXES_ANIMATION_FINSIHED',
+                        payload: true,
+                    })
+                },
+            });
+              
+              // Animate each box
+              boxes.forEach((box, index) => {
+                // Fade in the current box
+                timeline.to(box, {opacity: 1, duration: 0.23}, `+=${index * 0.2}`);
+                
+                // If not the first box, fade out the previous box
+                if (index > 0) {
+                  timeline.to(boxes[index - 1], {opacity: 0, duration: 0.23}, `-=${0.2}`);
+                }
+              });
+              
+              // Ensure the last box fades out at the end
+              timeline.to(boxes[boxes.length - 1], {opacity: 0, duration: 0.24});
+        }
+    }, [projects_resumes_animation_finished])
     
 
     if(value === null || !display_resumes) return null;
     
     return (
+       <>
         <div className="projects-paragraphs-container">
             <h4 className="projects-paragraphs-title">Project Overview</h4>
             <p ref={introTag2} className="project-paragraph project-paragraph-two">{data[value].pargraphOne}</p>
          </div>
+         <div className="display-resumes-bar-container" style={{marginTop: '30px', marginBottom: '0px'}}>
+         {display_resumes && (
+             <>
+             <span className="scroll-boxes-7"></span>
+             <span className="scroll-boxes-7"></span>
+             <span className="scroll-boxes-7"></span>
+             </>
+         )}
+         </div>
+       </>
+
     )
 }
 

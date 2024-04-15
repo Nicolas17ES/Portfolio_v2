@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // ViewProjectsCursor.js
 
-function ViewProjectsCursor({ text }) {
+function ViewProjectsCursor({ }) {
   const { view_projects_cursor, mouse_position } = useContext(GlobalContext);
   const [position, setPosition] = useState({ x: null, y: null });
   const [cursorRendered, setCursorRendered] = useState(false);
@@ -58,7 +58,7 @@ function ViewProjectsCursor({ text }) {
   if(position.y === 0 || position.x === 0) return null;
 
     return (
-      <div ref={cursorRef} className="custom-cursor" style={{backgroundColor: view_projects_cursor.color ? view_projects_cursor.color : 'rgba(var(--red), .85)'}}>
+      <div ref={cursorRef} className="custom-cursor" style={{mixBlendMode:view_projects_cursor.background ? 'difference' : null}}>
         <div className="cursor-inner">{view_projects_cursor.text ? view_projects_cursor.text : 'VIEW'}</div>
       </div>
     )
