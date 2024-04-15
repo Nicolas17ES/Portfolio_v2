@@ -8,7 +8,6 @@ function Landing() {
 
   // Access global context using the useContext hook
   const {display_header, lateral_navbar} = useContext(GlobalContext);
-console.log("display_header", display_header)
 
   return (
     <div className="landing-container">

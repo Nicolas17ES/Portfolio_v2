@@ -20,11 +20,11 @@
 }
 
 .bottom-nav-content-projects, .bottom-nav-content-music{
-  opacity: 0;
+  opacity: 1;
 }
 
 .bottom-nav-projects{
-  opacity: 0;
+  opacity: 1;
 }
 
 
@@ -239,6 +239,9 @@
   width: 100%;
   height: 14.1% !important;
   cursor: pointer;
+}
+
+.contact-social-container, .contact-social-container-1 {
   opacity: 0;
 }
 .inner-socials{

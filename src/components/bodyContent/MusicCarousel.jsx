@@ -29,6 +29,8 @@ function MusicCarousel() {
     const [activeIndexState, setActiveIndex] = useState(null);
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [imageIndex, setImageIndex] = useState(null);
+    const [hoverEnabled, setHoverEnabled] = useState(false);
+    const [cursorVisible, setCursorVisible] = useState(false);
 
 
 
@@ -134,20 +136,7 @@ function MusicCarousel() {
         }
     }, [change_slide])
 
-    const carouselData = [
-        {
-            designer: 'Marina',
-            date: '15 Feb 2022',
-        },
-        {
-            designer: 'Fundrawings',
-            date: '15 Feb 2020',
-        },
-        {
-            designer: 'Yereyye',
-            date: '15 Feb 2019',
-        },
-    ]
+
 
     const displayImageOverlay = (index) => {
         setImageIndex(index)
@@ -160,22 +149,30 @@ function MusicCarousel() {
 
     useGSAP(() => {
         if (display_image_overlay) {
-          gsap.to(['.before', '.after'], {
-            duration: 1, // Duration of the animation
-            ease: 'Power1.easeOut',
-            opacity: 0,
-            delay: 0,
-            onComplete: () => {
-                dispatch({
-                    type: 'SET_CHANGE_SLIDE',
-                    payload: { value: null, origin: false },
-                });
-                dispatch({
-                    type: 'SET_CLICKED_BUTTON',
-                    payload: { clicked: true, value: imageIndex},
-                });
-              }
-          });
+            gsap.fromTo('.counter-indicator', {
+                opacity: 1,
+            }, {
+                opacity: 0,
+                duration: .75,
+            })
+            gsap.to(['.before', '.after'], {
+                duration: 1, // Duration of the animation
+                ease: 'Power1.easeOut',
+                opacity: 0,
+                delay: 0,
+                onComplete: () => {
+                    dispatch({
+                        type: 'SET_CHANGE_SLIDE',
+                        payload: { value: null, origin: false },
+                    });
+                    setTimeout(() => {
+                        dispatch({
+                            type: 'SET_CLICKED_BUTTON',
+                            payload: { clicked: true, value: imageIndex},
+                        });
+                    }, 500);
+                }
+            });
         }
       }, [display_image_overlay]);
      
@@ -208,68 +205,72 @@ function MusicCarousel() {
 
     useGSAP(() => {
     if (display_image_overlay) {
-        gsap.to('.carousel-info', {
-        opacity: 0, // Set opacity to 0
-        duration: 1, // Duration of the animation
-        ease: 'linear', // Use linear easing for the animation
+            gsap.to('.carousel-info', {
+            opacity: 0, // Set opacity to 0
+            duration: 1, // Duration of the animation
+            ease: 'linear', // Use linear easing for the animation
         });
     }
     }, [display_image_overlay]);
 
-    const setCursorVisible = (value) => {
-        dispatch({
-            type: 'SET_VIEW_PROJECTS_CURSOR',
-            payload: {
-                text: 'VIEW',
-                value: value,
-                background: true,
-            },
-        })
-    }
+    useEffect(() => {
+        if(cursorVisible && hoverEnabled){
+            dispatch({
+                type: 'SET_VIEW_PROJECTS_CURSOR',
+                payload: {
+                    text: 'VIEW',
+                    value: true,
+                    background: true,
+                },
+            })
+        } else if (!cursorVisible && hoverEnabled){
+            dispatch({
+                type: 'SET_VIEW_PROJECTS_CURSOR',
+                payload: {
+                    text: 'VIEW',
+                    value: false,
+                    background: true,
+                },
+            })
+        }
+    }, [cursorVisible, hoverEnabled])
 
 
 
 
     // ANIMATION TO LOAD THE IMAGE OVERLAY ON MOUNBT
     useEffect(() => {        
-        const imageRevealReset = CSSRulePlugin.getRule(".image-wrap::before");
-        gsap.to(imageRevealReset, { duration: 0, cssRule: { width: "100%" } });
-        
-        // Your animation setup
-        const imageReveal = CSSRulePlugin.getRule(".image-wrap::before");
-        let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
-                    .to(imageReveal, { duration: 1.3, delay: .7, cssRule: { width: "0%" } });
-        
-        // Cleanup function to kill the animation when the component unmounts or conditions change
-        return () => {
-          tl.kill(); // This will kill the timeline, stopping all animations in it
-        };
-    }, []);
+        if(display_body){
+            const imageRevealReset = CSSRulePlugin.getRule(".image-wrap::before");
+            gsap.to(imageRevealReset, { duration: 0, cssRule: { width: "100%" } });
+            
+            // Your animation setup
+            const imageReveal = CSSRulePlugin.getRule(".image-wrap::before");
+            let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
+                        .to(imageReveal, { duration: 1.3, delay: 1.2, cssRule: { width: "0%" }, onComplete: () => setHoverEnabled(true) });
+            
+            // Cleanup function to kill the animation when the component unmounts or conditions change
+            return () => {
+                tl.kill(); // This will kill the timeline, stopping all animations in it
+                setHoverEnabled(false);
+            };
+        }
+    }, [display_body]);
 
 
 
     // ANIMATE THE CAROUSEL INFO ON MOUNT
     useGSAP(() => {
         if(display_body){
-            gsap.fromTo('.carousel-info-element', 
-                { xPercent: -150, opacity: 0}, // Starting properties
-                { xPercent: 0, 
-                    opacity: 1, 
-                    duration: 1.2,  
-                    ease: "power1.out", 
-                    delay: .8, 
-                    stagger: {
-                        each: 0.1, // Time between each animation start
-                        from: "start" // Start staggering from the end
-                  }, } // Ending properties
-            );
+
             gsap.from('.counter-indicator', {
                 opacity:0,
-                delay: 1.75,
+                delay: 2,
                 duration: .5,
             })
         }
       }, [display_body]);
+    
     
 
 
@@ -301,7 +302,7 @@ function MusicCarousel() {
                                         onMouseEnter={() => setCursorVisible(true)} 
                                         onMouseLeave={() => setCursorVisible(false)} 
                                         onClick={() => displayImageOverlay(0)}
-                                        className="image-wrap"
+                                        className={`image-wrap ${!hoverEnabled ? 'no-hover' : ''}`}
                                         style={{ pointerEvents: display_image_overlay && 'none' }}
                                     >
                                         <span className="counter-indicator">{activeIndexState + 1}/3</span>
@@ -316,7 +317,7 @@ function MusicCarousel() {
                                     <figure onClick={() => displayImageOverlay(1)}
                                         onMouseEnter={() => setCursorVisible(true)} 
                                         onMouseLeave={() => setCursorVisible(false)} 
-                                        className="image-wrap" 
+                                        className={`image-wrap ${!hoverEnabled ? 'no-hover' : ''}`} 
                                         style={{pointerEvents: display_image_overlay && 'none'}}>
                                         <span className="counter-indicator">{activeIndexState + 1}/3</span>
                                         <img src={Image3} alt="" className="carousel-image" />
@@ -332,7 +333,7 @@ function MusicCarousel() {
                                         onMouseEnter={() => setCursorVisible(true)} 
                                         onMouseLeave={() => setCursorVisible(false)} 
                                         onClick={() => displayImageOverlay(2)} 
-                                        className="image-wrap" 
+                                        className={`image-wrap ${!hoverEnabled ? 'no-hover' : ''}`}
                                         style={{pointerEvents: display_image_overlay && 'none'}}
                                     >
                                         <span className="counter-indicator">{activeIndexState + 1}/3</span>

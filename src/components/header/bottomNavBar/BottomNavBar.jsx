@@ -87,9 +87,6 @@ function BottomNavBar() {
       <div className={finalLocation !== 'about' ? 'hide-bottom' : 'display-bottom'}>
         <AboutBottomNavBarContent />
       </div>
-      <div className={finalLocation !== 'contact' ? 'hide-bottom' : 'display-bottom'}>
-        <ContactBottom />
-      </div>
       <div className={finalLocation !== 'aulart-shop' ? 'hide-bottom' : 'display-bottom'}>
         <BottomNavAulartShop />
       </div>

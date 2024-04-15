@@ -5,6 +5,7 @@ import { FaGithub, FaInstagram } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { CiLinkedin } from "react-icons/ci";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function AboutBottomNavBarContent() {
 
@@ -22,33 +23,41 @@ function AboutBottomNavBarContent() {
 
 
 
-useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (display_body) {
-        gsap.fromTo('.contact-social-container', 
-          { opacity: 0, y: -100 }, 
-          { opacity: 1, y: 0, duration: (prevLocation === '/music' || prevLocation === '/projects') ? 1 : .5, stagger: 0.2, delay: (prevLocation === '/music' || prevLocation === '/projects') ? 1.5 : 1.5 }
-        );
-      }
-    });
+// useEffect(() => {
+//     const ctx = gsap.context(() => {
+//       if (display_body) {
+//         gsap.fromTo('.contact-social-container', 
+//           { opacity: 0, y: -100 }, 
+//           { opacity: 1, y: 0, duration: (prevLocation === '/music' || prevLocation === '/projects') ? 1 : .5, stagger: 0.2, delay: (prevLocation === '/music' || prevLocation === '/projects') ? 1.5 : 1.5 }
+//         );
+//       }
+//     });
   
-    return () => ctx.revert();
-  }, [display_body, navbar_location]);
+//     return () => ctx.revert();
+//   }, [display_body, navbar_location]);
 
-  useEffect(() => {
-    // This code runs when the component mounts or updates
+//   useEffect(() => {
+//     // This code runs when the component mounts or updates
   
-    return () => {
-      // Cleanup function: This code runs when the component unmounts
-        gsap.to('.contact-social-container', {
-            opacity: 0,
-            y: -100,
-            duration: 0.5,
-            stagger: 0.2,
-            delay: 0.5
-        });
-        };
-    }, []);
+//     return () => {
+//       // Cleanup function: This code runs when the component unmounts
+//         gsap.to('.contact-social-container', {
+//             opacity: 0,
+//             y: -100,
+//             duration: 0.5,
+//             stagger: 0.2,
+//             delay: 0.5
+//         });
+//         };
+//     }, []);
+
+useGSAP(() => {
+    // Animation to fade in content smoothly
+    gsap.fromTo('.contact-social-container', 
+      { opacity: 0 },
+      { opacity: 1, duration: 3.5, ease: 'expo.inOut' }
+    );
+  }, []);
 
 
     return (

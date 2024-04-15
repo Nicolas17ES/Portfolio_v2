@@ -196,9 +196,7 @@ const viewProject = (index) => {
     setCursorVisible(false, null);
     removeMouseMoveListener(0);
     const tl = gsap.timeline({
-        onComplete: () => {
-            navigate(`/projects/view/${index}`);
-        }
+        
     });
     tl.to('.project-image', {
         opacity: 0,
@@ -206,10 +204,13 @@ const viewProject = (index) => {
         ease: 'Power3.easeOut',
     });
     tl.to('.single-project-container', {
-        xPercent: -115,
-        duration: 1,
+        xPercent: -110,
+        duration: .7,
         ease: 'Power3.easeOut',
-        stagger: 0.2,
+        stagger: 0.15,
+        onComplete: () => {
+            navigate(`/projects/view/${index}`);
+        }
     });
 };
 

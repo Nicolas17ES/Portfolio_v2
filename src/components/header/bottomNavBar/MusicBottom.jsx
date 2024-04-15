@@ -23,25 +23,31 @@ function MusicBottom() {
         setChangeCounter(prev => prev + 1);
     }, [button_state?.value]);
 
-    useEffect(() => {
-        if (display_image_overlay) {
-          gsap.fromTo('.bottom-nav-paragraph', 
-            { opacity: 1 }, // Assuming starting from visible and original position
-            { opacity: 0, duration: 1 } // Specified ending values
-          );
-        }
-      }, [display_image_overlay, navbar_location]);
+    // useEffect(() => {
+    //     if (display_image_overlay) {
+    //       gsap.fromTo('.bottom-nav-paragraph', 
+    //         { opacity: 1 }, // Assuming starting from visible and original position
+    //         { opacity: 0, duration: 1 } // Specified ending values
+    //       );
+    //     }
+    //   }, [display_image_overlay, navbar_location]);
       
-    useEffect(() => {
-      if (display_body && navbar_location === 'music') {
-        gsap.fromTo('.bottom-nav-paragraph', 
-          { yPercent: -500, opacity: 0 }, // Starting values
-          { yPercent: 0, opacity: 1, duration: 1, delay: (prevLocation === '/about' || prevLocation === '/projects') ? 1.5 : 1 } // Ending values
+    // useEffect(() => {
+    //   if (display_body && navbar_location === 'music') {
+    //     gsap.fromTo('.bottom-nav-paragraph', 
+    //       { yPercent: -500, opacity: 0 }, // Starting values
+    //       { yPercent: 0, opacity: 1, duration: 1, delay: (prevLocation === '/about' || prevLocation === '/projects') ? 1.5 : 1 } // Ending values
+    //     );
+    //     }
+    //   }, [display_body, navbar_location]);
+
+    useGSAP(() => {
+        // Animation to fade in content smoothly
+        gsap.fromTo('.contact-social-container-2', 
+          { opacity: 0 },
+          { opacity: 1, duration: 3.5, ease: 'expo.inOut' }
         );
-        }
-      }, [display_body, navbar_location]);
-
-
+      }, [display_body]);
 
 
     const animationKey = button_state && button_state.clicked ? `animation-${button_state.value}-${changeCounter}` : null;
@@ -49,7 +55,7 @@ function MusicBottom() {
     // if(button_state && button_state.clicked === true && button_state.value === button_index){
         if(display_body){
             return (
-                <div className="scrollable-container">
+                <div className="contact-social-container-2">
                     {!button_state || !button_state.clicked ? (
                         <div className="music-navbar-container">
                             <p className="bottom-nav-paragraph">

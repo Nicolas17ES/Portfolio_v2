@@ -219,7 +219,6 @@ function PinnedImageGallery() {
     }
 
     const displayPopUp = (index, image) => {
-        console.log('pressed')
         dispatch({
             type: 'SET_DISPLAY_VIDEO_POPUP',
             payload: {index: index, value: true, image: image},

@@ -33,7 +33,7 @@ function Unsilenced() {
             src: 'https://storage.googleapis.com/audio_porftolio/marcobruno.mp3',
             type: <PiRadioLight  className="player-icon"/>,
             title: 'Unsilenced Poddy',
-            artist: 'Marco&Bruno',
+            artist: 'Bruno&Marco',
             image: <img  src={SonidoxIkaUshe} alt="" className="player-image" />,
         },
         {
@@ -91,12 +91,13 @@ function Unsilenced() {
       useEffect(() => {
         if(button_state.value === 1 && exit_component){
             gsap.to(".soundcloud-outer-animation", {
-                yPercent: 440,
-                duration: 2,
-                stagger: {
-                    amount: 0.26,
-                    from: "end", // Change the direction to start from the end
-                },
+                // yPercent: 440,
+                // duration: 2,
+                // stagger: {
+                //     amount: 0.26,
+                //     from: "end", // Change the direction to start from the end
+                // },
+                duration: .9,
                 opacity: 0
             });
         }

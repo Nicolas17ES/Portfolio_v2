@@ -61,28 +61,31 @@ function ProjectstBottomNavBarContent() {
         }
     }, [project_index_hovered ,awaitExpand]);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-        //   if (lateral_navbar) {
-            gsap.fromTo('.bottom-nav-content-projects', 
-              { opacity: 0, y: -100 }, 
-              { opacity: 1, y: 0, duration: .5, stagger: 0.2, delay: (prevLocation === '/about' || prevLocation === '/music') ? 2 : .5 , 
-                onComplete: () => 
-                {
-                    setAwaitExpand(false) 
-                }
-            }
-            );
-        //   }
-        });
+    // useEffect(() => {
+    //     gsap.fromTo('.bottom-nav-content-projects', 
+    //       { opacity: 0, y: -100 }, 
+    //       { opacity: 1, y: 0, duration: .5, stagger: 0.2, delay: (prevLocation === '/about' || prevLocation === '/music') ? 2 : .5, 
+    //         onComplete: () => {
+    //           setAwaitExpand(false);
+    //         }
+    //       }
+    //     );
+    //   }, [lateral_navbar, navbar_location]); // Dependencies to control reanimation
+
+    useGSAP(() => {
+        // Animation to fade in content smoothly
+        gsap.fromTo('.contact-social-container-1', 
+          { opacity: 0 },
+          { opacity: 1, duration: 3.5, ease: 'expo.inOut' }
+        );
+      }, []);
+    
       
-        return () => ctx.revert();
-      }, [lateral_navbar, navbar_location]);
 
       
     
     return (
-         <div>
+         <div className='contact-social-container-1'>
             <div className='bottom-nav-content bottom-nav-content-projects'>
                 <div data-value="4" className="active-class-vertical">                            
                     <div className="bottom-nav-text">

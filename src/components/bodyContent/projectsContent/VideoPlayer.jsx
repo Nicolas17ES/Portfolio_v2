@@ -34,7 +34,6 @@ function VideoPlayer() {
         };
     }, [display_vide_popup]); 
 
-console.log('shown')
 
     useEffect(() => {
         if (display_vide_popup.image) {

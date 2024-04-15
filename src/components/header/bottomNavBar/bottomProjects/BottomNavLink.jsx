@@ -21,19 +21,19 @@ function BottomNavLink() {
     //         });
     // }, [navbar_location]);
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-          if (display_body) {
-            gsap.fromTo('.bottom-nav-projects', 
-              { opacity: 0, y: -100, scale: 0.93, rotate: -3 }, 
-              { opacity: 1, y: 0, duration: .8, stagger: 0.17, delay: 1.5, scale: 1, ease: "power3.out", rotate: 0,
-                onComplete: () => console.log('hy') }
-            );
-          }
-        });
+    // useEffect(() => {
+    //     const ctx = gsap.context(() => {
+    //       if (display_body) {
+    //         gsap.fromTo('.bottom-nav-projects', 
+    //           { opacity: 0, y: -100, scale: 0.93, rotate: -3 }, 
+    //           { opacity: 1, y: 0, duration: .8, stagger: 0.17, delay: 1.5, scale: 1, ease: "power3.out", rotate: 0,
+    //             onComplete: () => console.log('hy') }
+    //         );
+    //       }
+    //     });
       
-        return () => ctx.revert();
-      }, [display_body, navbar_location]);
+    //     return () => ctx.revert();
+    //   }, [display_body, navbar_location]);
 
     return (
         <>

@@ -91,12 +91,13 @@ function Sonido() {
       useEffect(() => {
         if(button_state.value === 0 && exit_component){
             gsap.to(".soundcloud-outer-animation", {
-                yPercent: 440,
-                duration: 2,
-                stagger: {
-                    amount: 0.26,
-                    from: "end", // Change the direction to start from the end
-                },
+                // yPercent: 440,
+                // duration: 2,
+                // stagger: {
+                //     amount: 0.26,
+                //     from: "end", // Change the direction to start from the end
+                // },
+                duration: .9,
                 opacity: 0
             });
         }

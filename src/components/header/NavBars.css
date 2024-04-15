@@ -156,8 +156,7 @@
   transform: scaleY(0);
   animation: expandContentBottomToTop 1.1s forwards .6s;
 }
-.scrollable-container{
-}
+
 
 .bottom-lateral-navbar-padding {
  padding: 20px;

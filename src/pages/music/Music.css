@@ -214,6 +214,10 @@
   transform: scale(1.01);
 }
 
+.image-wrap.no-hover:hover {
+  transform: none;  
+}
+
 
 .image-wrap::after {
   content: '';
@@ -240,7 +244,7 @@
   border-radius: 0px;
 }
 .image-wrap:hover::after {
-  background-color: rgba(0, 0, 0, .2); /* Or any other color you'd like */
+  background-color: rgba(0, 0, 0, .2); 
 }
 
 .carousel-image{
@@ -487,6 +491,8 @@ opacity: .8; /* Color del texto de la leyenda */
   height: 500px;
   scale: .85;
   opacity: .6;
+  border-radius: 7px;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
 }
 
 .collectives-header-paragraph-container{

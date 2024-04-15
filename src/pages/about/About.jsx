@@ -43,6 +43,9 @@ function About() {
 
    const {display_body, navbar_location, prevLocation} = useContext(GlobalContext);
 
+   // only render skilsl list when animations done: 
+   const [renderSkills, setRenderSkills] = useState(false);
+
    // add ref to the body
    const bodyRef = useRef(null);
    useBodyAnimation(bodyRef, navbar_location, pathname, navigate);
@@ -168,10 +171,11 @@ useGSAP(() => {
       // Your animation setup
       const imageReveal = CSSRulePlugin.getRule(".image-about-wrap::before");
       let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
-                  .to(imageReveal, { duration: (prevLocation === '/music' || prevLocation === '/projects') ? 5.3 : 1.1, delay: (prevLocation === '/music' || prevLocation === '/projects') ? 5.6 : 1, cssRule: { width: "0%" } });
+                  .to(imageReveal, { duration: (prevLocation === '/music' || prevLocation === '/projects') ? 5.3 : 1.1, delay: (prevLocation === '/music' || prevLocation === '/projects') ? 5.6 : 1, cssRule: { width: "0%" }, onComplete: () => {setRenderSkills(true)} });
       
       // Cleanup function to kill the animation when the component unmounts or conditions change
       return () => {
+         setRenderSkills(false)
         tl.kill(); // This will kill the timeline, stopping all animations in it
       };
   }, []);
@@ -182,12 +186,12 @@ useGSAP(() => {
   if(display_body){
      return (
         <div ref={bodyRef} className="body-container">
-            <ScreenOverlay/>
+            {/* <ScreenOverlay/> */}
             <section className="about-image-container">
                
                <div className="about-title-container" style={{borderTop: '1px solid rgb(var(--black))'}}>
                   <h2 className="about-title">Nicolas</h2>
-                <span className="about-title-word"><SkillsList/></span> 
+                <span className="about-title-word">{renderSkills ? <SkillsList/> : null}</span> 
                </div>
                <div className="about-title-container">
                   <div className="image-about-wrap">
