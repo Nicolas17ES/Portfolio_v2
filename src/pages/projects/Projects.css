@@ -518,7 +518,7 @@
   .projects-objectives-container{
     display: flex;
     justify-content: space-between;
-    gap: 80px;
+    gap: 0px;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 100px;
@@ -533,6 +533,7 @@
     width: 100%;
     border-bottom: .5px solid rgb(var(--black));
     overflow: hidden;
+    padding: 15px 0;
 
 
   }

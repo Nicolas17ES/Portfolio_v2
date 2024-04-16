@@ -117,6 +117,20 @@ function ProjectsParagraphs() {
               timeline.to(boxes[boxes.length - 1], {opacity: 0, duration: 0.24});
         }
     }, [projects_resumes_animation_finished])
+
+    useEffect(() => {
+        return () => {
+            dispatch({
+                type: 'SET_PROJECTS_RESUMES_ANIMATION_FINISHED',
+                payload: false,
+            });
+            dispatch({
+                type: 'SET_BOXES_ANIMATION_FINSIHED',
+                payload: false,
+            });
+    
+        }
+    }, [dispatch])
     
 
     if(value === null || !display_resumes) return null;

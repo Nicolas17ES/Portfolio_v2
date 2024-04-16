@@ -18,8 +18,8 @@ gsap.registerPlugin(ScrollTrigger);
 // The Projects component displays project sections and handles animations based on mouse movements.
 function PinnedImageGallery() {
 
-    const { dispatch, display_vide_popup } = useContext(GlobalContext);
-
+    const { dispatch, display_vide_popup, navbar_location } = useContext(GlobalContext);
+    const [value, setValue] = useState(null);
     const workRef = useRef(null); // Reference to the '.work' container
 
     useEffect(() => {
@@ -55,6 +55,17 @@ function PinnedImageGallery() {
               });
         };
     }, []);
+
+    useEffect(() => {
+        if(navbar_location === 'aulart-shop'){
+            setValue(0)
+        } else if(navbar_location === 'aulart-tools'){
+            setValue(1)
+        } else  if(navbar_location === 'linkinbio'){
+            setValue(2)
+        }
+    },[navbar_location])
+
 
     const data = {
         shop: [

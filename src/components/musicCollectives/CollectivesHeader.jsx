@@ -233,6 +233,19 @@ function CollectivesHeader() {
       });
     }, []);
 
+    useEffect(() => {
+      return () => {
+        dispatch({
+            type: 'SET_IMAGE_OVERLAY',
+            payload: false
+        })
+        dispatch({
+          type: 'SET_PROJECT_INDEX_HOVERED',
+          payload: null
+      })
+      }
+    })
+
     
 
 

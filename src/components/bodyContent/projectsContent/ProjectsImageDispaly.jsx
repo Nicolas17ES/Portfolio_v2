@@ -20,34 +20,78 @@ gsap.registerPlugin(ScrollToPlugin);
 function ProjectsImageDispaly() {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { title_animation_finshed, dispatch, display_resumes } = useContext(GlobalContext);
+    const { title_animation_finshed, dispatch, display_resumes, navbar_location } = useContext(GlobalContext);
     const[animationFinsihed, setAnimationFinsihed] = useState(false);
+    const [value, setValue] = useState(null);
     const {ref: containerRef, inView: inView1} = useInView({ threshold: .7 });
-    const titleRef = useRef(null);
 
-
-      useGSAP(() => {
-        if(inView1 && title_animation_finshed && !animationFinsihed){
-                const imageOverlayReset = CSSRulePlugin.getRule(".project-image-wrapper::after");
-            gsap.to(imageOverlayReset, { duration: 0, cssRule: { height: "100%" } });
-            
-            // Your animation setup
-            const imageOverlay = CSSRulePlugin.getRule(".project-image-wrapper::after");
-            let tl = gsap.timeline({ defaults: { ease: 'linear' } })
-            .to(imageOverlayReset, { duration: 0, cssRule: { height: "100%" } }, 0) // Reset overlay
-            .to(imageOverlay, { duration: .7, delay: .1, cssRule: { height: "0%" } }) // Overlay animation
-            .to([".project-image-right", ".project-image-left"], { opacity: 1, duration: .1, ease: "expo.inOut" }, ">") // Next animations
-            .to(".project-image-left", { opacity: 1, x: "-200", y: 32, rotation: -10, ease: "expo.inOut", duration: 1.4 }, ">")
-            .to(".project-image-right", { opacity: 1, x: "200", y: 32, rotation: 10, ease: "expo.inOut", duration: 1.4 }, "<")
-            .to(".project-image-center", { boxShadow: '0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4)', ease: "ease.inOut", duration: 1.2 }, "<")
-            .add(() => setAnimationFinsihed(true), ">");
-                    return () => {
-                        tl.kill(); // This will kill the timeline, stopping all animations in it
-                      };
-        
+    useEffect(() => {
+        if(navbar_location === 'aulart-shop'){
+            setValue(0)
+        } else if(navbar_location === 'aulart-tools'){
+            setValue(1)
+        } else  if(navbar_location === 'linkinbio'){
+            setValue(2)
         }
+    },[navbar_location])
+
+
+    const data = {
+        shop: [
+            {
+                image_one: ProductImage,
+                image_two: ProductImage,
+                image_three: ProductImage,
+            },
+        ],
+        tools: [
+            {
+                image_one: ProductImage,
+                image_two: ProductImage,
+                image_three: ProductImage,
+            },
+        ],
+        linkinbio: [
+            {
+                image_one: ProductImage,
+                image_two: ProductImage,
+                image_three: ProductImage,
+            },
+        ]
+        
+    }
+
+    useEffect(() => {
+        // Set the initial state of the overlay to fully cover the image upon mounting or when 'display_body' changes
+        const imageRevealReset = CSSRulePlugin.getRule(".project-image-wrapper::after");
+        gsap.set(imageRevealReset, { cssRule: { height: "100%" } });
     
+    }, []); 
+    
+
+    useGSAP(() => {
+        if (inView1 && title_animation_finshed && !animationFinsihed) {
+            // Ensure the initial state is set, though it should already be handled by the other useEffect
+            const imageOverlay = CSSRulePlugin.getRule(".project-image-wrapper::after");
+            
+            // Now you can focus directly on the animation timeline without resetting the height again
+            let tl = gsap.timeline({ defaults: { ease: 'linear' } })
+                .to(imageOverlay, { duration: .7, delay: .1, cssRule: { height: "0%" } }) // Overlay animation
+                .to([".project-image-right", ".project-image-left"], { opacity: 1, duration: .1, ease: "expo.inOut" }, ">") // Next animations
+                .to(".project-image-left", { opacity: 1, x: "-200", y: 32, rotation: -10, ease: "expo.inOut", duration: 1.4 }, ">")
+                .to(".project-image-right", { opacity: 1, x: "200", y: 32, rotation: 10, ease: "expo.inOut", duration: 1.4 }, "<")
+                .to(".project-image-center", { boxShadow: '0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4)', ease: "ease.inOut", duration: 1.2 }, "<")
+                .add(() => setAnimationFinsihed(true), ">");
+    
+            // Proper cleanup to reverse and kill the timeline when component unmounts or dependencies change
+            return () => {
+                tl.reverse().then(() => {
+                    tl.kill(); 
+                });
+            };
+        }
     }, [inView1, title_animation_finshed, animationFinsihed]);
+    
 
     const setCursorVisible = (value) => {
        if(!display_resumes){
@@ -82,6 +126,16 @@ function ProjectsImageDispaly() {
      })
     }
 
+    useEffect(() => {
+        return () => {
+            setAnimationFinsihed(false)
+            dispatch({
+                type: 'SET_DISPLAY_RESUMES',
+                payload: false,
+            });
+        }
+    }, [dispatch])
+
     useGSAP(() => {
         if(display_resumes){
             gsap.to(window, {
@@ -112,22 +166,6 @@ function ProjectsImageDispaly() {
         }
     }, [display_resumes])
 
-    // useEffect (() => {
-    //     return () => {
-    //         dispatch({
-    //             type: 'SET_DISPLAY_RESUMES',
-    //             payload: false,
-    //         })
-    //         setAnimationFinsihed(false)
-    //     }
-    // })
-
-   
-  
-
-
-
-    // if(!title_animation_finshed) return null;
 
     return (
         <>

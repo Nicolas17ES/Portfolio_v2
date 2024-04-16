@@ -99,6 +99,15 @@ function ProjectsMainTitle() {
         }
     }, [value])
 
+    useEffect(() => {
+        return () => {
+            dispatch({
+                type: 'SET_TITLE_ANIMATION_FINISHED',
+                payload: false,
+            });
+        }
+    }, [dispatch])
+
     if(value === null) return null;
     
     return (

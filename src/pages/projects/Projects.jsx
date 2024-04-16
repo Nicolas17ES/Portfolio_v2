@@ -215,6 +215,8 @@ const viewProject = (index) => {
 };
 
 
+
+
     if(display_body){
         return (
             <div ref={bodyRef} className="body-container">
