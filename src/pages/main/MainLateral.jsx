@@ -78,17 +78,7 @@ function MainLateral( ) {
       dispatch({ type: 'SET_BUTTON_INDEX', payload: null });
     }, 1000)
   };
-  // Function to change the state of the navbar
-  const changeNavBarState = (state) => {
-    dispatch({
-      type: 'SET_HIDE_NAV',
-      payload: state,
-    });
-    dispatch({
-      type: 'SET_BODY_SHRINK',
-      payload: false,
-    });
-  };
+
 
   const [displayNavbar, setDisplayNavbar] = useState(false)
 
@@ -111,11 +101,23 @@ function MainLateral( ) {
 
   const changeLocation = (currentIndex) => {
       const destination = navItems[currentIndex].name.toLowerCase();
-      setNavBarLocation(destination);
-      if(!lateral_navbar){
-            navigate('/' + destination)
+      console.log(navbar_location)
+      if(navbar_location === 'music' && destination === 'music'){
+        dispatch({
+          type: 'SET_IMAGE_OVERLAY',
+          payload: false
+        });
+        dispatch({
+          type: 'SET_CLICKED_BUTTON',
+          payload: null,
+        });
+      } else {
+        setNavBarLocation(destination);
+        if(!lateral_navbar){
+              navigate('/' + destination)
+        }
       }
-}
+  }
 
 
 

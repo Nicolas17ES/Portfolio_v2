@@ -2,9 +2,21 @@ import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react'
 import { useLocation,   useNavigate, useParams } from 'react-router-dom';
+
 import ProductImage from '../../../images/aulartshop/Product.png'
 import Friday2 from '../../../images/aulartshop/Friday2.png'
 import LearningPaths from '../../../images/aulartshop/LearningPaths.png'
+
+import HomeTools from '../../../images/aulartools/HomeTools.png'
+import ChaptersTools from '../../../images/aulartools/ChaptersTools.png'
+import ChaptersToolsBlack from '../../../images/aulartools/ChaptersToolsBlack.png'
+import HomeToolsWhite from '../../../images/aulartools/HomeToolsWhite.png'
+import EditorTools from '../../../images/aulartools/EditorTools.png'
+
+
+import LinkinbioHome from '../../../images/linkinbio/Linkinbio.png'
+import LinkinbioComputer from '../../../images/linkinbio/LinkinbioComputer.png'
+
 import {useInView} from 'react-intersection-observer'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -36,30 +48,24 @@ function ProjectsImageDispaly() {
     },[navbar_location])
 
 
-    const data = {
-        shop: [
+    const data = [
             {
                 image_one: ProductImage,
-                image_two: ProductImage,
-                image_three: ProductImage,
+                image_two: LearningPaths,
+                image_three: Friday2,
             },
-        ],
-        tools: [
             {
-                image_one: ProductImage,
-                image_two: ProductImage,
-                image_three: ProductImage,
+                image_one: EditorTools,
+                image_two: HomeToolsWhite,
+                image_three: ChaptersTools,
             },
-        ],
-        linkinbio: [
             {
-                image_one: ProductImage,
-                image_two: ProductImage,
-                image_three: ProductImage,
+                image_one: LinkinbioComputer,
+                image_two: LinkinbioComputer,
+                image_three: LinkinbioComputer,
             },
         ]
         
-    }
 
     useEffect(() => {
         // Set the initial state of the overlay to fully cover the image upon mounting or when 'display_body' changes
@@ -166,16 +172,17 @@ function ProjectsImageDispaly() {
         }
     }, [display_resumes])
 
+    if(value === null) return null;
 
     return (
         <>
             <div ref={containerRef} className="project-image-display-container">
                 <div className="project-images" >
-                        <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={ProductImage} onClick={learnMore} alt="" className="project-image project-image-left" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>
+                        <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={data[value].image_one} onClick={learnMore} alt="" className="project-image project-image-left" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>
                         <div className="project-image-wrapper">
-                            <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={LearningPaths} onClick={learnMore} alt="" className="project-image project-image-center" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>
+                            <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={data[value].image_two} onClick={learnMore} alt="" className="project-image project-image-center" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>
                         </div>
-                        <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={Friday2} onClick={learnMore} alt="" className="project-image project-image-right" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>      
+                        <img style={{cursor: display_resumes ? 'default' : 'pointer'}} src={data[value].image_three} onClick={learnMore} alt="" className="project-image project-image-right" onMouseEnter={() => setCursorVisible(true)} onMouseLeave={() => setCursorVisible(false)}/>      
                 </div>   
                 {/* <div className="header"><p ref={titleRef}  className="projects-images-title">resumes</p></div> */}
             </div>

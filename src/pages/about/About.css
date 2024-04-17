@@ -187,6 +187,9 @@
   white-space: pre-wrap !important; /* Allow line breaks */
   word-wrap: break-word !important; 
   text-transform: uppercase;
+  text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto; 
 }
 
 .about-paragraph-2{

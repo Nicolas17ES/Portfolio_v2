@@ -69,59 +69,14 @@ function MusicCarousel() {
 
 
 
-    // useEffect(() => {
-    //     if(activeIndexState !== null){
-    //         gsap.from('.date', {
-    //             opacity: 0,
-    //             y: 10,
-    //             duration: 1.1,
-    //             ease: 'power2.inOut'
-    //           });
-              
-    //           gsap.from('.designer', {
-    //             opacity: 0,
-    //             y: 10,
-    //             duration: 1.1,
-    //             ease: 'power2.inOut',
-    //           });
-    //     }
-    // }, [activeIndexState])
+
 
     const handleSlideChange = (swiper) => {
         
         setActiveIndex(swiper.realIndex);
     };
 
-    const changeSlide = (direction) => {
 
-        if (swiperInstance) {
-            if (direction === 'next') {
-                swiperInstance.slideNext();
-            } else if (direction === 'prev') {
-                swiperInstance.slidePrev();
-            }
-        }
-        let value;
-        if(direction === 'next'){
-            value = +1
-        } else if(direction === 'prev'){
-            value = -1
-        }
-
-        let newIndex;
-        if (direction === 'next' && activeIndexState === 2) {
-            newIndex = 0;
-        } else if (direction === 'prev' && activeIndexState === 0) {
-            newIndex = 2;
-        } else {
-            newIndex = activeIndexState + value;
-        }
-        dispatch({
-            type: 'SET_CHANGE_SLIDE',
-            payload: { value: newIndex, origin: false },
-        });
-    };
-    
 
     const handleSwiper = (swiper) => {
         setSwiperInstance(swiper);
@@ -176,32 +131,6 @@ function MusicCarousel() {
         }
       }, [display_image_overlay]);
      
-
-    //   useGSAP(() => {
-    //     if (display_body && navbar_location === 'music') {
-    //       const titles = gsap.utils.toArray('.bottom-nav-paragraph');
-          
-    //       titles.forEach(title => {
-    //         const splitTitle = new SplitTextJS(title);
-      
-    //         splitTitle.chars.forEach((char, index) => {
-    //           const tlx = gsap.timeline(); // Create a new timeline for each character
-        
-    //           tlx.from(char, {
-    //             opacity: 0,
-    //             duration: 0.2, // Adjust the duration as needed
-    //             delay: "random(0, 2)" // Add a delay based on the index to stagger the animations
-    //           }, '<');
-        
-    //           tlx.to(char, {
-    //             opacity: 1,
-    //             duration: 0.2, // Adjust the duration as needed
-    //           }, '<0.1');
-    //         });
-    //       });
-    //     }
-    //   }, [display_body, navbar_location]);
-      
 
     useGSAP(() => {
     if (display_image_overlay) {
@@ -270,6 +199,10 @@ function MusicCarousel() {
             })
         }
       }, [display_body]);
+
+
+
+  
     
     
 

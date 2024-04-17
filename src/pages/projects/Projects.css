@@ -375,6 +375,45 @@
     color: var(--black);
 }
 
+.pinned-gallery-image{
+     cursor: zoom-in;
+}
+
+/* image zoom */
+.image-zoom-modal {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: zoom-out;
+}
+
+.zoomed-image {
+    max-width: 75%;
+    max-height: 75%;
+    border-radius: 10px;
+    transform: scale(.35);
+}
+
+.modal-resume{
+    max-width: 75%;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+}
+
 .title-gallery{
     font-size: 2rem;
     color: rgb(var(--red));
@@ -521,7 +560,6 @@
     gap: 0px;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 100px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     /* san francisco */
   }
@@ -539,8 +577,9 @@
   }
   .objectives-number{
     display: flex;
-    font-size: 200px;
+    font-size: 170px;
     font-weight: 100 !important;
+    min-width: 200px;
   }
   .objectives-subtitle{
     font-weight: 100;
@@ -548,6 +587,7 @@
     font-size: 1.2rem;
     padding-top: 48px;
     color: rgb(var(--red));
+    min-width: 110px;
   }
   .objectives-paragraph{
     margin-top: auto;

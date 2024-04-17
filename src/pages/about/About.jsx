@@ -31,10 +31,6 @@ gsap.registerPlugin(ScrollTrigger);
 function About() {
 
 
-   // add ref to check if element is in view
-   const {ref: refSubtitle1, inView: inView1} = useInView({ threshold: 0.5 });
-   const {ref: refSubtitle2, inView: inView2} = useInView({ threshold: 0.5 });
-   const {ref: refParagraph1, inView: inViewParagraph1} = useInView({ threshold: 0.5 });
 
    // Get the current location from React Router
    const location = useLocation();
@@ -46,25 +42,8 @@ function About() {
    // only render skilsl list when animations done: 
    const [renderSkills, setRenderSkills] = useState(false);
 
-   // add ref to the body
-   const bodyRef = useRef(null);
-   useBodyAnimation(bodyRef, navbar_location, pathname, navigate);
 
-   const data = {
-      location: 'about',
-      buttons: [
-         {name: '<about>'},
-         {name: '<contact>'}
-      ]
-   }
-
-  
-
-
-   // useSubtitleAnimation(display_body, inView1, ".about-subtitle-1");
-   // useSubtitleAnimation(display_body, inView2, ".about-subtitle-2");
-
-   useEffect(() => {
+   useGSAP(() => {
     if (display_body) {
         const paragraphs = document.querySelectorAll('.about-paragraph');
         paragraphs.forEach(paragraph => {
@@ -103,7 +82,6 @@ function About() {
     }
 }, [display_body]);
 
-
 useGSAP(() => {
    if(display_body){
       gsap.from(".about-subtitle-1", {
@@ -117,7 +95,7 @@ useGSAP(() => {
          duration: 1,
        });
    }
- }, []);
+ }, [display_body]);
 
 useGSAP(() => {
    if(display_body){
@@ -132,7 +110,7 @@ useGSAP(() => {
          duration: 1,
        });
    }
- }, []);
+ }, [display_body]);
 
 
 
@@ -180,12 +158,18 @@ useGSAP(() => {
       };
   }, []);
 
+  useEffect(() => {
+   if(display_body){
+      setTimeout(() => {
+         ScrollTrigger.refresh()
+      }, 500);
+   }
+  }, [display_body]);
 
-// style={{backgroundImage: `url(${Test})`}}
-// <div className="overlay"></div>
+  
   if(display_body){
      return (
-        <div ref={bodyRef} className="body-container">
+        <div  className="body-container">
             {/* <ScreenOverlay/> */}
             <section className="about-image-container">
                
@@ -205,8 +189,8 @@ useGSAP(() => {
                </div>
             </section>
             <section className="about-content-container">   
-               <h3 ref={refSubtitle1} className={`about-subtitle about-subtitle-1 ${inView1 ? 'in-view' : 'not-in-view'}`}>Behind the Keyboard </h3>
-               <p ref={refParagraph1} className="about-paragraph about-paragraph-1">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code."</p>
+               <h3  className={`about-subtitle about-subtitle-1`}>Behind the Keyboard </h3>
+               <p className="about-paragraph about-paragraph-1">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code."</p>
             </section>
             <section style={{marginBottom: '100px'}} className="about-content-container">
             <div className="skills-slider-container">
@@ -214,7 +198,7 @@ useGSAP(() => {
             </div>
             </section>
             <section style={{marginBottom: '100px'}} className="about-content-container">
-               <h3 ref={refSubtitle2} className={`about-subtitle about-subtitle-2 ${inView2 ? 'in-view' : 'not-in-view'}`}>Embarking on Web Adventures</h3>
+               <h3  className={`about-subtitle about-subtitle-2`}>Embarking on Web Adventures</h3>
                <p className="about-paragraph about-paragraph-2">"From crafting seamless <span className="red">user interfaces</span> to architecting robust systems, I ensure that every <span className="red">digital creation</span> is as functional as it is beautiful."</p>
             </section>
          </div> 

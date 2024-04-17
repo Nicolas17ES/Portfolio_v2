@@ -31,15 +31,12 @@ function ProjectsParagraphs() {
     const data = [
         {
             pargraphOne: 'At Aulart, peak times like Black Friday and major artist releases push our platform to the limits. Recognizing the need for a seamless user experience, we envisioned a transformation. The goal? To migrate high-traffic WooCommerce pages to React, enhancing site speed and user satisfaction during crucial moments.',
-            pargraphTwo: 'Leading the charge, I spearheaded the redesign of these critical landing pages. My task was to not just translate WooCommerce to React, but to do so in a way that captured the essence of Aulart while significantly boosting performance.',
         },
         {
-            pargraphOne: 'AULART SHOP',
-            pargraphTwo: 'AULART SHOP',
+            pargraphOne: 'Aulart Tools was developed to transform and automate Aulart content processes, starting with subtitles. It quickly evolved, incorporating tools for automated translations, content editing, and media management using APIs like OpenAI Whisper and DeepL. The project focused on minimizing manual work—from days to hours—enhancing efficiency and content quality across platforms, thus significantly boosting productivity and streamlining workflows within the company.',
         },
         {
-            pargraphOne: 'AULART SHOP',
-            pargraphTwo: 'AULART SHOP',
+            pargraphOne: 'In our drive for self-sufficiency, Aulart entrusted me with developing an in-house alternative to the popular LinkInBio service. This project aimed to centralize our online content, offering a streamlined gateway for our audience to access various resources, from new releases to educational material.',
         },
     ]
 

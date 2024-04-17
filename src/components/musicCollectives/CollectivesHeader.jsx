@@ -18,7 +18,7 @@ function CollectivesHeader() {
     {
       title: 'Sonido Club',
       image: SonidoXEnfants,
-      caption: 'Unsilenced x WC at Oosterbar Amsterdam'
+      caption: 'Sonido x Les Enfants with Keras'
     },
     {
       title: 'Unsilenced',
@@ -28,7 +28,7 @@ function CollectivesHeader() {
     {
       title: 'Aurea',
       image: WhiteChocoNye,
-      caption: 'Unsilenced x WC at Oosterbar Amsterdam'
+      caption: 'NYE 20219 Event'
     },
   ]
   // IMAGE ANIMATION
@@ -233,21 +233,7 @@ function CollectivesHeader() {
       });
     }, []);
 
-    useEffect(() => {
-      return () => {
-        dispatch({
-            type: 'SET_IMAGE_OVERLAY',
-            payload: false
-        })
-        dispatch({
-          type: 'SET_PROJECT_INDEX_HOVERED',
-          payload: null
-      })
-      }
-    })
-
     
-
 
     return (
         <div className="collectives-header-container">

@@ -74,12 +74,14 @@ function Main() {
     dispatch({type: 'SET_ANIMATION_VALUE', payload: null})
     dispatch({type: 'SET_NAV_LOCATION', payload: item});
     dispatch({ type: 'SET_TEXT_ANIMATION', payload: true});
+    dispatch({ type: 'SET_HEADER', payload: true});
     setLateralNavBar(true);
-    setTimeout(() => {
+    // setTimeout(() => {
       dispatch({type: 'SET_CLICKED_BUTTON', payload: null,});
       dispatch({ type: 'SET_BUTTON_INDEX', payload: null });
-    }, 1000)
+    // }, 1000)
   };
+
 
   // Function to change the state of the navbar
   const changeNavBarState = (state) => {
