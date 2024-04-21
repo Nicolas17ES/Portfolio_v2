@@ -38,6 +38,7 @@ body {
   font-style: normal;
   background-color: rgb(var(--white));
   color: rgb(var(--black));
+  /* color: #cfc7bb; */
 }
 
 

@@ -70,11 +70,11 @@ function Objectives() {
                 <h5 className="objectives-subtitle">Role</h5>
                 <p className="objectives-paragraph">{data[value].role}</p>
             </div>
-            <div className="objectives-block">
+            {/* <div className="objectives-block">
                 <span className="objectives-number">04</span>
                 <h5 className="objectives-subtitle">Stack</h5>
                 <p className="objectives-paragraph">{data[value].stack}</p>
-            </div>
+            </div> */}
         </section>
     )
 }

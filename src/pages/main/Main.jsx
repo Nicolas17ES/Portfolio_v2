@@ -14,6 +14,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import MusicFoto from '../../images/ReissUnsilenced.jpeg'
 import ProjectsFoto from '../../images/AulartHome.png'
+import FotoCarro from '../../images/nicolas/FotoCarro.JPG'
+import FotoBebida from '../../images/nicolas/FotoBebida.JPG'
 
 function Main() {
   // Define and initialize local state variables using the useState hook
@@ -55,7 +57,7 @@ function Main() {
     },
     {
       name: 'About',
-      img: MusicFoto,
+      img: FotoBebida,
     },
   ];
 

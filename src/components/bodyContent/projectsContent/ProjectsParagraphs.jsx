@@ -33,7 +33,7 @@ function ProjectsParagraphs() {
             pargraphOne: 'At Aulart, peak times like Black Friday and major artist releases push our platform to the limits. Recognizing the need for a seamless user experience, we envisioned a transformation. The goal? To migrate high-traffic WooCommerce pages to React, enhancing site speed and user satisfaction during crucial moments.',
         },
         {
-            pargraphOne: 'Aulart Tools was developed to transform and automate Aulart content processes, starting with subtitles. It quickly evolved, incorporating tools for automated translations, content editing, and media management using APIs like OpenAI Whisper and DeepL. The project focused on minimizing manual work—from days to hours—enhancing efficiency and content quality across platforms, thus significantly boosting productivity and streamlining workflows within the company.',
+            pargraphOne: 'Aulart Tools was developed to transform and automate Aulart content processes, starting with subtitles. It quickly evolved, incorporating tools for automated translations, content editing, and media management using APIs like OpenAI Whisper and DeepL. The project focused on minimizing manual work from days to hours enhancing efficiency and content quality across platforms, thus significantly boosting productivity and streamlining workflows within the company.',
         },
         {
             pargraphOne: 'In our drive for self-sufficiency, Aulart entrusted me with developing an in-house alternative to the popular LinkInBio service. This project aimed to centralize our online content, offering a streamlined gateway for our audience to access various resources, from new releases to educational material.',
@@ -43,12 +43,21 @@ function ProjectsParagraphs() {
 
     useEffect(() => {
         // Check if the target paragraph is rendered
+        let wordClass = ''; 
         if (introTag2.current && value !== null && display_resumes) {
             // Split text into characters
             const characters = introTag2.current.textContent.split(" ").map((char) => {
+                if (["peak", "limits.", "migrate", "pages", "enhancing", "site", "speed", "times", "platform", "satisfaction", "automate", "content", "processes", "enhancing", "translations", "editing,", "media", "management", "minimizing", "manual", "work", "efficiency", "quality", "in-house", "LinkInBio", "centralize", "online"].includes(char)) {
+                    wordClass = 'red'; // Assign the class 'red' if the word matches
+                    return `<span style="position: relative;" class="gsap-char ${wordClass}">${char} </span>`;
+                } else {
+                    return `<span style="position: relative;" class="gsap-char">${char} </span>`;
+                }
                 // Wrap each character in a span, replace space with a non-breaking space for correct spacing
-                return `<span style="position: relative;" class="gsap-char">${char} </span>`;
+                
             }).join("");
+
+            
     
             // Set the innerHTML of the paragraph to the new string with spans
             introTag2.current.innerHTML = characters;
@@ -76,9 +85,9 @@ function ProjectsParagraphs() {
 
     useGSAP(() => {
         if(value !== null && display_resumes){
-            gsap.fromTo(".projects-paragraphs-title", { opacity: 0 }, {
+            gsap.fromTo(".projects-paragraphs-title", { opacity: 0, x: -350 }, {
                 delay: 1.7,
-                opacity: 1,
+                x: 0,
                 duration: .6,
                 ease: "linear"
             });

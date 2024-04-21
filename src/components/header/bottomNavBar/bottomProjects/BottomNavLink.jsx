@@ -38,7 +38,27 @@ function BottomNavLink() {
     return (
         <>
         <h3 className="bottom-nav-title bottom-nav-projects">{'<Technology stack>'}</h3>
+                <div className='bottom-nav-content bottom-nav-projects'>
+                                                       
+                            <div className="bottom-nav-text">
+                                <div className="bottom-nav--title"><p className="bottom-nav-number">1</p><span>{'<stack>'}</span></div>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}>{'Reat, NodeJS, Amazon Web Services, Firebase'}</p>
+                        
+                            </div>
+                            
+                        </div>
                         <div className='bottom-nav-content bottom-nav-projects'>
+                        
+                            
+                            <div className="bottom-nav-text">
+                        <div className="bottom-nav--title"><p className="bottom-nav-number">2</p><span>{'<purpose>'}</span></div>
+                        <p style={{marginLeft: '15px', marginTop: '2px'}}>{'Leveraging the robustness of Node.js for the backend and the agility of React for the frontend, the project was brought to life with a keen focus on scalability and ease of use. Hosted on Amazon Web Services, it guaranteed reliability and seamless accessibility worldwide.'}</p>
+                
+                    </div>
+                            
+                        </div>
+        
+                        {/* <div className='bottom-nav-content bottom-nav-projects'>
                                                        
                             <div className="bottom-nav-text">
                                 <div className="bottom-nav--title"><p className="bottom-nav-number">1</p><span>{'<stack>'}</span> {'React'}</div>
@@ -65,8 +85,19 @@ function BottomNavLink() {
                                 <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<purpose>'}</span> {'Powered server-side operations, optimizing application responsiveness'}</p>
                         
                             </div>
+
                             
                         </div>
+                        <div className='bottom-nav-content bottom-nav-projects'>
+                            
+                        
+                            <div className="bottom-nav-text">
+                            <div className="bottom-nav--title"><p className="bottom-nav-number">4</p><span>{'<stack>'}</span> {'Firebase'}</div>
+                                <p style={{marginLeft: '15px', marginTop: '2px'}}><span>{'<purpose>'}</span> {'Facilitated real-time data synchronization and user authentication, enhancing backend efficiency and scalability.'}</p>
+                        
+                            </div>
+                            
+                        </div> */}
 
         </>
     )

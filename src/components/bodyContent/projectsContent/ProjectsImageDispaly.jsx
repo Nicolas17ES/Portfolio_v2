@@ -16,6 +16,8 @@ import EditorTools from '../../../images/aulartools/EditorTools.png'
 
 import LinkinbioHome from '../../../images/linkinbio/Linkinbio.png'
 import LinkinbioComputer from '../../../images/linkinbio/LinkinbioComputer.png'
+import AdminView from '../../../images/linkinbio/2AdminView.png'
+import CreateLink from '../../../images/linkinbio/3CreateLink.png'
 
 import {useInView} from 'react-intersection-observer'
 import { useGSAP } from "@gsap/react";
@@ -35,6 +37,7 @@ function ProjectsImageDispaly() {
     const { title_animation_finshed, dispatch, display_resumes, navbar_location } = useContext(GlobalContext);
     const[animationFinsihed, setAnimationFinsihed] = useState(false);
     const [value, setValue] = useState(null);
+    const [learnMorePending, setLearnMorePending] = useState(false);
     const {ref: containerRef, inView: inView1} = useInView({ threshold: .7 });
 
     useEffect(() => {
@@ -60,9 +63,9 @@ function ProjectsImageDispaly() {
                 image_three: ChaptersTools,
             },
             {
-                image_one: LinkinbioComputer,
+                image_one: CreateLink,
                 image_two: LinkinbioComputer,
-                image_three: LinkinbioComputer,
+                image_three: CreateLink,
             },
         ]
         
@@ -91,9 +94,11 @@ function ProjectsImageDispaly() {
     
             // Proper cleanup to reverse and kill the timeline when component unmounts or dependencies change
             return () => {
-                tl.reverse().then(() => {
-                    tl.kill(); 
+                tl.eventCallback("onReverseComplete", () => {
+                    setAnimationFinsihed(false);
+                    tl.kill();
                 });
+                tl.reverse();
             };
         }
     }, [inView1, title_animation_finshed, animationFinsihed]);
@@ -113,24 +118,43 @@ function ProjectsImageDispaly() {
     }
 
     const learnMore = () => {
+        if (!animationFinsihed) {
+            setLearnMorePending(true);
+        } else {
+            executeLearnMore();
+        }
+    }
+
+    const executeLearnMore = () => {
         gsap.to(".project-image-left", {opacity: 0, x: "0", y: 0, rotation: 0, ease: "expo.inOut", duration: 1 })
         gsap.to(".project-image-right", {opacity: 0,  x: "0", y: 0, rotation: 0, ease: "expo.inOut", duration: 1, 
-        onComplete: () => {
-            dispatch({
-                type: 'SET_DISPLAY_RESUMES',
-                payload: true,
-            })
-            dispatch({
-                type: 'SET_VIEW_PROJECTS_CURSOR',
-                payload: {
-                    text: 'learn more',
-                    value: false,
-                    color: 'rgba(var(--black), .85)'
-                },
-            })
-        } 
-     })
+            onComplete: () => {
+                dispatch({
+                    type: 'SET_DISPLAY_RESUMES',
+                    payload: true,
+                });
+                dispatch({
+                    type: 'SET_VIEW_PROJECTS_CURSOR',
+                    payload: {
+                        text: 'learn more',
+                        value: false,
+                        color: 'rgba(var(--black), .85)'
+                    },
+                });
+                setLearnMorePending(false); // Reset the pending flag
+            } 
+        });
     }
+
+
+    useEffect(() => {
+        if (animationFinsihed && learnMorePending) {
+            executeLearnMore();
+        }
+    }, [animationFinsihed, learnMorePending]);
+    
+    
+    
 
     useEffect(() => {
         return () => {

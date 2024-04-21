@@ -131,6 +131,7 @@ function VideoPlayer() {
                 className='video-player'
                 id="myVideo"
                 controls
+                muted
             >
                 {videoSrc && <source src={videoSrc} type="video/mp4" />}
                 Your browser does not support the video tag.

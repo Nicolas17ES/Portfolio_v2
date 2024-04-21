@@ -18,17 +18,20 @@ function CollectivesHeader() {
     {
       title: 'Sonido Club',
       image: SonidoXEnfants,
-      caption: 'Sonido x Les Enfants with Keras'
+      caption: 'Sonido x Les Enfants with Keras',
+      paragraph: 'Diving into the next <span class="small">( few )</span> lines, you\'ll discover the <span class="red">soundtracks</span> that unravel the essence of our <span class="red">gatherings</span>.'
     },
     {
       title: 'Unsilenced',
       image: ReissUnsilenced,
-      caption: 'Unsilenced x WC at Oosterbar Amsterdam'
+      caption: 'Unsilenced x WC at Oosterbar Amsterdam',
+      paragraph: ''
     },
     {
       title: 'Aurea',
       image: WhiteChocoNye,
-      caption: 'NYE 20219 Event'
+      caption: 'NYE 20219 Event',
+      paragraph: ''
     },
   ]
   // IMAGE ANIMATION
@@ -253,8 +256,10 @@ function CollectivesHeader() {
          <figcaption className="figcaption-collectives-header">{collectivesData[button_state.value].caption} </figcaption>
         </figure>  
             <div className="collectives-header-paragraph-container">
-                <p className="collectives-header-paragraph">Diving into the next <span className="small">{'( few )'}</span> lines, you'll <GiMagnifyingGlass className="glass-icon"/>discover<GiMagnifyingGlass className="glass-icon glass-icon2"/> the <span className="red">soundtracks</span> that unravel the essence of our <span className="red">gatherings</span>.</p>
-                <div className="collectives-scroll-bar-container">
+            <p className="collectives-header-paragraph"
+         dangerouslySetInnerHTML={{ __html: collectivesData[button_state.value].paragraph }}>
+      </p>                
+      <div className="collectives-scroll-bar-container">
                     <span className="collectives-scroll-bar-2"></span>
                     <span className="scroll-text">{collectivesData[button_state.value].title}</span>
                     <span className="scroll-boxes-2"></span>

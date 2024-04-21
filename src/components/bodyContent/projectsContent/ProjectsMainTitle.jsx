@@ -2,7 +2,8 @@ import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react'
 import { useLocation,   useNavigate, useParams } from 'react-router-dom';
-import AulartLogo from '../../../images/aulart_logo.jpeg'
+import AulartLogo from '../../../images/aulart-white2.png'
+import {ReactComponent as AulartLogoSvg} from '../../../assets/aulart-logo-black copia.svg'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -84,8 +85,8 @@ function ProjectsMainTitle() {
                 delay: .75,
                 ease: 'power1.inOut',
             })
-            gsap.from('.project-main-title-image', {
-                x: 110,
+            gsap.from('.svg-logo ', {
+                opacity: 0,
                 duration: .9,
                 delay: .75,
                 ease: 'power2.inOut',
@@ -114,7 +115,7 @@ function ProjectsMainTitle() {
         <div className="projects-main-title-container">
             <div className="project-main-title projects-main-title-one"><h3 className="project-title-h3"><span className='underline-title'>{data[value].project}</span> - {data[value].year}</h3></div>
             <div className="project-main-title projects-main-title-two"><h3 className="project-title-h3">Made with {data[value].software}</h3> <span className='mini-title mini-title-right'>+ more stuff</span></div>
-            <div className="project-main-title projects-main-title-three"><h3 className="project-title-h3">created 4 aulart</h3><img src={AulartLogo} alt="" className="project-main-title-image" /></div>
+            <div className="project-main-title projects-main-title-three"><h3 className="project-title-h3">created 4 aulart</h3><AulartLogoSvg/></div>
             <div className="project-main-title projects-main-title-four"><span className='mini-title mini-title-left'>{data[value].miniTitle2}</span><h3 className="project-title-h3"><span style={{fontStyle: 'italic'}}>{data[value].purpose1} </span><span style={{color: 'rgb(var(--red))', fontWeight: 100}}>{data[value].purpose2} </span></h3></div>
         </div>
     )
