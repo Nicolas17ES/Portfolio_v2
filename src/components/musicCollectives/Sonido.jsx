@@ -109,7 +109,7 @@ function Sonido() {
 
 
     return (
-         <div style={{margin: '30px 0px 60px 0'}}>
+         <div className="music-collectives-bottom-container" style={{margin: '30px 0px 60px 0'}}>
          {audioData.map((audio, index) => (
              <div className="soundcloud-outer-animation" onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter(index)} key={audio.id}>
                  <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />

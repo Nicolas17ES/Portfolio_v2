@@ -109,7 +109,7 @@ function Unsilenced() {
 
 
     return (
-         <div style={{margin: '30px 0px 60px 0'}} onMouseLeave={handleMouseLeave}>
+         <div className="music-collectives-bottom-container" style={{margin: '30px 0px 60px 0'}} onMouseLeave={handleMouseLeave}>
          {audioData.map((audio, index) => (
              <div className="soundcloud-outer-animation" onMouseEnter={() => handleMouseEnter(index)} key={audio.id}>
                  <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />

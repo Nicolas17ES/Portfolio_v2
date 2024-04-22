@@ -11,6 +11,7 @@ import Sonido from '../../components/musicCollectives/Sonido';
 import Unsilenced from '../../components/musicCollectives/Unsilenced';
 import Aurea from '../../components/musicCollectives/Aurea';
 import CollectivesHeader from '../../components/musicCollectives/CollectivesHeader';
+import ChangeProject from '../../components/bodyContent/projectsContent/ChangeProject'
 /**
  * The Music component is responsible for rendering the music section of the application.
  * It utilizes various hooks and context to manage its state and interactions.
@@ -70,13 +71,15 @@ function Music() {
     // const fullText = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur accusamus ratione non laudantium, ut mollitia aspernatur eius expedita molestiae inventore molestias. Iste exercitationem eligendi amet assumenda odio at perferendis voluptatibus.`;
 
     useEffect(() => {
-        // Component did mount logic can go here.
     
         return () => {
-          // This function will be called when the component unmounts.
           dispatch({
             type: 'SET_CLICKED_BUTTON',
             payload: null,
+          });
+          dispatch({
+            type: 'SET_CHANGE_SLIDE',
+            payload: {value: 0, origin: null},
           });
           dispatch({
             type: 'SET_IMAGE_OVERLAY',
@@ -98,10 +101,11 @@ function Music() {
                 ) : (
                     <div className="music-body-container">
                         <CollectivesHeader/>
-                        {(button_state && button_state.clicked) &&  <ButtonsBody data={data}/>}
+                        {/* {(button_state && button_state.clicked) &&  <ButtonsBody data={data}/>} */}
                         {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <Sonido/>}
                         {buttonIndexReferences[button_state.value] === 'Unsilenced' && <Unsilenced/>}
                         {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <Aurea/>}
+                        <ChangeProject origin={'music'}/>
                     </div>
                 )}
 

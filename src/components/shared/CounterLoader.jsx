@@ -7,7 +7,7 @@ import gsap from "gsap";
 
 
 function CounterLoader() {
-    const {dispatch, hide_loader} = useContext(GlobalContext);
+    const {isMobile, hide_loader, dispatch} = useContext(GlobalContext);
 
 
      // Refs to directly reference the counter elements
@@ -58,7 +58,7 @@ function CounterLoader() {
             }, delayBeforeStartingAnimations); // This is where the initial delay before starting animations is applied
         
         }, []);
-        
+        console.log("isMobile", isMobile)
 
     useGSAP(() => {
 
@@ -117,34 +117,36 @@ function CounterLoader() {
             borderBottomLeftRadius: '0px',
             rotate:90,
             y: -50,
-            x:100,
+            x: isMobile ? 25 : 100,
             delay:2.7,
             duration: 0.5,
         });  
         gsap.to(".loader-2", {
-            x:-23.5,
-            y: -51,
+            x: isMobile ? -16 : -23.5,
+            y: isMobile ? -49.5 : -51,
             rotate: 70,
             duration: 0.5,
         }, "<");
         gsap.to(".loader-3", {
-            x:-147.2,
-            y: -50,
+            x: isMobile ? -57 : -147.2,
+            y: isMobile ? -49.5 : -50,
             rotate: 90,
             duration: 0.5,
         }, "<");
 
         gsap.to(".loader-4", {
             rotate:90,
-            y: -50,
-            x:-100,
+            x: isMobile ? -32 : -100,
+            y: isMobile ? -53.5 : -50,
             delay:2.7,
             duration: 0.5,
         });
     
         gsap.to(".loader-5", {
-            x:-185,
-            y: 15.1,
+            borderTopRightRadius: '0px',
+            borderBottomRightRadius: '0px',
+            x: isMobile ? -59.4 : -185,
+            y: isMobile ? -28.5 : 15.1,
             rotate: 180,
             duration: 0.5,
         }, "<");
@@ -155,18 +157,18 @@ function CounterLoader() {
             delay: 3.2,
         });
          gsap.to(".loader", {
-            scale:5,
+            scale: isMobile ? 5.3 : 5,
             duration: 1.4,
-            x: 0,
-            yPercent:1200,
+            x: 30,
+            yPercent:2810,
             delay: 3.5,
             transformOrigin: "50% 50%",
             ease: "power2.InOut",
         });
          gsap.to(".loader-lastname", {
-            scale:5,
-            xPercent: 250,
-            yPercent:1200,
+            scale: isMobile ? 5 : 5,
+            xPercent: 280,
+            yPercent:2700,
             duration: 1.5,
             delay: 3.5,
             transformOrigin: "50% 50%",
@@ -219,22 +221,12 @@ function CounterLoader() {
                   });
             }
         });
-    }, [])
+    }, [isMobile])
     
 
 
     return (
         <div style={{display: hide_loader ? 'none' : 'block'}}>
-            {/* <div className="website-content">
-                <div className="header-counter">
-                    <div className="h1">
-                        <h1 className='h1-title'>Website</h1>
-                        <h1 className='h1-title'>Content</h1>
-                    </div>
-                    <div className="header-revealer">
-                    </div>
-                </div>
-            </div> */}
             <div className="loading-screen">
                 <div className="loaders-containers">
                     <div className="loader">

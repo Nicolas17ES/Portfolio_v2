@@ -13,6 +13,8 @@ import gsap from "gsap";
 import KeepScrolling from '../../components/bodyContent/projectsContent/KeepScrolling';
 import PinnedImageGallery from '../../components/bodyContent/projectsContent/PinnedImageGallery';
 import Objectives from '../../components/bodyContent/projectsContent/Objectives';
+import ChangeProject from '../../components/bodyContent/projectsContent/ChangeProject';
+
 // The Projects component displays project sections and handles animations based on mouse movements.
 function ViewProjects() {
 
@@ -38,10 +40,11 @@ function ViewProjects() {
         <div className="body-container project-container">
             <ProjectsMainTitle/>
             {title_animation_finshed && <KeepScrolling version={3}/>}
-            <ProjectsImageDispaly/>
+            {title_animation_finshed && <ProjectsImageDispaly/>}
             <ProjectsParagraphs/>
             {boxes_animations_finsished && <PinnedImageGallery/>}
             {boxes_animations_finsished && <Objectives/>}
+            {boxes_animations_finsished && <ChangeProject origin={'projects'}/>}
         </div>
     );
 }

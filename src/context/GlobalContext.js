@@ -53,6 +53,7 @@ export const initialState = {
     projects_resumes_animation_finished: false,      
     boxes_animations_finsished: false,      
     display_vide_popup: {index: null, value: null},      
+    isMobile: false,      
 }
 export const GlobalProvider = ({children}) => {
     
@@ -92,6 +93,7 @@ export const GlobalProvider = ({children}) => {
         projects_resumes_animation_finished: state.projects_resumes_animation_finished,
         boxes_animations_finsished: state.boxes_animations_finsished,
         display_vide_popup: state.display_vide_popup,
+        isMobile: state.isMobile,
         dispatch,
     }}>
         {children}

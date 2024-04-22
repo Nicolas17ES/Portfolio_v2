@@ -23,9 +23,9 @@ import Background from './pages/landing/Background';
 import MainLateral from './pages/main/MainLateral';
 import ViewProjects from './pages/projects/ViewProjects';
 import useResetStates from './hooks/useResetStates';
+import useIsMobile from './hooks/useIsMobile';
 
 function App() {
- 
   // This is the main entry point of your React application.
   // It wraps the entire application with the GlobalProvider, which provides global state to child components.
   return (
@@ -42,7 +42,8 @@ function WrappedApp() {
   // This is a functional component responsible for rendering the main content of your app.
   // It uses the React Router to handle routing and location-based rendering.
   const location = useLocation();
-  useResetStates(); 
+  useResetStates();
+  useIsMobile();
   const pathname = location.pathname;
   const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation, display_vide_popup } = useContext(GlobalContext);
 

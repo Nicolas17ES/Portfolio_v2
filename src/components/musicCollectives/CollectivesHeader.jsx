@@ -19,19 +19,19 @@ function CollectivesHeader() {
       title: 'Sonido Club',
       image: SonidoXEnfants,
       caption: 'Sonido x Les Enfants with Keras',
-      paragraph: 'Diving into the next <span class="small">( few )</span> lines, you\'ll discover the <span class="red">soundtracks</span> that unravel the essence of our <span class="red">gatherings</span>.'
+      paragraph: 'Sonido Club is a music collective established in <span class="red">Barcelona</span>, founded on the idea of showcasing low-key artists from around the world. These artists have solidified <span class="red">strong foundations</span> within their <span class="red">local scenes</span> but their talents are still under the global radar. With a club residency at <span class="red">Les Enfants Brillants</span>, Sonido Club occupies one of the citys most unique venues.'
     },
     {
       title: 'Unsilenced',
       image: ReissUnsilenced,
       caption: 'Unsilenced x WC at Oosterbar Amsterdam',
-      paragraph: ''
+      paragraph: 'Unsilenced Music sprang to life in <span class="red">Amsterdam in 2018</span>, born from the shared vision of five friends who were <span class="red">deeply in sync</span> musically. They formed this collective with the initial aim of championing local talent. However, the venture quickly blossomed beyond its original scope, expanding into a formidable <span class="red">music label</span> that now amplifies voices both <span class="red">locally and beyond.</span>'
     },
     {
       title: 'Aurea',
       image: WhiteChocoNye,
       caption: 'NYE 20219 Event',
-      paragraph: ''
+      paragraph: 'Aurea BY WC began as a vibrant project in <span class="red">Barcelona</span>, organizing events across <span class="red">various venues</span> featuring an array of <span class="red">local artists</span>. What started merely as casual gatherings among friends quickly transformed into a profound movement, where exceptional music was played and shared.'
     },
   ]
   // IMAGE ANIMATION
@@ -236,9 +236,22 @@ function CollectivesHeader() {
       });
     }, []);
 
+    useGSAP(() => {
+      gsap.from(".collectives-header-podacts-titles", {
+        scrollTrigger: {
+          trigger: ".collectives-header-podacts-titles",
+          start: "center center",
+          end: "bottom center",
+          scrub: 1,
+        },
+        opacity: 0,
+      });
+    }, []);
+
     
 
     return (
+      <>
         <div className="collectives-header-container">
           <div className="collectives-titles-container">
             {/* <h3 className="collective-title-name">({collectivesData[button_state.value].title})</h3> */}
@@ -258,7 +271,8 @@ function CollectivesHeader() {
             <div className="collectives-header-paragraph-container">
             <p className="collectives-header-paragraph"
          dangerouslySetInnerHTML={{ __html: collectivesData[button_state.value].paragraph }}>
-      </p>                
+      </p> 
+             
       <div className="collectives-scroll-bar-container">
                     <span className="collectives-scroll-bar-2"></span>
                     <span className="scroll-text">{collectivesData[button_state.value].title}</span>
@@ -267,8 +281,12 @@ function CollectivesHeader() {
                 </div>
             </div>
         </div>
-        
+        <h5 className="collectives-header-podacts-titles">
+        Music by our guests:
+      </h5> 
+      </>
     );
 }
 
 export default CollectivesHeader;
+

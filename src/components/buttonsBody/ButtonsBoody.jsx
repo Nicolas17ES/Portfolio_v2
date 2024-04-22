@@ -89,27 +89,7 @@ function ButtonsBody({data}) {
        
     };
 
-    /**
-     * handleMouseEnter function to handle mouse enter event on button
-     * @param {number} index - The index of the button being hovered
-     * Dispatches the current hover index to the global context
-     */
-    // const handleMouseEnter = (index) => {
-    //     dispatch({ type: 'SET_BUTTON_INDEX', payload: index });
-    // };
-
-    // /**
-    //  * handleMouseLeave function to handle mouse leave event on button
-    //  * @param {number} index - The index of the button being unhovered
-    //  * Resets the hover index in global context unless a button is clicked
-    //  */
-    // const handleMouseLeave = (index) => {
-    //     if(!isCLicked) {
-    //         dispatch({ type: 'SET_BUTTON_INDEX', payload: null });
-    //     } else {
-    //         dispatch({ type: 'SET_BUTTON_INDEX', payload: activeIndex });
-    //     }
-    // };
+    
 
     // Style for dimming inactive buttons
     const styles = { opacity: '0.5' };
@@ -162,7 +142,6 @@ function ButtonsBody({data}) {
             });
         }
         }, [display_image_overlay, button_state]);
-
 
 
 

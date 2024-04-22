@@ -23,24 +23,6 @@ function MusicBottom() {
         setChangeCounter(prev => prev + 1);
     }, [button_state?.value]);
 
-    // useEffect(() => {
-    //     if (display_image_overlay) {
-    //       gsap.fromTo('.bottom-nav-paragraph', 
-    //         { opacity: 1 }, // Assuming starting from visible and original position
-    //         { opacity: 0, duration: 1 } // Specified ending values
-    //       );
-    //     }
-    //   }, [display_image_overlay, navbar_location]);
-      
-    // useEffect(() => {
-    //   if (display_body && navbar_location === 'music') {
-    //     gsap.fromTo('.bottom-nav-paragraph', 
-    //       { yPercent: -500, opacity: 0 }, // Starting values
-    //       { yPercent: 0, opacity: 1, duration: 1, delay: (prevLocation === '/about' || prevLocation === '/projects') ? 1.5 : 1 } // Ending values
-    //     );
-    //     }
-    //   }, [display_body, navbar_location]);
-
     useGSAP(() => {
         // Animation to fade in content smoothly
         gsap.fromTo('.contact-social-container-2', 
@@ -65,7 +47,7 @@ function MusicBottom() {
                                 Currently, I'm engaged with <span className='red-highlight'>Sonido_Club</span> in Barcelona, where I contribute to organizing music events that blend local and international artists.
                             </p>
                             <p className="bottom-nav-paragraph">
-                                Previously, I collaborated with <span className='red-highlight'>Aurea</span> in Barcelona and <span className='red-highlight'>Unsilenced</span> in Amsterdam. This are some of the artists involved:
+                                Previously, I collaborated with <span className='red-highlight'>Aurea</span> in Barcelona and <span className='red-highlight'>Unsilenced</span> in Amsterdam.
                             </p>
                             <p className="bottom-nav-paragraph">
                                <FaArrowLeft />

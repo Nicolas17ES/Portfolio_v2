@@ -39,6 +39,7 @@ function ProjectsImageDispaly() {
     const [value, setValue] = useState(null);
     const [learnMorePending, setLearnMorePending] = useState(false);
     const {ref: containerRef, inView: inView1} = useInView({ threshold: .7 });
+    const tlRef = useRef();
 
     useEffect(() => {
         if(navbar_location === 'aulart-shop'){
@@ -80,6 +81,7 @@ function ProjectsImageDispaly() {
 
     useGSAP(() => {
         if (inView1 && title_animation_finshed && !animationFinsihed) {
+            console.log('reseted')
             // Ensure the initial state is set, though it should already be handled by the other useEffect
             const imageOverlay = CSSRulePlugin.getRule(".project-image-wrapper::after");
             
@@ -101,7 +103,7 @@ function ProjectsImageDispaly() {
                 tl.reverse();
             };
         }
-    }, [inView1, title_animation_finshed, animationFinsihed]);
+    }, [inView1, title_animation_finshed, animationFinsihed, navbar_location]);
     
 
     const setCursorVisible = (value) => {

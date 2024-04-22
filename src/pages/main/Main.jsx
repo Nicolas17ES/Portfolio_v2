@@ -26,7 +26,7 @@ function Main() {
   const [entered, setEntered] = useState(false); // Tracks if the mouse has entered a project section.
 
   // Access global context using the useContext hook
-  const { dispatch, lateral_navbar, navbar_location, mouse_position } = useContext(GlobalContext);
+  const { dispatch, isMobile, lateral_navbar, navbar_location, mouse_position } = useContext(GlobalContext);
 
   // Create a ref for the navbar element
   const navbarRef = useRef(null);
@@ -383,19 +383,19 @@ return (
                         {item.name}
                         {/* {'0' + (index + 1) + ' ' + item.name} */}
                       </span>
-                      {(!blockAnimations || navbar_location === '') && (
+                      {/* {(!blockAnimations || navbar_location === '') && (
                         <div className={`nav-icon-container nav-icon-container-${index}`}>
                           <PiArrowElbowLeftFill className={`nav-link-icon link-icon${index}`}/>
                         </div>
-                      )}
+                      )} */}
                      </>
                    ) : (
                     <>
-                     {(!blockAnimations || navbar_location === '') && (
-                      <div className={`nav-icon-container nav-icon-container-${index}`}>
-                        <PiArrowElbowRightFill className={`nav-link-icon link-icon${index}`}/>
-                      </div>
-                    )}
+                     {/* {(!blockAnimations || navbar_location === '') && (
+                      // <div className={`nav-icon-container nav-icon-container-${index}`}>
+                      //   <PiArrowElbowRightFill className={`nav-link-icon link-icon${index}`}/>
+                      // </div>
+                    )} */}
                     <span onClick={() => changeLocation(index)} className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`}
                       onMouseOver={() => { 
                         handleMouseOver(index);

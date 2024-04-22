@@ -67,7 +67,7 @@ function Projects() {
                 xPercent: -150,
                 duration: 1.4,
                 ease: 'Power3.easeOut',
-                stagger: 0.3,
+                // stagger: 0.3,
                 delay: .3,
                 // onComplete: () => {
                 //     setInitialAnimationFinished(true)
@@ -77,7 +77,7 @@ function Projects() {
                 y: 200,
                 duration: 1.5,
                 ease: 'Power3.easeOut',
-                stagger: 0.3,
+                // stagger: 0.3,
                 delay: .7,
             });
         }

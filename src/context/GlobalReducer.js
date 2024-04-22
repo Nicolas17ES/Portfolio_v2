@@ -175,6 +175,11 @@ const globalReducer = (state, action) => {
                 ...state,
                boxes_animations_finsished: action.payload,
             }
+        case 'SET_IS_MOBILE':
+            return {
+                ...state,
+                isMobile: action.payload,
+            }
             case 'RESET_STATE':
                 return {
                   ...initialState,

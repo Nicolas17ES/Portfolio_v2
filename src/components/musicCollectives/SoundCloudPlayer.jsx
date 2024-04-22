@@ -110,28 +110,6 @@ function SoundCloudPlayer({audio, isHovered}) {
     }, [isPlaying, currentPlayingId, audio.id])
 
     
-    // useEffect(() => {
-    //     gsap.registerPlugin(ScrollTrigger);
-        
-    //     const targets = gsap.utils.toArray('.soundcloud-player-container'); // Class "animatable" is a generic class you'd add to each element you want to animate
-        
-    //     // targets.forEach((target, index) => {
-    //         gsap.from('.soundcloud-player-container', {
-    //             // Choose either 'x' or 'y' for the direction of the animation
-    //             x: -100, // for left or -100 for bottom animation, use 'y: 100'
-    //             duration: 0.5,
-    //             ease: 'power1.out',
-    //             scrollTrigger: {
-    //                 markers: true,
-    //                 trigger: '.soundcloud-player-container',
-    //                 start: "top 85%", // Adjust as needed
-    //                 end: "top 70%",
-    //                 // once: true, // Ensures the animation only happens once
-    //             }
-    //         });
-    //     // });
-    // }, []);
-
 
     
     const borderAudioIds = [1, 5, 9];

@@ -178,7 +178,7 @@ useGSAP(() => {
                   <div className="image-about-wrap">
                   <img src={FotoBebida} alt="" className="foto-about"/>
                   </div>
-                  <h2 className="about-title">Luque </h2>
+                  <h2 className="about-title">Luque</h2>
                </div>
                <div className="about-title-container">
                   <h2 className="about-title">Rodriguez</h2>

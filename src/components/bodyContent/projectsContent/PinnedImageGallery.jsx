@@ -295,11 +295,10 @@ function PinnedImageGallery() {
             document.body.style.overflowY = 'hidden';
         }
     };
-
+console.log(blockedButton)
     // open pop up video
     const viewVideo = (e, value) => {
         e.preventDefault();
-        console.log("value", value)
         if(currentVideo){
             setViewVideoState(value);
         }
@@ -440,7 +439,7 @@ function PinnedImageGallery() {
         <div className="pinned-gallery-container">
             {isZoomed && (
                 <div ref={modalRef} className="image-zoom-modal" onClick={() => !blockedButton && closeImageZoom()}>
-                    {viewVideoState ? (
+                    {/* {viewVideoState ? (
                         <>
                             <button onClick={(e) => viewVideo(e, false)} className="view-video-button">close video</button>
                             <video
@@ -454,13 +453,13 @@ function PinnedImageGallery() {
                             <p ref={textRef} className="modal-resume">{currentResume}</p>
                         </>
                     ) : (
-                        <>
-                            <button onClick={(e) => viewVideo(e, true)} className="view-video-button">view video</button>
+                        <> */}
+                            {/* <button onClick={(e) => viewVideo(e, true)} className="view-video-button">view video</button> */}
                             <img ref={imageRef} src={currentImage} alt="Zoomed" className="zoomed-image" />
                             <p ref={textRef} className="modal-resume">{currentResume}</p>
-                        </>
-                    )}
-                </div>
+                        {/* </>
+                    )}*/}
+                </div> 
             )}
             <section ref={workRef} className="work">
                 <div className="work_left">
