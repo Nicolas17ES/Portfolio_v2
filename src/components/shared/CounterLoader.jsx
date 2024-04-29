@@ -7,7 +7,7 @@ import gsap from "gsap";
 
 
 function CounterLoader() {
-    const {isMobile, hide_loader, dispatch} = useContext(GlobalContext);
+    const {isMobile, hide_loader, dispatch, screenWidth} = useContext(GlobalContext);
 
 
      // Refs to directly reference the counter elements
@@ -58,170 +58,168 @@ function CounterLoader() {
             }, delayBeforeStartingAnimations); // This is where the initial delay before starting animations is applied
         
         }, []);
-        console.log("isMobile", isMobile)
 
-    useGSAP(() => {
-
-        // rotate to letters
-        gsap.from(".loader-1", {
-            width: 0,
-            duration: 1,
-            ease: "power2.inOut",
-        });
-        gsap.from(".loader-2", {
-            width:0,
-            delay: 0,
-            duration: 1,
-            ease: "power2.inOut",
-        });
-        gsap.from(".loader-3", {
-            width: 0,
-            duration: 1,
-            delay: .2,
-            ease: "power2.inOut",
-        });
-
-        gsap.from(".loader-4", {
-            width: 0,
-            duration: 1.5,
-            delay: 1,
-            ease: "power2.inOut",
-        });
-        gsap.from(".loader-5", {
-            width:0,
-            delay: 1,
-            duration: 1.5,
-            ease: "power2.inOut",
-        });
-        gsap.to(".loader-5", {
-            borderTopRightRadius: '30px',
-            borderBottomRightRadius: '30px',
-            delay: 1.8,
-            duration: .3,
-            ease: "power2.inOut",
-        });
- 
-        gsap.to(".loader", {
-            background: "none",
-            delay: 2.5,
-            duration: 0.1,
-        }) 
-        gsap.to(".loader-lastname", {
-            background: "none",
-            delay: 2.5,
-            duration: 0.1,
-        }) 
-
-        gsap.to(".loader-1", {
-            borderTopLeftRadius: '0px',
-            borderBottomLeftRadius: '0px',
-            rotate:90,
-            y: -50,
-            x: isMobile ? 25 : 100,
-            delay:2.7,
-            duration: 0.5,
-        });  
-        gsap.to(".loader-2", {
-            x: isMobile ? -16 : -23.5,
-            y: isMobile ? -49.5 : -51,
-            rotate: 70,
-            duration: 0.5,
-        }, "<");
-        gsap.to(".loader-3", {
-            x: isMobile ? -57 : -147.2,
-            y: isMobile ? -49.5 : -50,
-            rotate: 90,
-            duration: 0.5,
-        }, "<");
-
-        gsap.to(".loader-4", {
-            rotate:90,
-            x: isMobile ? -32 : -100,
-            y: isMobile ? -53.5 : -50,
-            delay:2.7,
-            duration: 0.5,
-        });
     
-        gsap.to(".loader-5", {
-            borderTopRightRadius: '0px',
-            borderBottomRightRadius: '0px',
-            x: isMobile ? -59.4 : -185,
-            y: isMobile ? -28.5 : 15.1,
-            rotate: 180,
-            duration: 0.5,
-        }, "<");
-        gsap.to(".counter", {
-            opacity: 0,
-            duration: .9,
-            ease: "power2.out",
-            delay: 3.2,
-        });
-         gsap.to(".loader", {
-            scale: isMobile ? 5.3 : 5,
-            duration: 1.4,
-            x: 30,
-            yPercent:2810,
-            delay: 3.5,
-            transformOrigin: "50% 50%",
-            ease: "power2.InOut",
-        });
-         gsap.to(".loader-lastname", {
-            scale: isMobile ? 5 : 5,
-            xPercent: 280,
-            yPercent:2700,
-            duration: 1.5,
-            delay: 3.5,
-            transformOrigin: "50% 50%",
-            ease: "power2.InOut",
-            onComplete: () => {
-                setTimeout(() => {
+        useGSAP(() => {
+            // rotate to letters
+            gsap.from(".loader-1", {
+                width: 0,
+                duration: 1,
+                ease: "power2.inOut",
+            });
+            gsap.from(".loader-2", {
+                width:0,
+                delay: 0,
+                duration: 1,
+                ease: "power2.inOut",
+            });
+            gsap.from(".loader-3", {
+                width: 0,
+                duration: 1,
+                delay: .2,
+                ease: "power2.inOut",
+            });
+    
+            gsap.from(".loader-4", {
+                width: 0,
+                duration: 1.5,
+                delay: 1,
+                ease: "power2.inOut",
+            });
+            gsap.from(".loader-5", {
+                width:0,
+                delay: 1,
+                duration: 1.5,
+                ease: "power2.inOut",
+            });
+            gsap.to(".loader-5", {
+                borderTopRightRadius: '30px',
+                borderBottomRightRadius: '30px',
+                delay: 1.8,
+                duration: .3,
+                ease: "power2.inOut",
+            });
+     
+            gsap.to(".loader", {
+                background: "none",
+                delay: 2.5,
+                duration: 0.1,
+            }) 
+            gsap.to(".loader-lastname", {
+                background: "none",
+                delay: 2.5,
+                duration: 0.1,
+            }) 
+    
+            gsap.to(".loader-1", {
+                borderTopLeftRadius: '0px',
+                borderBottomLeftRadius: '0px',
+                rotate:90,
+                y: -50,
+                x: screenWidth <= 520 ? 25 : screenWidth <= 750 ? 50 : 100,
+                delay:2.7,
+                duration: 0.5,
+            });  
+            gsap.to(".loader-2", {
+                x: screenWidth <= 520 ? -16 : screenWidth <= 750 ? -4.25 : -23.5,
+                y: screenWidth <= 520 ? -49.5 : screenWidth <= 750 ? -49.2  : -51,
+                rotate: 70,
+                duration: 0.5,
+            }, "<");
+            gsap.to(".loader-3", {
+                x: screenWidth <= 520 ? -57 : screenWidth <= 750 ? -60 : -147.2,
+                y: screenWidth <= 520 ? -49.5 : screenWidth <= 750 ? -49.35 : -50,
+                rotate: 90,
+                duration: 0.5,
+            }, "<");
+            gsap.to(".loader-4", {
+                rotate:90,
+                x: screenWidth <= 520 ? -32: screenWidth <= 750 ? -49.35 : -100,
+                y: isMobile ? -53.5 : -50,
+                delay:2.7,
+                duration: 0.5,
+            });
+        
+            gsap.to(".loader-5", {
+                borderTopRightRadius: '0px',
+                borderBottomRightRadius: '0px',
+                x: screenWidth <= 520 ? -59.4 : screenWidth <= 750 ? -85.35 : -185,
+                y:screenWidth <= 520 ? -28.5 : screenWidth <= 750 ? -24.1 : 15.1,
+                rotate: 180,
+                duration: 0.5,
+            }, "<");
+            gsap.to(".counter", {
+                opacity: 0,
+                duration: .9,
+                ease: "power2.out",
+                delay: 3.2,
+            });
+             gsap.to(".loader", {
+                scale: screenWidth <= 520 ? 6.6 : screenWidth <= 750 ? 7 : 5,
+                duration: 1.4,
+                x: screenWidth <= 520 ? 30 : screenWidth <= 750 ? -85.35 : 0,
+                yPercent: screenWidth <= 520 ? 2810 : screenWidth <= 750 ? 2400 : 1200,
+                delay: 3.5,
+                transformOrigin: "50% 50%",
+                ease: "power2.InOut",
+            });
+             gsap.to(".loader-lastname", {
+                scale: screenWidth <= 520 ? 6.33 : screenWidth <= 750 ? 7.09 : 5,
+                xPercent: screenWidth <= 520 ? 380 : screenWidth <= 750 ? 460 : 250,
+                yPercent: screenWidth <= 520 ? 2700 : screenWidth <= 750 ? 2455 : 1200,
+                duration: 1.5,
+                delay: 3.5,
+                transformOrigin: "50% 50%",
+                ease: "power2.InOut",
+                onComplete: () => {
+                    setTimeout(() => {
+                        dispatch({
+                            type: 'SET_HEADER',
+                            payload: true,
+                          });
+                    },250)
+                }
+            });
+            gsap.to(".loader", {
+                xPercent: -400,
+                duration: .7,
+                ease: "power2.out",
+                delay: 5.1,
+            });
+            gsap.to(".loader-lastname", {
+                xPercent: -400,
+                duration: .7,
+                ease: "power2.out",
+                delay: 5.1,
+            });
+            gsap.to(".loader", {
+                rotate:33,
+                y: 1000,
+                x: 200,
+                duration: 1,
+                delay: 6.2,
+                ease: "power2.inOut",
+            });
+            gsap.to(".loader-lastname", {
+                rotate:33,
+                y: 1000,
+                x: 2300,
+                duration: 1,
+                delay: 6.2,
+                ease: "power2.inOut",
+            });
+            gsap.to(".counter", {
+                opacity:0,
+                duration: 0.5,
+                delay: 6.4,
+                onComplete: () => {
                     dispatch({
                         type: 'SET_HEADER',
                         payload: true,
                       });
-                },250)
-            }
-        });
-        gsap.to(".loader", {
-            xPercent: -400,
-            duration: .7,
-            ease: "power2.out",
-            delay: 5.1,
-        });
-        gsap.to(".loader-lastname", {
-            xPercent: -400,
-            duration: .7,
-            ease: "power2.out",
-            delay: 5.1,
-        });
-        gsap.to(".loader", {
-            rotate:33,
-            y: 1000,
-            x: 200,
-            duration: 1,
-            delay: 6.2,
-            ease: "power2.inOut",
-        });
-        gsap.to(".loader-lastname", {
-            rotate:33,
-            y: 1000,
-            x: 2300,
-            duration: 1,
-            delay: 6.2,
-            ease: "power2.inOut",
-        });
-        gsap.to(".counter", {
-            opacity:0,
-            duration: 0.5,
-            delay: 6.4,
-            onComplete: () => {
-                dispatch({
-                    type: 'SET_HEADER',
-                    payload: true,
-                  });
-            }
-        });
-    }, [isMobile])
+                }
+            });
+        }, [isMobile, screenWidth])
     
 
 

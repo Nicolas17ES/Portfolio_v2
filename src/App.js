@@ -24,6 +24,7 @@ import MainLateral from './pages/main/MainLateral';
 import ViewProjects from './pages/projects/ViewProjects';
 import useResetStates from './hooks/useResetStates';
 import useIsMobile from './hooks/useIsMobile';
+import MainMobile from './pages/main/MainMobile';
 
 function App() {
   // This is the main entry point of your React application.
@@ -45,7 +46,7 @@ function WrappedApp() {
   useResetStates();
   useIsMobile();
   const pathname = location.pathname;
-  const { dispatch, lateral_navbar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation, display_vide_popup } = useContext(GlobalContext);
+  const { dispatch, screenWidth, lateral_navbar, displayMobileNavBar, display_header, hideNavBar, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation, display_vide_popup } = useContext(GlobalContext);
 
   const containerRef = useRef(null);
   const scrollPosition = useScrollPosition();
@@ -86,13 +87,13 @@ function WrappedApp() {
   // Landing is the first page we see on opening the project
   // landing imports the main component, which represents the NavBar of the project, that goes from center to right position
   // The lateral navbar has two parts: the top, which is in the main content, and the bottom, which is another component called BottomNavBar
-
   return (
     <>
       {/* <MouseTracker /> */}
       <IconReplica/>
-      <Background/>
-      {((lateral_navbar || start_lateral_nav_animation) && display_header) &&  <MainLateral />}
+      {screenWidth > 880 && <Background/>}
+      {((lateral_navbar || start_lateral_nav_animation) && display_header && !displayMobileNavBar) &&  <MainLateral />}
+      {((lateral_navbar || start_lateral_nav_animation) && display_header && displayMobileNavBar) &&  <MainMobile />}
      
       {view_projects_cursor.value && <ViewProjectsCursor/>}
       
@@ -103,9 +104,7 @@ function WrappedApp() {
         (hide_nav && !shrink_body) ? 'body-content-container-full' :
         shrink_body ? 'body-content-container-shrink' : null
       }`}>
-        {lateral_navbar && hide_nav && (
-          <CloseNavBarButton />
-        )}
+        
         <Routes>
           {/* React Router Routes for different pages */}
           <Route path="/" element={<Landing />} />

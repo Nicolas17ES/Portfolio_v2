@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger);
 
 function Unsilenced() {
-     const {dispatch, exit_component, button_state} = useContext(GlobalContext);
+     const {dispatch, exit_component, button_state, screenWidth, display_soundcloud_player} = useContext(GlobalContext);
      const [hoveredIndex, setHoveredIndex] = useState(null);
 
 
@@ -112,7 +112,11 @@ function Unsilenced() {
          <div className="music-collectives-bottom-container" style={{margin: '30px 0px 60px 0'}} onMouseLeave={handleMouseLeave}>
          {audioData.map((audio, index) => (
              <div className="soundcloud-outer-animation" onMouseEnter={() => handleMouseEnter(index)} key={audio.id}>
-                 <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />
+                 {screenWidth > 700 ? (
+                        <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />
+                    ) : (
+                        display_soundcloud_player && <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />
+                    )}
              </div>
          ))}
      </div>

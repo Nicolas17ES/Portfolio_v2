@@ -110,6 +110,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 display_carousel: action.payload,
             }
+        case 'SET_DISPLAY_SOUNDCLOUD_PLAYER':
+            return {
+                ...state,
+                display_soundcloud_player: action.payload,
+            }
         case 'SET_CAROUSEL_INDEX':
             return {
                 ...state,
@@ -179,6 +184,26 @@ const globalReducer = (state, action) => {
             return {
                 ...state,
                 isMobile: action.payload,
+            }
+        case 'SET_SCREEN_WIDTH':
+            return {
+                ...state,
+                screenWidth: action.payload,
+            }
+        case 'SET_HIDENAVBAR':
+            return {
+                ...state,
+                hideNavBar: action.payload,
+            }
+        case 'SET_DISPLAY_HIDENAVBAR':
+            return {
+                ...state,
+                displayHiddenNavBar: action.payload,
+            }
+        case 'SET_DISPLAY_MOBILE_NAVBAR':
+            return {
+                ...state,
+                displayMobileNavBar: action.payload,
             }
             case 'RESET_STATE':
                 return {

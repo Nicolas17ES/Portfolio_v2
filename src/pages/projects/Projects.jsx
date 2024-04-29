@@ -22,7 +22,7 @@ function Projects() {
     const pathname = location.pathname.substring(1);
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { view_projects_cursor, display_body, navbar_location, dispatch, mouse_position } = useContext(GlobalContext);
+    const { view_projects_cursor, screenWidth, display_body, navbar_location, dispatch, mouse_position } = useContext(GlobalContext);
 
     // useRef hooks for DOM references to enable direct manipulation.
     const bodyRef = useRef(null);
@@ -77,12 +77,17 @@ function Projects() {
                 y: 200,
                 duration: 1.5,
                 ease: 'Power3.easeOut',
+                opacity: 0,
                 // stagger: 0.3,
                 delay: .7,
+                onComplete: () => {
+                    gsap.to('.project-title', {
+                        whiteSpace: 'pre-wrap'
+                    })
+                }
             });
         }
     }, [display_body]);
-
     // Function to handle mouse move within a project section, updating local state for mouse position.
     const handleMouseMove = (e, ref) => {
         const boundingRect = ref.current.getBoundingClientRect();
@@ -213,7 +218,6 @@ const viewProject = (index) => {
         }
     });
 };
-
 
 
 
@@ -359,7 +363,6 @@ export default Projects
 //     };
 
 //     const setCursorVisible = (value) => {
-//         console.log('triiigering', value)
 //         dispatch({ 
 //             type: 'SET_VIEW_PROJECTS_CURSOR', 
 //             payload: {

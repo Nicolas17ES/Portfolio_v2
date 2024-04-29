@@ -122,10 +122,6 @@ function VideoPlayer() {
             )}
              */}
             <video
-                // onClick={(event) => {
-                //     event.stopPropagation();
-                //     videoRef.current.play();
-                // }}
                 ref={videoRef}
                 poster={coverImage}
                 className='video-player'

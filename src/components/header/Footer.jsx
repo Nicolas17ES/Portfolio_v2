@@ -10,7 +10,7 @@ import gsap from "gsap";
 
 function Footer() {
 
-  const {display_body, lateral_navbar, display_header, hide_nav, shrink_body, navbar_location, boxes_animations_finsished} = useContext(GlobalContext);
+  const {display_body, lateral_navbar, display_header, hide_nav, shrink_body, navbar_location, boxes_animations_finsished, screenWidth} = useContext(GlobalContext);
 
   useGSAP(() => {
     if(display_body){
@@ -32,9 +32,9 @@ if(display_body){
               shrink_body ? 'footer-container-shrink' : null
             }`}>
             <p className="footer-block"><GiCoffin className='footer-icon'/>Porftolio V.0.2</p>
-            <p className="footer-block"><span className="footer-light"></span>AVAILABLE FOR FREELANCE WORKS</p>
+            <p className="footer-block"><span className="footer-light"></span>{screenWidth >= 600 ? 'AVAILABLE 4 FREELANCE WORKS' : 'AVAILABLE'}</p>
             <p className="footer-block"><PiPlanet  className='footer-icon'/>BARCELONA, SP.</p>
-            <p className="footer-block"><GiCrystalize className='footer-icon'/> ALL RIGHTS RESERVED</p>
+            <p className="footer-block"><GiCrystalize className='footer-icon'/> ALL RIGHTS RSRVD</p>
         </footer>
     
     )

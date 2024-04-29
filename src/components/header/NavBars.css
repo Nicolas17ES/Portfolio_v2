@@ -307,7 +307,7 @@
   z-index: 999999;
   background-color: rgb(var(--white));
   text-transform: uppercase;
-  font-size: .9rem;
+  font-size: .85rem;
 }
 
 
@@ -523,7 +523,90 @@ right: -10px;
 
 
 
-@media (max-width: 480px) {
+@media (max-width: 1200px) {
+  .bottom-lateral-navbar {
+    padding:15px;
+  }
+  
+  
+  .bottom-lateral-navbar-padding {
+   padding: 8px;
+  }
+  .bottom-nav-text {
+    font-size: 0.8rem;
+    overflow: hidden !important;
+    text-align: left !important;
+    text-justify: none !important;
+    -webkit-hyphens: manual !important;
+    hyphens: manual !important;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
+}
+}
+@media (max-width: 1170px) {
+  .footer-container{
+    width: 100vw;
+    font-size: .8rem;
+  }
+ 
+}
+
+@media (max-width: 750px) {
+ 
+  .counter{
+    left: 35px;
+    bottom: 35px;
+    height: 80px;
+    font-size: 80px;
+  }
+  
+  .loader{   
+    width: 200px;
+    height: 15px;
+  }
+  .loader-lastname{
+    width:100px;
+    height: 15px;
+  }
+  
+  .loader-1, .loader-2, .loader-3,  .loader-4{
+    position: relative;
+    background: rgb(var(--black));
+    width: 100px;
+  }
+  .loader-3{
+    width: 102px;
+  }
+  .loader-4{
+    width: 92px;
+  }
+  .loader-5{
+    position: relative;
+    background: rgb(var(--black));
+    width: 75px;
+  }
+ 
+
+  
+  .bar{
+    height: 15px;
+    /* border: 6px solid rgb(var(--black)); */
+  }
+
+}
+
+
+@media (max-width: 700px){
+  .footer-block:nth-child(4) {
+    display: none;
+}
+
+.footer-container{
+  width: 100vw;
+  font-size: .75rem;
+}
+    
+}
+@media (max-width: 520px) {
   
   .counter{
     left: 35px;
@@ -626,4 +709,8 @@ right: -10px;
     height: 110%;
     background: rgb(var(--black));
   }
+
+  .footer-block:nth-child(3) {
+    display: none;
+}
 }

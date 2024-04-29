@@ -54,6 +54,11 @@ export const initialState = {
     boxes_animations_finsished: false,      
     display_vide_popup: {index: null, value: null},      
     isMobile: false,      
+    screenWidth: null,      
+    hideNavBar: false,      
+    displayHiddenNavBar: false,      
+    displayMobileNavBar: false,      
+    display_soundcloud_player: false,      
 }
 export const GlobalProvider = ({children}) => {
     
@@ -94,6 +99,11 @@ export const GlobalProvider = ({children}) => {
         boxes_animations_finsished: state.boxes_animations_finsished,
         display_vide_popup: state.display_vide_popup,
         isMobile: state.isMobile,
+        screenWidth: state.screenWidth,
+        hideNavBar: state.hideNavBar,
+        displayHiddenNavBar: state.displayHiddenNavBar,
+        displayMobileNavBar: state.displayMobileNavBar,
+        display_soundcloud_player: state.display_soundcloud_player,
         dispatch,
     }}>
         {children}

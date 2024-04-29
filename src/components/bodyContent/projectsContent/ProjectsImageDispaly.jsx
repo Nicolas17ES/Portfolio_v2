@@ -14,9 +14,7 @@ import HomeToolsWhite from '../../../images/aulartools/HomeToolsWhite.png'
 import EditorTools from '../../../images/aulartools/EditorTools.png'
 
 
-import LinkinbioHome from '../../../images/linkinbio/Linkinbio.png'
 import LinkinbioComputer from '../../../images/linkinbio/LinkinbioComputer.png'
-import AdminView from '../../../images/linkinbio/2AdminView.png'
 import CreateLink from '../../../images/linkinbio/3CreateLink.png'
 
 import {useInView} from 'react-intersection-observer'
@@ -34,7 +32,7 @@ gsap.registerPlugin(ScrollToPlugin);
 function ProjectsImageDispaly() {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { title_animation_finshed, dispatch, display_resumes, navbar_location } = useContext(GlobalContext);
+    const { title_animation_finshed, dispatch, display_resumes, navbar_location, screenWidth, display_body } = useContext(GlobalContext);
     const[animationFinsihed, setAnimationFinsihed] = useState(false);
     const [value, setValue] = useState(null);
     const [learnMorePending, setLearnMorePending] = useState(false);
@@ -78,20 +76,27 @@ function ProjectsImageDispaly() {
     
     }, []); 
     
-
     useGSAP(() => {
         if (inView1 && title_animation_finshed && !animationFinsihed) {
-            console.log('reseted')
             // Ensure the initial state is set, though it should already be handled by the other useEffect
             const imageOverlay = CSSRulePlugin.getRule(".project-image-wrapper::after");
             
             // Now you can focus directly on the animation timeline without resetting the height again
             let tl = gsap.timeline({ defaults: { ease: 'linear' } })
-                .to(imageOverlay, { duration: .7, delay: .1, cssRule: { height: "0%" } }) // Overlay animation
+                .to(imageOverlay, { duration: .7, delay: .1, cssRule: { height: "0%" },
+                onComplete: () => {
+                    if(screenWidth <= 780){
+                        dispatch({
+                            type: 'SET_DISPLAY_RESUMES',
+                            payload: true,
+                        });
+                    }
+                }
+             }) // Overlay animation
                 .to([".project-image-right", ".project-image-left"], { opacity: 1, duration: .1, ease: "expo.inOut" }, ">") // Next animations
-                .to(".project-image-left", { opacity: 1, x: "-200", y: 32, rotation: -10, ease: "expo.inOut", duration: 1.4 }, ">")
-                .to(".project-image-right", { opacity: 1, x: "200", y: 32, rotation: 10, ease: "expo.inOut", duration: 1.4 }, "<")
-                .to(".project-image-center", { boxShadow: '0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4)', ease: "ease.inOut", duration: 1.2 }, "<")
+                .to(".project-image-left", { opacity: 1, x: screenWidth > 785 ? "-200" : screenWidth > 615 ? "-115" : "-60", rotation: -10, ease: "expo.inOut", duration: 1.4 }, ">")
+                .to(".project-image-right", { opacity: 1, x: screenWidth > 785 ? "200" : screenWidth > 615 ? "115" : "60", rotation: 10, ease: "expo.inOut", duration: 1.4 }, "<")
+                .to(".project-image-center", { boxShadow: '0 15px 15px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4)', ease: "ease.inOut", duration: 1.2}, "<")
                 .add(() => setAnimationFinsihed(true), ">");
     
             // Proper cleanup to reverse and kill the timeline when component unmounts or dependencies change
@@ -107,7 +112,7 @@ function ProjectsImageDispaly() {
     
 
     const setCursorVisible = (value) => {
-       if(!display_resumes){
+       if(!display_resumes && screenWidth > 780){
             dispatch({
                 type: 'SET_VIEW_PROJECTS_CURSOR',
                 payload: {
@@ -120,11 +125,13 @@ function ProjectsImageDispaly() {
     }
 
     const learnMore = () => {
+       if(screenWidth > 780){
         if (!animationFinsihed) {
             setLearnMorePending(true);
         } else {
             executeLearnMore();
         }
+       }
     }
 
     const executeLearnMore = () => {
@@ -169,7 +176,7 @@ function ProjectsImageDispaly() {
     }, [dispatch])
 
     useGSAP(() => {
-        if(display_resumes){
+        if(display_resumes && screenWidth > 780){
             gsap.to(window, {
                 duration: 3,
                 scrollTo: {
@@ -212,7 +219,8 @@ function ProjectsImageDispaly() {
                 </div>   
                 {/* <div className="header"><p ref={titleRef}  className="projects-images-title">resumes</p></div> */}
             </div>
-                <div className="display-resumes-bar-container">
+                {screenWidth > 780 && (
+                    <div className="display-resumes-bar-container">
                     {display_resumes && (
                         <>
                         <span className="scroll-boxes-6"></span>
@@ -221,6 +229,7 @@ function ProjectsImageDispaly() {
                         </>
                     )}
                 </div>
+                )}
         </>
     )
 }

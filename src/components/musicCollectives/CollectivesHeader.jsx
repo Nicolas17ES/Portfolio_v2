@@ -1,5 +1,5 @@
 import GlobalContext from "../../context/GlobalContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import ReissUnsilenced from '../../images/ReissUnsilenced.jpeg';
 import WhiteChocoNye from '../../images/WhiteChocoNye.jpeg';
 import SonidoXEnfants from '../../images/SonidoEnfants2.png';
@@ -12,7 +12,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 function CollectivesHeader() {
    
-  const { dispatch, button_state } = useContext(GlobalContext);
+  const { screenWidth, button_state, dispatch } = useContext(GlobalContext);
+  const introTag2 = useRef(null);
 
   const collectivesData = [
     {
@@ -37,10 +38,13 @@ function CollectivesHeader() {
   // IMAGE ANIMATION
 
   useEffect(() => {
-    gsap.fromTo(".collectives-header-image-container", { opacity: 0, y: 300, x: 300 }, { opacity: 1, y: 0, x: 0, duration: 1.5, ease: "power3.out" });
-  }, []);
+    if(screenWidth > 700){
+      gsap.fromTo(".collectives-header-image-container", { opacity: 0, y: 300, x: 300 }, { opacity: 1, y: 0, x: 0, duration: 1.5, ease: "power3.out" });
+    }
+  }, [screenWidth]);
 
     useGSAP(() => {
+      if(screenWidth > 700){
         gsap.registerPlugin(ScrollTrigger); 
         const tl = gsap.timeline({
                 scrollTrigger: {
@@ -58,9 +62,12 @@ function CollectivesHeader() {
             opacity: 1,
             duration: 1.5, // Consistent with the duration for scaling up
         }, "-=1.5"); // Overlap the animations for smooth transition
-    }, []);
+      }
+        
+    }, [screenWidth]);
 
     useGSAP(() => {
+      if(screenWidth > 700){
         gsap.registerPlugin(ScrollTrigger); 
         const tl = gsap.timeline({
                 scrollTrigger: {
@@ -79,18 +86,23 @@ function CollectivesHeader() {
             opacity: 1,
             duration: 1.5, // Consistent with the duration for scaling up
         }, "-=1.5"); // Overlap the animations for smooth transition
-    }, []);
+      }
+    }, [screenWidth]);
 
 
     useEffect(() => {
-      gsap.fromTo(".collectives-titles-container", { opacity: 0, y: 300, x: -300, }, { opacity: 1, y: 0, x: 1, duration: 1.5, ease: "power3.out" });
-    }, []);
+      if(screenWidth > 700){
+        gsap.fromTo(".collectives-titles-container", { opacity: 0, y: 300, x: -300, }, { opacity: 1, y: 0, x: 1, duration: 1.5, ease: "power3.out" });
+      }
+      
+    }, [screenWidth]);
 
   
   //   // TITLES ANIMATION
     
    useEffect(() => {
-        const gsapMatchMedia = gsap.matchMedia();
+    if(screenWidth > 700){
+      const gsapMatchMedia = gsap.matchMedia();
     
         gsapMatchMedia.add("(min-width: 1441px)", () => {
           // Setup for larger screens
@@ -142,7 +154,9 @@ function CollectivesHeader() {
         return () => {
           gsapMatchMedia.revert();
         };
-      }, []);
+    }
+        
+      }, [screenWidth]);
 
 
     // SCROLL BOXES ANIMATIONS
@@ -223,18 +237,20 @@ function CollectivesHeader() {
 
 
     useGSAP(() => {
-      gsap.from(".collectives-header-paragraph", {
-        scrollTrigger: {
-          trigger: ".scroll-boxes-2",
-          start: "bottom bottom",
-          end: "bottom center+=0",
-          scrub: 1,
-        },
-        y: 300,
-        x: 300,
-        duration: 1,
-      });
-    }, []);
+      if(screenWidth > 700){
+        gsap.from(".collectives-header-paragraph", {
+          scrollTrigger: {
+            trigger: ".scroll-boxes-2",
+            start: "bottom bottom",
+            end: "bottom center+=0",
+            scrub: 1,
+          },
+          y: 300,
+          x: 300,
+          duration: 1,
+        });
+      }
+    }, [screenWidth]);
 
     useGSAP(() => {
       gsap.from(".collectives-header-podacts-titles", {
@@ -247,6 +263,65 @@ function CollectivesHeader() {
         opacity: 0,
       });
     }, []);
+
+    useGSAP(() => {
+      if(screenWidth <= 700){
+        gsap.from('.collectives-header-title-mobile', {
+          opacity: 0,
+          duration: 1,
+          ease: 'power2.in'
+        })
+        gsap.from('.collectives-header-image-container', {
+          opacity: 0,
+          duration: 1,
+          ease: 'power2.in'
+        })
+      }
+    }, [])
+
+    useEffect(() => {
+      // Check if the target paragraph is rendered
+      if(screenWidth <= 700 && introTag2.current){
+        let wordClass = ''; 
+     
+          // Split text into characters
+          const characters = introTag2.current.textContent.split(" ").map((char) => {
+              if (["Barcelona,", "strong", "foundations", "local", "scenes", "Les", "Enfants", "Brillants", "foundations "].includes(char)) {
+                  wordClass = 'red'; // Assign the class 'red' if the word matches
+                  return `<span style="position: relative;" class="gsap-char ${wordClass}">${char} </span>`;
+              } else {
+                  return `<span style="position: relative;" class="gsap-char">${char} </span>`;
+              }
+              // Wrap each character in a span, replace space with a non-breaking space for correct spacing
+              
+          }).join("");
+
+          
+  
+          // Set the innerHTML of the paragraph to the new string with spans
+          introTag2.current.innerHTML = characters;
+  
+          // Animate with GSAP
+          animateWithGSAP();
+
+      }
+  }, [introTag2, screenWidth]); // Empty dependency array to run once on mount
+  
+
+  const animateWithGSAP = () => {
+      gsap.fromTo(".gsap-char", { opacity: 0 }, {
+          delay: 1,
+          opacity: 1,
+          stagger: 0.048, // Adjust time between each letter appearing
+          ease: "linear",
+          onComplete: () => {
+            dispatch({
+              type: 'SET_DISPLAY_SOUNDCLOUD_PLAYER',
+              payload: true,
+            })
+          }
+      });
+  };
 
     
 
@@ -263,15 +338,19 @@ function CollectivesHeader() {
             </div>
             <h2 className="collectives-header-title">Dance</h2>
             <h2 className="collectives-header-title">Chronicles</h2>
+            
         </div>
+        {(screenWidth <= 700) && (
+              <h2 className="collectives-header-title-mobile">{collectivesData[button_state.value].title}</h2>
+          )}
         <figure className="collectives-header-image-container">
-         <img src={collectivesData[button_state.value].image} alt="" className="collectives-header-image" />
-         <figcaption className="figcaption-collectives-header">{collectivesData[button_state.value].caption} </figcaption>
+          <img src={collectivesData[button_state.value].image} alt="" className="collectives-header-image" />
+          <figcaption className="figcaption-collectives-header">{collectivesData[button_state.value].caption} </figcaption>
         </figure>  
-            <div className="collectives-header-paragraph-container">
-            <p className="collectives-header-paragraph"
-         dangerouslySetInnerHTML={{ __html: collectivesData[button_state.value].paragraph }}>
-      </p> 
+      <div className="collectives-header-paragraph-container">
+        <p ref={introTag2} className="collectives-header-paragraph"
+          dangerouslySetInnerHTML={{ __html: collectivesData[button_state.value].paragraph }}>
+        </p> 
              
       <div className="collectives-scroll-bar-container">
                     <span className="collectives-scroll-bar-2"></span>

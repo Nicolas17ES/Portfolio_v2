@@ -13,14 +13,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 function SoundCloudPlayer({audio, isHovered}) {
     const { isPlaying, currentPlayingId, playTrack, stopTrack } = useAudioPlayer();
-    const {} = useContext(GlobalContext);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [audioId, setAudioId] = useState(0);
     const [id, setId] = useState(0);
     const audioRef = useRef(null);
     const progressRef = useRef(null);
-    const [entered, setEntered] = useState(false)
 
     useEffect(() => {
         setId(audio.id)
@@ -110,7 +108,7 @@ function SoundCloudPlayer({audio, isHovered}) {
     }, [isPlaying, currentPlayingId, audio.id])
 
     
-
+console.log('playeeer')
     
     const borderAudioIds = [1, 5, 9];
 

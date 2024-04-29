@@ -5,13 +5,14 @@ import '../../pages/projects/Projects.css';
 import ProjectsParagraphs from '../bodyContent/projectsContent/ProjectsParagraphs';
 import PinnedImageGallery from '../bodyContent/projectsContent/PinnedImageGallery';
 import Objectives from '../bodyContent/projectsContent/Objectives';
+import GallerySliderMobile from '../bodyContent/projectsContent/GallerySliderMobile';
 
 export default function Interviews() {
    
     return (
             
             <div className="interview">
-                <Objectives/>
+                <GallerySliderMobile/>
             </div>
 
     );

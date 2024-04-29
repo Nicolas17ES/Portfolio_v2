@@ -25,7 +25,7 @@ import ChangeProject from '../../components/bodyContent/projectsContent/ChangePr
  */
 function Music() {
     // Extract necessary values from the GlobalContext.
-    const { dispatch, display_body, navbar_location, button_state } = useContext(GlobalContext);
+    const { dispatch, display_body, navbar_location, button_state, screenWidth } = useContext(GlobalContext);
 
     // Get the current location from React Router and set up navigation.
     const location = useLocation();
@@ -92,7 +92,10 @@ function Music() {
       return (
         <div ref={bodyRef} className="body-container">
             <div className="body-container-top">
-                {(!button_state || !button_state.clicked) &&  <ButtonsBody data={data}/>}
+                {screenWidth >= 700 && (
+                    (!button_state || !button_state.clicked) &&  <ButtonsBody data={data}/>
+                )}
+               
             </div>
                 {!button_state || !button_state.clicked ? (
                     <div className="music-body-container">

@@ -50,12 +50,17 @@ function PinnedImageGallery() {
     const [currentResume, setCurrentResume] = useState(''); 
     const [currentVideo, setCurrentVideo] = useState('');   
     const [viewVideoState, setViewVideoState] = useState(false);       
+    const [viewVideoPopUp, setViewVideoPopUp] = useState(false);       
+    const [hideVideo, setHideVideo] = useState(false);       
+    const [videoSrc, setVideoSrc] = useState(false);       
+    const [videoImage, setVideoImage] = useState(false);       
     const [zoomOut, setZoomOut] = useState(false);   
     const [blockedButton, setBlockButton] = useState(false);   
     const workRef = useRef(null); // Reference to the '.work' container
     const imageRef = useRef(null); // Reference to the '.work' container
     const modalRef = useRef(null); // Reference to the '.work' container
     const textRef = useRef(null); // Reference to the '.work' container
+    const videoRef = useRef(null); // Reference to the '.work' container
 
     const data = {
         'shop': [
@@ -295,7 +300,6 @@ function PinnedImageGallery() {
             document.body.style.overflowY = 'hidden';
         }
     };
-console.log(blockedButton)
     // open pop up video
     const viewVideo = (e, value) => {
         e.preventDefault();
@@ -418,12 +422,64 @@ console.log(blockedButton)
 
     
 
-    
+    useEffect(() => {
+        if (modalRef.current && videoRef.current) {
+            if (viewVideoPopUp && !hideVideo) {
+                // Ensures that the modal and image are ready to be interacted with and visible
+                gsap.to(modalRef.current, {
+                    duration: 1.5,
+                    opacity: 1,
+                    pointerEvents: 'all',
+                    ease: 'power2.inOut'
+                });
+                gsap.fromTo(videoRef.current, {
+                    scale: 0.35,
+                    opacity: 0,
+                    x: 50,
+                }, {
+                    duration: 1.5,
+                    scale: 1,
+                    opacity: 1,
+                    x: 0,
+                    y: -30,
+                    ease: 'power2.out',
+                    onComplete: () => setBlockButton(false)
+                });
+            } else if (hideVideo) {
+                // Animate out when closing the zoom
+                gsap.to(modalRef.current, {
+                    duration: 1,
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    ease: 'power2.inOut',
+                    onComplete: () => {
+                        setViewVideoPopUp(false)
+                        setVideoImage(null)
+                        setVideoSrc(null)
+                        document.body.style.overflowY = 'auto';
+                        setHideVideo(false)
+                    }
+                });
+                gsap.to(videoRef.current, {
+                    duration: 0.8,
+                    scale: 0.35,
+                    x: 50,
+                    y: 0,
+                    opacity: 0.3,
+                    ease: 'power2.in'
+                });
+            }
+        }
+    }, [viewVideoPopUp, hideVideo]);
+
     const displayPopUp = (index, image) => {
-        dispatch({
-            type: 'SET_DISPLAY_VIDEO_POPUP',
-            payload: {index: index, value: true, image: image},
-        })
+        setVideoImage(image)
+        setVideoSrc(index)
+        setViewVideoPopUp(true)
+        document.body.style.overflowY = 'hidden';
+    }
+    const closeVideoPopUp = () => {
+        setHideVideo(true)
     }
 
     useGSAP(() => {
@@ -439,26 +495,23 @@ console.log(blockedButton)
         <div className="pinned-gallery-container">
             {isZoomed && (
                 <div ref={modalRef} className="image-zoom-modal" onClick={() => !blockedButton && closeImageZoom()}>
-                    {/* {viewVideoState ? (
-                        <>
-                            <button onClick={(e) => viewVideo(e, false)} className="view-video-button">close video</button>
-                            <video
-                                className='zoomed-video'
+                             <img ref={imageRef} src={currentImage} alt="Zoomed" className="zoomed-image" />
+                            <p ref={textRef} className="modal-resume">{currentResume}</p>
+                </div> 
+            )}
+            {viewVideoPopUp && (
+                <div ref={modalRef} className="image-zoom-modal" onClick={() => closeVideoPopUp()}>
+                             <video
+                                ref={videoRef}
+                                poster={videoImage}
+                                className='video-player'
+                                id="myVideo"
                                 controls
                                 muted
                             >
-                                {currentVideo && <source src={currentVideo} type="video/mp4" />}
+                                {videoSrc && <source src={videoSrc} type="video/mp4" />}
                                 Your browser does not support the video tag.
                             </video>
-                            <p ref={textRef} className="modal-resume">{currentResume}</p>
-                        </>
-                    ) : (
-                        <> */}
-                            {/* <button onClick={(e) => viewVideo(e, true)} className="view-video-button">view video</button> */}
-                            <img ref={imageRef} src={currentImage} alt="Zoomed" className="zoomed-image" />
-                            <p ref={textRef} className="modal-resume">{currentResume}</p>
-                        {/* </>
-                    )}*/}
                 </div> 
             )}
             <section ref={workRef} className="work">

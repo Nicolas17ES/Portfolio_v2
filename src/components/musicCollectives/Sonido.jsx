@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger);
 
 function Sonido() {
-     const {dispatch, exit_component, button_state} = useContext(GlobalContext);
+     const {dispatch, exit_component, button_state, display_soundcloud_player, screenWidth} = useContext(GlobalContext);
      const [hoveredIndex, setHoveredIndex] = useState(null);
 
 
@@ -91,12 +91,6 @@ function Sonido() {
       useEffect(() => {
         if(button_state.value === 0 && exit_component){
             gsap.to(".soundcloud-outer-animation", {
-                // yPercent: 440,
-                // duration: 2,
-                // stagger: {
-                //     amount: 0.26,
-                //     from: "end", // Change the direction to start from the end
-                // },
                 duration: .9,
                 opacity: 0
             });
@@ -112,7 +106,11 @@ function Sonido() {
          <div className="music-collectives-bottom-container" style={{margin: '30px 0px 60px 0'}}>
          {audioData.map((audio, index) => (
              <div className="soundcloud-outer-animation" onMouseLeave={handleMouseLeave} onMouseEnter={() => handleMouseEnter(index)} key={audio.id}>
-                 <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />
+                 {screenWidth > 700 ? (
+                        <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />
+                    ) : (
+                        display_soundcloud_player && <SoundCloudPlayer audio={audio} isHovered={index === hoveredIndex} />
+                    )}
              </div>
          ))}
      </div>

@@ -14,7 +14,6 @@ import SonidoxDulac from '../../images/SonidoXDulac.jpg'; // Import the image
 import Sonidoxgarage from '../../images/SonidoXgarage.jpg'; // Import the image
 import SonidoxDonnie from '../../images/SonidoXdonnie.jpg'; // Import the image
 import SonidoXWendy from '../../images/SonidoXWendy.jpg'; 
-import MathewVideo from '../../videos/mathew.mov';
 import SliderCard from './SliderCard'
 
 
@@ -60,7 +59,7 @@ function BodySlider() {
             {
                 image_one: SonidoxSamovar,
                 image_two: SonidoxMathew,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 6,
                 alt: 'Sonido x Samovar',
                 title: 'Sonido x Samovar',
@@ -72,7 +71,7 @@ function BodySlider() {
             {
                 image_one: Sonidoxgarage,
                 image_two: SonidoxIkaUshe,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 7,
                 alt: 'Sonido X Carrau',
                 title: 'Sonido X Carray',
@@ -84,7 +83,7 @@ function BodySlider() {
             {
                 image_one: SonidoxDonnie,
                 image_two: SonidoxIkaUshe,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 8,
                 alt: 'Sonido X Donnie',
                 title: 'Sonido X Donnie',
@@ -96,7 +95,7 @@ function BodySlider() {
             {
                 image_one: SonidoXWendy,
                 image_two: SonidoxIkaUshe,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 9,
                 alt: 'Sonido X Wendy',
                 title: 'Sonido X Wendy',
@@ -107,7 +106,7 @@ function BodySlider() {
             {
                 image_one: SonidoXTzena,
                 image_two: SonidoxIkaUshe,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 0,
                 alt: 'Sonido X Tzena',
                 title: 'Sonido X Tzena',
@@ -118,7 +117,7 @@ function BodySlider() {
             {
                 image_one: SonidoxIkaUshe,
                 image_two: SonidoxMathew,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 1,
                 alt: 'Sonido x Ika & Usherenko',
                 title: 'Sonido x Ika & Usherenko',
@@ -129,7 +128,7 @@ function BodySlider() {
             {
                 image_one: SonidoxMathew,
                 image_two: SonidoXWendy,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 2,
                 alt: 'Sonido x Mathew Neequaye',
                 title: 'Sonido x Mathew Neequaye',
@@ -140,7 +139,7 @@ function BodySlider() {
             {
                 image_one: SonidoxTommy,
                 image_two: SonidoxIkaUshe,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 3,
                 alt: 'Sonido X Tommy',
                 title: 'Sonido X Tommy',
@@ -151,7 +150,7 @@ function BodySlider() {
             {
                 image_one: SonidoxPoggio,
                 image_two: SonidoxMathew,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 4,
                 alt: 'Sonido x Poggio',
                 title: 'Sonido x Poggio',
@@ -162,7 +161,7 @@ function BodySlider() {
             {
                 image_one: SonidoxDulac,
                 image_two: SonidoXWendy,
-                video: MathewVideo,
+                // video: MathewVideo,
                 id: 5,
                 alt: 'Sonido x Felix Dulac',
                 title: 'Sonido x Felix Dulac',

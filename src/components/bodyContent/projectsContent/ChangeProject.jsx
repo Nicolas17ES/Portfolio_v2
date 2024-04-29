@@ -12,9 +12,8 @@ import { GiBranchArrow } from "react-icons/gi";
 // The Projects component displays project sections and handles animations based on mouse movements.
 function ChangeProject({origin}) {
 
-
     // State and context for managing cursor visibility, animations, and global app state.
-    const { navbar_location, dispatch, button_state} = useContext(GlobalContext);
+    const { navbar_location, dispatch, button_state, change_slide, display_image_overlay, screenWidth} = useContext(GlobalContext);
     const navigate = useNavigate();
 
     const data = [
@@ -95,44 +94,132 @@ function ChangeProject({origin}) {
                 ease: 'power2.in'
             });
             
+        } else if (origin === 'carousel'){
+            let indexValue;
+      
+                if(!button_state){
+                    if(!change_slide.value && value === -1){
+                        indexValue = 2;
+                    } else if (!change_slide.value && value === 1){
+                        indexValue = 1;
+                    } else if (change_slide.value === 2 && value === 1){
+                        indexValue = 0;
+                    } else if (change_slide.value === 0 && value === -1){
+                        indexValue = 2;
+                    } else{
+                        indexValue = (change_slide.value + value)
+                    }
+                    dispatch({
+                        type: 'SET_CHANGE_SLIDE',
+                        payload: {value: indexValue, origin: true},
+                    })
+                    
+                } else {
+
+                    if(button_state.value === 0 && value === -1){
+                        indexValue = 2
+
+                    } else if (button_state.value === 2 && value === 1){
+                        indexValue = 0
+                    } else {
+                        indexValue = button_state.value + value;
+                    }
+                    dispatch({
+                        type: 'SET_EXIT_COMPONENT',
+                        payload: true,
+                    })
+                    setTimeout(() => {
+                        dispatch({
+                            type: 'SET_EXIT_COMPONENT',
+                            payload: false,
+                        })
+                        dispatch({
+                            type: 'SET_CLICKED_BUTTON',
+                            payload: { clicked: true, value: indexValue},
+                        });
+                    }, 1000)
+                    
+                }
+               
+            
         }
     }
 
+    // fade out content if image display and origina its carousel
+    useEffect(() => {
+        if(display_image_overlay && origin === 'carousel'){
+            
+            gsap.to('.change-project-container', {
+                opacity: 0,
+                ease: 'power2.out',
+                duration: 1,
+            })
+        }
+    }, [display_image_overlay])
+
+    // fade in anitmaiton on render
+    useEffect(() => {         
+            gsap.fromTo('.change-project-container', {
+                opacity: 0,
+            }, {
+                delay: 2,
+                opacity: 1,
+                ease: 'power2.out',
+                duration: 1,
+            })
+    }, [])
+
     const moveText = (direction) => {
-        if(direction === 'left'){
-            gsap.to('.change-project-text', {
-                x: -30,
-                duration: .4,
-                ease: 'power2.inOut'
-            })
-        } else if(direction === 'center'){
-            gsap.to('.change-project-text', {
-                x: 0,
-                duration: .4,
-                ease: 'power2.inOut'
-            })
-        } else if(direction === 'right'){
-            gsap.to('.change-project-text', {
-                x: 30,
-                duration: .4,
-                ease: 'power2.inOut'
-            })
+        if(screenWidth > 500){
+            if(direction === 'left'){
+                gsap.to('.change-project-text', {
+                    x: -30,
+                    duration: .4,
+                    ease: 'power2.inOut'
+                })
+            } else if(direction === 'center'){
+                gsap.to('.change-project-text', {
+                    x: 0,
+                    duration: .4,
+                    ease: 'power2.inOut'
+                })
+            } else if(direction === 'right'){
+                gsap.to('.change-project-text', {
+                    x: 30,
+                    duration: .4,
+                    ease: 'power2.inOut'
+                })
+            }
         }
     }
     
-    
+    const viewProject = () => {
+        if(screenWidth <= 500 && origin === 'carousel' && change_slide.value !== null){
+            dispatch({
+                type: 'SET_CHANGE_SLIDE',
+                payload: { value: 0, origin: null },
+            });
+            dispatch({
+                type: 'SET_CLICKED_BUTTON',
+                payload: { clicked: true, value: change_slide.value},
+            });
+        } else {
+            return
+        }
+    }
+     console.log('heya', change_slide.value)
     return (
         <section className="change-project-outer">
             <div className="change-project-container">
             <div className="change-project-block">
                 {navbar_location !== 'aulart-sh' && (
                     <>
-                        <GiBranchArrow onMouseEnter={() => moveText('left')} onMouseLeave={() => moveText('center')} onClick={() => changeProject(-1)} style={{rotate: '135deg', marginRight: '15px'}} className='change-project-arrow change-project-left'/>
+                        <GiBranchArrow onMouseEnter={() => moveText('left')} onMouseLeave={() => moveText('center')} style={{rotate: '135deg', marginRight: '15px'}} className='change-project-arrow change-project-left'/>
                         <span className="previous-project">(prev)</span>
                     </>
                 )}
             </div>
-            <span className="change-project-text">change project</span>
+            <span onClick={() => viewProject()} className="change-project-text">{screenWidth <= 500 && origin === 'carousel' ? 'view project' : 'change project'}</span>
             <div className="change-project-block">
                 {navbar_location !== 'linkinj' && (
                         <>

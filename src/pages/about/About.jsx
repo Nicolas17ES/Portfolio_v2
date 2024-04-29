@@ -21,6 +21,9 @@ import FotoGafas from '../../images/FotoGafas.png'
 import SkillsList from '../../components/bodyContent/SkillsList';
 import AboutFooter from '../../components/bodyContent/projectsContent/AboutFooter';
 import CSSRulePlugin from "gsap/CSSRulePlugin";
+import { FaGithub, FaInstagram } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
+import { CiLinkedin } from "react-icons/ci";
 
 gsap.registerPlugin(CSSRulePlugin);
 gsap.registerPlugin(ScrollTrigger);
@@ -30,18 +33,19 @@ function About() {
 
 
    // Get the current location from React Router
-   const location = useLocation();
-   const navigate = useNavigate();
-   const pathname = location.pathname.substring(1); // Removes the leading slash
+   const paragraphRefOne = useRef(null);
+   const paragraphRefTwo = useRef(null);
 
-   const {display_body, navbar_location, prevLocation} = useContext(GlobalContext);
+   const {display_body, screenWidth, prevLocation} = useContext(GlobalContext);
 
    // only render skilsl list when animations done: 
    const [renderSkills, setRenderSkills] = useState(false);
+   const [titleAnimationFinished, setTitleAnimationFinished] = useState(false);
+   const [subTitleAnimationFinished, setSubtitleAnimationFinished] = useState(false);
 
 
    useGSAP(() => {
-    if (display_body) {
+    if (display_body && screenWidth > 600 && !titleAnimationFinished) {
         const paragraphs = document.querySelectorAll('.about-paragraph');
         paragraphs.forEach(paragraph => {
             const textContent = paragraph.textContent;
@@ -76,11 +80,21 @@ function About() {
                 ease: 'back.out',
             });
         });
+    } else if(display_body && screenWidth <= 600 && titleAnimationFinished){
+      console.log('htithitr')
+      gsap.to(".about-paragraph", {
+         opacity: 1,
+         duration: 1,
+         ease: 'power2.in'
+       });
     }
-}, [display_body]);
+}, [display_body, titleAnimationFinished, screenWidth]);
+
+// Empty dependency array to run once on mount
+
 
 useGSAP(() => {
-   if(display_body){
+   if(display_body && screenWidth > 600){
       gsap.from(".about-subtitle-1", {
          scrollTrigger: {
            trigger: ".about-subtitle-1",
@@ -91,11 +105,22 @@ useGSAP(() => {
          x: -350,
          duration: 1,
        });
+   } else if (display_body && screenWidth <= 600 && titleAnimationFinished){
+      gsap.to(".about-subtitle-1", {
+         opacity: 1,
+         duration: 1,
+         ease: 'power2.in',
+         onComplete: () => {
+            if(screenWidth <= 600){
+               setSubtitleAnimationFinished(true)
+            }
+         }
+       });
    }
- }, [display_body]);
+ }, [display_body, titleAnimationFinished]);
 
 useGSAP(() => {
-   if(display_body){
+   if(display_body && screenWidth > 600){
       gsap.from(".about-subtitle-2", {
          scrollTrigger: {
            trigger: ".about-subtitle-2",
@@ -106,8 +131,20 @@ useGSAP(() => {
          x: -350,
          duration: 1,
        });
+   } else if (display_body && screenWidth <= 600 && subTitleAnimationFinished){
+      gsap.to(".skills-slider-container", {
+         opacity: 1,
+         duration: 1,
+         ease: 'power2.in'
+       });
+      gsap.to(".about-subtitle-2", {
+         opacity: 1,
+         duration: 1,
+         ease: 'power2.in',
+         delay: .5
+       });
    }
- }, [display_body]);
+ }, [display_body, screenWidth, subTitleAnimationFinished]);
 
 
 
@@ -121,6 +158,11 @@ useGSAP(() => {
           duration: 1.4,
           ease: 'Power3.easeOut',
           delay: .3,
+          onComplete: () => {
+            if(screenWidth <= 600){
+               setTitleAnimationFinished(true)
+            }
+         }
         })
          gsap.from('.about-title', {
             y: 200,
@@ -187,18 +229,32 @@ useGSAP(() => {
             </section>
             <section className="about-content-container">   
                <h3  className={`about-subtitle about-subtitle-1`}>Behind the Keyboard </h3>
-               <p className="about-paragraph about-paragraph-1">"As a self-taught developer specializing in both <span className="red">front-end</span> and <span className="red">back-end</span> technologies, I've honed my skills through <span className="red">real-world</span> experience and dedicated mentorship at Aulart. My journey in this dynamic field has been shaped by <span className="red">hands-on</span> projects and insightful guidance from industry experts." </p>
+               <p ref={paragraphRefOne} className="about-paragraph about-paragraph-1">"As a self-taught developer specializing in both <span className="red">front-end</span> and <span className="red">back-end</span> technologies, I've honed my skills through <span className="red">real-world</span> experience and dedicated mentorship at Aulart. My journey in this dynamic field has been shaped by <span className="red">hands-on</span> projects and insightful guidance from industry experts." </p>
             </section>
-            <section style={{marginBottom: '100px'}} className="about-content-container">
+            <section className="about-content-container about-content-container-2">
             <div className="skills-slider-container">
               <SkillsSider/>
             </div>
             </section>
-            <section style={{marginBottom: '100px'}} className="about-content-container">
+            <section className="about-content-container about-content-container-3">
                <h3  className={`about-subtitle about-subtitle-2`}>Embarking on Web Adventures</h3>
-               <p className="about-paragraph about-paragraph-2">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code. From crafting seamless <span className="red">user interfaces</span> to architecting robust systems, I ensure that every <span className="red">digital creation</span> is as functional as it is beautiful."</p>
+               <p ref={paragraphRefTwo} className="about-paragraph about-paragraph-2">"With a passion for innovation and a keen eye for detail, I bring  <span className="red">ideas to life</span>  in pixels and code. From crafting seamless <span className="red">user interfaces</span> to architecting robust systems, I ensure that every <span className="red">digital creation</span> is as functional as it is beautiful."</p>
             </section>
-            <AboutFooter/>
+            {screenWidth > 500 && <AboutFooter/>}
+            {screenWidth <= 800 && (
+               <div className="socials-mobile-container">
+                  <a href="https://github.com/Nicolas17ES" rel="noreferrer" target="_blank" className="inner-socials-mobile">
+                        <FaGithub size={30} className='github-mobile-icon'/> Github
+                    </a>
+                    <a href="https://www.instagram.com/sonido__club/"  rel="noreferrer" target="_blank"  className="inner-socials-mobile">
+                       <FaInstagram/> Instagram
+                    </a>
+                    <a href="mailto:luque.nicolas1994@gmail.com" className="inner-socials-mobile">
+                        <IoMdMail /> Mail
+                    </a>
+               </div>
+
+            )}
          </div> 
 
    );

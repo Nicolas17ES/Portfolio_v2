@@ -10,16 +10,21 @@ import BottomNavBar from '../../components/header/bottomNavBar/BottomNavBar';
 import GlobalContext from '../../context/GlobalContext';
 import MusicFoto from '../../images/ReissUnsilenced.jpeg'
 import ProjectsFoto from '../../images/AulartHome.png'
+import CloseNavBarButton from '../../components/shared/CloseNavBarButton';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 
 function MainLateral( ) {
   // Define and initialize local state variables using the useState hook
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeLinkIndex, setActiveLinkIndex] = useState(null);
   const [lateralNavBar, setLateralNavBar] = useState(false);
+  const [opacityNavBar, setOpacityNavbar] = useState(true);
 
 
   // Access global context using the useContext hook
-  const { dispatch, lateral_navbar, hide_nav, start_lateral_nav_animation, navbar_location} = useContext(GlobalContext);
+  const { dispatch, lateral_navbar, hideNavBar, start_lateral_nav_animation, navbar_location, displayHiddenNavBar, display_body} = useContext(GlobalContext);
 
   // Create a ref for the navbar element
   const navbarRef = useRef(null);
@@ -39,7 +44,7 @@ function MainLateral( ) {
     })
   }
 
-
+console.log("display_body", display_body)
   // Define navigation items
   const navItems = [
     {
@@ -80,28 +85,33 @@ function MainLateral( ) {
   };
 
 
-  const [displayNavbar, setDisplayNavbar] = useState(false)
 
   useEffect(() => {
     // Update the navbar's CSS classes based on global state
-    if ((lateral_navbar || start_lateral_nav_animation) && !hide_nav) {
-      setDisplayNavbar(true)
+    if ((lateral_navbar || start_lateral_nav_animation) && !hideNavBar && !displayHiddenNavBar) {
       navbarRef.current.classList.add('display-navbar');
       navbarRef.current.classList.remove('hide-navbar');
-      setTimeout(() => {
-        dispatch({ type: 'SET_BODY', payload: true});
-      }, 1500)
-    }  else  if ((lateral_navbar) && hide_nav) {
+      navbarRef.current.classList.remove('display-navbar-fixed');
+    }  else  if ((lateral_navbar) && hideNavBar && !displayHiddenNavBar) {
       navbarRef.current.classList.add('hide-navbar');
       navbarRef.current.classList.remove('display-navbar');
+      setTimeout(() => {
+        setOpacityNavbar(false)
+      }, 1500);
+    } else if ((lateral_navbar) && hideNavBar && displayHiddenNavBar){
+      navbarRef.current.classList.add('display-navbar');
+      navbarRef.current.classList.add('display-navbar-fixed');
+      navbarRef.current.classList.remove('hide-navbar');
     }
-  }, [hide_nav, lateral_navbar, start_lateral_nav_animation, lateralNavBar]);
+    setTimeout(() => {
+      dispatch({ type: 'SET_BODY', payload: true});
+    }, 1000)
+  }, [hideNavBar, lateral_navbar, start_lateral_nav_animation, lateralNavBar, displayHiddenNavBar]);
 
   // to={navItems[index].toLowerCase()} onClick={() => setNavBarLocation(navItems[index].toLowerCase())}
 
   const changeLocation = (currentIndex) => {
       const destination = navItems[currentIndex].name.toLowerCase();
-      console.log(navbar_location)
       if(navbar_location === 'music' && destination === 'music'){
         dispatch({
           type: 'SET_IMAGE_OVERLAY',
@@ -119,11 +129,12 @@ function MainLateral( ) {
       }
   }
 
-
-
   return (
     <>
-      <nav style={{visibility: displayNavbar ? 'visible' : 'hidden'}} ref={navbarRef} className='navbar lateral-navbar' data-active-index={activeIndex}>
+    {lateral_navbar && hideNavBar && (
+          <CloseNavBarButton />
+        )}
+      <nav style={{opacity: (hideNavBar && !displayHiddenNavBar && opacityNavBar ) ? 0 : 1}}  ref={navbarRef} className='navbar lateral-navbar' data-active-index={activeIndex}>
         {/* {lateral_navbar && !hide_nav && (
           <AiOutlineClose onClick={() => changeNavBarState(true)} size={20} className="button-close-nav" />
         )} */}

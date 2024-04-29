@@ -22,22 +22,6 @@
 }
 
 
-/* @keyframes move-navbar {
-  from {
-   border-left: 1px solid rgba(var(--black), .3);
-    width: 100%;
-  }
-
-  to{
-     width: 25%;
-    border-left: 1px solid rgba(var(--black), .3);
-    margin-left: auto;
-  }
-} */
-
-
-
-
 
 
 .nav-links-container {
@@ -58,15 +42,6 @@
 }
 
 
-/* @keyframes animate-links-container {
-  from {
-    height: 100%; 
-  }
-  to {
-    height: 30%;
-  }
-} */
-
 
 
 
@@ -86,19 +61,6 @@
   flex-direction: column;
   justify-content: space-between;
 } 
-
-/* 
-@keyframes animate-links {
-  from {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-  }
-  to {
- 
-    left: 83px;
-  }
-} */
 
 .nav-link, .nav-link-lateral{
   position: relative;
@@ -180,18 +142,12 @@
 }
 
 .nav-link-image{
-  width: 300px;
   height: auto;
   border-radius: 5px;
   position: absolute;
   box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
   opacity: 0;
-  /* animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate-reverse;
-  transform-origin: 50% 50%;
-  animation-name: skeOne; */
+
 }
 
 @keyframes skeOne {
@@ -200,15 +156,16 @@
 }
 .nav-link-image0{
   width: 320px;
-  right: 180px;
+  right: 4%;
   top: 120px;
 }
 .nav-link-image1{
-  left: 180px;
+  left: 4%;
   top: 250px;
+  width: 300px;
 }
 .nav-link-image2{
-  right: 180px;
+  right: 4%;
   bottom: 120px;
   width: 270px;
 }
@@ -218,30 +175,6 @@
   display: inline-block; 
 }
 
-/* @keyframes animate-link {
-  from {
-    font-size: 3.3rem;
-  }
-  to {
-    font-size: 2rem !important;
-  }
-} */
-
-/* 
-@keyframes animate-navbar-links {
-  from {
-    font-size: 2.5rem;
-     padding: 20px 0;
-  }
-
- 
-
-  to {
-    font-size: 1.7rem;
-    font-weight: 400;
-     padding: 10px 0;
-  }
-} */
 
 
 .bottom-nav-bar{
@@ -298,6 +231,16 @@
     linear-gradient(to bottom, rgba(var(--black), 0.08) 1px, transparent 1px);
 }
 
+.display-navbar-fixed{
+  position: fixed;
+    top: 0;
+    z-index: 999999;
+    background-color: rgb(var(--white));
+    width: 30%;
+    animation: display-navbar 1.6s forwards;
+    overflow: hidden;
+}
+
 .hide-navbar {
   animation: hide-navbar 1.5s forwards;
   overflow: hidden;
@@ -332,6 +275,121 @@
   }
 }
 
+@media (max-width: 1170px) {
+
+  /* main nav */
+  .nav-link-image0{
+    width: 250px;
+    right: 4%;
+    top: 120px;
+  }
+  .nav-link-image1{
+    left: 4%;
+    top: 250px;
+    width: 230px;
+  }
+  .nav-link-image2{
+    right: 4%;
+    bottom: 120px;
+    width: 200px;
+  }
+  
+  /* MOBILENAVBAR */
+  .curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--white), .8); /* Semi-transparent black background */
+    backdrop-filter: blur(1px); /* Blur effect */
+    z-index: 99999; /* Make sure this is below the navbar but above other content */
+    display: none; /* Hidden by default */
+}
+.show-curtain {
+  display: block; /* Show the curtain */
+}
+.navbar-icon-mobile-container{
+  position: fixed;
+    right: 8px;
+    top: 10px;
+    z-index: 99999999;
+    padding: 10px;
+}
+
+  .navbar-icon-mobile{
+    
+    width: 50px;
+    height: 50px;
+    
+    cursor: pointer;
+    transition: all .5s;
+    border-radius: 50%;
+    padding: 8px;
+  }
+  .navbar-icon-mobile-close {
+    position: fixed;
+    right: 30px;
+    top: 25px;
+    z-index: 99999999;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .navbar-icon-mobile:hover{
+    transform: scale(.9);
+    color: rgb(var(--white)) !important;
+    background-color: rgb(var(--red)) !important;
+  }
+  .close-icon{
+    top: 25px;
+    right: 27px;
+    opacity: 0;
+    width: 35px;
+    height: 35px;
+    transform: translateX(70%);
+  }
+
+  .mobile-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    padding: 30px 30px 20px 30px;
+    z-index: 999999999;
+    transform: translateY(-100%);
+    background-color: rgb(var(--white));
+  }
+  .nav-links-mobile{
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-link-mobile{
+
+  }
+
+  .link-mobile{
+    color: rgb(var(--black)) !important;
+  cursor: pointer;
+  font-size: 1.8rem;
+  /* padding: 0 !important; */
+  text-decoration: none;
+  transition: opacity 400ms ease;
+  font-weight: 400 !important;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 800;
+  padding: 11px 0;
+  }
+}
+@media (max-width: 1000px) {
+  .display-navbar-fixed{
+    position: fixed;
+      width: 35%;
+  }
+}
 @media (max-width: 880px) {
   .nav-links {
     display: flex;
@@ -354,4 +412,5 @@
   .nav-icon-container{
     display: none;
   }
+
 }

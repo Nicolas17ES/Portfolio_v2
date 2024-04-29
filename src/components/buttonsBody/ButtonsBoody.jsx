@@ -74,18 +74,6 @@ function ButtonsBody({data}) {
             }, 1000)
             
         }
-        // dispatch({
-        //     type: 'SET_SLIDE_ACTIVE_INDEX',
-        //     payload: null,
-        // });
-        // dispatch({
-        //     type: 'SET_ANIMATION_VALUE',
-        //     payload: null
-        // })
-        // dispatch({
-        //     type: 'SET_CAROUSEL_INDEX',
-        //     payload: index
-        // })
        
     };
 

@@ -2,6 +2,7 @@ import GlobalContext from '../../context/GlobalContext'
 import { useEffect, useState, useContext, useRef } from 'react'
 import '../../pages/about/About.css'
 import ImageOverlay from '../shared/ImageOverlay';
+import MusicCarouselBottomMobile from './MusicCarouselBottomMobile';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
@@ -18,6 +19,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import CSSRulePlugin from "gsap/CSSRulePlugin";
 import MagneticEffect from '../mouse/MagneticEffect';
+import ChangeProject from './projectsContent/ChangeProject'
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSRulePlugin);
@@ -25,7 +27,7 @@ gsap.registerPlugin(CSSRulePlugin);
 
 function MusicCarousel() {
     // Accessing global context values
-    const { display_image_overlay, dispatch, change_slide, display_body } = useContext(GlobalContext);
+    const { display_image_overlay, dispatch, change_slide, display_body, screenWidth, button_state } = useContext(GlobalContext);
     const [activeIndexState, setActiveIndex] = useState(null);
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [imageIndex, setImageIndex] = useState(null);
@@ -94,14 +96,14 @@ function MusicCarousel() {
 
 
     const displayImageOverlay = (index) => {
-        setImageIndex(index)
         dispatch({
             type: 'SET_IMAGE_OVERLAY',
             payload: true
         })
+        setImageIndex(index)
         
     }
-
+    
     useGSAP(() => {
         if (display_image_overlay) {
             gsap.fromTo('.counter-indicator', {
@@ -143,7 +145,7 @@ function MusicCarousel() {
     }, [display_image_overlay]);
 
     useEffect(() => {
-        if(cursorVisible && hoverEnabled){
+        if(cursorVisible && hoverEnabled && screenWidth > 700){
             dispatch({
                 type: 'SET_VIEW_PROJECTS_CURSOR',
                 payload: {
@@ -152,7 +154,7 @@ function MusicCarousel() {
                     background: true,
                 },
             })
-        } else if (!cursorVisible && hoverEnabled){
+        } else if (!cursorVisible && hoverEnabled && screenWidth > 700){
             dispatch({
                 type: 'SET_VIEW_PROJECTS_CURSOR',
                 payload: {
@@ -206,8 +208,9 @@ function MusicCarousel() {
     
     
 
-
+      
     return (
+        <>
            <section className="carousel">
              <div className="wrapper">
                 <div className="row">
@@ -220,7 +223,7 @@ function MusicCarousel() {
                             //     prevEl: '.swiper-button-prev',
                             //     clickable: true,
                             // }}
-                            allowTouchMove={false}
+                            allowTouchMove={!screenWidth > 700}
                             speed={600} // Adjust the speed of the slide transition (in milliseconds)
                             effect="slide"
                             // modules={[Navigation]}
@@ -232,7 +235,7 @@ function MusicCarousel() {
                                     <span className="large-text before">SonidoClub</span> 
                                     <span className="large-text after">SonidoClub</span>
                                     <figure
-                                        onMouseEnter={() => setCursorVisible(true)} 
+                                        onMouseEnter={() => setCursorVisible(screenWidth > 700)} 
                                         onMouseLeave={() => setCursorVisible(false)} 
                                         onClick={() => displayImageOverlay(0)}
                                         className={`image-wrap ${!hoverEnabled ? 'no-hover' : ''}`}
@@ -248,7 +251,7 @@ function MusicCarousel() {
                                 <div className="content">
                                     <span className="large-text before">Unsilenced</span>
                                     <figure onClick={() => displayImageOverlay(1)}
-                                        onMouseEnter={() => setCursorVisible(true)} 
+                                        onMouseEnter={() => setCursorVisible(screenWidth > 700)} 
                                         onMouseLeave={() => setCursorVisible(false)} 
                                         className={`image-wrap ${!hoverEnabled ? 'no-hover' : ''}`} 
                                         style={{pointerEvents: display_image_overlay && 'none'}}>
@@ -263,7 +266,7 @@ function MusicCarousel() {
                                 <div className="content">
                                     <span className="large-text before">Aureabywc</span>
                                     <figure 
-                                        onMouseEnter={() => setCursorVisible(true)} 
+                                        onMouseEnter={() => setCursorVisible(screenWidth > 700)} 
                                         onMouseLeave={() => setCursorVisible(false)} 
                                         onClick={() => displayImageOverlay(2)} 
                                         className={`image-wrap ${!hoverEnabled ? 'no-hover' : ''}`}
@@ -279,37 +282,25 @@ function MusicCarousel() {
                         </Swiper>
                     </div>
                         <div className="carousel-info">
-                            {/* {activeIndexState !== null ? (
-                                <>
-                                    <span className="designer carousel-info-element">By: {carouselData[activeIndexState].designer}</span>
-                                    <span className="date carousel-info-element">{carouselData[activeIndexState].date}</span>
-                                </>
-                            ) : (
-                                <>
-                                    <span className="designer carousel-info-element">By: Marina</span>
-                                    <span className="date carousel-info-element">15 Feb 2023</span>
-                                </>
-                            )} */}
                            
                         </div>
-                    {/* </div> */}
                 </div>
              </div>
-             {/* <div className="carousel-nav carousel-info-element">
-                <MagneticEffect>
-                <button className="btn prev swiper-button-prev"> 
-                <IoIosArrowDropleft onClick={() => changeSlide('prev')} className='carousel-icon'/>                          
-                </button>
-                </MagneticEffect>
-                <span className="counter-indicator">{activeIndexState + 1}/3</span>
-                <MagneticEffect>
-                <button className="btn next swiper-button-next">
-                <IoIosArrowDropright onClick={() => changeSlide('next')} className='carousel-icon'/> 
-                </button>
-                </MagneticEffect>
-                </div> */}
            </section>
+           {(screenWidth <= 500 && (!button_state || !button_state.clicked)) &&  <ChangeProject origin={'carousel'}/>}
+           {screenWidth <= 500 && (
+            <div className="carousel-top-container">
+                <p className="carousel-top-paragraph">
+                My journey in the <span className="red">music industry</span> spans across three distinct music collectives, each with a unique focus on promoting <span className="red">underground talent</span>.
 
+                Currently, I'm engaged with <span className="red">Sonido_Club </span>in Barcelona, where I contribute to organizing music events that blend local and international artists.
+
+                Previously, I collaborated with <span className="red">Aurea</span> in Barcelona and <span className="red">Unsilenced</span> in Amsterdam.
+                                </p>
+                            </div>
+            )}
+           {/* {screenWidth <= 500 && <MusicCarouselBottomMobile/>} */}
+           </>
     );
 }
 

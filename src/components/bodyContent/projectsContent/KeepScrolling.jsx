@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 function KeepScrolling({version, margin}) {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { dispatch, display_resumes, projects_resumes_animation_finished} = useContext(GlobalContext);
+    const { screenWidth} = useContext(GlobalContext);
 
     useEffect(() => {
       // Animate scroll boxes with a stagger effect
@@ -44,7 +44,7 @@ function KeepScrolling({version, margin}) {
             scrub: true, 
             onUpdate: self => {
               gsap.set(`.collectives-scroll-bar-${version}`, {
-                height: self.progress * 130 + "px",
+                height: self.progress * (screenWidth > 780 ? '130' : '50') + "px",
               });
             }
           },
