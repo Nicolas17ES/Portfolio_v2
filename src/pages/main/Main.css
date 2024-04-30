@@ -275,6 +275,28 @@
   }
 }
 
+@media (min-width: 1700px) {
+  .nav-link-image0{
+    width: 420px;
+    right: 8%;
+    top: 120px;
+  }
+  .nav-link-image1{
+    left: 8%;
+    top: 250px;
+    width: 400px;
+  }
+  .nav-link-image2{
+    right: 8%;
+    bottom: 120px;
+    width: 370px;
+  }
+  .link-lateral{
+    font-size: 3rem;
+
+  }
+  
+}
 @media (max-width: 1170px) {
 
   /* main nav */

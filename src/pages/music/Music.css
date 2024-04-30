@@ -809,6 +809,51 @@ opacity: .8; /* Color del texto de la leyenda */
 }
 
 
+@media (min-width: 1700px){
+  .image-wrap{
+    width: 730px;
+    height: 500px;
+  }
+  .large-text {
+    font-size: 135px;
+}
+
+.large-text.before {
+  top: 160px;
+}
+.large-text.after {
+  top: 160px;
+}
+
+.collectives-header-container{
+  padding: 30px 60px;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  position: relative;
+}
+
+.collectives-header-title {
+  font-size: 7.5rem;
+}
+
+.collectives-header-image-container {
+  top: 320px;
+  right: 200px;
+}
+.collectives-header-image {
+  width: 850px;;
+}
+
+.collectives-header-paragraph {
+  margin-top: 250px;
+}
+.player-artist {
+  font-size: 4.7rem;
+}
+.body-container-top{
+  padding-left: 30px;
+}
+}
 @media (max-width: 1300px){
   .player-artist{
     font-size: 3rem;

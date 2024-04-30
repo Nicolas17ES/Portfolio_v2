@@ -216,7 +216,7 @@ useGSAP(() => {
                   <h2 className="about-title">Nicolas</h2>
                 <span className="about-title-word">{renderSkills ? <SkillsList/> : null}</span> 
                </div>
-               <div className="about-title-container">
+               <div className="about-title-container about-title-container-image">
                   <div className="image-about-wrap">
                   <img src={FotoBebida} alt="" className="foto-about"/>
                   </div>

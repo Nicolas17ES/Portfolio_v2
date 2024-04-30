@@ -360,7 +360,7 @@ useGSAP(() => {
     }
   });
 }, [])
-
+console.log(screenWidth)
   
 return (
     <>

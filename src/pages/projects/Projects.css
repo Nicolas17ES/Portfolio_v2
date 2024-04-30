@@ -299,7 +299,7 @@ height: 70px;
 }
 
 .project-paragraph{
-    font-size: 2.5rem;
+    font-size: 2rem;
     letter-spacing: .5px;
     font-weight: 100;
     line-height: 1.1em;
@@ -707,6 +707,57 @@ display:none;
     font-size: .9rem;
     opacity: .7;
     font-style: italic;
+}
+
+@media (min-width: 1700px) {
+    .projects-main-title-container{
+        padding: 0 30px;
+    }
+    .collectives-scroll-bar-container {
+        right: 30px;
+    }
+    .projects-paragraphs-container {
+        padding: 0 30px;
+    }
+    .pinned-gallery-container {
+        padding: 0 30px;
+    }
+    .work {
+        display: flex;
+        gap: 100px;
+    }
+    .projects-objectives-container {
+        padding: 0 30px;
+    }
+    .footer-container {
+        padding: 0 60px;
+    }
+    .change-project-outer {
+        padding: 0 60px;
+    }
+    .single-project-container .project-title{
+        font-size: 8rem;
+    }
+    .single-project-container .project-image{
+        width: 450px;
+        top: -100px;
+        right: 0;
+
+    }
+    .project-title-h3{
+        font-size: 9.5rem;
+        letter-spacing: 1.5px;
+        line-height: 8rem;
+    }
+    .projects-main-title-one{
+        padding-top: 35px;
+    }
+    
+    .projects-list-container {
+        margin-top: 45px;
+        padding: 0 60px;
+    }
+
 }
 
 @media (max-width: 1300px){

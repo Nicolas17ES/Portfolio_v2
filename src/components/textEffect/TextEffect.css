@@ -95,6 +95,12 @@
   background-color: rgb(var(--red)) !important;
 }
 
+@media (min-width: 1700px){
+  .icon-replica-inner-container {
+    left: 37px;
+}
+}
+
 
 
 

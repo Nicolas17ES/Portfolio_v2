@@ -523,6 +523,11 @@ right: -10px;
 
 
 
+@media (min-width: 1700px) {
+  .footer-container{
+    font-size: 1rem;
+  }
+}
 @media (max-width: 1200px) {
   .bottom-lateral-navbar {
     padding:15px;
