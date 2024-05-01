@@ -212,7 +212,7 @@ const viewProject = (index) => {
         ease: 'Power3.easeOut',
     });
     tl.to('.single-project-container', {
-        xPercent: -110,
+        xPercent: -125,
         duration: .7,
         ease: 'Power3.easeOut',
         stagger: 0.15,
@@ -235,13 +235,13 @@ const viewProject = (index) => {
                             ref={listItemRefs[0]} 
                             className="single-project-container container-shoop"
                             onMouseOver={() => { 
-                            if(!blockAnimations){
+                            if(!blockAnimations && screenWidth > 500){
                                 setCursorVisible(true, 1)
                                 addMouseMoveListener(0)
                             }
                             }} 
                             onMouseLeave={() => {
-                            if(!blockAnimations){
+                            if(!blockAnimations  && screenWidth > 500){
                                 setCursorVisible(false, null)
                                 removeMouseMoveListener(0)
                             }
@@ -260,13 +260,17 @@ const viewProject = (index) => {
                          ref={listItemRefs[1]} 
                         className="single-project-container container-bio"
                         onMouseOver={() => { 
-                          setCursorVisible(true, 2)
-                          addMouseMoveListener(1)
-                        }} 
-                        onMouseLeave={() => {
-                          setCursorVisible(false, null)
-                          removeMouseMoveListener(1)
-                        }} 
+                            if(!blockAnimations && screenWidth > 500){
+                                setCursorVisible(true, 2)
+                                addMouseMoveListener(1)
+                            }
+                            }} 
+                            onMouseLeave={() => {
+                            if(!blockAnimations  && screenWidth > 500){
+                                setCursorVisible(false, null)
+                                removeMouseMoveListener(1)
+                            }
+                            }} 
                     >
                         
                         <div className="porject-title-container">
@@ -281,13 +285,17 @@ const viewProject = (index) => {
                         style={{borderBottom: '1px solid rgb(var(--black))'}}                     
                         className="single-project-container container-tools"
                         onMouseOver={() => { 
-                          setCursorVisible(true, 3)
-                          addMouseMoveListener(2)
-                        }} 
-                        onMouseLeave={() => {
-                          setCursorVisible(false, null)
-                          removeMouseMoveListener(2)
-                          }} 
+                            if(!blockAnimations && screenWidth > 500){
+                                setCursorVisible(true, 3)
+                                addMouseMoveListener(2)
+                            }
+                            }} 
+                            onMouseLeave={() => {
+                            if(!blockAnimations  && screenWidth > 500){
+                                setCursorVisible(false, null)
+                                removeMouseMoveListener(2)
+                            }
+                            }} 
                     >
                         <div className="porject-title-container">
                         <h3 className="project-title"><span className="project-number">[03]</span>Link_In_Bio</h3>

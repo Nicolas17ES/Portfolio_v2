@@ -1047,3 +1047,68 @@
 
 
 }
+
+@media (max-width: 340px){
+  .about-image-container {
+    margin-bottom: 90px;
+}
+  .about-title {
+    font-size: 2rem;
+  }
+  .about-title-container{
+    padding: 10px 0;
+  }
+
+  .image-about-wrap {
+    height: 40px;
+    width: 70px;
+}
+
+.about-subtitle {
+  font-size: 1rem;
+}
+.about-paragraph {
+  margin-top: 20px;
+  font-size: .85rem;
+}
+.about-image-container {
+  margin-bottom: 60px;
+  }
+
+.about-content-container {
+  margin-bottom: 80px;
+}
+
+.slider-skill {
+  font-size: 1.15rem;
+
+}
+
+.skills-slider-container {
+  margin: 5px 0px 5px 0;
+  height: 35px;
+}
+
+
+
+.about-bottom {
+  margin-top: -70px;
+  margin-bottom: 40px;
+}
+
+
+.socials-mobile-container{
+  margin-top: 50px;
+  justify-content: space-between;
+}
+
+.inner-socials-mobile{
+  gap: 6px;
+  font-size: .7rem;
+
+}
+.github-mobile-icon{
+  width: 12px;
+  height: 12px;
+}
+}

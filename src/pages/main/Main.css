@@ -572,3 +572,13 @@
   }
 
 }
+
+@media (max-width: 340px){
+  .link{
+    font-size: 2rem;
+  }
+
+  .link-mobile {
+    font-size: 1.4rem;
+    }
+}

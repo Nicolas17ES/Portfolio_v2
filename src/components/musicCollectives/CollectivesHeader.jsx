@@ -31,7 +31,7 @@ function CollectivesHeader() {
     {
       title: 'Aurea',
       image: WhiteChocoNye,
-      caption: 'NYE 20219 Event',
+      caption: 'NYE 2019 Event',
       paragraph: 'Aurea BY WC began as a vibrant project in <span class="red">Barcelona</span>, organizing events across <span class="red">various venues</span> featuring an array of <span class="red">local artists</span>. What started merely as casual gatherings among friends quickly transformed into a profound movement, where exceptional music was played and shared.'
     },
   ]

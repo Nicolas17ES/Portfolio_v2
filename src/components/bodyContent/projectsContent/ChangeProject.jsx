@@ -213,7 +213,7 @@ function ChangeProject({origin}) {
             <div className="change-project-block">
                 {navbar_location !== 'aulart-sh' && (
                     <>
-                        <GiBranchArrow onMouseEnter={() => moveText('left')} onMouseLeave={() => moveText('center')} style={{rotate: '135deg', marginRight: '15px'}} className='change-project-arrow change-project-left'/>
+                        <GiBranchArrow onMouseEnter={() => moveText('left')} onMouseLeave={() => moveText('center')} onClick={() => changeProject(-1)} style={{rotate: '135deg', marginRight: '15px'}} className='change-project-arrow change-project-left'/>
                         <span className="previous-project">(prev)</span>
                     </>
                 )}

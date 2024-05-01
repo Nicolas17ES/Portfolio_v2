@@ -1276,3 +1276,58 @@ opacity: .8; /* Color del texto de la leyenda */
 }
 
 
+
+@media (max-width: 340px){
+  .large-text {
+    font-size: 38px;
+  }
+  .large-text.before {
+    top: 65px;
+  }
+  .large-text.after{
+    top: 65px;
+  }
+  .image-wrap {
+    width: 230px;
+    height: 190px;
+  }
+  .carousel-top-paragraph{
+    font-size: .9rem;
+  }
+  .collectives-header-image {
+    width: 115%;
+    }
+
+    .collectives-header-paragraph {
+      font-size: .85rem;
+      }
+
+  .collectives-header-container {
+   padding-bottom: 0px;
+    }
+  .collectives-header-podacts-titles {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .audio-player {
+    height: 70px;
+    }
+.player-data-container-top {
+  padding: 5px 12.5px;
+  gap: 15px;
+}
+.play-button {
+  width: 21px;
+  height: 21px;
+  padding: 6.5px;
+  }
+  .player-artist {
+font-size: .9rem;
+}
+
+.time-player-container {
+  font-size: .65rem;
+  }
+
+}

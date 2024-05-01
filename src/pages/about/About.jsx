@@ -214,7 +214,9 @@ useGSAP(() => {
                
                <div className="about-title-container" style={{borderTop: '1px solid rgb(var(--black))'}}>
                   <h2 className="about-title">Nicolas</h2>
-                <span className="about-title-word">{(browser === 'Safari') ? 'Software Engineer' : <SkillsList/>}</span> 
+               {screenWidth > 550 && (
+                   <span className="about-title-word">{(browser === 'Safari') ? 'Software Engineer' : <SkillsList/>}</span> 
+               )}
                </div>
                <div className="about-title-container about-title-container-image">
                   <div className="image-about-wrap">
