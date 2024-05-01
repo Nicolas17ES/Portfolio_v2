@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import './CurtainOverlay.css';
 
-function CurtainOverlay({ onAnimationComplete }) {
+function CurtainOverlay() {
   const overlayRef = useRef(null);
 
   useEffect(() => {
