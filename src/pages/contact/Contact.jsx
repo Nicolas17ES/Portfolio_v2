@@ -26,14 +26,6 @@ function Contact() {
     useBodyAnimation(bodyRef, navbar_location, pathname, navigate);
     
 
-    const data = {
-    location: 'about',
-    buttons: [
-            {name: '<Thankyou>'},
-        ]
-    }
-
-
   return (
       <div ref={bodyRef} className="body-container">
         {/* <ButtonsBody data={data}/> */}
