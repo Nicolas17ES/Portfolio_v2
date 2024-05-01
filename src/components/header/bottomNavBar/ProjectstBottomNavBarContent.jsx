@@ -4,13 +4,11 @@ import GlobalContext from '../../../context/GlobalContext';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import usePreviousLocation from '../../../hooks/usePreviousLocation'
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ProjectstBottomNavBarContent() {
-    const prevLocation = usePreviousLocation();
-    const { project_index_hovered, display_body, navbar_location, lateral_navbar } = useContext(GlobalContext);
+    const { project_index_hovered} = useContext(GlobalContext);
     const [awaitExpand, setAwaitExpand] = useState(true);
 
 

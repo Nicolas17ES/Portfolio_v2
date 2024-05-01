@@ -1,8 +1,6 @@
 import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
-import ProjectsMainTitle from './ProjectsMainTitle';
-import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useContext } from 'react'
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

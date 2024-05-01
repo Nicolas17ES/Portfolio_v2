@@ -1,12 +1,9 @@
 import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
-import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
-import { useGSAP } from "@gsap/react";
+import { useEffect, useState, useContext } from 'react'
 import gsap from "gsap";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSRulePlugin);
@@ -16,7 +13,7 @@ gsap.registerPlugin(CSSRulePlugin);
 function Objectives() {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { navbar_location, dispatch, screenWidth } = useContext(GlobalContext);
+    const { navbar_location, screenWidth } = useContext(GlobalContext);
     const [value, setValue] = useState(null);
 
     useEffect(() => {

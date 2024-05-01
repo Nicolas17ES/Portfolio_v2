@@ -1,29 +1,17 @@
-import ButtonsBody from '../../components/buttonsBody/ButtonsBoody'
 import './About.css'
-import useBodyAnimation from '../../hooks/useBodyAnimation'; // Import your custom hook
-import Test from '../../images/imagetest.jpg'
 import GlobalContext from '../../context/GlobalContext'
 import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate } from 'react-router-dom';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import SplitTextJS from "split-text-js";
-import {useInView} from 'react-intersection-observer'
-import useSubtitleAnimation from '../../hooks/useSubtitleAnimation'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import Skills from '../../components/bodyContent/Skills'
 import AnimatedIcon from '../../components/bodyContent/AnimatedIcon'
-import ScreenOverlay from '../../components/shared/ScreenOverlay';
 import SkillsSider from '../../components/bodyContent/SkillsSider';
-import FotoCarro from '../../images/nicolas/FotoCarro.JPG'
 import FotoBebida from '../../images/nicolas/FotoBebida.JPG'
-import FotoGafas from '../../images/FotoGafas.png'
 import SkillsList from '../../components/bodyContent/SkillsList';
 import AboutFooter from '../../components/bodyContent/projectsContent/AboutFooter';
 import CSSRulePlugin from "gsap/CSSRulePlugin";
 import { FaGithub, FaInstagram } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
-import { CiLinkedin } from "react-icons/ci";
 
 gsap.registerPlugin(CSSRulePlugin);
 gsap.registerPlugin(ScrollTrigger);

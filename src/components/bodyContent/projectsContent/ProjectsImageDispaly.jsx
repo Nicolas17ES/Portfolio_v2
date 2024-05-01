@@ -1,15 +1,12 @@
 import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
 
 import ProductImage from '../../../images/aulartshop/Product.png'
 import Friday2 from '../../../images/aulartshop/Friday2.png'
 import LearningPaths from '../../../images/aulartshop/LearningPaths.png'
 
-import HomeTools from '../../../images/aulartools/HomeTools.png'
 import ChaptersTools from '../../../images/aulartools/ChaptersTools.png'
-import ChaptersToolsBlack from '../../../images/aulartools/ChaptersToolsBlack.png'
 import HomeToolsWhite from '../../../images/aulartools/HomeToolsWhite.png'
 import EditorTools from '../../../images/aulartools/EditorTools.png'
 
@@ -32,7 +29,7 @@ gsap.registerPlugin(ScrollToPlugin);
 function ProjectsImageDispaly() {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { title_animation_finshed, dispatch, display_resumes, navbar_location, screenWidth, display_body } = useContext(GlobalContext);
+    const { title_animation_finshed, dispatch, display_resumes, navbar_location, screenWidth } = useContext(GlobalContext);
     const[animationFinsihed, setAnimationFinsihed] = useState(false);
     const [value, setValue] = useState(null);
     const [learnMorePending, setLearnMorePending] = useState(false);

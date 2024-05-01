@@ -1,10 +1,8 @@
 import './Contact.css'
-import ButtonsBody from '../../components/buttonsBody/ButtonsBoody'
 import useBodyAnimation from '../../hooks/useBodyAnimation'; // Import your custom hook
 
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
-import { FaArrowUpLong } from "react-icons/fa6";
+import {  useContext, useRef } from 'react'
 import { useLocation,   useNavigate } from 'react-router-dom';
 
 

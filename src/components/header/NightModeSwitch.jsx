@@ -11,7 +11,6 @@ function NightModeSwitch() {
   const [darkMode, setDarkMode] = useState(true);
   const [index, setIndex] = useState(0);
   const {display_header} = useContext(GlobalContext)
-  const [intervalId, setIntervalId] = useState(null);
 
 
   

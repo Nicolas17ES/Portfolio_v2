@@ -1,12 +1,8 @@
-import TextEffect from '../../components/textEffect/TextEffect';
-import Main from '../main/Main';
+
 import './Landing.css';
-import React, { useRef, useEffect, useState, useContext } from 'react';
+import React, {useEffect, useState, useContext } from 'react';
 import GlobalContext from '../../context/GlobalContext';
-import NightMode from '../../components/header/NightModeSwitch';
-import CounterLoader from '../../components/shared/CounterLoader';
 import useMousePositionTracker from '../../hooks/useMousePositionTracker';
-import MainLateral from '../main/MainLateral';
 
 function Background() {
   // Define and initialize local state variables using the useState hook

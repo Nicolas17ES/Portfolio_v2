@@ -1,10 +1,6 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
 import { useContext, useState, useEffect } from "react";
-import SonidoXTzena from '../../images/SonidoXTzena.jpg';
-import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
-import SonidoxMathew from '../../images/SonidoxMathew.jpg';
-import SonidoxTommy from '../../images/SonidoXtommy.jpg';
 import { PiVinylRecordLight, PiRadioLight } from "react-icons/pi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -25,7 +21,6 @@ function Aurea() {
             type: <PiVinylRecordLight className="player-icon"/>,
             title: 'Dimensions',
             artist: 'Sugar Free',
-            image:  <img  src={SonidoXTzena} alt="" className="player-image" />,
         },
         {
             id: 10,
@@ -34,7 +29,6 @@ function Aurea() {
             type: <PiRadioLight  className="player-icon"/>,
             title: 'Podcast',
             artist: 'Bruno&Marco',
-            image: <img  src={SonidoxIkaUshe} alt="" className="player-image" />,
         },
         {
             id:11,
@@ -43,7 +37,6 @@ function Aurea() {
              type: <PiRadioLight className="player-icon"/>,
             title: 'Uns Podcats',
             artist: 'Former',
-            image: <img  src={SonidoxMathew} alt="" className="player-image" />,
         },
         {
             id: 12,
@@ -52,7 +45,6 @@ function Aurea() {
             type: <PiRadioLight className="player-icon"/>,
             title: 'Aurea Podcast',
             artist: 'John Heaven',
-            image: <img  src={SonidoxTommy} alt="" className="player-image" />,
         },
      ]
 

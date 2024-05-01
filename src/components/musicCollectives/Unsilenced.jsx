@@ -1,10 +1,6 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
 import { useContext, useState, useEffect } from "react";
-import SonidoXTzena from '../../images/SonidoXTzena.jpg';
-import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
-import SonidoxMathew from '../../images/SonidoxMathew.jpg';
-import SonidoxTommy from '../../images/SonidoXtommy.jpg';
 import { PiVinylRecordLight, PiRadioLight } from "react-icons/pi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -25,7 +21,6 @@ function Unsilenced() {
             type: <PiRadioLight className="player-icon"/>,
             title: 'Unsilenced Poddy',
             artist: 'Former',
-            image:  <img  src={SonidoXTzena} alt="" className="player-image" />,
         },
         {
             id: 6,
@@ -34,7 +29,6 @@ function Unsilenced() {
             type: <PiRadioLight  className="player-icon"/>,
             title: 'Unsilenced Poddy',
             artist: 'Bruno&Marco',
-            image: <img  src={SonidoxIkaUshe} alt="" className="player-image" />,
         },
         {
             id: 7,
@@ -43,7 +37,6 @@ function Unsilenced() {
              type: <PiVinylRecordLight className="player-icon"/>,
             title: 'Unsilenced',
             artist: 'Paradise CB',
-            image: <img  src={SonidoxMathew} alt="" className="player-image" />,
         },
         {
             id: 8,
@@ -52,7 +45,6 @@ function Unsilenced() {
             type: <PiRadioLight className="player-icon"/>,
             title: 'ItemCast 033',
             artist: 'LegramVG',
-            image: <img  src={SonidoxTommy} alt="" className="player-image" />,
         },
      ]
 

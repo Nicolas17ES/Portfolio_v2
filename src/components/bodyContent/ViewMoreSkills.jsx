@@ -1,11 +1,9 @@
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useContext} from 'react'
 import '../../pages/about/About.css'
-import Image from '../../images/ChocoXAfter.jpg'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SplitTextJS from "split-text-js";
 import ReactCurvedText from 'react-curved-text';
 
 

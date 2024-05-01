@@ -4,13 +4,12 @@
  * This component manages the main navigation, active link highlighting, and interactions with the global context.
  */
 import './Main.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext, useRef } from 'react';
 import GlobalContext from '../../context/GlobalContext';
 import MusicFoto from '../../images/ReissUnsilenced.jpeg'
 import ProjectsFoto from '../../images/AulartHome.png'
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import MagneticEffect from '../../components/mouse/MagneticEffect';
 

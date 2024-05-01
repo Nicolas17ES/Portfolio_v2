@@ -1,8 +1,6 @@
 import './Music.css';
 import ButtonsBody from '../../components/buttonsBody/ButtonsBoody';
-import NamesAnimations from '../../components/bodyContent/NamesAnimations';
 import MusicCarousel from '../../components/bodyContent/MusicCarousel';
-import BodySlider from '../../components/bodyContent/BodySlider';
 import useBodyAnimation from '../../hooks/useBodyAnimation';
 import GlobalContext from '../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react';

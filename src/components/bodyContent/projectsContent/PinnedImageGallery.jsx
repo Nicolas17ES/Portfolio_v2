@@ -1,7 +1,6 @@
 import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 // SHOP IMAGES
@@ -43,7 +42,7 @@ gsap.registerPlugin(ScrollTrigger);
 // The Projects component displays project sections and handles animations based on mouse movements.
 function PinnedImageGallery() {
 
-    const { dispatch, display_vide_popup, navbar_location } = useContext(GlobalContext);
+    const { display_vide_popup, navbar_location } = useContext(GlobalContext);
     const [value, setValue] = useState(null);
     const [isZoomed, setIsZoomed] = useState(false);
     const [currentImage, setCurrentImage] = useState('');   

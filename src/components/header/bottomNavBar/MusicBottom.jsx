@@ -1,12 +1,10 @@
 import './BottomContent.css'
-import { useEffect, useState, useContext, useRef } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import GlobalContext from '../../../context/GlobalContext';
 import { FaArrowLeft } from "react-icons/fa";
 import MusicBottomContent from './MusicBottomContent';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import SplitTextJS from "split-text-js";
 import usePreviousLocation from '../../../hooks/usePreviousLocation'
 
 

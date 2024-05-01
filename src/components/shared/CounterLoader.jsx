@@ -1,6 +1,5 @@
 import '../header/NavBars.css'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { useEffect, useState, useContext, useRef} from 'react'
+import { useEffect, useContext, useRef} from 'react'
 import GlobalContext from '../../context/GlobalContext'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

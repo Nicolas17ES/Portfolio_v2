@@ -1,10 +1,9 @@
-import React, { useRef, useEffect, useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GlobalContext from '../../context/GlobalContext';
 import './TextEffect.css';
 import MagneticEffect from '../mouse/MagneticEffect';
 import { initialState } from '../../context/GlobalContext';
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 

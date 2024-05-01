@@ -1,10 +1,6 @@
 import SoundCloudPlayer from "./SoundCloudPlayer";
 import GlobalContext from "../../context/GlobalContext";
 import { useContext, useState, useEffect } from "react";
-import SonidoXTzena from '../../images/SonidoXTzena.jpg';
-import SonidoxIkaUshe from '../../images/SonidoxIkaUshe.jpg';
-import SonidoxMathew from '../../images/SonidoxMathew.jpg';
-import SonidoxTommy from '../../images/SonidoXtommy.jpg';
 import { PiVinylRecordLight, PiRadioLight } from "react-icons/pi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -25,7 +21,6 @@ function Sonido() {
             type: <PiVinylRecordLight className="player-icon"/>,
             title: 'Allegro',
             artist: 'Nace Tzena',
-            image:  <img  src={SonidoXTzena} alt="" className="player-image" />,
         },
         {
             id: 2,
@@ -34,7 +29,6 @@ function Sonido() {
             type: <PiRadioLight  className="player-icon"/>,
             title: 'BadumTish',
             artist: 'Ika & Usherenko',
-            image: <img  src={SonidoxIkaUshe} alt="" className="player-image" />,
         },
         {
             id: 3,
@@ -43,7 +37,6 @@ function Sonido() {
              type: <PiRadioLight className="player-icon"/>,
             title: 'Dimensions',
             artist: 'Mathew Neequaye',
-            image: <img  src={SonidoxMathew} alt="" className="player-image" />,
         },
         {
             id: 4,
@@ -52,7 +45,6 @@ function Sonido() {
             type: <PiRadioLight className="player-icon"/>,
             title: 'Cartulis',
             artist: 'Tommy Pickles',
-            image: <img  src={SonidoxTommy} alt="" className="player-image" />,
         },
      ]
 

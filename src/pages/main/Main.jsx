@@ -4,17 +4,15 @@
  * This component manages the main navigation, active link highlighting, and interactions with the global context.
  */
 import './Main.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext, useRef } from 'react';
 import BottomNavBar from '../../components/header/bottomNavBar/BottomNavBar';
 import GlobalContext from '../../context/GlobalContext';
-import { AiOutlineClose } from 'react-icons/ai';
 import { PiArrowElbowLeftFill, PiArrowElbowRightFill } from "react-icons/pi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import MusicFoto from '../../images/ReissUnsilenced.jpeg'
 import ProjectsFoto from '../../images/AulartHome.png'
-import FotoCarro from '../../images/nicolas/FotoCarro.JPG'
 import FotoBebida from '../../images/nicolas/FotoBebida.JPG'
 
 function Main() {
@@ -26,7 +24,7 @@ function Main() {
   const [entered, setEntered] = useState(false); // Tracks if the mouse has entered a project section.
 
   // Access global context using the useContext hook
-  const { dispatch, isMobile, screenWidth, lateral_navbar, navbar_location, mouse_position } = useContext(GlobalContext);
+  const { dispatch, screenWidth, lateral_navbar, navbar_location, mouse_position } = useContext(GlobalContext);
 
   // Create a ref for the navbar element
   const navbarRef = useRef(null);

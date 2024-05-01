@@ -1,7 +1,7 @@
 import './Projects.css'
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
+import { useContext } from 'react'
+import { useParams } from 'react-router-dom';
 import AulartShoop from '../../components/bodyContent/projectsContent/AulartShoop';
 import AulartTools from '../../components/bodyContent/projectsContent/AulartTools';
 import LinkInBio from '../../components/bodyContent/projectsContent/LinkInBio';

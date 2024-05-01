@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import GlobalContext from '../../context/GlobalContext';
 import './TextEffect.css';
 import { useGSAP } from "@gsap/react";
@@ -11,16 +10,13 @@ function TextEffect({ displayCurtaint }) {
   // Define and initialize local state variables using the useState hook
   const [positionHeader, setPositionHeader] = useState(false);
   const [displayName, setDisplayName] = useState(false);
-  const [animationFinished, setAnimationFinished] = useState(false);
 
   // Access global context using the useContext hook
-  const { dispatch, animation_finished, display_body, animation_text_started, display_header, lateral_navbar } = useContext(GlobalContext);
+  const { dispatch, display_body, animation_text_started, display_header, lateral_navbar } = useContext(GlobalContext);
 
   // Define the alphabet for the text effect
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  // Create a navigation function for routing
-  const navigate = useNavigate();
 
   // Create a ref for the text element
   const textRef = useRef(null);

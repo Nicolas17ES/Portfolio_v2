@@ -1,10 +1,8 @@
-import { GiPentarrowsTornado } from "react-icons/gi";
 import GlobalContext from '../../context/GlobalContext'
 import { useEffect, useState, useContext, useRef } from 'react'
 import '../../pages/about/About.css'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 // ViewProjectsCursor.js
 

@@ -9,12 +9,10 @@ import { useLocation } from 'react-router-dom';
 import '../NavBars.css';
 import AboutBottomNavBarContent from './AboutBottomNavBarContent';
 import ProjectstBottomNavBarContent from './ProjectstBottomNavBarContent';
-import ContactBottom from './ContactBottom';
 import BottomNavAulartShop from './bottomProjects/BottomNavAulartShop';
 import BottomNavAulartTools from './bottomProjects/BottomNavAulartTools';
 import BottomNavLink from './bottomProjects/BottomNavLink';
 import MusicBottom from './MusicBottom';
-import MouseTracker from '../../mouse/MouseTracker'
 
 function BottomNavBar() {
   // Access global context using the useContext hook

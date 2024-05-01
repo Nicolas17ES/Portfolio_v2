@@ -1,6 +1,5 @@
-import Introducing from '../../images/Introducing.jpg'; // Import the image
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -11,14 +10,12 @@ import 'swiper/css/scrollbar';
 
 function SliderCard({data}) {
     // Accessing global context values
-    const { dispatch, slide_active_index } = useContext(GlobalContext);
+    const { dispatch } = useContext(GlobalContext);
     const [slideActiveIndex, setSlideActiveIndex] = useState(null);
     const [loaded, setLoaded] = useState(false);
     const [loadCount, setLoadCount] = useState(0);
-    const [slidedToZero, setSlidedToZero] = useState(false);
     const [swiperInstance, setSwiperInstance] = useState(null);
 
-    const [isSwiperVisible, setIsSwiperVisible] = useState(false); // New state for controlling visibility
 
     // detect the current active slide
     const handleSlideChange = (swiper) => {  
@@ -66,36 +63,6 @@ function SliderCard({data}) {
     
   }, [data]);
 
-
-//    // Navigate to the first slide once the swiper instance is available and images are loaded
-//   useEffect(() => {
-//     // This function is executed when the component mounts
-//     if (swiperInstance && swiperInstance.__swiper__ && loaded) {
-//         // swiperInstance.slideToLoop(0, 0);
-//         setSlidedToZero(true);
-//         setIsSwiperVisible(true);
-//         // Dispatch action when the component mounts and conditions are met
-//         dispatch({
-//             type: 'SET_ACTIVE_SLIDER',
-//             payload: true,
-//         });
-//     }
-
-//     // Cleanup function to be called on component unmount
-//     return () => {
-//         // Dispatch action when the component is about to unmount
-//         dispatch({
-//             type: 'SET_ACTIVE_SLIDER',
-//             payload: false,
-//         });
-//     };
-// }, [swiperInstance, loaded, dispatch]); // Add `dispatch` to the dependency array if it's a prop or could change
-
-
-
-    // if (!loaded) {
-    //     // return <div>Loading images...</div>; // or any other loading indicator
-    // }
 
     return (
         <div className={`body-slider-container ${loaded ? 'visible-slider' : 'hidden'}`}>

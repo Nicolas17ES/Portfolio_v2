@@ -1,11 +1,8 @@
-import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import '../../pages/about/About.css'
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import SplitTextJS from "split-text-js";
-import { GiBranchArrow } from "react-icons/gi";
 
 gsap.registerPlugin(ScrollTrigger);
 

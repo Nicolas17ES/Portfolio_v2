@@ -1,12 +1,8 @@
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useContext, useRef } from 'react'
 import '../../pages/about/About.css'
-import Image from '../../images/ChocoXAfter.jpg'
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { GiBranchArrow } from "react-icons/gi";
-import { IoIosArrowRoundForward } from "react-icons/io";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 function SkillsSubtitles() {
     // Accessing global context values
-    const { display_body, dispatch } = useContext(GlobalContext);
     const titleRef = useRef(null);
 
 

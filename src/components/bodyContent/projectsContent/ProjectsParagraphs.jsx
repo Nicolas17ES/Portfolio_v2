@@ -1,8 +1,6 @@
 import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
-import AulartLogo from '../../../images/aulart_logo.jpeg'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -14,7 +12,6 @@ function ProjectsParagraphs() {
     // State and context for managing cursor visibility, animations, and global app state.
     const { display_resumes, navbar_location, dispatch, projects_resumes_animation_finished, screenWidth} = useContext(GlobalContext);
     const [value, setValue] = useState(null);
-    const introTag = useRef(null);
     const introTag2 = useRef(null);
 
     useEffect(() => {

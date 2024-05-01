@@ -1,8 +1,6 @@
 import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
 import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 // SHOP IMAGES
 import ProductImage from '../../../images/aulartshop/Product.png'
@@ -46,7 +44,6 @@ import 'swiper/css/scrollbar';
 import { GiBranchArrow } from "react-icons/gi";
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import VideoPlayer from './VideoPlayer';
 gsap.registerPlugin(ScrollTrigger);
 
 // The Projects component displays project sections and handles animations based on mouse movements.

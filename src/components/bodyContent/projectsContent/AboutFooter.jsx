@@ -1,12 +1,8 @@
 import '../../../pages/about/About.css'
-import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, useParams } from 'react-router-dom';
-import { useGSAP } from "@gsap/react";
-import FotoGafas from '../../../images/FotoGafas.png'
+import { useEffect, useRef } from 'react'
 import FotoCarro from '../../../images/nicolas/FotoCarro.JPG'
 import { ReactComponent as Smiley }  from '../../../assets/Smiley.svg'
 import { ReactComponent as Kid2 }  from '../../../assets/Kid2.svg'
-import GlobalContext from '../../../context/GlobalContext';
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 function AboutFooter() {
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { dispatch, display_resumes, projects_resumes_animation_finished} = useContext(GlobalContext);
 
     const svgRef = useRef();
     const svgRef2 = useRef();

@@ -1,8 +1,6 @@
 import '../header/NavBars.css'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { useEffect, useState, useContext, useRef} from 'react'
+import { useContext} from 'react'
 import GlobalContext from '../../context/GlobalContext'
-import {FaGripLines} from 'react-icons/fa'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 import gsap from "gsap";

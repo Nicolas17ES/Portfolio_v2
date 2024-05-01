@@ -1,9 +1,8 @@
 import '../../../pages/projects/Projects.css'
 import GlobalContext from '../../../context/GlobalContext';
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useEffect, useContext } from 'react'
 import {useNavigate } from 'react-router-dom';
 
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { GiBranchArrow } from "react-icons/gi";
 

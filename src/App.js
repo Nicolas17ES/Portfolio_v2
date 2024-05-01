@@ -1,9 +1,6 @@
 import React, { useRef, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import CloseNavBarButton from './components/shared/CloseNavBarButton';
-import NightMode from './components/header/NightModeSwitch';
 import Landing from './pages/landing/Landing';
-import TextEffect from './components/textEffect/TextEffect';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import Music from './pages/music/Music';
@@ -12,9 +9,7 @@ import { GlobalProvider } from './context/GlobalContext';
 import GlobalContext from './context/GlobalContext';
 import Interviews from './components/test/Interviews';
 import useScrollPosition from './hooks/useScrollPosition';
-import MouseTracker from './components/mouse/MouseTracker';
 import IconReplica from './components/textEffect/IconReplica';
-import ScreenOverlay from './components/shared/ScreenOverlay';
 import Footer from './components/header/Footer'
 import ViewProjectsCursor from './components/mouse/ViewProjectsCursor';
 import useResetScroll from './hooks/useResetScroll'
@@ -48,7 +43,7 @@ function WrappedApp() {
   useIsMobile();
   useBrowserDetection();
   const pathname = location.pathname;
-  const { dispatch, screenWidth, lateral_navbar, displayMobileNavBar, display_header, hideNavBar, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation, display_vide_popup } = useContext(GlobalContext);
+  const { dispatch, screenWidth, lateral_navbar, displayMobileNavBar, display_header, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation} = useContext(GlobalContext);
 
   const containerRef = useRef(null);
   const scrollPosition = useScrollPosition();

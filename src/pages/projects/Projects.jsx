@@ -1,14 +1,12 @@
-import ButtonsBody from '../../components/buttonsBody/ButtonsBoody'
 import './Projects.css'
 import useBodyAnimation from '../../hooks/useBodyAnimation'; // Import your custom hook
 import AulartHome from '../../images/AulartHome.png'
-import AulartTools from '../../images/AulartTools.png'
 import AulartTools2 from '../../images/AulartTools2.png'
 import LinkInBio from '../../images/LinkBio.png'
 
 import GlobalContext from '../../context/GlobalContext'
 import { useEffect, useState, useContext, useRef } from 'react'
-import { useLocation,   useNavigate, Link } from 'react-router-dom';
+import { useLocation,   useNavigate } from 'react-router-dom';
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

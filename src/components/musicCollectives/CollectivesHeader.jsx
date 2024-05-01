@@ -3,7 +3,6 @@ import { useContext, useEffect, useRef } from "react";
 import ReissUnsilenced from '../../images/ReissUnsilenced.jpeg';
 import WhiteChocoNye from '../../images/WhiteChocoNye.jpeg';
 import SonidoXEnfants from '../../images/SonidoEnfants2.png';
-import { GiMagnifyingGlass } from "react-icons/gi";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'

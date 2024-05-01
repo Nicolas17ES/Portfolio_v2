@@ -4,15 +4,13 @@
  * This component manages the main navigation, active link highlighting, and interactions with the global context.
  */
 import './Main.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext, useRef } from 'react';
 import BottomNavBar from '../../components/header/bottomNavBar/BottomNavBar';
 import GlobalContext from '../../context/GlobalContext';
 import MusicFoto from '../../images/ReissUnsilenced.jpeg'
 import ProjectsFoto from '../../images/AulartHome.png'
 import CloseNavBarButton from '../../components/shared/CloseNavBarButton';
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 
 function MainLateral( ) {
@@ -24,7 +22,7 @@ function MainLateral( ) {
 
 
   // Access global context using the useContext hook
-  const { dispatch, lateral_navbar, hideNavBar, start_lateral_nav_animation, navbar_location, displayHiddenNavBar, display_body} = useContext(GlobalContext);
+  const { dispatch, lateral_navbar, hideNavBar, start_lateral_nav_animation, navbar_location, displayHiddenNavBar} = useContext(GlobalContext);
 
   // Create a ref for the navbar element
   const navbarRef = useRef(null);

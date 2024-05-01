@@ -1,14 +1,11 @@
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useContext } from 'react'
 import '../../pages/music/Music.css'
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import {ScrollTrigger} from 'gsap/ScrollTrigger'
 
 
 function MusicCarouselBottomMobile() {
     // Accessing global context values
-    const { display_image_overlay, dispatch, display_body, screenWidth, change_slide } = useContext(GlobalContext);
+    const { change_slide } = useContext(GlobalContext);
 
     const buttonIndexReferences = {
         0: 'Sonido_Club',

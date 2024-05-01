@@ -1,7 +1,6 @@
 import './BottomContent.css'
 import { useEffect, useState, useContext, useRef } from 'react';
 import GlobalContext from '../../../context/GlobalContext';
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import usePreviousLocation from '../../../hooks/usePreviousLocation'
 

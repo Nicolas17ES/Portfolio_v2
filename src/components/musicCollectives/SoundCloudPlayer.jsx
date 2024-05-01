@@ -1,17 +1,15 @@
-import { GiPentarrowsTornado } from "react-icons/gi";
-import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+
+import { useEffect, useState, useRef } from 'react'
 import '../../pages/about/About.css'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FaPause, FaPlay } from "react-icons/fa";
 import { useAudioPlayer } from "../../context/AudioPlayerContext";
-import WhiteChocoNye from '../../images/WhiteChocoNye.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SoundCloudPlayer({audio, isHovered}) {
+function SoundCloudPlayer({audio}) {
     const { isPlaying, currentPlayingId, playTrack, stopTrack } = useAudioPlayer();
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);

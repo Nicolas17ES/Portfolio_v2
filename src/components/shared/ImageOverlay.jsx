@@ -1,9 +1,8 @@
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useContext } from 'react'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import SplitTextJS from "split-text-js";
 gsap.registerPlugin(ScrollTrigger);
 
 

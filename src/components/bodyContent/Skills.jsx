@@ -1,15 +1,12 @@
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useContext } from 'react'
 import '../../pages/about/About.css'
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import SplitTextJS from "split-text-js";
-import { DiYeoman } from "react-icons/di";
 import SkillsTable from './SkillsList'
 import SkillsSider from './SkillsSider'
 import SkillsSubtitles from './SkillsSubtitles'
-import ViewMoreSkills from './ViewMoreSkills'
 
 
 gsap.registerPlugin(ScrollTrigger);

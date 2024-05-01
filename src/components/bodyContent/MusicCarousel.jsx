@@ -1,24 +1,19 @@
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext, useRef } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import '../../pages/about/About.css'
 import ImageOverlay from '../shared/ImageOverlay';
-import MusicCarouselBottomMobile from './MusicCarouselBottomMobile';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
-import SplitTextJS from "split-text-js";
-import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
 import Image from '../../images/Introducing.jpg'
 import Image2 from '../../images/ChocoXNye.jpg'
 import Image3 from '../../images/SonidoXWendy.jpg'
-import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import CSSRulePlugin from "gsap/CSSRulePlugin";
-import MagneticEffect from '../mouse/MagneticEffect';
 import ChangeProject from './projectsContent/ChangeProject'
 
 gsap.registerPlugin(ScrollTrigger);
