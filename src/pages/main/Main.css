@@ -150,10 +150,65 @@
 
 }
 
+/* Vendor prefixes for 'keyframes' rule */
 @keyframes skeOne {
-  0% {transform: skew(0);}
-  100% {transform: skew(6deg, 0deg);}
+  0% {
+    transform: skew(0);
+  }
+  100% {
+    transform: skew(6deg, 0deg);
+  }
 }
+
+/* Vendor prefixes for 'keyframes' rule - WebKit */
+@-webkit-keyframes skeOne {
+  0% {
+    -webkit-transform: skew(0);
+            transform: skew(0);
+  }
+  100% {
+    -webkit-transform: skew(6deg, 0deg);
+            transform: skew(6deg, 0deg);
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - Mozilla */
+@-moz-keyframes skeOne {
+  0% {
+    -moz-transform: skew(0);
+            transform: skew(0);
+  }
+  100% {
+    -moz-transform: skew(6deg, 0deg);
+            transform: skew(6deg, 0deg);
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - Microsoft */
+@-ms-keyframes skeOne {
+  0% {
+    -ms-transform: skew(0);
+            transform: skew(0);
+  }
+  100% {
+    -ms-transform: skew(6deg, 0deg);
+            transform: skew(6deg, 0deg);
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - Opera */
+@-o-keyframes skeOne {
+  0% {
+    -o-transform: skew(0);
+            transform: skew(0);
+  }
+  100% {
+    -o-transform: skew(6deg, 0deg);
+            transform: skew(6deg, 0deg);
+  }
+}
+
+
 .nav-link-image0{
   width: 320px;
   right: 4%;
@@ -212,17 +267,60 @@
 
 }
 
+/* Vendor prefixes for 'keyframes' rule */
 @keyframes fade-in {
   from {
     opacity: 0;
   }
 
-  to{
+  to {
     opacity: 1;
   }
 }
 
+/* Vendor prefixes for 'keyframes' rule - WebKit */
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 
+  to {
+    opacity: 1;
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - Mozilla */
+@-moz-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - Microsoft */
+@-ms-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - Opera */
+@-o-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 .nav-links:hover ~ .nav-background-pattern{
   background-size: 11.5vmin 11.5vmin;
@@ -240,40 +338,78 @@
     animation: display-navbar 1.6s forwards;
     overflow: hidden;
 }
-
+/* Vendor prefixes for 'animation' property - hide-navbar */
 .hide-navbar {
+  -webkit-animation: hide-navbar 1.5s forwards;
   animation: hide-navbar 1.5s forwards;
   overflow: hidden;
 }
 
-@keyframes hide-navbar {
+/* Vendor prefixes for 'keyframes' rule - hide-navbar */
+@-webkit-keyframes hide-navbar {
   from {
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
     /* border-radius: 0; */
   }
- 
+
   to {
-    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
     /* border-radius: 70%; */
   }
 }
 
+@keyframes hide-navbar {
+  from {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    /* border-radius: 0; */
+  }
+
+  to {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    /* border-radius: 70%; */
+  }
+}
+
+/* Vendor prefixes for 'animation' property - display-navbar */
 .display-navbar {
+  -webkit-animation: display-navbar 1.6s forwards;
   animation: display-navbar 1.6s forwards;
   overflow: hidden;
 }
 
-@keyframes display-navbar {
+/* Vendor prefixes for 'keyframes' rule - display-navbar */
+@-webkit-keyframes display-navbar {
   from {
-    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
     /* border-radius: 70%; */
   }
 
   to {
-    transform: translateX(0%);
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
     /* border-radius: 0%; */
   }
 }
+
+@keyframes display-navbar {
+  from {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    /* border-radius: 70%; */
+  }
+
+  to {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+    /* border-radius: 0%; */
+  }
+}
+
 
 @media (min-width: 1700px) {
   .nav-link-image0{
@@ -345,7 +481,7 @@
     height: 50px;
     
     cursor: pointer;
-    transition: all .5s;
+    transition: transform 0.5s, color 0.5s, background-color 0.5s, color 0.5s; /* Specify transition for transform, color, and background-color */
     border-radius: 50%;
     padding: 8px;
   }

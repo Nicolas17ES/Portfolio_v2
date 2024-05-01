@@ -9,7 +9,7 @@ import { useGSAP } from "@gsap/react";
 
 function AboutBottomNavBarContent() {
 
- const { navbar_location, display_body, prevLocation } = useContext(GlobalContext);
+ const { navbar_location, browser } = useContext(GlobalContext);
  const [expand, setExpand] = useState(null)
 
  useEffect(() => {
@@ -22,35 +22,6 @@ function AboutBottomNavBarContent() {
 }, [navbar_location])
 
 
-
-// useEffect(() => {
-//     const ctx = gsap.context(() => {
-//       if (display_body) {
-//         gsap.fromTo('.contact-social-container', 
-//           { opacity: 0, y: -100 }, 
-//           { opacity: 1, y: 0, duration: (prevLocation === '/music' || prevLocation === '/projects') ? 1 : .5, stagger: 0.2, delay: (prevLocation === '/music' || prevLocation === '/projects') ? 1.5 : 1.5 }
-//         );
-//       }
-//     });
-  
-//     return () => ctx.revert();
-//   }, [display_body, navbar_location]);
-
-//   useEffect(() => {
-//     // This code runs when the component mounts or updates
-  
-//     return () => {
-//       // Cleanup function: This code runs when the component unmounts
-//         gsap.to('.contact-social-container', {
-//             opacity: 0,
-//             y: -100,
-//             duration: 0.5,
-//             stagger: 0.2,
-//             delay: 0.5
-//         });
-//         };
-//     }, []);
-
 useGSAP(() => {
     // Animation to fade in content smoothly
     gsap.fromTo('.contact-social-container', 
@@ -59,7 +30,7 @@ useGSAP(() => {
     );
   }, []);
 
-
+console.log(browser)
     return (
          <>
             <div className="contact-social-container">
@@ -69,14 +40,16 @@ useGSAP(() => {
                     </a>
                 </div>
              
-                <div onMouseEnter={() => setExpand(1)} onMouseLeave={() => setExpand(11)} className={`contact-social-opposite ${expand === 1 ? 'expand-height' : expand === 11 ? 'shrink-height' : null}`}>
-                    <a href="https://github.com/Nicolas17ES" rel="noreferrer" target="_blank" className="inner-socials inner-socials-opposite scrolling-text">
-                        <div className="text-wrapper">
-                            <span>Where I break things, then fix them.</span>
-                            <span>Where I break things, then fix them.</span> 
-                        </div>
-                    </a>
-                </div>
+                {browser !== 'Safari' && (
+                    <div onMouseEnter={() => setExpand(1)} onMouseLeave={() => setExpand(11)} className={`contact-social-opposite ${expand === 1 ? 'expand-height' : expand === 11 ? 'shrink-height' : null}`}>
+                        <a href="https://github.com/Nicolas17ES" rel="noreferrer" target="_blank" className="inner-socials inner-socials-opposite scrolling-text">
+                            <div className="text-wrapper">
+                                <span>Where I break things, then fix them.</span>
+                                <span>Where I break things, then fix them.</span> 
+                            </div>
+                        </a>
+                    </div>
+                )}
             </div> 
             <div className="contact-social-container">
                 <div onMouseEnter={() => setExpand(2)} onMouseLeave={() => setExpand(22)}  className="contact-social-original">
@@ -84,6 +57,7 @@ useGSAP(() => {
                        <FaInstagram/> Instagram
                     </a>
                 </div>
+                {browser !== 'Safari' && (
                 <div onMouseEnter={() => setExpand(2)} onMouseLeave={() => setExpand(22)} className={`contact-social-opposite ${expand === 2 ? 'expand-height' : expand === 22 ? 'shrink-height' : null}`}>
                     <a href="https://www.instagram.com/sonido__club/"  rel="noreferrer"  target="_blank" className="inner-socials inner-socials-opposite scrolling-text">
                         <div className="text-wrapper">
@@ -92,6 +66,7 @@ useGSAP(() => {
                         </div>
                     </a>
                 </div>
+                 )}
             </div> 
             <div className="contact-social-container">
                 <div onMouseEnter={() => setExpand(3)} onMouseLeave={() => setExpand(33)}  className="contact-social-original">
@@ -99,7 +74,7 @@ useGSAP(() => {
                         <IoMdMail /> Mail
                     </a>
                 </div>
-             
+                {browser !== 'Safari' && (
                     <div onMouseEnter={() => setExpand(3)} onMouseLeave={() => setExpand(33)}  className={`contact-social-opposite ${expand === 3 ? 'expand-height' : expand === 33 ? 'shrink-height' : null}`}>
                         <a hhref="mailto:luque.nicolas1994@gmail.com"  rel="noreferrer" target="_blank" className="inner-socials inner-socials-opposite scrolling-text">
                             <div className="text-wrapper">
@@ -108,6 +83,7 @@ useGSAP(() => {
                             </div>
                         </a>
                     </div> 
+                     )}
             </div> 
             <div className="contact-social-container">
                 <div onMouseEnter={() => setExpand(4)} onMouseLeave={() => setExpand(44)}  className="contact-social-original">
@@ -115,7 +91,7 @@ useGSAP(() => {
                         <CiLinkedin /> LinkedIn
                     </a>
                 </div>
-             
+                {browser !== 'Safari' && (
                     <div onMouseEnter={() => setExpand(4)} onMouseLeave={() => setExpand(44)}  className={`contact-social-opposite ${expand === 4 ? 'expand-height' : expand === 44 ? 'shrink-height' : null}`}>
                          <a href="https://www.linkedin.com/in/nicolas-luque-rodriguez/"  rel="noreferrer"  target="_blank" className="inner-socials inner-socials-opposite scrolling-text">
                             <div className="text-wrapper">
@@ -124,6 +100,7 @@ useGSAP(() => {
                             </div>
                         </a>
                     </div> 
+                     )}
             </div> 
         </>
     )

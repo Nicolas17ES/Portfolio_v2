@@ -14,21 +14,7 @@
   }
 }
 
-/* .blob {
-  background-color: var(--black);
-  height: 200px;
-  aspect-ratio: 1;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  border-radius: 50%;
-  animation: rotate 20s infinite;
-  opacity: 0.8;
-  filter: blur(30px);
-  cursor: pointer;
-  z-index: -1;
-} */
+
 
 
 .mouse-tracker {

@@ -96,16 +96,25 @@ function MusicCarousel() {
 
 
     const displayImageOverlay = (index) => {
-        dispatch({
-            type: 'SET_IMAGE_OVERLAY',
-            payload: true
-        })
-        setImageIndex(index)
-        
+        if(hoverEnabled){
+            dispatch({
+                type: 'SET_IMAGE_OVERLAY',
+                payload: true
+            })
+            setImageIndex(index)
+        }  
     }
     
     useGSAP(() => {
         if (display_image_overlay) {
+            dispatch({
+                type: 'SET_VIEW_PROJECTS_CURSOR',
+                payload: {
+                    text: 'VIEW',
+                    value: false,
+                    background: true,
+                },
+            })
             gsap.fromTo('.counter-indicator', {
                 opacity: 1,
             }, {

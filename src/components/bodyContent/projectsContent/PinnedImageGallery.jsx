@@ -51,7 +51,8 @@ function PinnedImageGallery() {
     const [currentVideo, setCurrentVideo] = useState('');   
     const [viewVideoState, setViewVideoState] = useState(false);       
     const [viewVideoPopUp, setViewVideoPopUp] = useState(false);       
-    const [hideVideo, setHideVideo] = useState(false);       
+    const [hideVideo, setHideVideo] = useState(false);   
+    const [isPlaying, setIsPlaying] = useState(false);    
     const [videoSrc, setVideoSrc] = useState(false);       
     const [videoImage, setVideoImage] = useState(false);       
     const [zoomOut, setZoomOut] = useState(false);   
@@ -488,7 +489,22 @@ function PinnedImageGallery() {
         }, {opacity: 1,
             ease: "power1.inOut",
             duration: 1.5})
-    }, [])
+    }, []);
+
+    const playVideo = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        if(isPlaying){
+            videoRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+        
+    };
+
+    
 
     if(value === null) return null;
     return (
@@ -502,6 +518,7 @@ function PinnedImageGallery() {
             {viewVideoPopUp && (
                 <div ref={modalRef} className="image-zoom-modal" onClick={() => closeVideoPopUp()}>
                              <video
+                                onClick={(e) => playVideo(e)}
                                 ref={videoRef}
                                 poster={videoImage}
                                 className='video-player'
@@ -509,7 +526,7 @@ function PinnedImageGallery() {
                                 controls
                                 muted
                             >
-                                {videoSrc && <source src={videoSrc} type="video/mp4" />}
+                                <source src='https://storage.googleapis.com/audio_porftolio/ProductRik.mp4' type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                 </div> 

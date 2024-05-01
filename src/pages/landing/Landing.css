@@ -1,99 +1,134 @@
-.landing-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    height: 100vh;
-    /* width: 100vw;  */
+.landing-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
 }
 
 .text-effect-container {
-    width: 100%;
-    height: 10%;
-    position: fixed;
-    top: 50%; /* Initially position it at the center vertically */
-    right: 0%;
-    transform: translateY(-50%); /* Adjust the transform to center it vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999999999999;
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  top: 50%;
+  right: 0%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 999999999999;
 }
 
 @keyframes moveToTop {
-    0% {
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    /* 50% {
-        top: 0%;
-        transform: translateY(0);
-        right: 0;
-    } */
-    100% {
-      top: 0%;
-      transform: translateY(0);
-      right: calc(50% - 100px);
-    }
-}
-@keyframes moveToLeft {
-    0% {
-       top: 0%;
-        transform: translateY(0);
-        right: 0;
-    }
-    100% {
-        top: 0%;
-        transform: translateY(0);
-        right: calc(50% - 100px);
-    }
-}
-
-/* .set-header {
-    Keep your existing animation properties for moveToTop
-    animation: moveToTop 1.7s forwards;
-} */
-
-
-/* 
-.set-header::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  border-top: 1px solid rgb(var(--black));
-  animation: underline 1s forwards; 
-} 
-
- @keyframes underline {
-  from {
-   bottom: -300px;
-  }
-  to {
-
-   bottom: 0px;
-  }
-} */
-
-
-
-
-
-/* @keyframes slideInFromBottom {
   0% {
-    transform: translateY(100%);
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
   }
   100% {
-    transform: translateY(0);
+      top: 0%;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+      right: calc(50% - 100px);
   }
-} */
+}
+
+@-webkit-keyframes moveToTop {
+  0% {
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+  }
+  100% {
+      top: 0%;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      right: calc(50% - 100px);
+  }
+}
+
+@-moz-keyframes moveToTop {
+  0% {
+      top: 50%;
+      -moz-transform: translateY(-50%);
+      transform: translateY(-50%);
+  }
+  100% {
+      top: 0%;
+      -moz-transform: translateY(0);
+      transform: translateY(0);
+      right: calc(50% - 100px);
+  }
+}
+
+@keyframes moveToLeft {
+  0% {
+     top: 0%;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+      right: 0;
+  }
+  100% {
+      top: 0%;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+      right: calc(50% - 100px);
+  }
+}
+
+@-webkit-keyframes moveToLeft {
+  0% {
+      top: 0%;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      right: 0;
+  }
+  100% {
+      top: 0%;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      right: calc(50% - 100px);
+  }
+}
+
+@-moz-keyframes moveToLeft {
+  0% {
+      top: 0%;
+      -moz-transform: translateY(0);
+      transform: translateY(0);
+      right: 0;
+  }
+  100% {
+      top: 0%;
+      -moz-transform: translateY(0);
+      transform: translateY(0);
+      right: calc(50% - 100px);
+  }
+}
 
 .index-container {
-  /* transform: translateY(100%); */
-  /* animation: slideInFromBottom 1.7s forwards; */
   width: 100%;
-  /* position: fixed; */
   height: 100%;
-  /* margin-top: 10vh; */
 }

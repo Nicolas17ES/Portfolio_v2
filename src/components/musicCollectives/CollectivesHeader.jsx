@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function CollectivesHeader() {
    
-  const { screenWidth, button_state, dispatch } = useContext(GlobalContext);
+  const { screenWidth, button_state, dispatch, browser } = useContext(GlobalContext);
   const introTag2 = useRef(null);
 
   const collectivesData = [
@@ -67,7 +67,7 @@ function CollectivesHeader() {
     }, [screenWidth]);
 
     useGSAP(() => {
-      if(screenWidth > 700){
+      if(screenWidth > 700 && browser !== 'Safari'){
         gsap.registerPlugin(ScrollTrigger); 
         const tl = gsap.timeline({
                 scrollTrigger: {
@@ -80,14 +80,14 @@ function CollectivesHeader() {
                 
             }
         })
-        .to(".figcaption-collectives-header", {
-          y: 40,
-            scale: 1.09,
-            opacity: 1,
-            duration: 1.5, // Consistent with the duration for scaling up
-        }, "-=1.5"); // Overlap the animations for smooth transition
-      }
-    }, [screenWidth]);
+          .to(".figcaption-collectives-header", {
+            y: 40,
+              scale: 1.09,
+              opacity: 1,
+              duration: 1.5, // Consistent with the duration for scaling up
+          }, "-=1.5"); // Overlap the animations for smooth transition
+        }
+    }, [screenWidth, browser]);
 
 
     useEffect(() => {
@@ -256,8 +256,8 @@ function CollectivesHeader() {
       gsap.from(".collectives-header-podacts-titles", {
         scrollTrigger: {
           trigger: ".collectives-header-podacts-titles",
-          start: "center center",
-          end: "bottom center",
+          start: "bottom bottom -=400",
+          end: "bottom bottom",
           scrub: 1,
         },
         opacity: 0,

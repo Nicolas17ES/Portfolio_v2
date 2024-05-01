@@ -28,6 +28,7 @@
   --black2: 40, 41, 44;
   --aquamarine:  #bffce8;
   --mediumpurple: #9370d8;
+  -webkit-transition: background-color 3s ease, color 3s ease;
  transition: background-color 3s ease, color 3s ease;
   --theme-color: var(--black2);
 }
@@ -69,7 +70,7 @@ a{
   width: 75%;
   position: absolute;
   top: 0;
-  transition: all .3s ease-in;
+  /* transition: all .3s ease-in; */
 }
 
 @keyframes expandContent {

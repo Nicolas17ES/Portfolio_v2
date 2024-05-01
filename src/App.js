@@ -25,6 +25,7 @@ import ViewProjects from './pages/projects/ViewProjects';
 import useResetStates from './hooks/useResetStates';
 import useIsMobile from './hooks/useIsMobile';
 import MainMobile from './pages/main/MainMobile';
+import useBrowserDetection from './hooks/useBrowserDetector';
 
 function App() {
   // This is the main entry point of your React application.
@@ -45,6 +46,7 @@ function WrappedApp() {
   const location = useLocation();
   useResetStates();
   useIsMobile();
+  useBrowserDetection();
   const pathname = location.pathname;
   const { dispatch, screenWidth, lateral_navbar, displayMobileNavBar, display_header, hideNavBar, hide_nav, shrink_body, animation_finished, display_body, view_projects_cursor, start_lateral_nav_animation, display_vide_popup } = useContext(GlobalContext);
 

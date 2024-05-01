@@ -11,8 +11,10 @@
   filter: brightness(10); /* Initially set brightness to 0 (very white) */
   animation: fadeInAndWhiten .5s ease forwards;
   transition: opacity 0.5s ease; /* Add opacity transition */
+  -webkit-transition: opacity 0.5s ease; /* Add opacity transition */
 }
 
+/* Vendor prefixes for 'keyframes' rule - fadeInAndWhiten */
 @keyframes fadeInAndWhiten {
   0% {
     opacity: 0;
@@ -23,6 +25,63 @@
     filter: brightness(1); /* End with normal brightness (1) */
   }
 }
+
+/* Vendor prefixes for 'keyframes' rule - fadeInAndWhiten - WebKit */
+@-webkit-keyframes fadeInAndWhiten {
+  0% {
+    opacity: 0;
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: brightness(1); /* End with normal brightness (1) */
+            filter: brightness(1); /* End with normal brightness (1) */
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - fadeInAndWhiten - Mozilla */
+@-moz-keyframes fadeInAndWhiten {
+  0% {
+    opacity: 0;
+    -moz-filter: brightness(2);
+            filter: brightness(2);
+  }
+  100% {
+    opacity: 1;
+    -moz-filter: brightness(1); /* End with normal brightness (1) */
+            filter: brightness(1); /* End with normal brightness (1) */
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - fadeInAndWhiten - Microsoft */
+@-ms-keyframes fadeInAndWhiten {
+  0% {
+    opacity: 0;
+    -ms-filter: brightness(2);
+            filter: brightness(2);
+  }
+  100% {
+    opacity: 1;
+    -ms-filter: brightness(1); /* End with normal brightness (1) */
+            filter: brightness(1); /* End with normal brightness (1) */
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - fadeInAndWhiten - Opera */
+@-o-keyframes fadeInAndWhiten {
+  0% {
+    opacity: 0;
+    -o-filter: brightness(2);
+            filter: brightness(2);
+  }
+  100% {
+    opacity: 1;
+    -o-filter: brightness(1); /* End with normal brightness (1) */
+            filter: brightness(1); /* End with normal brightness (1) */
+  }
+}
+
 
 .onhover-images:not(:hover) {
   opacity: 0; /* Set opacity to 0 when not hovered */
@@ -80,28 +139,13 @@
 
 
 
-/* names animations */
 
-/* .animation-names-container{
-  margin: 0 100px;
-  position: relative;
-  height: 70%;
-}
-
-.artist-name{
-  font-size: 2rem;
-  font-weight: 300;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: fadeInFadeOut 1s forwards;
-} */
-
-
+/* Vendor prefixes for 'keyframes' rule - fadeInFadeOut */
 @keyframes fadeInFadeOut {
   0% {
     opacity: 0;
   }
-  50%{
+  50% {
     opacity: 1;
   }
   100% {
@@ -109,39 +153,60 @@
   }
 }
 
+/* Vendor prefixes for 'keyframes' rule - fadeInFadeOut - WebKit */
+@-webkit-keyframes fadeInFadeOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - fadeInFadeOut - Mozilla */
+@-moz-keyframes fadeInFadeOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - fadeInFadeOut - Microsoft */
+@-ms-keyframes fadeInFadeOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - fadeInFadeOut - Opera */
+@-o-keyframes fadeInFadeOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 /* BODY SLIDER */
-
-/* .body-slider-outer-container{
-  
-}
-.body-slider-inner-container{
-   width: 100%; 
-  margin: 0 auto; 
-  height: 100%;
-  border: 1px solid yellow;
-   display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  perspective: 1000px;
-
-}
-.inner-section{
- display: flex; 
-  justify-content: center; 
-  align-items: center; 
-
-  position: relative;
-  border: 1px solid red;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  
-} */
-/* .element-image-container:hover{
- transform: scale(.98);
-} */
-
-
-
 
  
 /* MUSIC CAROUSEL */
@@ -208,7 +273,8 @@
   position: relative;
   border-radius: 10px;
   cursor: none;
-  transition: all .3s ease-out;
+  transition: transform .3s ease-out;
+  -webkit-transition: transform .3s ease-out;
 }
 .image-wrap:hover{
   transform: scale(1.01);
@@ -229,7 +295,8 @@
   background-color: rgba(0, 0, 0, 0.32);
   z-index: 1;
   border-radius: 10px;
-  transition: all .5s;
+  transition: background-color .5s ease;
+  -webkit-transition: background-color .5s ease;
 }
 
 .image-wrap::before {
@@ -343,7 +410,8 @@
 
 .carousel-icon{
   color: rgb(var(--black)) !important;
-  transition: all .3s;
+  transition: transform .3s;
+  -webkit-transition: transform .3s;
 }
 .carousel-icon:hover{
   transform: scale(1.1);
@@ -533,12 +601,11 @@ opacity: .8; /* Color del texto de la leyenda */
 }
 
 .collectives-scroll-bar-container{
-  /* transform: rotate(-90deg); */
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
 
-  gap: 20px;
+  /* gap: 20px !important; */
   position: absolute;
   right: 0px;
   top: 0px;
@@ -547,6 +614,7 @@ opacity: .8; /* Color del texto de la leyenda */
   height: 0px;
   width: 2px;
   background-color: rgb(var(--black));
+  margin-top: 20px;
 }
 
 .collectives-header-podacts-titles{
@@ -564,12 +632,14 @@ opacity: .8; /* Color del texto de la leyenda */
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 1rem;
+  margin-top: 20px;
 }
 .scroll-boxes, .scroll-boxes-2, .scroll-boxes-3, .scroll-boxes-6, .scroll-boxes-7{
   width: 14px;
   height: 14px;
   border: 1px solid rgb(var(--red));
   background-color: none;
+  margin-top: 20px;
 }
 .scroll-boxes-6, .scroll-boxes-7{
   background-color: rgb(var(--red));
@@ -577,6 +647,7 @@ opacity: .8; /* Color del texto de la leyenda */
   animation: rotateBox 3s infinite linear;
 }
 
+/* Vendor prefixes for 'keyframes' rule - rotateBox */
 @keyframes rotateBox {
   from {
     transform: rotate(0deg);
@@ -586,6 +657,53 @@ opacity: .8; /* Color del texto de la leyenda */
   }
 }
 
+/* Vendor prefixes for 'keyframes' rule - rotateBox - WebKit */
+@-webkit-keyframes rotateBox {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - rotateBox - Mozilla */
+@-moz-keyframes rotateBox {
+  from {
+    -moz-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - rotateBox - Microsoft */
+@-ms-keyframes rotateBox {
+  from {
+    -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* Vendor prefixes for 'keyframes' rule - rotateBox - Opera */
+@-o-keyframes rotateBox {
+  from {
+    -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 
 /* AUDIO PLAYERS AND PARTIES INTO */
 
@@ -597,6 +715,7 @@ opacity: .8; /* Color del texto de la leyenda */
   position: relative; 
   overflow: hidden;
   transition: color 0.25s ease;
+  -webkit-transition: color 0.25s ease;
 
   display: flex;
   align-items: center;
@@ -612,10 +731,9 @@ opacity: .8; /* Color del texto de la leyenda */
   width: 0%; /* Start width at 0% */
   height: 100%;
   background-color: rgb(var(--black)); /* Set to desired hover background color */
-  transition: width 0.5s ease; /* Animate the width change */
+  transition: width 0.5s ease, color .2s ease-in-out; /* Animate the width change */
+  -webkit-transition: width 0.5s ease, color .2s ease-in-out; /* Animate the width change */
   z-index: 0; /* Ensure the content stays on top */
-  transition: all .2s ease-in-out;
-
 }
 
 .audio-player:hover::before {
@@ -642,6 +760,7 @@ opacity: .8; /* Color del texto de la leyenda */
   align-items: center;
   gap: 30px;
   transition: left .2s ease-in-out;
+  -webkit-transition: left .2s ease-in-out;
 }
 
 .player-resume{
@@ -690,6 +809,7 @@ opacity: .8; /* Color del texto de la leyenda */
   cursor: pointer;
   z-index: 99;
   transition: transform .3s;
+  -webkit-transition: transform .3s;
 }
 .play-button:hover{
  transform: scale(.93);

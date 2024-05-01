@@ -2,43 +2,46 @@
     padding: 30px;
     margin-top: 150px;
 }
-
-.projects-list-container{
+.projects-list-container {
     margin-top: 37px;
     margin-bottom: 50px;
     padding: 0 30px;
-    z-index: 0; 
+    z-index: 0;
     position: relative;
 }
 
-.single-project-container{
+.single-project-container {
     border-top: 1px solid rgb(var(--black));
     cursor: none;
     position: relative;
     overflow: visible;
 }
 
-.single-project-container .project-number{
+.single-project-container .project-number {
     font-size: 1.2rem;
     font-weight: 100;
     margin-right: 10px;
 }
 
-.single-project-container .porject-title-container{
+.single-project-container .porject-title-container {
     overflow: hidden;
     height: 100%;
     padding: 55px 0;
     pointer-events: none;
 }
-.single-project-container .project-title{
+
+.single-project-container .project-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
     font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 100;
     font-size: 7rem;
     white-space: nowrap;
-    /* word-wrap: break-word; */
     line-height: .8;
     text-transform: uppercase;
     text-align: left;
@@ -46,9 +49,11 @@
     padding: 0;
     pointer-events: none;
     opacity: 1;
+    -webkit-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.single-project-container .project-image{
+.single-project-container .project-image {
     width: 400px;
     height: auto;
     border-radius: 10px;
@@ -56,26 +61,24 @@
     z-index: 9999999;
     top: -100px;
     right: 0;
-    opacity: 0; 
-    box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4); 
+    opacity: 0;
+    -webkit-box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4);
     pointer-events: none;
 }
 
-
-.project-resume{
-    /* margin-top: 5px !important; */
+.project-resume {
     color: rgb(var(--black)) !important;
     letter-spacing: .6px;
     font-size: .9rem;
     border: 1px solid rgb(var(--red));
-    /* padding: 4px 8px 5px 8px; */
-    border-radius: 5px;
-    /* background: linear-gradient(to bottom, rgba(var(--dark), 0.8), rgba(var(--dark), 1)); /* Adjust the transparency and direction */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
-    box-shadow: 0 0 0 2px rgba(var(--red), 0.3);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); 
+    -webkit-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 0 2px rgba(var(--red), 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 2px rgba(var(--red), 0.3), inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
-
 
 /* FULLPROJECTS DISPLAY */
 
@@ -94,7 +97,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .project-main-title{
@@ -115,10 +118,6 @@
     line-height: 7rem;
 }
 .underline-title{
-    /* text-decoration: underline;
-    text-decoration-color: rgb(var(--red));
-    text-decoration-thickness: 3px;
-    text-underline-offset: 8px; */
     border: 1px solid rgb(var(--red));
     border-radius: 80%;
 }
@@ -235,7 +234,6 @@ height: 70px;
    align-items: center;
    margin-bottom:20px;
    flex-direction: column;
-   gap: 30px;
 }
 
 .collectives-scroll-bar-resumes{
@@ -400,7 +398,7 @@ height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999;
     cursor: zoom-out;
 }
 
@@ -445,7 +443,8 @@ height: 70px;
     letter-spacing: 1px;
     border: 1px solid rgb(var(--red));
     border-radius: 30px;
-    transition: .3s;
+    transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s; /* Specify transition for transform, color, and background-color */
+    -webkit-transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s; /* Specify transition for transform, color, and background-color */
     background: none;
     cursor: pointer;
     z-index: 9999999999;
@@ -453,7 +452,7 @@ height: 70px;
 }
 
 .view-video-button:hover{
-    background: rgb(var(--red));;
+    background-color: rgb(var(--red));;
     color: rgb(var(--white));;
     letter-spacing: 1.5px;
 }
@@ -508,7 +507,8 @@ height: 70px;
     letter-spacing: 1px;
     border: 1px solid rgb(var(--red));
     border-radius: 30px;
-    transition: .3s;
+    transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s;
+    -webkit-transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s;
     background: none;
     cursor: pointer;
 }
@@ -591,6 +591,8 @@ display:none;
     width: 80%;
     border-radius: 8px;
     transform: scale(.4);
+    z-index: 9999999999999999999 !important;
+    cursor: pointer;
 }
 
 .loader-video-js{
@@ -690,7 +692,8 @@ display:none;
 .change-project-arrow{
     width: 45px;
     height: 45px;
-    transition: all .3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity transform 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out, opacity transform 0.3s ease-in-out;
     cursor: pointer;
 }
 .change-project-arrow:hover{
@@ -911,7 +914,6 @@ display:none;
         align-items: center;
         margin:20px 0;
         flex-direction: column;
-        gap: 15px;
      }
      .projects-paragraphs-container{
         margin-top: 160px;
@@ -1028,7 +1030,8 @@ display:none;
         letter-spacing: 1px;
         border: 1px solid rgb(var(--red));
         border-radius: 30px;
-        transition: .3s;
+        transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s;
+        -webkit-transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s;
         background: none;
         cursor: pointer;
     }
@@ -1049,7 +1052,8 @@ display:none;
         width: 30px;
         height: 30px;
         cursor: pointer;
-        transition: all .3s;
+        transition: opacity .3s ease, transform .3s ease;
+        -webkit-transition: opacity .3s ease, transform .3s ease;
       }
       .gallery-arrow:hover{
         opacity: .7;

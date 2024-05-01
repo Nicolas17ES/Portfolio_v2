@@ -207,7 +207,6 @@ function ChangeProject({origin}) {
             return
         }
     }
-     console.log('heya', change_slide.value)
     return (
         <section className="change-project-outer">
             <div className="change-project-container">

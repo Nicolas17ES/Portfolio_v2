@@ -5,8 +5,14 @@
 
 .buttons-body-container {
   padding: 30px 30px 0 30px;
+  display: -webkit-box; /* For iOS and Safari */
+  display: -ms-flexbox; /* For IE 10 and IE 11 */
   display: flex;
+  -webkit-box-orient: vertical; /* For iOS and Safari */
+  -webkit-box-direction: normal; /* For iOS and Safari */
+  -ms-flex-direction: column; /* For IE 10 and IE 11 */
   flex-direction: column;
+  -ms-flex-align: start; /* For IE 10 and IE 11 */
   align-items: flex-start;
   gap: 15px;
 }
@@ -20,18 +26,40 @@
   cursor: pointer;
   color: rgb(var(--black));
   transition: transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
 }
 
-
-
-
-@keyframes float {
+@-webkit-keyframes float {
   from, to {
-    transform: translateY(-0%);
+    -webkit-transform: translateY(-0%);
+            transform: translateY(-0%);
   }
   
   50% {    
-    transform: translateY(-3%);
+    -webkit-transform: translateY(-3%);
+            transform: translateY(-3%);
+  }
+}
+
+@keyframes float {
+  from, to {
+    -webkit-transform: translateY(-0%);
+            transform: translateY(-0%);
+  }
+  
+  50% {    
+    -webkit-transform: translateY(-3%);
+            transform: translateY(-3%);
+  }
+}
+
+@-webkit-keyframes background-pan {
+  from {
+    background-position: 1000% center;
+  }
+  
+  to {
+    background-position: 0% center;
   }
 }
 
@@ -45,8 +73,6 @@
   }
 }
 
-
-
 /* .text:has(.fancy:hover) .word:not(.fancy:hover) {
   opacity: 0.2;
 } */
@@ -57,6 +83,7 @@
 
 .fancy > .outer {
   transition: transform 350ms ease;
+  -webkit-transition: transform 350ms ease;
 }
 
 .fancy:hover > .outer {
@@ -64,62 +91,75 @@
 }
 
 .fancy:hover > .outer > .inner {
-  animation: float 5s ease infinite;
+  -webkit-animation: float 5s ease infinite;
+          animation: float 5s ease infinite;
 }
 
 .fancy:hover > .outer > .inner > .letter {
   color: rgb(var(--black));
   background-size: 1000%;
   -webkit-background-clip: text;
-
-  animation: background-pan 150s linear infinite;
+          background-clip: text;
+  -webkit-animation: background-pan 150s linear infinite;
+          animation: background-pan 150s linear infinite;
 }
 
 .fancy:hover > .outer:nth-child(1) {
-  transform: translate(-80%, 60%) rotate(8deg);
+  -webkit-transform: translate(-80%, 60%) rotate(8deg);
+          transform: translate(-80%, 60%) rotate(8deg);
 }
 
 .fancy:hover > .outer:nth-child(2) {
-  transform: translate(-40%, 20%) rotate(4deg);
+  -webkit-transform: translate(-40%, 20%) rotate(4deg);
+          transform: translate(-40%, 20%) rotate(4deg);
 }
 
 .fancy:hover > .outer:nth-child(3) {
-  transform: translate(-10%, 60%) rotate(-6deg);
+  -webkit-transform: translate(-10%, 60%) rotate(-6deg);
+          transform: translate(-10%, 60%) rotate(-6deg);
 }
 
 .fancy:hover > .outer:nth-child(4) {
-  transform: translate(0%, 8%) rotate(-8deg);
+  -webkit-transform: translate(0%, 8%) rotate(-8deg);
+          transform: translate(0%, 8%) rotate(-8deg);
 }
 
 .fancy:hover > .outer:nth-child(5) {
-  transform: translate(0%, -20%) rotate(5deg);
+  -webkit-transform: translate(0%, -20%) rotate(5deg);
+          transform: translate(0%, -20%) rotate(5deg);
 }
 
 .fancy:hover > .outer:nth-child(6) {
-  transform: translate(0%, 20%) rotate(-3deg);
+  -webkit-transform: translate(0%, 20%) rotate(-3deg);
+          transform: translate(0%, 20%) rotate(-3deg);
 }
 
 .fancy:hover > .outer:nth-child(7) {
-  transform: translate(0%, -40%) rotate(-5deg);
+  -webkit-transform: translate(0%, -40%) rotate(-5deg);
+          transform: translate(0%, -40%) rotate(-5deg);
 }
 
 .fancy:hover > .outer:nth-child(8) {
-  transform: translate(0%, 15%) rotate(10deg);
+  -webkit-transform: translate(0%, 15%) rotate(10deg);
+          transform: translate(0%, 15%) rotate(10deg);
 }
 
 .fancy:hover > .outer:nth-child(9) {
-  transform: translate(0%, -50%) rotate(8deg);
+  -webkit-transform: translate(0%, -50%) rotate(8deg);
+          transform: translate(0%, -50%) rotate(8deg);
 }
 
 .fancy:hover > .outer:nth-child(10) {
-  transform: translate(0%, 15%) rotate(-6deg);
+  -webkit-transform: translate(0%, 15%) rotate(-6deg);
+          transform: translate(0%, 15%) rotate(-6deg);
 }
 
 .fancy:hover > .outer:nth-child(11) {
-  transform: translate(50%, -10%) rotate(-3deg);
+  -webkit-transform: translate(50%, -10%) rotate(-3deg);
+          transform: translate(50%, -10%) rotate(-3deg);
 }
 
 .fancy:hover > .outer:nth-child(12) {
-  transform: translate(120%, -30%) rotate(-10deg);
+  -webkit-transform: translate(120%, -30%) rotate(-10deg);
+          transform: translate(120%, -30%) rotate(-10deg);
 }
-

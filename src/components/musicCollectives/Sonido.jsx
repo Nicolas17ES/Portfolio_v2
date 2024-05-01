@@ -13,7 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger);
 
 function Sonido() {
-     const {dispatch, exit_component, button_state, display_soundcloud_player, screenWidth} = useContext(GlobalContext);
+     const {dispatch, exit_component, button_state, display_soundcloud_player, screenWidth, browser} = useContext(GlobalContext);
      const [hoveredIndex, setHoveredIndex] = useState(null);
 
 
@@ -21,7 +21,7 @@ function Sonido() {
         {
             id: 1,
             resume: 'Event we did at Les Enfants Brillants where we invited the talented Slovenian artist Tzena to healdine the party along local talent Jason. On warm up duties we had our residents Bruno&Marco.',
-            src: 'https://storage.googleapis.com/audio_porftolio/Tzena.mp3',
+            src: browser === 'Safari' ? ' https://storage.googleapis.com/audio_porftolio/legramvg.mp3' : 'https://storage.googleapis.com/audio_porftolio/Tzena.mp3',
             type: <PiVinylRecordLight className="player-icon"/>,
             title: 'Allegro',
             artist: 'Nace Tzena',

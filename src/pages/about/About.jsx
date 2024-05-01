@@ -36,7 +36,7 @@ function About() {
    const paragraphRefOne = useRef(null);
    const paragraphRefTwo = useRef(null);
 
-   const {display_body, screenWidth, prevLocation} = useContext(GlobalContext);
+   const {display_body, screenWidth, prevLocation, browser} = useContext(GlobalContext);
 
    // only render skilsl list when animations done: 
    const [renderSkills, setRenderSkills] = useState(false);
@@ -81,7 +81,7 @@ function About() {
             });
         });
     } else if(display_body && screenWidth <= 600 && titleAnimationFinished){
-      console.log('htithitr')
+      
       gsap.to(".about-paragraph", {
          opacity: 1,
          duration: 1,
@@ -92,7 +92,7 @@ function About() {
 
 // Empty dependency array to run once on mount
 
-
+console.log(browser)
 useGSAP(() => {
    if(display_body && screenWidth > 600){
       gsap.from(".about-subtitle-1", {
@@ -214,7 +214,7 @@ useGSAP(() => {
                
                <div className="about-title-container" style={{borderTop: '1px solid rgb(var(--black))'}}>
                   <h2 className="about-title">Nicolas</h2>
-                <span className="about-title-word">{renderSkills ? <SkillsList/> : null}</span> 
+                <span className="about-title-word">{(browser === 'Safari') ? 'Software Engineer' : <SkillsList/>}</span> 
                </div>
                <div className="about-title-container about-title-container-image">
                   <div className="image-about-wrap">

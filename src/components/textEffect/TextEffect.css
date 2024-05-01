@@ -72,7 +72,8 @@
 
 .icon-replica{
   color: rgb(var(--black));
-  transition: all .4s ease-in-out;
+  transition: transform .4s ease-in-out, color .4s ease-in-out, background-color .4s ease-in-out;
+  -webkit-transition: transform .4s ease-in-out, color .4s ease-in-out, background-color .4s ease-in-out;
   font-size: 2rem;
   text-align: center;
   text-transform: uppercase;

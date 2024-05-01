@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function SkillsSider() {
     const [expand, setExpand] = useState(null)
-    const { display_carousel, lateral_navbar, hide_nav, shrink_body, display_header, display_body } = useContext(GlobalContext);
+    const { display_carousel, lateral_navbar, hide_nav, shrink_body, display_header, browser } = useContext(GlobalContext);
 
 
     const [namesArray, setNamesArray] = useState([
@@ -19,20 +19,6 @@ function SkillsSider() {
         'Javascript', 'Wordpress', 'PHP', 'ExpressJS', 'RestAPI'
     ]);
 
-    // useEffect(() => {
-    //     if (display_carousel) {
-    //         gsap.from('.logos-container', {
-    //             scale: 0,
-    //             duration: 1.5, // Adjust duration as needed
-    //             ease: 'power3.out', // Adjust easing as needed
-    //         });
-    //     }
-    // }, [display_carousel]); // Dependency array ensures effect runs only when display_carousel changes
-
-
-    
-
-    // if(display_carousel){
         return (
             <>
             <div onMouseEnter={() => setExpand(1)} onMouseLeave={() => setExpand(11)} className={`${
@@ -55,22 +41,25 @@ function SkillsSider() {
                  </div>
              </div>
             </div>
-            <div style={{display: (hide_nav && !shrink_body) ? 'none' : 'block'}} onMouseEnter={() => setExpand(1)} onMouseLeave={() => setExpand(11)} className={`logos-container-opposite ${expand === 1 ? 'expand-height-slider' : expand === 11 ? 'shrink-height-slider' : null}`}>
-                 <div className="logos">
-                 <div className="logos-slider">
-                     <div className="logos-slide">
-                         {namesArray.map((name, index) => (
-                             <p key={index} className="slider-skill">{name}</p>
-                         ))}
-                     </div>
-                     <div className="logos-slide">
-                         {namesArray.map((name, index) => (
-                             <p key={index} className="slider-skill">{name}</p>
-                         ))}
-                     </div>
-                 </div>
-             </div>
+            {browser !== 'Safari' && (
+                <div style={{display: (hide_nav && !shrink_body) ? 'none' : 'block'}} onMouseEnter={() => setExpand(1)} onMouseLeave={() => setExpand(11)} className={`logos-container-opposite ${expand === 1 ? 'expand-height-slider' : expand === 11 ? 'shrink-height-slider' : null}`}>
+                <div className="logos">
+                <div className="logos-slider">
+                    <div className="logos-slide">
+                        {namesArray.map((name, index) => (
+                            <p key={index} className="slider-skill">{name}</p>
+                        ))}
+                    </div>
+                    <div className="logos-slide">
+                        {namesArray.map((name, index) => (
+                            <p key={index} className="slider-skill">{name}</p>
+                        ))}
+                    </div>
+                </div>
             </div>
+            </div>
+            )}
+         
             </>
          );
     // }

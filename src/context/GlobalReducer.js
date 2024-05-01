@@ -205,6 +205,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 displayMobileNavBar: action.payload,
             }
+        case 'SET_BROWSER':
+            return {
+                ...state,
+                browser: action.payload,
+            }
             case 'RESET_STATE':
                 return {
                   ...initialState,

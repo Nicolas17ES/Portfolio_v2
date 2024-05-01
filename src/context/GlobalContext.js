@@ -59,6 +59,7 @@ export const initialState = {
     displayHiddenNavBar: false,      
     displayMobileNavBar: false,      
     display_soundcloud_player: false,      
+    browser: null,      
 }
 export const GlobalProvider = ({children}) => {
     
@@ -104,6 +105,7 @@ export const GlobalProvider = ({children}) => {
         displayHiddenNavBar: state.displayHiddenNavBar,
         displayMobileNavBar: state.displayMobileNavBar,
         display_soundcloud_player: state.display_soundcloud_player,
+        browser: state.browser,
         dispatch,
     }}>
         {children}

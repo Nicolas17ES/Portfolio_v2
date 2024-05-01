@@ -57,7 +57,8 @@ function GallerySliderMobile() {
     const [currentVideo, setCurrentVideo] = useState('');   
     const [viewVideoState, setViewVideoState] = useState(false);       
     const [blockedButton, setBlockButton] = useState(false);   
-    const [viewVideoPopUp, setViewVideoPopUp] = useState(false);       
+    const [viewVideoPopUp, setViewVideoPopUp] = useState(false);  
+    const [isPlaying, setIsPlaying] = useState(false);     
     const [hideVideo, setHideVideo] = useState(false);       
     const [videoSrc, setVideoSrc] = useState(false);       
     const [videoImage, setVideoImage] = useState(false);       
@@ -373,6 +374,19 @@ function GallerySliderMobile() {
     const closeVideoPopUp = () => {
         setHideVideo(true)
     }
+
+    const playVideo = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        if(isPlaying){
+            videoRef.current.pause();
+            setIsPlaying(false);
+        } else {
+            videoRef.current.play();
+            setIsPlaying(true);
+        }
+        
+    };
   
 
     if(value === null) return null;
@@ -381,6 +395,7 @@ function GallerySliderMobile() {
             {viewVideoPopUp && (
                 <div ref={modalRef} className="image-zoom-modal" onClick={() => closeVideoPopUp()}>
                              <video
+                                onClick={(e) => playVideo(e)}
                                 ref={videoRef}
                                 poster={videoImage}
                                 className='video-player'

@@ -43,7 +43,6 @@ function SoundCloudPlayer({audio, isHovered}) {
     };
 
     const handleTimeUpdate = () => {
-        
             setCurrentTime(audioRef.current.currentTime);
             const progress = (audioRef.current.currentTime / audioRef.current.duration) * 100;
             if(progressRef.current){
@@ -52,6 +51,7 @@ function SoundCloudPlayer({audio, isHovered}) {
     };
 
     const handleLoadedMetadata = () => {
+        console.log('lalala')
         setDuration(audioRef.current.duration);
     };
 
@@ -62,6 +62,7 @@ function SoundCloudPlayer({audio, isHovered}) {
 
     useEffect(() => {
         const audio = audioRef.current;
+console.log(audioRef.current.duration)
         const handleTimeUpdateLocal = () => handleTimeUpdate();
     
         if (audio) {
@@ -75,7 +76,7 @@ function SoundCloudPlayer({audio, isHovered}) {
                 audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
             }
         };
-    }, []);
+    }, [audioRef]);
     
 
     const formatTime = (time) => {
@@ -108,7 +109,6 @@ function SoundCloudPlayer({audio, isHovered}) {
     }, [isPlaying, currentPlayingId, audio.id])
 
     
-console.log('playeeer')
     
     const borderAudioIds = [1, 5, 9];
 
@@ -118,7 +118,7 @@ console.log('playeeer')
         <section style={{borderTop: borderAudioIds.includes(audio.id) ? '.3px solid rgb(var(--black))' : null}} className="soundcloud-player-container">
             
             <div className="audio-player">
-                <audio ref={audioRef} src={audio.src} preload="auto" />
+                <audio ref={audioRef} src={audio.src} type="audio/mpeg" preload="auto" />
                 {isPlaying && (currentPlayingId === audio.id) ? (
 
                     <div style={{backgroundColor: 'rgb(var(--black))'}} className="player-data-container-top">

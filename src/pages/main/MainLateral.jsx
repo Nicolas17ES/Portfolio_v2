@@ -44,7 +44,6 @@ function MainLateral( ) {
     })
   }
 
-console.log("display_body", display_body)
   // Define navigation items
   const navItems = [
     {
