@@ -11,7 +11,7 @@ import gsap from "gsap";
 function IconReplica() {
   const navigate = useNavigate();
   // Access global context using the useContext hook
-  const {display_body, scroll_position, lateral_navbar, display_header, hide_nav, shrink_body, dispatch} = useContext(GlobalContext);
+  const {display_body, scroll_position, lateral_navbar, display_header, hide_nav, shrink_body, dispatch, screenWidth} = useContext(GlobalContext);
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
@@ -68,13 +68,21 @@ function IconReplica() {
       (hide_nav && !shrink_body) ? 'icon-replica-container-expand' :
       shrink_body ? 'icon-replica-container-shrink' : null
     }`}>
-      <MagneticEffect>
-      <div className="icon-replica-inner-container">
-        <div onClick={resetToHome} style={styles_icon} to="/" className="icon-replica">
-          NL
+      {screenWidth > 500 ? (
+        <MagneticEffect>
+        <div className="icon-replica-inner-container">
+          <div onClick={resetToHome} style={styles_icon} to="/" className="icon-replica">
+            NL
+          </div>
         </div>
-      </div>
-      </MagneticEffect>
+        </MagneticEffect>
+      ) : (
+        <div className="icon-replica-inner-container">
+          <div onClick={resetToHome} style={styles_icon} to="/" className="icon-replica">
+            NL
+          </div>
+        </div>
+      )}
     </div>
   );
 }

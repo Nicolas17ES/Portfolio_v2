@@ -156,6 +156,7 @@ function CounterLoader() {
             });
              gsap.to(".loader", {
                 scale: screenWidth <= 520 ? 6.6 : screenWidth <= 750 ? 7 : 5,
+                force3D: false,
                 duration: 1.4,
                 x: screenWidth <= 520 ? 30 : screenWidth <= 750 ? -85.35 : 0,
                 yPercent: screenWidth <= 520 ? 2810 : screenWidth <= 750 ? 2400 : 1200,
@@ -165,6 +166,7 @@ function CounterLoader() {
             });
              gsap.to(".loader-lastname", {
                 scale: screenWidth <= 520 ? 6.33 : screenWidth <= 750 ? 7.09 : 5,
+                force3D: false,
                 xPercent: screenWidth <= 520 ? 380 : screenWidth <= 750 ? 460 : 250,
                 yPercent: screenWidth <= 520 ? 2700 : screenWidth <= 750 ? 2455 : 1200,
                 duration: 1.5,

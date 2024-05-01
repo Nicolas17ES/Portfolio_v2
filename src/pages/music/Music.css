@@ -1232,11 +1232,11 @@ opacity: .8; /* Color del texto de la leyenda */
 
 
   .collectives-header-image {
-    width: 450px;
+    width: 115%;
   }
 
   .collectives-header-paragraph {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .carousel-top-container{

@@ -138,6 +138,7 @@ function Main() {
     removeMouseMoveListener(currentIndex)
     tl.to(`.link-${currentIndex}`, {
         y: currentIndex === 0 ? 150 : currentIndex === 1 ? 55 : currentIndex === 2 ? - 25 : null,
+        force3D: false,
         scale: screenWidth > 880 ? 21 : 10,
         duration: 1.5,
         delay: .3,
