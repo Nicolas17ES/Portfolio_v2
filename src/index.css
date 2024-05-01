@@ -6,16 +6,7 @@
   box-sizing: border-box;
 }
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@font-face {
-  font-family: 'Manolo';
-  src: url('./fonts/manolo-mono.ttf') format('truetype'); /* Adjust the path based on your file structure */
-  /* You can include multiple src lines for different font file formats */
-}
-@font-face {
-  font-family: 'Mauline';
-  src: url('./fonts/Mauline.otf') format('truetype'); /* Adjust the path based on your file structure */
-  /* You can include multiple src lines for different font file formats */
-}
+
 :root {
   --white: 32, 32, 34;
   --black: 207, 199, 187;

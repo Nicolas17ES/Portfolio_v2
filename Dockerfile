@@ -27,4 +27,4 @@ ENV NODE_ENV=production
 EXPOSE 5000
 
 # Define el comando para iniciar la aplicación
-CMD ["npm", "run", "start"]
+CMD ["node", "--max-old-space-size=2048", "node_modules/react-scripts/scripts/start.js"]
