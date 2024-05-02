@@ -176,13 +176,6 @@ a{
   
 }
 
-@media (hover: none) {
-  *:hover {
-    transform: none !important; /* Reset any transforms */
-    color: inherit !important; /* Reset the color */
-    background-color: inherit !important; /* Reset the background color */
-  }
-}
 
 
 

@@ -370,14 +370,14 @@ return (
           <ul className="nav-links">
             {navItems.map((item, index) => (            
                 <li 
-                tabIndex={-1}
+                
                   ref={el => listItemRefs.current[index] = el} 
                   key={index} 
                   className={`nav-link nav-link${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`}          
                   >
                    {index === 1 ? (
                      <>
-                      <span tabIndex={-1} onClick={() => changeLocation(index)}  className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`} onMouseOver={() => { 
+                      <span  onClick={() => changeLocation(index)}  className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`} onMouseOver={() => { 
                         handleMouseOver(index);
                           if (!blockAnimations && screenWidth > 880) {
                             animateNavLink(index); 
@@ -405,7 +405,7 @@ return (
                         <PiArrowElbowRightFill className={`nav-link-icon link-icon${index}`}/>
                       </div>
                     )} 
-                    <span tabIndex={-1} onClick={() => changeLocation(index)} className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`}
+                    <span  onClick={() => changeLocation(index)} className={`link link-${index} ${index === activeLinkIndex ? 'highlight-nav' : ''}`}
                       onMouseOver={() => { 
                         handleMouseOver(index);
                         if (!blockAnimations && screenWidth > 880) {

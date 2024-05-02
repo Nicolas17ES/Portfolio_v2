@@ -62,7 +62,7 @@ function IconReplica() {
   
 
   return (
-    <div style={styles} tabIndex={-1} className={`${
+    <div style={styles} className={`${
       (lateral_navbar && display_header && !hide_nav && !shrink_body) ? 'icon-replica-container' :
       (hide_nav && !shrink_body) ? 'icon-replica-container-expand' :
       shrink_body ? 'icon-replica-container-shrink' : null

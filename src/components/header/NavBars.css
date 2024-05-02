@@ -637,6 +637,9 @@ right: -10px;
     
 }
 @media (max-width: 520px) {
+  .counter-1, .counter-2, .counter-3{
+    padding-left: 3px;
+  }
   
   .counter{
     left: 35px;

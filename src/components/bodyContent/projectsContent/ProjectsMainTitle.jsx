@@ -11,7 +11,7 @@ function ProjectsMainTitle() {
 
 
     // State and context for managing cursor visibility, animations, and global app state.
-    const { navbar_location, dispatch} = useContext(GlobalContext);
+    const { navbar_location, dispatch, screenWidth} = useContext(GlobalContext);
     const [value, setValue] = useState(null);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ function ProjectsMainTitle() {
             year: '2023',
             software: 'react',
             for: 'Aulart',
-            miniTitle2: 'DESKTOP/MOBILE',
+            miniTitle2: screenWidth > 500 ? 'DESKTOP/MOBILE' : 'DESK/MOBILE',
             purpose1: 'SPEED',
             purpose2: '(OPTIMIZED)',
         },
@@ -112,7 +112,7 @@ function ProjectsMainTitle() {
     return (
         <div className="projects-main-title-container">
             <div className="project-main-title projects-main-title-one"><h3 className="project-title-h3"><span className='underline-title'>{data[value].project}</span> - {data[value].year}</h3></div>
-            <div className="project-main-title projects-main-title-two"><h3 className="project-title-h3">Made with {data[value].software}</h3> <span className='mini-title mini-title-right'>+ more stuff</span></div>
+            <div className="project-main-title projects-main-title-two"><h3 className="project-title-h3">Made with {data[value].software}</h3> <span className='mini-title mini-title-right'>{screenWidth > 500 ? '+ more stuff' : '+ more'}</span></div>
             <div className="project-main-title projects-main-title-three"><h3 className="project-title-h3">created 4 aulart</h3><AulartLogoSvg/></div>
             <div className="project-main-title projects-main-title-four"><span className='mini-title mini-title-left'>{data[value].miniTitle2}</span><h3 className="project-title-h3"><span style={{fontStyle: 'italic'}}>{data[value].purpose1} </span><span style={{color: 'rgb(var(--red))', fontWeight: 100}}>{data[value].purpose2} </span></h3></div>
         </div>

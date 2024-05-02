@@ -133,7 +133,7 @@ function CounterLoader() {
             }, "<");
             gsap.to(".loader-4", {
                 rotate:90,
-                x: screenWidth <= 520 ? -32: screenWidth <= 750 ? -49.35 : -100,
+                x: screenWidth <= 520 ? -31.65: screenWidth <= 750 ? -49.35 : -100,
                 y: isMobile ? -53.5 : -50,
                 delay:2.7,
                 duration: 0.5,
