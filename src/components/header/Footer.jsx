@@ -10,19 +10,30 @@ import gsap from "gsap";
 
 function Footer() {
 
-  const {display_body, lateral_navbar, display_header, hide_nav, shrink_body, navbar_location, boxes_animations_finsished, screenWidth} = useContext(GlobalContext);
+  const {display_body, lateral_navbar, display_header, hide_nav, shrink_body, navbar_location, boxes_animations_finsished, screenWidth, display_footer} = useContext(GlobalContext);
+
 
   useGSAP(() => {
-    if(display_body){
-      gsap.from('.footer-container', {
+    if(!display_footer){
+      gsap.to('.footer-container', {
         opacity: 0,
         duration: 2, // Duration of the animation
         ease: 'power2.inOut' // Easing function for smooth animation
       });
+    } else {
+      gsap.to('.footer-container', {
+        opacity: 1,
+        delay: .5,
+        duration: 2, // Duration of the animation
+        ease: 'power2.inOut' // Easing function for smooth animation
+      });
     }
-  }, [display_body])
+  }, [display_footer])
 
-if(['aulart-shop', 'aulart-tools', 'linkinbio'].includes(navbar_location) && !boxes_animations_finsished) return null;
+  console.log('footer', display_footer)
+
+if(!display_footer) return null;
+
 
 if(display_body){
   return (

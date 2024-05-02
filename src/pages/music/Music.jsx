@@ -23,7 +23,7 @@ import ChangeProject from '../../components/bodyContent/projectsContent/ChangePr
  */
 function Music() {
     // Extract necessary values from the GlobalContext.
-    const { dispatch, display_body, navbar_location, button_state, screenWidth } = useContext(GlobalContext);
+    const { dispatch, display_body, navbar_location, button_state, screenWidth, display_soundcloud_player } = useContext(GlobalContext);
 
     // Get the current location from React Router and set up navigation.
     const location = useLocation();
@@ -83,6 +83,10 @@ function Music() {
             type: 'SET_IMAGE_OVERLAY',
             payload: false
         })
+        dispatch({
+            type: 'SET_DISPLAY_SOUNDCLOUD_PLAYER',
+            payload: false,
+          })
         };
       }, []);
 
@@ -106,7 +110,7 @@ function Music() {
                         {buttonIndexReferences[button_state.value] === 'Sonido_Club' && <Sonido/>}
                         {buttonIndexReferences[button_state.value] === 'Unsilenced' && <Unsilenced/>}
                         {buttonIndexReferences[button_state.value] === 'Aurea_by_WC' && <Aurea/>}
-                        <ChangeProject origin={'music'}/>
+                        {display_soundcloud_player && <ChangeProject origin={'music'}/>}
                     </div>
                 )}
 

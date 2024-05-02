@@ -65,18 +65,19 @@ function Projects() {
                 xPercent: -150,
                 duration: 1.4,
                 ease: 'Power3.easeOut',
-                // stagger: 0.3,
                 delay: .3,
-                // onComplete: () => {
-                //     setInitialAnimationFinished(true)
-                // }
+                onComplete: () => {
+                    dispatch({
+                        type: 'SET_DISPLAY_FOOTER',
+                        payload: true
+                    })
+                }
             });
             gsap.from('.project-title', {
                 y: 200,
                 duration: 1.5,
                 ease: 'Power3.easeOut',
                 autoAlpha: 0,
-                // stagger: 0.3,
                 delay: .7,
                 onComplete: () => {
                     gsap.to('.project-title', {
@@ -198,6 +199,10 @@ const prevMousePositionRef = useRef({ x: 0, y: 0 });
 
     // select a project to view
 const viewProject = (index) => {
+    dispatch({
+        type: 'SET_DISPLAY_FOOTER',
+        payload: false
+    })
     setBlockAnimations(true);
     setCursorVisible(false, null);
     removeMouseMoveListener(0);

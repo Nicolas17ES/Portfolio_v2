@@ -210,6 +210,11 @@ const globalReducer = (state, action) => {
                 ...state,
                 browser: action.payload,
             }
+        case 'SET_DISPLAY_FOOTER':
+            return {
+                ...state,
+                display_footer: action.payload,
+            }
             case 'RESET_STATE':
                 return {
                   ...initialState,

@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function CollectivesHeader() {
    
-  const { screenWidth, button_state, dispatch, browser } = useContext(GlobalContext);
+  const { screenWidth, button_state, dispatch, browser, display_soundcloud_player } = useContext(GlobalContext);
   const introTag2 = useRef(null);
 
   const collectivesData = [
@@ -359,9 +359,12 @@ function CollectivesHeader() {
                 </div>
             </div>
         </div>
-        <h5 className="collectives-header-podacts-titles">
-        Music by our guests:
-      </h5> 
+        {display_soundcloud_player && (
+          <h5 className="collectives-header-podacts-titles">
+            Music by our guests:
+          </h5> 
+        )}
+        
       </>
     );
 }

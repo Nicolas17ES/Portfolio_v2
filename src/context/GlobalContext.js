@@ -60,6 +60,7 @@ export const initialState = {
     displayMobileNavBar: false,      
     display_soundcloud_player: false,      
     browser: null,      
+    display_footer: false,      
 }
 export const GlobalProvider = ({children}) => {
     
@@ -106,6 +107,7 @@ export const GlobalProvider = ({children}) => {
         displayMobileNavBar: state.displayMobileNavBar,
         display_soundcloud_player: state.display_soundcloud_player,
         browser: state.browser,
+        display_footer: state.display_footer,
         dispatch,
     }}>
         {children}

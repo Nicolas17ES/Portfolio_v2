@@ -1,5 +1,5 @@
 import GlobalContext from '../../context/GlobalContext'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useRef } from 'react'
 import '../../pages/about/About.css'
 import ImageOverlay from '../shared/ImageOverlay';
 import { useGSAP } from "@gsap/react";
@@ -28,6 +28,7 @@ function MusicCarousel() {
     const [imageIndex, setImageIndex] = useState(null);
     const [hoverEnabled, setHoverEnabled] = useState(false);
     const [cursorVisible, setCursorVisible] = useState(false);
+    const topParagraph = useRef(null);
 
 
 
@@ -141,10 +142,15 @@ function MusicCarousel() {
     useGSAP(() => {
     if (display_image_overlay) {
             gsap.to('.carousel-info', {
-            opacity: 0, // Set opacity to 0
-            duration: 1, // Duration of the animation
-            ease: 'linear', // Use linear easing for the animation
-        });
+                opacity: 0, // Set opacity to 0
+                duration: 1, // Duration of the animation
+                ease: 'linear', // Use linear easing for the animation
+            });
+            gsap.to('.carousel-top-container', {
+                opacity: 0, // Set opacity to 0
+                duration: 1, // Duration of the animation
+                ease: 'linear', // Use linear easing for the animation
+            });
     }
     }, [display_image_overlay]);
 
@@ -182,7 +188,13 @@ function MusicCarousel() {
             // Your animation setup
             const imageReveal = CSSRulePlugin.getRule(".image-wrap::before");
             let tl = gsap.timeline({defaults: { ease: 'Power1.easeOut'}})
-                        .to(imageReveal, { duration: 1.3, delay: 1.2, cssRule: { width: "0%" }, onComplete: () => setHoverEnabled(true) });
+                        .to(imageReveal, { duration: 1.3, delay: 1.2, cssRule: { width: "0%" }, onComplete: () => {
+                            setHoverEnabled(true) 
+                            dispatch({
+                                type: 'SET_DISPLAY_FOOTER',
+                                payload: true
+                            })
+                        }});
             
             // Cleanup function to kill the animation when the component unmounts or conditions change
             return () => {
@@ -207,7 +219,47 @@ function MusicCarousel() {
       }, [display_body]);
 
 
+      useEffect(() => {
+        // Check if the target paragraph is rendered
+        let wordClass = ''; 
+        if (topParagraph.current) {
+            // Split text into characters
+            const characters = topParagraph.current.textContent.split(" ").map((char) => {
+                if (["music", "industry", "underground", "talent", "Sonido_Club", "Aurea", "Unsilenced"].includes(char)) {
+                    wordClass = 'red'; // Assign the class 'red' if the word matches
+                    return `<span style="position: relative;" class="gsap-char ${wordClass}">${char} </span>`;
+                } else {
+                    return `<span style="position: relative;" class="gsap-char">${char} </span>`;
+                }
+                // Wrap each character in a span, replace space with a non-breaking space for correct spacing
+                
+            }).join("");
 
+            
+    
+            // Set the innerHTML of the paragraph to the new string with spans
+            topParagraph.current.innerHTML = characters;
+    
+            // Animate with GSAP
+            animateWithGSAP();
+        }
+    }, [topParagraph, screenWidth]); // Empty dependency array to run once on mount
+    
+
+    const animateWithGSAP = () => {
+        gsap.fromTo(".gsap-char", { opacity: 0 }, {
+            delay: screenWidth >= 700 ? 2 : 1.1,
+            opacity: 1,
+            stagger: 0.048, // Adjust time between each letter appearing
+            ease: "linear",
+            onComplete: () => {
+                dispatch({
+                    type: 'SET_PROJECTS_RESUMES_ANIMATION_FINISHED',
+                    payload: true,
+                })
+            }
+        });
+    };
   
     
     
@@ -294,7 +346,7 @@ function MusicCarousel() {
            {(screenWidth <= 500 && (!button_state || !button_state.clicked)) &&  <ChangeProject origin={'carousel'}/>}
            {screenWidth <= 500 && (
             <div className="carousel-top-container">
-                <p className="carousel-top-paragraph">
+                <p ref={topParagraph} className="carousel-top-paragraph">
                 My journey in the <span className="red">music industry</span> spans across three distinct music collectives, each with a unique focus on promoting <span className="red">underground talent</span>.
 
                 Currently, I'm engaged with <span className="red">Sonido_Club </span>in Barcelona, where I contribute to organizing music events that blend local and international artists.
@@ -303,7 +355,6 @@ function MusicCarousel() {
                                 </p>
                             </div>
             )}
-           {/* {screenWidth <= 500 && <MusicCarouselBottomMobile/>} */}
            </>
     );
 }

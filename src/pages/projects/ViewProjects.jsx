@@ -1,6 +1,6 @@
 import './Projects.css'
 import GlobalContext from '../../context/GlobalContext'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import AulartShoop from '../../components/bodyContent/projectsContent/AulartShoop';
 import AulartTools from '../../components/bodyContent/projectsContent/AulartTools';
@@ -13,12 +13,32 @@ import PinnedImageGallery from '../../components/bodyContent/projectsContent/Pin
 import Objectives from '../../components/bodyContent/projectsContent/Objectives';
 import ChangeProject from '../../components/bodyContent/projectsContent/ChangeProject';
 import GallerySliderMobile from '../../components/bodyContent/projectsContent/GallerySliderMobile';
+import { useGSAP } from '@gsap/react';
 
 // The Projects component displays project sections and handles animations based on mouse movements.
 function ViewProjects() {
 
     const { id } = useParams();
-    const { title_animation_finshed, boxes_animations_finsished, screenWidth} = useContext(GlobalContext);
+    const { title_animation_finshed, boxes_animations_finsished, screenWidth, dispatch} = useContext(GlobalContext);
+
+    useEffect(() => {
+        if(boxes_animations_finsished){
+            dispatch({
+                type: 'SET_DISPLAY_FOOTER',
+                payload: true
+            })
+        }
+    }, [boxes_animations_finsished])
+
+
+    useEffect(() => {
+        return () => {
+            dispatch({
+                type: 'SET_BOXES_ANIMATION_FINSIHED',
+                payload: false,
+            })
+        }
+    }, [])
 
     // Mapeo de IDs de proyecto a componentes
     const projectComponents = {

@@ -80,6 +80,10 @@ function MainMobile( ) {
 
   
   const changeLocation = (currentIndex) => {
+      dispatch({
+        type: 'SET_DISPLAY_FOOTER',
+        payload: false
+      })
       const destination = navItems[currentIndex].name.toLowerCase();
       if(navbar_location === 'music' && destination === 'music'){
         dispatch({

@@ -24,7 +24,7 @@ function About() {
    const paragraphRefOne = useRef(null);
    const paragraphRefTwo = useRef(null);
 
-   const {display_body, screenWidth, prevLocation, browser} = useContext(GlobalContext);
+   const {display_body, screenWidth, prevLocation, browser, dispatch} = useContext(GlobalContext);
 
    // only render skilsl list when animations done: 
    const [renderSkills, setRenderSkills] = useState(false);
@@ -157,6 +157,12 @@ useGSAP(() => {
             duration: 1.5,
             ease: 'Power3.easeOut',
             delay: .7,
+            onComplete: () => {
+               dispatch({
+                   type: 'SET_DISPLAY_FOOTER',
+                   payload: true
+               })
+           }
           })
          gsap.from('.about-title-word', {
             y: 200,

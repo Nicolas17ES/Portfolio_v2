@@ -49,6 +49,10 @@ function IconReplica() {
           type: 'RESET_STATE',
           payload: initialState,
         });
+        dispatch({
+          type: 'SET_DISPLAY_FOOTER',
+          payload: false
+        })
         navigate("");
         gsap.to("#root", {
           opacity:1,

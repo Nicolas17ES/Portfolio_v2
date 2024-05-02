@@ -78,7 +78,7 @@ function Aurea() {
           duration: 1.4,
           stagger: 0.2,
         });
-      }, []);
+      }, [display_soundcloud_player]);
 
       useEffect(() => {
         if(button_state.value === 2 && exit_component){

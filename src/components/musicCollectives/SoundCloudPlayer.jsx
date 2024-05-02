@@ -60,7 +60,6 @@ function SoundCloudPlayer({audio}) {
 
     useEffect(() => {
         const audio = audioRef.current;
-console.log(audioRef.current.duration)
         const handleTimeUpdateLocal = () => handleTimeUpdate();
     
         if (audio) {
@@ -163,61 +162,3 @@ console.log(audioRef.current.duration)
 }
 
 export default SoundCloudPlayer;
-//     return (
-//         <section style={{borderTop: audio.id === 1 ? '.3px solid rgb(var(--black))' : null}} className="soundcloud-player-container">
-//             <div className="audio-player">
-//                 <audio ref={audioRef} src={audio.src} preload="auto" />
-//                 {!isPlaying ? (
-//                     <div className="player-data-container-top">
-//                         <div className="player-data-header">
-//                             <p className="player-resume" style={{cursor: viewText ? 'zoom-out' : 'zoom-in'}} onClick={()=> setViewText(!viewText)}>{truncateText(audio.resume, 20)}</p>
-//                         </div>
-//                         <div className="player-data-bottom">
-//                             <div className="player-data-left">
-//                                 <button className="play-button" onClick={togglePlayback}>
-//                                     {isPlaying ? <FaPause className="icon-player"/> : <FaPlay className="icon-player"/>}
-//                                 </button>
-//                                 <h5 className="player-artist fade-in-paused">{audio.artist}</h5>
-//                                 <div className="time-player-container fade-in-paused">
-//                                     <span>{formatTime(duration)} min</span>
-//                                 </div>
-//                             </div>
-//                             <h4 className="player-title fade-in-paused">{audio.title}</h4>
-//                         </div>
-//                     </div>
-//                 ) : (
-//                     <div style={{backgroundColor: 'rgb(var(--black))'}} className="player-data-container-top">
-//                         <div className="player-data-header">
-//                             <p className="player-resume" style={{color: 'rgb(var(--white))', cursor: viewText ? 'zoom-out' : 'zoom-in'}} onClick={()=> setViewText(!viewText)}>{truncateText(audio.resume, 20)}</p>
-//                         </div>
-//                         <div className="player-data-bottom">
-//                             <div className="player-data-left-playing">
-//                                 <button className="play-button" onClick={togglePlayback}>
-//                                     {isPlaying ? <FaPause className="icon-player"/> : <FaPlay className="icon-player"/>}
-//                                 </button>
-//                                 <div style={{padding: '0'}} className="time-player-container-playing fade-in-player">
-//                                     <span>{formatTime(currentTime)}</span> | <span>{formatTime(duration)} </span>
-//                                 </div>
-//                                 <h4 className="player-title  fade-in-player">{audio.artist}</h4>
-//                                 <input
-                                    
-//                                     className="player-progress-bar  fade-in-player"
-//                                     type="range" 
-//                                     ref={progressRef} 
-//                                     defaultValue="0" 
-//                                     step="0.01" 
-//                                     onChange={handleProgressChange} 
-//                                 />
-//                                 <span className="player-type fade-in-player">Type: {audio.type}</span>
-//                             </div> 
-//                         </div>
-                              
-//                 </div>
-//                 )}
-                
-//             </div>
-//         </section>
-//     );
-// }
-
-// export default SoundCloudPlayer;

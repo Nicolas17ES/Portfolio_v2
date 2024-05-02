@@ -1213,6 +1213,10 @@ opacity: .8; /* Color del texto de la leyenda */
     font-size: 1.3rem;
   }
 
+  .figcaption-collectives-header {
+    font-size: .8rem;
+}
+
 
 }
 @media (max-width: 500px){
@@ -1240,7 +1244,7 @@ opacity: .8; /* Color del texto de la leyenda */
   }
 
   .carousel-top-container{
-    margin: 50px 0;
+    margin: 50px 0 20px 0;
     padding: 0 30px;
   }
   .carousel-top-paragraph{
@@ -1261,15 +1265,32 @@ opacity: .8; /* Color del texto de la leyenda */
     padding: 0 30px;
   }
 
-  .play-button {
-    width: 24px;
-    height: 24px;
-    padding:7.5px;
-  }
-  
-  .player-artist {
-    font-size: 1.4rem;
+  .audio-player {
+    height: 70px;
+    }
+.player-data-container-top {
+  padding: 5px 12.5px;
+  gap: 15px;
 }
+.play-button {
+  width: 21px;
+  height: 21px;
+  padding: 6.5px;
+  }
+  .player-artist {
+font-size: 1rem;
+}
+
+.time-player-container {
+  font-size: .65rem;
+  }
+  .player-type{
+    display: none;
+  }
+
+  .time-player-container-playing {
+    font-size: .85rem;
+  }
 
 
 
@@ -1323,11 +1344,20 @@ opacity: .8; /* Color del texto de la leyenda */
   padding: 6.5px;
   }
   .player-artist {
-font-size: .9rem;
+font-size: .8rem;
 }
 
 .time-player-container {
   font-size: .65rem;
   }
+
+  .time-player-container-playing {
+    font-size: .7rem;
+  }
+
+  .figcaption-collectives-header {
+    font-size: .75rem;
+}
+
 
 }
