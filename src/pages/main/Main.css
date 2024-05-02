@@ -535,7 +535,7 @@
     color: rgb(var(--white)) !important;
     background-color: rgb(var(--red)) !important;
   }
-  @media (hover: none) {
+  @media (max-width: 500px) {
     .navbar-icon-mobile:hover {
       transform: none; /* Reset any transforms */
       color: inherit !important; /* Reset the color */
