@@ -20,6 +20,10 @@
   z-index: 99999;
   height: 10%;
   background-color: rgb(var(--white));
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
 }
 .icon-replica-container-expand{
   position: fixed;
@@ -68,6 +72,10 @@
   top: 11px;
   left: 7px;
   padding: 10px;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
 }
 
 .icon-replica{
@@ -88,6 +96,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
 }
 
 .icon-replica:hover{
@@ -95,7 +107,13 @@
   color: rgb(var(--white)) !important;
   background-color: rgb(var(--red)) !important;
 }
-
+@media (hover: none) {
+  .icon-replica:hover {
+    transform: none; /* Reset any transforms */
+    color: inherit !important; /* Reset the color */
+    background-color: inherit !important; /* Reset the background color */
+  }
+}
 @media (min-width: 1700px){
   .icon-replica-inner-container {
     left: 37px;
