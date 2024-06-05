@@ -30,7 +30,6 @@ function Footer() {
     }
   }, [display_footer])
 
-  console.log('footer', display_footer)
 
 if(!display_footer) return null;
 

@@ -30,7 +30,6 @@ useGSAP(() => {
     );
   }, []);
 
-console.log(browser)
     return (
          <>
             <div className="contact-social-container">

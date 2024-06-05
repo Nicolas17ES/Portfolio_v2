@@ -80,7 +80,6 @@ function About() {
 
 // Empty dependency array to run once on mount
 
-console.log(browser)
 useGSAP(() => {
    if(display_body && screenWidth > 600){
       gsap.from(".about-subtitle-1", {

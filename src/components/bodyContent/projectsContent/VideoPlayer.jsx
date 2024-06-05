@@ -15,7 +15,7 @@ function VideoPlayer() {
     const overlayRef = useRef(null);
    
 
-
+console.log("videoSrc", videoSrc)
     return (
         <div ref={overlayRef} className="video-player-container">
             

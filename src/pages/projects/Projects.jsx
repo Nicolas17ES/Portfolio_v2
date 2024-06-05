@@ -142,7 +142,6 @@ function Projects() {
     // This helps prevent unnecessary event listeners when the mouse is not over the section.
     const removeMouseMoveListener = (index) => {
         const imageElement = document.querySelector(`.project-image${imageAnimation.index}`);
-        console.log("element", imageElement)
 
         gsap.to(imageElement, {
             autoAlpha: 0,

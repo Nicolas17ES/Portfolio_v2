@@ -359,11 +359,10 @@ function CollectivesHeader() {
                 </div>
             </div>
         </div>
-        {display_soundcloud_player && (
+       
           <h5 className="collectives-header-podacts-titles">
             Music by our guests:
           </h5> 
-        )}
         
       </>
     );

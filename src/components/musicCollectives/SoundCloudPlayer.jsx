@@ -49,7 +49,6 @@ function SoundCloudPlayer({audio}) {
     };
 
     const handleLoadedMetadata = () => {
-        console.log('lalala')
         setDuration(audioRef.current.duration);
     };
 

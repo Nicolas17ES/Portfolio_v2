@@ -26,6 +26,9 @@ import CreateResume from '../../../images/aulartools/10CreateResume.png'
 import ResumedFile from '../../../images/aulartools/11ResumedFile.png'
 import GeneratedBlog from '../../../images/aulartools/12GeneratedBlog.png'
 import GeneratedLanding from '../../../images/aulartools/13GeneratedLanding.png'
+import ToDacast from '../../../images/aulartools/ToDacast.png'
+import Captions from '../../../images/aulartools/Captions.png'
+import Script from '../../../images/aulartools/Script.png'
 
 // LINKINBIO
 import LeftMenuBio from '../../../images/linkinbio/1LeftMenu.png'
@@ -78,7 +81,7 @@ function PinnedImageGallery() {
                 stroke: 'The Alchemist',
                 resume: 'To launch a React version of any producg, we implemented a simple redirect mechanism. Upon activation, it sends the masterclass id, prompting our server to retrieve all relevant data, seamlessly populating the React template.',
                 image: AlchemistProduct,
-                video: 'https://storage.googleapis.com/audio_porftolio/ProductRik.mp4'
+                video: false
             },
             {
                 number: '03',
@@ -106,11 +109,11 @@ function PinnedImageGallery() {
             },
             {
                 number: '06',
-                title: 'Membership Landing:',
+                title: 'Membership Landing 2:',
                 stroke: 'Filter section',
                 resume: 'Upon purchase, users were smoothly redirected from the optimized React landing to the main sites checkout, ensuring a seamless transaction process. This setup not only improved user experience but also streamlined the path to membership enrollment.',
                 image: AulartBenefits,
-                video: 'https://storage.googleapis.com/audio_porftolio/Membership.mp4'
+                video: false
             },
             {
                 number: '07',
@@ -128,7 +131,7 @@ function PinnedImageGallery() {
                 stroke: 'Video Team',
                 resume: 'The home landing for the Video Team displays a comprehensive table of all masterclasses awaiting subtitle generation. It shows the languages available for each class, indicated by flags, alongside the creators name and class title. Features include a search bar for efficient navigation and a button for creating new masterclasses.',
                 image: HomeToolsWhite,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false,
             },
             {
                 number: '02',
@@ -136,7 +139,7 @@ function PinnedImageGallery() {
                 stroke: 'All Teams Functionalities',
                 resume: 'This interface features a navigation menu, tailored to company departments. It serves the Video Team with subtitle functionalities, while also catering to the Marketing departments content creation needs, ensuring department-specific tool access.',
                 image: LeftMenu,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false,
             },
             {
                 number: '03',
@@ -144,15 +147,15 @@ function PinnedImageGallery() {
                 stroke: 'Fill all data',
                 resume: 'This interface is where users input essential details to initiate a new masterclass project. Aulart Tools is equipped to transcribe all chapters from a single masterclass in one operation, simplifying the start of the subtitle generation process.',
                 image: CreateVideo,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS1.1.mp4'
             },
             {
                 number: '04',
                 title: 'Transcript Video',
                 stroke: 'Subtitles creation options',
-                resume: 'Enables transcription from local uploads or directly from Dacast, where masterclass videos are hosted. After using NODEJS to extract the audio from these videos, the Whisper API is employed for high-accuracy transcription, streamlining the entire process from video to text conversion.',
+                resume: 'Enables transcription from local uploads or directly from Dacast, where our masterclass videos are hosted. After using NODEJS to extract the audio from these videos, the Whisper API is employed for high-accuracy transcription, streamlining the entire process from video to text conversion.',
                 image: TranscriptVideo,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS1.1.mp4'
             },
             {
                 number: '05',
@@ -160,7 +163,7 @@ function PinnedImageGallery() {
                 stroke: 'Subtitles Functionalities',
                 resume: 'Post-transcription, navigate the structured chapters of a masterclass on the landing page. Here, users can download files, extend the transcription scope, or fine-tune subtitles with an integrated editor.',
                 image: GeneratedVideo,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS1.2.mp4'
             },
             {
                 number: '06',
@@ -168,7 +171,7 @@ function PinnedImageGallery() {
                 stroke: 'Edit subs & save',
                 resume: 'Enhance subtitle accuracy with a synchronized audio player that scrolls the text editor as the audio progresses, facilitating a seamless editing experience directly within Aulart Tools.',
                 image: Editor,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS1.2.mp4'
             },
             {
                 number: '07',
@@ -176,29 +179,29 @@ function PinnedImageGallery() {
                 stroke: 'Generate Translations',
                 resume: 'Translate subtitles into multiple languages simultaneously using the powerful DeepL API, streamlining the localization process and ensuring content accessibility on a global scale.',
                 image: Translate,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS1.3.mp4'
             },
             {
                 number: '08',
-                title: 'Masterclass Translations',
-                stroke: 'Translations Landing',
-                resume: 'Manage individual masterclass chapters efficiently. Upload completed subtitles to Dacast with a simple click, utilizing playlist and language IDs to automate file organization and save significant time.',
-                image: Translations,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
-            },
-            {
-                number: '09',
                 title: 'Editor',
                 stroke: 'Edit translations',
                 resume: 'A dual-pane editor allows users to compare and refine translations against the original subtitles, with synchronized scrolling features to enhance user convenience and editing precision.',
                 image: EditorTranslation,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS1.3.mp4'
+            },
+            {
+                number: '09',
+                title: 'Masterclass Translations',
+                stroke: 'Translations Landing',
+                resume: 'Our new automation feature allowed us to manage chapters efficiently. Instead of manually uploading each subtitle file, we can now send all subtitles to Dacast via their API with just a single click. Each chapter will automatically upload its corresponding SRT file for every available language, using Dacast\'s unique IDs. This streamlined process significantly reduces the time and effort required for managing subtitles.',
+                image: ToDacast,
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS1.4.mp4'
             },
             {
                 number: '10',
                 title: 'Home',
                 stroke: 'Marketing Team',
-                resume: 'The Marketing Teams central hub displays masterclasses only after subtitles are fully prepared. This setup is crucial as it kickstarts the content generation process, ensuring that all subsequent creative outputs leverage these prepared subtitles.',
+                resume: 'The Marketing Teams central hub displays masterclasses only after subtitles are fully prepared. This setup is crucial as it kickstarts the content generation process, from this point we can egenerate landing content, social media, trailer scripts, etc.',
                 image: HomeMarketing,
                 video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
             },
@@ -208,7 +211,7 @@ function PinnedImageGallery() {
                 stroke: 'Generate Resumes from Landing',
                 resume: 'To accurately generate masterclass resumes, Aulart Tools requires specific inputs like title, keywords, and a customized prompt for ChatGPT. Extensive fine-tuning ensures that the resulting vocabulary and style align perfectly with our established content standards.',
                 image: CreateResume,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS3.1.mp4'
             },
             {
                 number: '12',
@@ -216,24 +219,41 @@ function PinnedImageGallery() {
                 stroke: 'Generated resumes',
                 resume: 'Demonstrating Aulart Tools’ capability, this slide presents a sample resume generated for a masterclass. The integrated file editor streamlines content editing, reflecting the tool’s efficiency in producing professional, ready-to-use content.',
                 image: ResumedFile,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS3.1.mp4'
             },
             {
                 number: '13',
-                title: 'Editor',
-                stroke: 'Generated Blog Post',
-                resume: 'Upon generating all resumes, Aulart Tools crafts templates for our blog posts. These templates serve as a foundational guide, significantly accelerating content creation while fostering idea generation within the marketing team.',
-                image: GeneratedBlog,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                title: 'Generated Landing',
+                stroke: 'View and Edit landing',
+                resume: 'For every masterclass we create, a landing page is automatically generated on our website. Thanks to Aulart Tools, we can generate the template for these landings and directly send all the data to WordPress for seamless integration via their API.',
+                image: GeneratedLanding,
+                video: 'https://storage.googleapis.com/audio_porftolio/TOOLS3.2.mp4'
             },
             {
                 number: '14',
-                title: 'Generated Landing',
-                stroke: 'View and Edit landing',
-                resume: 'Each new masterclass triggers the creation of a corresponding landing page on our website. Aulart Tools not only automates text generation for these pages but also integrates with the Wordpress API, allowing for direct data uploads and instant webpage updates.',
-                image: GeneratedLanding,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                title: 'Editor',
+                stroke: 'Generated Blog Post',
+                resume: 'Our new feature simplifies blog post creation for our website. It generates starter templates, providing a solid foundation for our content. Additionally, it supplies the HTML code needed to seamlessly implement these posts in WordPress.',
+                image: GeneratedBlog,
+                video: 'https://storage.googleapis.com/audio_porftolio/Tools%20-%204%20Create%20Blog%20.mov'
             },
+            {
+                number: '15',
+                title: 'Editor',
+                stroke: 'Generate SM Captions',
+                resume: 'Our tools also enable the automatic generation of social media captions for our posts, streamlining our content creation process.',
+                image: Captions,
+                video: 'https://storage.googleapis.com/audio_porftolio/Tools%205%20-%20Create%20captions.mov'
+            },
+            {
+                number: '16',
+                title: 'Landing',
+                stroke: 'Trailer Scripts',
+                resume: 'I integrated a feature to help the video Team where we can effortlessly generate comprehensive trailer scripts, including introductions, music cues, and essential features, ensuring you have everything needed to create compelling trailers.',
+                image: Script,
+                video: 'https://storage.googleapis.com/audio_porftolio/Tools%205%20-%20Create%20captions.mov'
+            },
+            
         ],
         'linkinbio': [
             {
@@ -242,7 +262,7 @@ function PinnedImageGallery() {
                 stroke: 'Via Tools',
                 resume: 'Access to the LinkInBio project is streamlined through the Aulart Tools portal, directing users to the social media content management platform efficiently and securely.',
                 image: LeftMenuBio,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false
             },
             {
                 number: '02',
@@ -250,7 +270,7 @@ function PinnedImageGallery() {
                 stroke: 'Private',
                 resume: 'Featuring a secure login system, this interface ensures that only authorized personnel can access the LinkInBio management tools, safeguarding sensitive content and operations.',
                 image: Access,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false
             },
             {
                 number: '03',
@@ -258,7 +278,7 @@ function PinnedImageGallery() {
                 stroke: 'Funcitonalities',
                 resume: 'The admin view supports dual language management, aligning with Aulart bilingual Instagram presence. Users can edit and manage LinkInBio entries for both English and Spanish audiences seamlessly.',
                 image: AdminView,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false
             },
             {
                 number: '04',
@@ -266,7 +286,7 @@ function PinnedImageGallery() {
                 stroke: 'Post Data',
                 resume: 'This form enables the creation of new LinkInBio entries, requiring details like the description, target URL, campaign name for SEO, link positioning, and associated imagery, ensuring comprehensive control over content presentation.',
                 image: CreateLink,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false
             },
             {
                 number: '05',
@@ -274,7 +294,7 @@ function PinnedImageGallery() {
                 stroke: 'Update Data',
                 resume: 'Provides robust editing options for existing LinkInBio entries, allowing users to modify descriptions, links, campaign details, positioning, and images, maintaining flexibility in content management.',
                 image: EditLink,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false
             },
             {
                 number: '06',
@@ -282,7 +302,7 @@ function PinnedImageGallery() {
                 stroke: 'Computer Screen',
                 resume: 'Illustrates how users interact with the LinkInBio project from a desktop perspective, showcasing the user-friendly interface and the seamless integration of content accessible through our customized platform.',
                 image: LinkinbioComputer,
-                video: 'https://storage.googleapis.com/audio_porftolio/BlackFriday.mov'
+                video: false
             }
         ]
         
@@ -525,7 +545,7 @@ function PinnedImageGallery() {
                                 controls
                                 muted
                             >
-                                <source src='https://storage.googleapis.com/audio_porftolio/ProductRik.mp4' type="video/mp4" />
+                                <source src={videoSrc} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                 </div> 
@@ -540,7 +560,7 @@ function PinnedImageGallery() {
                                     <span className="work_num">{content.number}</span>
                                     <h2 className="title-gallery">{content.title}<span className="stroke">{content.stroke}</span></h2>
                                     <p className="resume-gallery">{content.resume}</p>
-                                    <button onClick={() => displayPopUp(content.video, content.image)} className="work_link">view video</button>
+                                    {content.video !== false && <button onClick={() => displayPopUp(content.video, content.image)} className="work_link">view video</button>}
                                     {display_vide_popup.value && <VideoPlayer/>}
                                 </div>
                             </div>
