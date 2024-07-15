@@ -333,6 +333,7 @@ function PinnedImageGallery() {
         document.body.style.overflowY = 'auto';
         setZoomOut(true)
     };
+    
 // new vscod
     useEffect(() => {
         if (modalRef.current && imageRef.current && textRef.current) {
